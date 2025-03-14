@@ -1,0 +1,422 @@
+/* Koodi sisältää tyylit sivuston ulkoasulle */
+
+/* Tuodaan Google Fonts -kirjasin 'Merriweather' */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+
+/* Määritellään perusasetukset body-elementille */
+body {
+  background-color: #f7f7f8; 
+  font-size: 125%; 
+  font-family: 'Merriweather', serif; /* Käytetään Merriweather-kirjasinta */
+  text-align: center; 
+  max-width: 95%; 
+  border: 1px solid #101122; 
+  margin: 0px auto; 
+  min-height: 100%;
+  font-family: Merriweather Sans;
+}
+
+/* Tyyli bannerille */
+header {
+  margin: 0; 
+  padding: 40px; 
+  color: #eeeef7; 
+  letter-spacing: 3px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url(../images/universe.jpeg);
+  min-width: 90%;
+  margin-top: 6%;
+  font-family: Merriweather;
+}
+
+/* Tyyli sivun artikkeleille */
+article.page {
+  text-align: center;
+  margin: 0px auto;
+  overflow: hidden;
+  box-shadow: 0 0 4px 4px rgba(0,0,0,0.7);
+}
+
+/* Tyyli yhteystiedoille */
+#yhteystiedot {
+  text-align: center;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+/* Tyyli navigaatiolle ja footerille */
+#nav, #footer {
+  height: 2%;
+  text-align: center;
+  margin: 0;
+  background-color: #101122;
+  color: #F7F5EE;
+}
+
+div.nimi {
+  margin: 10px 0 0 15px;
+  text-align: left;
+
+}
+
+/* Tyyli navigaatiolle */
+#nav {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(../images/universe.jpeg);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  min-width: 95%;
+  height: fit-content;
+  z-index: 1;
+}
+
+/* Tyyli footerille */
+#footer {
+  bottom: 0;
+  min-width: 90%;
+  padding: 1%;
+  clear: both;
+  font-size: 100%;
+  background-color: #101122;
+}
+
+/* Tyyli navigaatiolle */
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  align-items: center;
+  display:contents;
+}
+
+li.nav {
+  display: inline-block;
+  margin: 0;
+  text-align: center;
+}
+
+/* Tyyli navigaation linkeille */
+li a {
+  display: flex;
+  flex-direction: column; /* Asetetaan ikoni ja teksti pystysuoraan */
+  align-items: center; /* Keskittää sisällön vaakasuunnassa */
+  color: #eeeef7;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a i {
+  margin-bottom: 5px; /* Lisää välistystä ikonin ja tekstin väliin */
+}
+
+li a:hover {
+  transform: scale(1.1); 
+  transition: all 0.3s ease-in-out; 
+}
+
+/* Tyyli aktiiviselle linkille */
+a.active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Tyyli footerin linkeille */
+li.footer {
+  display: inline-block;
+}
+
+.footer a:hover {
+  background-color: transparent;
+}
+
+/* Yleinen tyyli listaelementille */
+#lista {
+  display: block;
+  color: #101122;
+  padding: 14px 16px;
+  list-style-type: none;
+}
+
+/* Yleinen tyyli linkeille */
+
+a:hover {
+  color: #bdbdc2;
+}
+
+a:active {
+  color: #929294;
+}
+
+/* Piilotetaan linkki */
+a.hidden {
+  display: none;
+}
+
+/* Tyyli erityislinkille */
+.tekstilinkki{
+  color: #101122;
+}
+
+.tekstilinkki:hover {
+  transform: scale(1.1); 
+  transition: all 0.3s ease-in-out; 
+}
+
+div.language {
+  position: absolute;
+  text-align: center;
+  color: #eeeef7;
+  margin: 0.5em 0.5em;
+  top: 0; left: 90%;
+  z-index: 2;
+}
+
+div.language:hover {
+  transform: scale(1.1); 
+  transition: all 0.3s ease-in-out;
+}
+
+a.language {
+  text-decoration: none;
+  color: #eeeef7;
+}
+
+a.language:hover {
+  transform: scale(1.1); 
+  transition: all 0.3s ease-in-out;
+}
+
+img.language {
+  width: 1.5em;
+  height: 0.75em;
+  left: 8px; top: 8px;
+}
+
+/* Tyyli otsikoille */
+#otsikot h3, #otsikot h4 {
+  margin: 5px auto; /* Adjust margin as needed */
+  padding: 5px 1.5rem;
+  text-align: center;
+}
+
+/* Tyyli kappaleille */
+p {
+  width: 80%; 
+  text-align: left;
+}
+
+/* Tyyli containerille */
+#container {
+  text-align: left;
+  height: fit-content;
+  padding: 2px;
+  width: 100%;
+}
+
+div.harrastukset {
+  height: fit-content;
+}
+
+/* Tyyli footerille ja navigaation linkeille, kun hoverataan brändi-ikonia */
+#footer, #nav a:hover i.fa-brands {
+  transform: scale(1.4); 
+  transition: transform 0.3s; 
+}
+
+/* Tyyli footerille ja navigaation linkeille, kun hoverataan tavallista ikonia */
+#footer, #nav a:hover i.fa-regular {
+  transform: scale(1.4);
+  transition: transform 0.3s;
+}
+
+/* Tyyli kasvokuvien elementille */
+.kasvot {
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
+}
+
+/* Tyyli cv kuvalle */
+.cv {
+  width: 100%;
+  height: auto;
+  border-radius: 20%;
+}
+
+/* Tyyli harjoitusesittelykuvalle */
+.harjesittely {
+  width: 100%; 
+  height: auto;
+  border-radius: 20%;
+}
+
+/* Tyyli section-elementille */
+section {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  box-sizing: content-box;
+  box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
+  align-items: baseline;
+  align-content: flex-start;
+  justify-content: space-between;
+}
+
+/* Tyyli section-headerille */
+.section-header {
+  flex: 1 0 85%;
+  position: relative;
+}
+
+.section-index-header {
+  flex: 1 0 100%;
+  left: 4%;
+  position: relative;
+}
+.sub-section-header {
+  text-align: center;
+  margin: 5px 2em;
+  height: fit-content;
+  width: 100%;
+}
+
+/* Tyyli otsakkeelle */
+h2, h3, h4 {
+  background-color: #b3d9ff;
+  padding: 5px;
+  border-radius: 2rem;
+  text-align: center;
+  width: 90%;
+}
+
+/* Tyyli contentLeft- ja contentRight-section-elementeille */
+section.contentLeft, section.contentRight, section.contentMiddle {
+  padding: 15px;
+  border: 1px solid #101122;
+  margin: 1.25em;
+  border-radius: 30px;
+  box-sizing: border-box;
+  text-align: center;
+  display: grid;
+}
+
+section.contentLeft, section.contentRight {
+  flex: 1;
+}
+
+section.contentMiddle {
+  flex: 2;
+}
+
+/* Ensure the "Lue lisää" link is at the bottom */
+section.contentLeft a, section.contentRight a, section.contentMiddle a {
+  align-self: flex-end;
+  margin-top: 1em;
+}
+
+/* Tyyli content-section-elementille */
+section.content {
+  flex: 2;
+  padding: 15px;
+  border: 1px solid #101122;
+  margin: 1.25em;
+  border-radius: 30px;
+  flex-direction: column;
+  width: 85%;
+}
+
+/* Tyyli profiilitekstille */
+p.profiili {
+  font-size: x-small; 
+  text-align: center;
+}
+
+/* Tyyli harrastuslinkeille */
+a.harrastus {
+  height: auto; 
+  width: 25%;
+}
+
+/* Responsiivinen tyyli näytön koon ollessa alle 900px */
+@media only screen and (max-width: 1200px) {
+  section {
+    flex-direction: column;
+  }
+
+  /* Responsiivinen tyyli kasvot-kuvalla */
+  img.kasvot {
+    position: sticky; 
+    display: block; 
+    margin: 0 auto;
+    width: 40%; 
+    height: auto;
+  }
+
+  /* Responsiivinen tyyli section-headerille */
+  .section-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    flex: 1 0 85%;
+  }
+  .section-index-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    left: 28%;
+  }
+
+  .mediah2 {
+  min-width: 100%;
+  }
+
+  .sub-section-header {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+  }
+
+  .hobby-section-header {
+    width: 80%;
+  }
+
+  /* Responsiivinen tyyli otsikoille */
+  h2 h3 h4 {
+  padding: 5px;
+  border-radius: 40px;
+  text-align: center;
+  width: 90%;
+  }
+
+  /* Responsiivinen tyyli contentLeft- ja contentRight-section-elementeille */
+  section.contentLeft, section.contentRight section.contentMiddle {
+    padding: 10px;
+    border: 1px solid #101122;
+    margin: 1.25em;
+    flex: 0 0 100%;
+  }
+
+  /* Responsiivinen tyyli containerille */
+  .container {
+    position: sticky;
+    margin: 0 auto;
+  }
+
+  #container {
+    left: 35%;
+    position: relative;
+  }
+
+  /* Responsiivinen tyyli kirjakuville */
+  .kirjat {
+    width: 50%; 
+    height: auto;
+    position: sticky; 
+    display: block;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,166 @@
+.proffa {
+    width: 44%;
+    box-shadow: 9px 7px 15px 0px rgba(0, 0, 0, 1);
+    margin: 0.5em 0;
+}
+
+.hobby-section-header {
+    flex: 1 0 100%;
+    position: relative;
+    left: 28%;
+}
+
+/* Tyyli harrastuskuvien elementille */
+img.harrastus {
+    width: 30%;
+    height: auto;
+}
+
+table.taidot {
+    border: 5px solid #555555;
+    background-color: #D5D5D5;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table.taidot td,
+table.taidot th {
+    border: 2px solid #414E55;
+    padding: 7px 4px;
+}
+
+table.taidot tbody td {
+    font-weight: bold;
+    color: #000000;
+}
+
+table.taidot tr:nth-child(even) {
+    background: #FFFFFF;
+}
+
+table.taidot thead {
+    background: #B3D9FF;
+    border-bottom: 6px solid #7E7E7E;
+}
+
+table.taidot thead th {
+    font-size: 125%;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    border-left: 2px solid #000000;
+}
+
+table.taidot thead th:first-child {
+    border-left: none;
+}
+
+table.taidot tfoot .links a {
+    display: inline-block;
+    background: #FFFFFF;
+    color: #A43152;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("../images/lasso_luonto.png");
+
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hobbies {
+    position: relative;
+}
+
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    width: 24.99999%;
+}
+
+.hobbies .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 1.25em auto;
+    max-width: 100%;
+}
+
+.hobbies .content .responsive {
+    flex: 1 1 calc(25% - 2em);
+    /* 4 images per row for screens wider than 1200px */
+    margin: 1em;
+}
+
+.hobbies .content .gallery {
+    border: none;
+}
+
+.hobbies .content .gallery img {
+    height: 100%;
+    width: 100%;
+}
+
+.hobbies .content .desc {
+    text-align: center;
+    padding: 0.5em;
+}
+
+@media (max-width: 1200px) {
+    .hobbies .content .responsive {
+        flex: 1 1 calc(33.333% - 2em);
+        /* 3 images per row for screens 1200px or less */
+    }
+}
+
+@media (max-width: 1000px) {
+    .hobbies .content .responsive {
+        flex: 1 1 calc(50% - 2em);
+        /* 2 images per row for screens 900px or less */
+    }
+}
+
+@media (max-width: 800px) {
+    .hobbies .content .responsive {
+        flex: 1 1 100%;
+        /* 1 image per row for screens 600px or less */
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
