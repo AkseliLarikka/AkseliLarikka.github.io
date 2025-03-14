@@ -14,21 +14,21 @@ You can view the live version of my portfolio here: [https://akselilarikka.githu
 ## 🛠️ Technologies Used
 - HTML
 - CSS
-- JavaScript
-- Bootstrap / Tailwind (if used)
-- Other relevant frameworks/libraries (if applicable)
+- JavaScript (LightBox 2.11.4)
+- jQuery
+- FontAwesome
 
 ## 🎨 Customization
-Feel free to modify the website to match your personal style and branding. You can edit the HTML, CSS, and JavaScript files as needed.
+You are welcome to modify the HTML structure and CSS styles of this website to match your personal style and branding. Feel free to edit the HTML, CSS, and JavaScript files as needed to create a unique and personalized portfolio. However, please note that the content and images are subject to the license restrictions below.
 
 ## 📜 License
-All rights reserved. This project and its content may not be copied, reproduced, or distributed without explicit permission from the owner.
+All rights reserved. The content and images in this project may not be copied, reproduced, or distributed without explicit permission from the owner. However, you are permitted to use and modify the HTML structure and CSS styles for your own projects.
 
 ## 📞 Contact
 If you have any questions or feedback, feel free to reach out:
-- Email: your-email@example.com
-- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- Twitter: [@yourhandle](https://twitter.com/yourhandle)
+- Email: [akseli.larikka@gmail.com](akseli.larikka@gmail.com)
+- LinkedIn: [akseli-larikka](https://www.linkedin.com/in/akseli-larikka/)
+- GitHub: [AkseliLarikka](https://github.com/AkseliLarikka)
 
 ---
 Thank you for visiting my portfolio! 😊
