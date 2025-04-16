@@ -173,7 +173,7 @@ a:hover {
 
     .mobile-header h1 {
         font-size: 1.5em;
-        margin: 0;
+        margin: 0 300px 0 0;
     }
 
     .hamburger-container {
@@ -191,7 +191,7 @@ a:hover {
     .sidebar {
         position: fixed;
         top: 60px; /* Jätetään tilaa mobiiliotsikolle */
-        left: -280px; /* Muutetaan leveys vastaamaan liukumismäärää */
+        left: -320px; /* Muutetaan leveys vastaamaan liukumismäärää */
         width: 280px;
         height: calc(100% - 60px);
         background-color: #34495e;
