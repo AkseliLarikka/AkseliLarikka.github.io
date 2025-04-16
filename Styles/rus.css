@@ -151,19 +151,188 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Responsiivisuus */
-@media(max-width: 768px) {
+/* Tyylit mobiilinäkymää varten */
+@media (max-width: 768px) {
     body {
-        flex-direction: column; /* Pinoa sivupalkki ja sisältö */
-        padding: 10px;
+        padding-top: 60px; /* Jätetään tilaa mobiiliotsikolle */
+        overflow-x: hidden; /* Piilotetaan vaakasuuntainen ylivuoto liukumisen mahdollistamiseksi */
     }
-    .sidebar {
-        position: static; /* Sivupalkki ei ole enää fixed pienemmillä näytöillä */
+
+    .mobile-header {
+        color: #fff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: auto;
+        z-index: 100;
     }
+
+    .mobile-header h1 {
+        font-size: 1.5em;
+        margin: 0;
+    }
+
+    .hamburger-container {
+        background-color: #34495e;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .hamburger-icon {
+        font-size: 1.8em;
+        color: #fff;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 60px; /* Jätetään tilaa mobiiliotsikolle */
+        left: -280px; /* Muutetaan leveys vastaamaan liukumismäärää */
+        width: 280px;
+        height: calc(100% - 60px);
+        background-color: #34495e;
+        color: #fff;
+        padding: 20px;
+        overflow-y: auto;
+        z-index: 99;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        transition: left 0.3s ease-in-out;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
     .main-content {
-        padding-left: 10px; /* Poista sivupalkin levyinen marginaali */
-        margin-left: 0; /* Poistetaan marginaali pienemmällä näytöllä */
+        flex: 1;
+        padding: 20px;
+        margin-left: 0; /* Poistetaan oletusmarginaali */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center; /* Keskitetään sisältö vaakasuunnassa */
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(0);
+        width: 100%; /* Varmistetaan, että pääsisältö ottaa koko leveyden */
+        box-sizing: border-box; /* Sisällytetään padding ja border leveyteen */
+        margin-left: 0 !important; /* Tärkeä! Ylikirjoittaa kaikki muut margin-left -määritykset */
+    }
+
+    .main-content.sidebar-open {
+        transform: translateX(280px); /* Siirretään oikealle sivupalkin leveyden verran */
+    }
+
+    /* Tyylitään pääsisällön elementit, jotta ne rivittyvät oikein */
+    .main-content > * {
+        max-width: 100%; /* Estetään elementtejä leviämästä liikaa */
+        width: auto; /* Sallitaan elementtien skaalautua tarpeen mukaan */
+    }
+
+    .main-content h1,
+    .main-content h2,
+    .main-content p,
+    .main-content table,
+    .main-content blockquote,
+    .main-content ul,
+    .main-content ol,
+    .main-content hr {
+        width: 100%; /* Varmistetaan, että nämäkin elementit ottavat koko leveyden */
+        margin-left: auto;
+        margin-right: auto; /* Keskitetään lohkot vaakasuunnassa */
+        max-width: 600px; /* Voit säätää tämän arvon haluamaksesi */
+    }
+
+    .main-content table {
+        display: block; /* Tehdään taulukosta lohkotason elementti */
+        overflow-x: auto; /* Lisätään vaakasuuntainen vieritys, jos taulukko on liian leveä */
+    }
+}
+
+/* Piilotetaan mobiiliotsikko ja näytetään sivupalkki suuremmilla näytöillä */
+@media (min-width: 769px) {
+    .mobile-header {
+        display: none;
+    }
+
+    .sidebar {
+        width: 282px;
+        background-color: #34495e;
+        color: #fff;
+        padding: 20px;
+        padding-bottom: 40px;
+        position: fixed;
+        height: 100%;
+        overflow-y: auto;
+        z-index: 99;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        flex-shrink: 0;
+        top: 0;
+        left: 0;
+    }
+
+    .main-content {
+        flex: 1;
+        padding: 20px;
+        margin-left: 282px;
+        display: block; /* Palautetaan oletusarvo */
+        align-items: flex-start; /* Palautetaan oletusarvo */
+    }
+
+    .main-content > * {
+        max-width: none; /* Poistetaan rajoitus */
+        width: auto; /* Poistetaan rajoitus */
+    }
+
+    .main-content h1,
+    .main-content h2,
+    .main-content p,
+    .main-content table,
+    .main-content blockquote,
+    .main-content ul,
+    .main-content ol,
+    .main-content hr {
+        width: auto; /* Palautetaan oletusarvo */
+        margin-left: 0;
+        margin-right: 0;
+        max-width: none; /* Poistetaan rajoitus */
+    }
+
+    .main-content table {
+        display: table; /* Palautetaan oletusarvo */
+        overflow-x: visible; /* Palautetaan oletusarvo */
+    }
+}
+
+/* Piilotetaan mobiiliotsikko ja näytetään sivupalkki suuremmilla näytöillä */
+@media (min-width: 769px) {
+    .mobile-header {
+        display: none;
+    }
+
+    .sidebar {
+        /* Säilytetään alkuperäiset sivupalkin tyylit */
+        width: 282px;
+        background-color: #34495e;
+        color: #fff;
+        padding: 20px;
+        padding-bottom: 40px;
+        position: fixed;
+        height: 100%;
+        overflow-y: auto;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        flex-shrink: 0;
+        top: 0;
+        left: 0;
+    }
+
+    .main-content {
+        /* Säilytetään alkuperäiset pääsisällön tyylit */
+        flex: 1;
+        padding: 20px;
+        margin-left: 282px;
     }
 }
