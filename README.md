@@ -4,7 +4,7 @@ Welcome to my personal portfolio website! This site showcases my projects, skill
 
 ## 🚀 Live Demo
 You can view the live version of my portfolio here: <a href="https://akselilarikka.github.io/" target="_blank">https://akselilarikka.github.io/</a>  
-I also have a "hidden" collection of <a href="https://akselilarikka.github.io/rus.html" target="_blank">russian lingquistic rules cheatsheets</a>
+I also have a "hidden" collection of <a href="https://akselilarikka.github.io/rus.html" target="_blank">russian linguistic rules cheatsheets</a>
 
 ## 📌 Features
 - **About Me**: A brief introduction about myself.
