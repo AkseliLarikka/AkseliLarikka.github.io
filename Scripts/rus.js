@@ -1,13 +1,23 @@
 //Mobiilinäkymän hampurilaisvalikko
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburgerIcon = document.querySelector('.hamburger-container'); // Käytetään containeria klikkauksen kohdistamiseen
+    const hamburgerIcon = document.querySelector('.hamburger-container');
     const sidebar = document.querySelector('.sidebar');
     const mainContent = document.querySelector('.main-content');
+    const sidebarLinks = sidebar.querySelectorAll('a'); // Haetaan kaikki linkit sivupalkista
 
     if (hamburgerIcon && sidebar && mainContent) {
         hamburgerIcon.addEventListener('click', function() {
             sidebar.classList.toggle('open');
-            mainContent.classList.toggle('sidebar-open'); // Poistetaan tämä rivi
+            mainContent.classList.toggle('sidebar-open');
+        });
+
+        // Lisätään tapahtumakuuntelija jokaiseen sivupalkin linkkiin
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Suljetaan sivupalkki
+                sidebar.classList.remove('open');
+                mainContent.classList.remove('sidebar-open');
+            });
         });
 
         // Suljetaan sivupalkki, jos klikataan pääsisällön aluetta (ei hampurilaista)
