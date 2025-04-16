@@ -7,26 +7,26 @@ Source: 100% GPT
 
 ## 📑 SISÄLLYSLUETTELO
 
-0. Substantiivin suvun tunnistaminen  
-1. Substantiivien taivutus  
-2. Adjektiivien taivutus  
-3. Pronominit  
-4. Verbit  
- 4.1 Preesens  
- 4.2 Menneet aikamuodot  
- 4.3 Futuurit  
- 4.4 Aspektit  
- 4.5 Liikeverbit  
- 4.6 Epäsäännöllisiä verbejä  
-5. Prepositiot  
-6. Lukusanat  
-7. Kysymyssanat  
-8. Omistus + genetiivi  
-9. Sijamuodot: akkusatiivi, datiivi jne.  
-10. Kielto ja kieltolauseet  
-11. Komparatiivi ja superlatiivi  
-12. Partisiipit  
-
+0. [Substantiivin suvun tunnistaminen](#-substantiivin-suvun-tunnistaminen)  
+1. [Substantiivien taivutus](#-substantiivien-taivutus)  
+2. [Adjektiivien taivutus](#-adjektiivien-taivutus)  
+3. [Pronominit](#-pronominit)  
+4. [Verbit](#-verbit)  
+ 4.1 [Preesens](#41-preesens)  
+ 4.2 [Menneet aikamuodot](#42-menneessa-aikamuodossa-perfektiiviset-ja-imperfektiiviset)  
+ 4.3 [Futuurit](#43-tuleva-aika)  
+ 4.4 [Aspektit](#44-aspektit)  
+ 4.5 [Liikeverbit](#45-liikeverbit-suunnat)  
+ 4.6 [Epäsäännöllisiä verbejä](#46--epasaannollisia-verbeja)  
+5. [Prepositiot](#-prepositiot)  
+6. [Lukusanat](#-lukusanat)  
+7. [Kysymyssanat](#-kysymyssanat)  
+8. [Omistus + genetiivi](#-omistus--genetiivi)  
+9. [Sijamuodot](#-sijamuodot)  
+10. [Kielto ja kieltolauseet](#-kielto)  
+11. [Komparatiivi ja superlatiivi](#-komparatiivi-ja-superlatiivi)  
+12. [Partisiipit](#-partisiipit)
+ 
 ---
 
 ## 0. 🧠 Substantiivin suvun tunnistaminen
