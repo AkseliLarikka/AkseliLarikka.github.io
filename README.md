@@ -3,7 +3,7 @@
 Welcome to my personal portfolio website! This site showcases my projects, skills, and professional background. It is hosted on GitHub Pages and serves as a digital resume and portfolio.
 
 ## 🚀 Live Demo
-You can view the live version of my portfolio here: [https://akselilarikka.github.io/](https://akselilarikka.github.io/)
+You can view the live version of my portfolio here: [https://akselilarikka.github.io/](https://akselilarikka.github.io/)  
 I also have a "hidden" collection of [russian lingquistic rules cheatsheets](https://akselilarikka.github.io/rus.html)
 
 ## 📌 Features
