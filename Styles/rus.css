@@ -151,15 +151,43 @@ a:hover {
     text-decoration: underline;
 }
 
+#backToTopBtn {
+    display: none; /* Piilotetaan oletuksena */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    font-size: 2rem;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  
+  #backToTopBtn:hover {
+    opacity: 1;
+  }
+  
+
 /* Tyylit mobiilinäkymää varten */
 @media (max-width: 768px) {
     body {
         padding-top: 60px; /* Jätetään tilaa mobiiliotsikolle */
         overflow-x: hidden; /* Piilotetaan vaakasuuntainen ylivuoto liukumisen mahdollistamiseksi */
     }
+    
+    #backToTopBtn {
+        display: block;
+      }
 
     .mobile-header {
         color: #fff;
+        background-color:#2980b9;
         padding: 10px 20px;
         display: flex;
         justify-content: space-between;
@@ -249,6 +277,13 @@ a:hover {
     .main-content table {
         display: block; /* Tehdään taulukosta lohkotason elementti */
         overflow-x: auto; /* Lisätään vaakasuuntainen vieritys, jos taulukko on liian leveä */
+    }
+}
+
+@media (max-width: 571px) {
+    .mobile-header h1 {
+        font-size: 1.5em;
+        margin: 0 25% 0 0;
     }
 }
 
