@@ -180,14 +180,10 @@ a:hover {
         padding-top: 60px; /* Jätetään tilaa mobiiliotsikolle */
         overflow-x: hidden; /* Piilotetaan vaakasuuntainen ylivuoto liukumisen mahdollistamiseksi */
     }
-    
-    #backToTopBtn {
-        display: block;
-      }
 
     .mobile-header {
         color: #fff;
-        background-color:#2980b9;
+        background-color:#34495e;
         padding: 10px 20px;
         display: flex;
         justify-content: space-between;
@@ -200,6 +196,7 @@ a:hover {
     }
 
     .mobile-header h1 {
+        color: #fff;
         font-size: 1.5em;
         margin: 0 300px 0 0;
     }
@@ -219,8 +216,8 @@ a:hover {
     .sidebar {
         position: fixed;
         top: 60px; /* Jätetään tilaa mobiiliotsikolle */
-        left: -320px; /* Muutetaan leveys vastaamaan liukumismäärää */
-        width: 280px;
+        left: -325px; /* Muutetaan leveys vastaamaan liukumismäärää */
+        width: 285px;
         height: calc(100% - 60px);
         background-color: #34495e;
         color: #fff;
@@ -251,7 +248,7 @@ a:hover {
     }
 
     .main-content.sidebar-open {
-        transform: translateX(280px); /* Siirretään oikealle sivupalkin leveyden verran */
+        transform: translateX(340px); /* Siirretään oikealle sivupalkin leveyden verran */
     }
 
     /* Tyylitään pääsisällön elementit, jotta ne rivittyvät oikein */

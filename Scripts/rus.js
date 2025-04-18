@@ -48,19 +48,23 @@ function adjustMainContentMargin() {
   window.addEventListener('resize', adjustMainContentMargin);
 
 
-  // takaisin ylös nappi
-  document.addEventListener('DOMContentLoaded', function() {
+
+// takaisin ylös nappi
+document.addEventListener('DOMContentLoaded', function() {
     const backToTopBtn = document.getElementById('backToTopBtn');
   
+    // Varmistetaan, että nappi on olemassa
+  if (backToTopBtn) {
     // Näytä nappi kun scrollataan alas
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 200) { // Näkyviin kun scrollattu 200px
+      // Tarkista, onko scrollattu yli tietyn prosenttiosuuden näytön korkeudesta
+      if (window.scrollY > window.innerHeight * 0.5) {
         backToTopBtn.style.display = 'block';
       } else {
         backToTopBtn.style.display = 'none';
       }
     });
-  
+
     // Scrollaa ylös napista
     backToTopBtn.addEventListener('click', function() {
       window.scrollTo({
@@ -68,10 +72,12 @@ function adjustMainContentMargin() {
         behavior: 'smooth'
       });
     });
-  });
+  }
+});
 
 
-  //Korosta korkein otsikko
+
+//Korosta korkein otsikko
   function highlightActiveSidebarLink() {
     const sections = document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]'); // Valitse kaikki otsikot H1-H6, joilla on ID
     const sidebarLinks = document.querySelectorAll('.sidebar a[href]');
