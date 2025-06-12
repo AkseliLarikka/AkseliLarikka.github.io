@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taistelukenttä d20: Sotapelisimulaattori</title>
+    <title>Taistelukenttä d20: Suomi vs. Venäjä</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/d20.png">
     <style>
         /* Chosen Palette: Warm Neutral Harmony */
         body {
@@ -13,14 +16,18 @@
             color: #1C1917; /* stone-900 */
             font-family: 'Inter', sans-serif;
         }
-        .prose h1, .prose h2, .prose h3 {
+        .prose {
+            color: #44403C; /* stone-700 */
+        }
+        .prose h1, .prose h2, .prose h3, .prose h4 {
             color: #A855F7; /* purple-500 */
             border-bottom: 2px solid #E5E7EB; /* gray-200 */
             padding-bottom: 0.3em;
         }
         .prose h1 { font-size: 2.25rem; }
-        .prose h2 { font-size: 1.875rem; }
-        .prose h3 { font-size: 1.5rem; }
+        .prose h2 { font-size: 1.875rem; margin-top: 2em; }
+        .prose h3 { font-size: 1.5rem; margin-top: 1.8em; border-bottom-style: dashed; }
+        .prose h4 { font-size: 1.2rem; margin-top: 1.5em; border-bottom: 1px solid #E5E7EB; }
         .prose a { color: #6D28D9; /* purple-700 */ }
         .prose strong { color: #44403C; } /* stone-700 */
         .prose blockquote {
@@ -28,9 +35,18 @@
             background-color: #FAFAF9; /* stone-50 */
             color: #57534E; /* stone-600 */
         }
+        .prose table {
+             width: 100%;
+             margin-top: 1.5em;
+             margin-bottom: 1.5em;
+        }
         .prose table thead {
             background-color: #581C87; /* purple-900 */
             color: #F5F5F4; /* stone-100 */
+        }
+        .prose th, .prose td {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #E5E7EB; /* gray-200 */
         }
         .prose table tbody tr:nth-child(even) {
             background-color: #FAFAF9; /* stone-50 */
@@ -40,10 +56,27 @@
             border: 1px solid #E7E5E4; /* stone-200 */
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             transition: all 0.3s ease-in-out;
+            margin-top: 1.5rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
         }
-        .unit-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        .unit-card h4 {
+            background-color: #F3E8FF; /* purple-100 */
+            color: #581C87; /* purple-900 */
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #E5E7EB;
+            margin-top: 0;
+            border-bottom-color: #D8B4FE; /* purple-300 */
+        }
+        .unit-card-content {
+            padding: 1rem;
+        }
+        .unit-card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .unit-card ul li {
+            padding-bottom: 0.5rem;
         }
         #sidebar {
             transition: transform 0.3s ease-in-out;
@@ -60,318 +93,561 @@
             border-left-color: #A855F7; /* purple-500 */
             color: #581C87; /* purple-900 */
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
     </style>
-    <!-- Chosen Palette: Warm Neutral Harmony -->
-    <!-- Application Structure Plan: Sovellus on suunniteltu yhden sivun interaktiiviseksi sääntökirjaksi. Rakenne perustuu loogisiin, temaattisiin osioihin, jotka on helppo navigoida sivupalkin kautta. Tämä mahdollistaa käyttäjän keskittyä yhteen osa-alueeseen kerrallaan (esim. Ydinsäännöt, Kampanjasäännöt, Yksikkötiedot) ilman tarvetta selata koko dokumenttia. Interaktiivisuus saavutetaan klikattavilla yksikkökorteilla (tulevaisuuden laajennus) ja dynaamisilla kaavioilla, jotka visualisoivat monimutkaisia konsepteja, kuten resurssien käyttöä. Tämä rakenne on valittu, koska se muuttaa staattisen sääntökirjan dynaamiseksi työkaluksi, joka tukee sekä oppimista että pelaamista. Käyttäjä voi nopeasti siirtyä säännöistä yksikkötietoihin ja kampanjan hallintaan. -->
-    <!-- Visualization & Content Choices: Dokumentin data on pääosin laadullista ja rakenteellista (säännöt, taulukot). Visualisoinnin tavoitteena on selkeyttää ja järjestää tietoa. Valitut menetelmät: 1) Jäsennellyt HTML-taulukot (esim. Komentopistetoiminnot, maastovaikutukset) tiedon tiivistämiseen ja vertailuun. 2) Visuaalisesti erotellut yksikkökortit (HTML/CSS) nopeaan tiedonhakuun pelin aikana. 3) Dynaaminen kuvaaja (Chart.js, Canvas) esittelemään kampanjan resurssienhallinnan sykliä, mikä auttaa ymmärtämään uutta ydinmekaniikkaa. Tämä on parempi kuin staattinen teksti, koska se näyttää syy-seuraussuhteet visuaalisesti. Kaikki valinnat tukevat suunniteltua interaktiivista sääntökirja-rakennetta. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
 <body class="text-stone-900">
 
-    <!-- Sidebar / Navigation -->
     <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-20 p-4 overflow-y-auto sidebar-hidden md:sidebar-visible md:translate-x-0">
-        <h1 class="text-2xl font-bold text-purple-700 mb-6">Taistelukenttä d20</h1>
+        <h1 class="text-xl font-bold text-purple-700 mb-6">Taistelukenttä d20 Sisällys</h1>
+        <img src="images/taistelukenttäisologo.png" alt="iso taistelukenttä logo">
         <nav id="nav-menu" class="space-y-2">
-            <!-- Nav links will be inserted here by JS -->
-        </nav>
+            </nav>
     </div>
 
-    <!-- Mobile Menu Button -->
     <button id="menu-toggle" class="md:hidden fixed top-4 left-4 z-30 p-2 bg-white rounded-md shadow-md">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
     </button>
 
-    <!-- Main Content -->
     <main id="main-content" class="md:ml-64 p-4 md:p-8">
         <div class="prose max-w-none">
             
+            <section id="section-0">
+                <h1>Taistelukenttä d20: Moderni Konflikti – Suomi vs. Venäjä</h1>
+            </section>
+            
             <section id="section-1">
                 <h2>1. Johdanto Uudistettuun Taistelukenttä d20 -Peliin</h2>
-                <p>Tämä osio esittelee Taistelukenttä d20:n uudistetun vision ja keskeiset periaatteet. Olemme muokanneet pelin perusteellisesti vastaamaan toiveita syvemmästä kampanjakokemuksesta ja realistisemmasta simulaatiosta, jossa pelaajien päätöksillä on pitkäkestoisia vaikutuksia. Tervetuloa komentamaan joukkojasi modernin sodankäynnin haasteisiin!</p>
-                
-                <h3>1.1 Pelin Uusi Visio ja Tavoitteet</h3>
-                <p>Tervetuloa Taistelukenttä d20: Sotapelisimulaattorin pariin. Tämä sääntöjärjestelmä on merkittävästi laajennettu ja syvennetty versio alkuperäisestä, ja se on suunniteltu toimimaan yksityiskohtaisena ja realistisena simulaattorina nimenomaan Suomen Puolustusvoimien (Sininen tiimi) ja Venäjän Asevoimien (Punainen tiimi) välisestä mahdollisesta konfliktista.</p>
-                <p>Pelin keskiössä on pyrkimys autenttisuuteen ja pelaajien luomaan tarinaan. Tämä tarkoittaa paitsi todellisiin organisaatioihin ja kalustoon perustuvia yksiköitä, myös kummankin osapuolen sotilasdoktriinien mallintamista. Uusi kampanjajärjestelmä asettaa pelaajan paitsi taktikon, myös resurssienhallinnoijan rooliin. Menestys vaatii huolellista suunnittelua, joukkojen tehokasta johtamista ja kykyä sopeutua nopeasti muuttuviin tilanteisiin taistelukentällä. Jokainen taistelu on osa suurempaa tarinaa, jossa yksiköillä on arvoa ja niiden selviytymisellä on merkitystä.</p>
 
+                <h3>1.1 Pelin Uusi Visio ja Tavoitteet</h3>
+                <p>Tervetuloa Taistelukenttä d20: Moderni Konflikti – Suomi vs. Venäjä -sotapelin uudistettuun laitokseen. Tämä sääntöjärjestelmä on merkittävästi laajennettu ja syvennetty versio alkuperäisestä Taistelukenttä d20 -pelistä. Alkuperäisen pelin visiona oli simuloida modernia sodankäyntiä yleisellä joukkue-, komppania- ja pataljoonatasolla. Tämä uudistettu versio ottaa kunnianhimoisemman suunnan: se on suunniteltu toimimaan yksityiskohtaisena ja realistisena simulaattorina nimenomaan Suomen Puolustusvoimien (Sininen tiimi) ja Venäjän Asevoimien (Punainen tiimi) välisestä mahdollisesta konfliktista.</p>
+                <p>Pelin keskiössä on pyrkimys autenttisuuteen. Tämä tarkoittaa paitsi todellisiin organisaatioihin ja kalustoon perustuvia yksiköitä, myös kummankin osapuolen sotilasdoktriinien ja taktisten toimintatapojen mallintamista pelimekaniikkojen kautta. Pelin tavoitteena ei ole ainoastaan tarjota viihdyttävää ja haastavaa sotapelikokemusta, vaan myös antaa pelaajille syvällisempi ymmärrys modernin sodankäynnin monimutkaisuudesta kyseisten toimijoiden välillä.</p>
+                <p>Sodan sumu, epätäydellinen informaatio ja komentajien päätöksenteko paineen alla ovat edelleen keskeisiä elementtejä, mutta nyt ne asetetaan tarkasti määriteltyyn geopoliittiseen ja sotilaalliseen viitekehykseen. Menestys vaatii huolellista suunnittelua, resurssienhallintaa, joukkojen tehokasta johtamista ja kykyä sopeutua nopeasti muuttuviin tilanteisiin taistelukentällä, joka heijastelee todellisia uhkia ja valmiuksia.</p>
+                
                 <h3>1.2 Keskeiset Muutokset Aiempaan Versioon</h3>
+                <p>Tämä uudistettu laitos eroaa edeltäjästään useilla merkittävillä tavoilla, jotka on suunniteltu vastaamaan pelin uutta, tarkemmin kohdennettua visiota:</p>
                 <ul>
-                    <li><strong>Uusi Kampanjajärjestelmä:</strong> Taisteluiden voittopisteet (VP) muunnetaan Resurssipisteiksi (RP), joilla kehitetään ja ylläpidetään omaa armeijaa.</li>
-                    <li><strong>Armeijan Rakentaminen ja Kustomointi:</strong> Pelaajat valitsevat komppanialleen teeman (aselajin) ja rakentavat armeijaansa sen ympärille, mikä palkitsee temaattisista valinnoista.</li>
-                    <li><strong>Laajennetut Yksikköluettelot:</strong> Kattavat ja tarkoilla yksikkökuvauksilla sekä Suomen että Venäjän asevoimille, sisältäen uudet yksikkötyyppi- ja hintatiedot.</li>
-                    <li><strong>Syvennetty Realismi:</strong> Uudet säännöt edistyneelle aseteknologialle, ilmatorjunnalle ja osapuolikohtaisille doktriineille.</li>
-                    <li><strong>Pelinjohtajan Oppaat:</strong> Uusi osio, joka sisältää ohjeita karttojen luomiseen ja pelin mittakaavaan.</li>
+                    <li><strong>Laajennetut ja Yksityiskohtaiset Yksikköluettelot:</strong> Alkuperäisen pelin perusyksiköt on korvattu kattavilla ja tarkoilla yksikkökuvauksilla sekä Suomen että Venäjän asevoimille. Nämä perustuvat saatavilla olevaan tietoon kummankin maan nykyisestä kalustosta ja organisaatiosta. Tämä tarkoittaa uusien yksiköiden, kuten Leopard 2A6 -taistelupanssarivaunujen, CV9030FIN-rynnäkköpanssarivaunujen, K9 Thunder -telahaupitsien Suomelle, sekä T-90M-taistelupanssarivaunujen, BMP-3-rynnäkköpanssarivaunujen ja Pantsir-S1-ilmatorjuntajärjestelmien Venäjälle, lisäämistä peliin.</li>
+                    <li><strong>Uudet Säännöt Edistyneelle Aseteknologialle:</strong> Pelimekaniikkoja on laajennettu kattamaan modernin sodankäynnin erityispiirteitä, kuten panssarintorjuntaohjukset (esim. Spike ja Kornet), itseliikkuvat ilmatorjuntajärjestelmät (SPAAG), itseliikkuvat tykistöjärjestelmät (SPH) ja niiden erikoisampumatarvikkeet.</li>
+                    <li><strong>Tarkemmat Komento- ja Hallintamekaniikat:</strong> Komentopistejärjestelmää ja komentajan toimintoja on päivitetty heijastamaan paremmin nykyaikaisen C4ISR-kyvykkyyden (Command, Control, Communications, Computers, Intelligence, Surveillance, and Reconnaissance) vaikutusta taistelukentällä.</li>
+                    <li><strong>Osapuolikohtaiset Doktriinisäännöt:</strong> Peliin on lisätty sääntöjä ja kykyjä, jotka mallintavat Suomen ja Venäjän sotilasdoktriinien keskeisiä piirteitä, antaen kummallekin osapuolelle omanlaisensa taktisen luonteen.</li>
+                    <li><strong>Syvennetty Tiedustelu ja Informaatiosota:</strong> Tiedustelun ja tilannekuvan merkitystä on korostettu, ja sääntöihin on lisätty elementtejä, jotka kuvaavat informaation hallinnan tärkeyttä.</li>
                 </ul>
 
                 <h3>1.3 d20-Järjestelmän Soveltaminen Moderniin Sodankäyntiin</h3>
-                <p>Taistelukenttä d20 säilyttää ytimessään tutun $d20$-noppajärjestelmän. Tämä järjestelmä, jossa onnistuminen perustuu tyypillisesti $d20$-nopanheittoon lisättynä erilaisilla modifikaattoreilla verrattuna kohdelukuun (DC), tarjoaa joustavan ja intuitiivisen perustan. Modernin sodankäynnin monimutkaisuus, kuten kehittyneet sensorit ja ohjatut aseet, on mallinnettu yksityiskohtaisemmilla alijärjestelmillä, jotka rakentuvat tämän perustan päälle. Tavoitteena on yhdistää $d20$-järjestelmän helppokäyttöisyys modernin sodankäynnin vaatimaan syvyyteen ja tarkkuuteen.</p>
+                <p>Taistelukenttä d20: Moderni Konflikti säilyttää ytimessään tutun d20-noppajärjestelmän, joka on peräisin Dungeons & Dragons 5e -roolipelistä ja jota sovellettiin jo pelin alkuperäisessä versiossa. Tämä järjestelmä, jossa onnistuminen perustuu tyypillisesti $d20$-nopanheittoon lisättynä erilaisilla modifikaattoreilla verrattuna kohdelukuun (DC), tarjoaa joustavan ja intuitiivisen perustan monenlaisten tilanteiden ratkaisemiseen.</p>
+                <p>Modernin sodankäynnin monimutkaisuus, johon kuuluvat esimerkiksi kehittyneet sensorijärjestelmät, ohjatut aseet, elektroninen sodankäynti ja monimutkaiset panssarointiratkaisut, vaatii kuitenkin perusjärjestelmän merkittävää laajentamista ja soveltamista. Tämä uudistettu versio ei tyydy pelkkään abstraktiin $d20$ + Taitotaso (TT) vastaan Suoja (S) -mekaniikkaan. Sen sijaan $d20$-järjestelmää käytetään pohjana, jonka päälle rakennetaan yksityiskohtaisempia alijärjestelmiä.</p>
+                <p>Esimerkiksi panssarintorjuntaohjuksen osuminen ja vaikutus voivat sisältää useampia heittoja ja tarkistuksia kuin perinteisen kiväärin laukaus, ottaen huomioon ohjuksen ohjausjärjestelmän, kohteen vastatoimet ja panssarin tyypin. Tavoitteena on yhdistää $d20$-järjestelmän helppokäyttöisyys ja satunnaisuuden hallinta modernin sodankäynnin vaatimaan syvyyteen ja tarkkuuteen, luoden näin pelikokemuksen, joka on sekä mukaansatempaava että simulaatioarvoltaan korkea.</p>
             </section>
-
+            
             <section id="section-2">
-                <h2>2. Ydinsäännöt</h2>
-                <p>Nämä säännöt muodostavat pelin mekaanisen selkärangan. Ne kattavat kaiken komentamisesta ja liikkumisesta taistelun ratkaisemiseen ja moraaliin. Vaikka kampanjasäännöt tuovat peliin uuden strategisen tason, nämä ydinsäännöt ovat toiminnan ytimessä jokaisessa taistelussa.</p>
-
+                <h2>2. Ydinsääntöjen Muutokset ja Tarkennukset</h2>
+                <p>Tässä osiossa käsitellään Taistelukenttä d20 -pelin ydinsääntöihin tehtyjä muutoksia ja tarkennuksia, jotka ovat välttämättömiä modernin Suomen ja Venäjän välisen konfliktin simuloimiseksi realistisesti. Nämä muutokset perustuvat alkuperäisen pelin rakenteeseen, mutta laajentavat sitä merkittävästi.</p>
+                
                 <h3>2.1 Komentojärjestelmä ja Komentopisteet (KP)</h3>
-                <p>Komentopisteet (KP) ovat komentajan keskeisin resurssi taistelun aikana, kuvastaen johtamiskykyä ja taktista aloitteellisuutta. KP-pisteiden generointi on hienosäädetty:</p>
+                <p>Komentopisteet (KP) säilyvät komentajan keskeisimpänä resurssina, kuvastaen hänen johtamiskykyään ja taktista aloitteellisuuttaan. KP-pisteiden generointi perustuu edelleen komentajan tasoon, mutta sitä on hienosäädetty:</p>
                 <ul>
                     <li><strong>Joukkueenjohtaja:</strong> 3 KP / vuoro</li>
                     <li><strong>Komppanianpäällikkö:</strong> 5 KP / vuoro</li>
-                    <li><strong>Pataljoonan komentaja:</strong> 7 KP / vuoro</li>
+                    <li><strong>Pataljoonan komentaja (suuremmissa skenaarioissa):</strong> 7 KP / vuoro</li>
                 </ul>
-                <p>Käyttämättömät KP:t haihtuvat vuoron lopussa. Perustoiminnot, kuten asemissa puolustaminen, eivät kuluta KP:itä, mutta aktiiviset toiminnot vaativat niitä.</p>
+                <p>Käyttämättömät KP:t haihtuvat edelleen vuoron lopussa. Perustoiminnot, kuten asemissa puolustaminen tai ennalta suunniteltu liike, eivät kuluta KP:itä. Aktiiviset ja vaativat toiminnot sen sijaan edellyttävät KP:iden käyttöä. Alkuperäisiä KP-toimintoja on laajennettu ja muokattu vastaamaan modernin sodankäynnin vaatimuksia ja C4ISR-järjestelmien (Command, Control, Communications, Computers, Intelligence, Surveillance, and Reconnaissance) tuomia mahdollisuuksia. Nämä uudet toiminnot heijastavat informaation merkitystä ja erikoistuneiden tukimuotojen koordinointia, jotka ovat keskeisiä nykyaikaisille doktriineille.</p>
                 
                 <table>
                     <caption>Taulukko 1: Uudistetut Komentopistetoiminnot</caption>
-                    <thead><tr><th>Toiminto</th><th>Hinta (KP)</th><th>Kuvaus</th></tr></thead>
+                    <thead>
+                        <tr><th>Toiminto</th><th>Hinta (KP)</th><th>Kuvaus</th><th>Huomioita</th></tr>
+                    </thead>
                     <tbody>
-                        <tr><td>Hyökkäyskäsky</td><td>1 KP / ryhmä</td><td>Käske ryhmää aktiivisesti hyökkäämään tai rynnäköimään.</td></tr>
-                        <tr><td>Tulen Keskittäminen</td><td>1 KP</td><td>Kaikki osallistuvat ryhmät saavat +1 bonuksen hyökkäysheittoihinsa kyseistä maalia vastaan.</td></tr>
-                        <tr><td>Irtautuminen</td><td>2 KP / ryhmä</td><td>Käske taistelukontaktissa olevaa ryhmää vetäytymään hallitusti.</td></tr>
-                        <tr><td>Moraalin Kohotus</td><td>2 KP</td><td>Poista "Lamautunut"-tila yhdeltä omalta yksiköltä.</td></tr>
-                        <tr><td><strong>Koordinoitu Tulitukipyyntö</strong></td><td>3 KP + 1 KP/lisäyksikkö</td><td>Tee pyyntö epäsuorasta tulesta useammalta tulitukiyksiköltä samaan maaliin. Vähentää hajontaa.</td></tr>
-                        <tr><td><strong>Sensoritehtävä</strong></td><td>2 KP</td><td>Anna yksikölle +2 - +4 bonus seuraavaan Tiedusteluheittoon tai salli erikoissensorin käyttö.</td></tr>
-                        <tr><td><strong>Tarkka Iskupyyntö</strong></td><td>4 KP</td><td>Pyydä tarkkaa iskua (lennokki, täsmäammus) yksittäistä arvokasta maalia vastaan.</td></tr>
+                        <tr><td>Hyökkäyskäsky</td><td>1 KP / ryhmä</td><td>Käske ryhmää aktiivisesti hyökkäämään tai rynnäköimään.</td><td>Perustuu alkuperäiseen</td></tr>
+                        <tr><td>Tulen Keskittäminen</td><td>1 KP</td><td>Kaikki tähän komentoon osallistuvat ryhmät saavat +1 bonuksen hyökkäysheittoihinsa kyseistä maalia vastaan tällä vuorolla.</td><td>Perustuu alkuperäiseen</td></tr>
+                        <tr><td>Irtautuminen</td><td>2 KP / ryhmä</td><td>Käske taistelukontaktissa olevaa ryhmää vetäytymään hallitusti.</td><td>Perustuu alkuperäiseen</td></tr>
+                        <tr><td>Moraalin Kohotus</td><td>2 KP</td><td>Poista "Lamautunut"-tila yhdeltä omalta yksiköltä.</td><td>Perustuu alkuperäiseen</td></tr>
+                        <tr><td>Koordinoitu Tulitukipyyntö</td><td>3 KP (perus) + 1 KP per lisäyksikkö</td><td>Tee pyyntö epäsuorasta tulesta (krh, tykistö) useammalta tulitukiyksiköltä samaan maaliin tai alueelle. Vähentää hajontaa tai lisää vaikutusta.</td><td>Laajennus, mahdollistaa esim. krh- ja tykistökeskityksen synkronoinnin.</td></tr>
+                        <tr><td>Sensoritehtävä</td><td>2 KP</td><td>Anna yhdelle yksikölle merkittävä (+2 - +4) bonus sen seuraavaan Tiedusteluheittoon tai salli erikoissensorin (esim. lämpökamera pimeässä) täysimääräinen hyödyntäminen.</td><td>Uusi toiminto, heijastaa modernien sensoreiden merkitystä.</td></tr>
+                        <tr><td>Elektronisen Sodankäynnin (EW) Toimi</td><td>2-4 KP</td><td>Aktivoi EW-yksikön häirintä-, kuuntelu- tai harhautuskyky. Vaikutukset riippuvat EW-järjestelmästä.</td><td>Uusi toiminto, perustuu informaatiosodan laajennukseen ja Venäjän doktriinin painotuksiin.</td></tr>
+                        <tr><td>Tarkka Iskupyyntö</td><td>4 KP</td><td>Pyydä erittäin tarkkaa, mutta rajoitettua iskua yksittäistä arvokasta maalia vastaan. Vaatii yleensä suoran näköyhteyden tai tarkan maalinosoituksen.</td><td>Uusi toiminto, mallintaa modernien täsmäaseiden käyttöä.</td></tr>
+                        <tr><td>Erikoiskyvyn käyttö</td><td>Vaihtelee</td><td>Monien yksiköiden erityiskyvyt vaativat KP:n käyttöä.</td><td>Perustuu alkuperäiseen</td></tr>
+                        <tr><td>Komppanian Taktiikat</td><td>Vaihtelee (2-5 KP)</td><td>Komppanianpäällikön käytössä olevat laajemmat taktiset käskyt.</td><td>Perustuu alkuperäiseen, voidaan laajentaa osapuolikohtaisilla taktiikoilla.</td></tr>
                     </tbody>
                 </table>
-                
+                <p>Komentoyhteyden säännöt ja komentoketjun katkeamisen seuraukset pysyvät pääosin voimassa, mutta niiden merkitys korostuu entisestään modernilla taistelukentällä, jossa kommunikaatioylivoima on avainasemassa.</p>
+
                 <h3>2.2 Pelivuoron Vaiheet</h3>
+                <p>Pelivuoron vaiheet noudattavat alkuperäisen pelin rakennetta, sillä se tarjoaa loogisen ja dynaamisen tavan mallintaa samanaikaisia toimintoja. Vaiheet ovat:</p>
                 <ol>
-                    <li><strong>Komentovaihe:</strong> Pelaajat päättävät yksiköidensä toiminnoista ja käyttävät KP:itä.</li>
-                    <li><strong>Liikevaihe:</strong> Kaikki liikkuviksi määrätyt yksiköt siirretään.</li>
-                    <li><strong>Tiedusteluvaihe:</strong> Tiedustelutestit suoritetaan ja havaitut viholliset paljastetaan.</li>
-                    <li><strong>Tulitoimintavaihe:</strong> Kaikki tulikomennot ovat samanaikaisia ja ratkaistaan yhtä aikaa.</li>
-                    <li><strong>Tilannevaihe:</strong> Vahinko ja tilaefektit astuvat voimaan. Moraalitestit tehdään.</li>
+                    <li><strong>Komentovaihe:</strong> Pelaajat (ja Pelinjohtaja salassa) päättävät yksiköidensä toiminnoista ja käyttävät tähän Komentopisteitä. Kaikki päätökset tehdään tässä vaiheessa.</li>
+                    <li><strong>Liikevaihe:</strong> Kaikki liikkuviksi määrätyt yksiköt siirretään kartalla.</li>
+                    <li><strong>Tiedusteluvaihe:</strong> Tiedustelua suorittavat yksiköt tekevät testinsä. Pelinjohtaja paljastaa havaitut viholliset.</li>
+                    <li><strong>Tulitoimintavaihe:</strong> Kaikki Komentovaiheessa annetut tulikomennot ovat samanaikaisia ja ne ratkaistaan yhtä aikaa. Tämä tarkoittaa, että vaikka yksikkö tuhoutuisi, se ehtii ampua oman laukauksensa tällä vuorolla. Kaikki tappiot ja tilaefektit astuvat voimaan vasta Tilannevaiheessa.</li>
+                    <li><strong>Tilannevaihe:</strong> Vahinkoa kärsineet yksiköt tekevät moraalitestit. Tilaefektit päivitetään. Vuoro päättyy.</li>
                 </ol>
-
-                <h3>2.3 Taistelumekaniikat</h3>
-                <h4>2.3.1 Suora Tuli & Panssari</h4>
-                <p>Suora tuli ratkaistaan heittämällä $d20$ + Taitotaso (TT) + muut modifikaattorit vastaan kohteen Suoja (S). Uudistetussa järjestelmässä panssaroiduilla yksiköillä on <strong>moniosainen panssarointi</strong> (Etu, Sivu, Taka, Katto), ja aseilla on <strong>Läpäisyarvo (PEN)</strong>. Osuma läpäisee, jos PEN ≥ Suoja. Erikoispanssarit kuten ERA ja APS antavat lisäsuojaa.</p>
-
-                <h4>2.3.2 Epäsuora Tuli</h4>
-                <p>Epäsuora tuli (kuten kranaatinheittimet ja tykistö) on tehokas jalkaväkeä ja kevyitä kohteita vastaan. Tuli on epätarkkaa, ja sen osumapiste määräytyy hajontaheitolla. Ammustyyppejä ovat mm. HE (sirpale), savu ja valaisu. Jotkin järjestelmät, kuten K9 Thunder tai 2S19 Msta-S, voivat käyttää erikoisammuksia tai -kykyjä, kuten MRSI (useita kranaatteja samaan aikaan maaliin).</p>
-                
-                <h4>2.3.3 Ilmapuolustus</h4>
-                <p>Ilmatorjunta on uusi moduuli. Ilmatorjuntayksiköt (kuten ItPsv 90 Marksman tai Pantsir-S1) voivat havaita ja hyökätä ilmamaaleja (lentokoneet, helikopterit, dronet) vastaan. Torjuntaan vaikuttavat yksikön sensorit, aseistus ja maalin ominaisuudet.</p>
-                
-                <h3>2.4 Moraali ja Tilaefektit</h3>
-                <p>Yksiköiden henkinen kantti on avainasemassa. Yksiköt tekevät Moraalitestejä ($d20$ + M vs. DC) kärsiessään tappioita, joutuessaan raskaan tulen alle tai nähdessään ystävällisten joukkojen tuhoutuvan. Epäonnistuminen voi johtaa tilaefekteihin:</p>
+                <p>Keskeinen periaate "kaikki tulikomennot ovat samanaikaisia" säilytetään pelin sujuvuuden ja tasapainon vuoksi. Kuitenkin modernien, erittäin nopeasti reagoivien asejärjestelmien ja sensorien aikakaudella "ensimmäisen laukauksen" merkitys on korostunut. Tämän huomioimiseksi voidaan harkita seuraavia tarkennuksia Tulitoimintavaiheeseen:</p>
                 <ul>
-                    <li><strong>Vaurioitunut:</strong> TK alle puolessa. Liike ja Tuli-isku puolittuvat.</li>
-                    <li><strong>Lamautunut (Suppressed):</strong> Ei voi toimia. Helppo kohde.</li>
-                    <li><strong>Vetäytyy:</strong> Liikkuu hallitsemattomasti suojaan.</li>
+                    <li><strong>Aloitejärjestys tietyille järjestelmille:</strong> Yksiköt, joilla on erityisen kehittyneet sensorit tai "fire-and-forget" -tyyppiset aseet, voivat saada pienen bonuksen aloiteheittoon. Korkeimman tuloksen saanut yksikkö voi ratkaista oman tulitoimintonsa ensin.</li>
+                    <li><strong>Vastatoimet (Countermeasures):</strong> Tietyt järjestelmät, kuten aktiiviset puolustusjärjestelmät (APS) panssarivaunuissa, voivat saada reaktiona toimia Tulitoimintavaiheessa, kun niitä vastaan hyökätään.</li>
+                </ul>
+                <p>Nämä mekanismit pyrkivät mallintamaan teknologista etua ilman, että pelivuoron rakenne monimutkaistuu liikaa.</p>
+                
+                <h3>2.3 Taistelumekaniikat</h3>
+                <p>Taistelun ratkaiseminen on sotapelin ytimessä. Alkuperäisen pelin perusmekaniikkaa on laajennettu huomattavasti kattamaan modernin aseistuksen moninaisuus ja vaikutukset.</p>
+
+                <h4>2.3.1 Suora Tuli</h4>
+                <p>Suoran tulen säännöt perustuvat edelleen hyökkääjän heittoon ($d20$ + Taitotaso (TT) + muut modifikaattorit) vastaan kohteen Suoja (S). Merkittävin muutos on "Tuli-isku (TI)" -arvon korvaaminen asekohtaisilla vahinko- ja läpäisyarvoilla sekä erikoissäännöillä.</p>
+                <ul>
+                    <li><strong>Kanuunat (Panssarivaunu- ja Rynnäkköpanssarivaunukanuunat):</strong> Taistelupanssarivaunujen kanuunoilla on korkeat läpäisyarvot (PEN) ja huomattava Tuli-isku (TI). Autokanuunat ovat tehokkaita kevyempiä ajoneuvoja vastaan ja niillä on usein korkeampi tulinopeus (RoF).</li>
+                    <li><strong>Panssarintorjuntaohjukset (ATGM):</strong> Järjestelmät kuten Spike ja Kornet ovat erittäin tehokkaita. Niillä on ominaisuuksia kuten "Fire-and-forget" tai "Top-Attack", erittäin korkea läpäisy ja pitkä kantama.</li>
+                    <li><strong>Konekiväärit ja Kranaattikonekiväärit:</strong> Käytetään ensisijaisesti jalkaväen lamauttamiseen. Aiheuttavat vähemmän TK-vahinkoa, mutta voivat pakottaa kohteet Moraalitesteihin.</li>
+                </ul>
+                <p>Jokaisella asejärjestelmällä yksikkökortilla on omat arvonsa: Kantama, Hyökkäysbonus, Läpäisy (PEN), Tuli-isku (TI), Tulinopeus (RoF) ja Erikoisominaisuudet.</p>
+
+                <h4>2.3.2 Panssari ja Läpäisy</h4>
+                <p>Alkuperäisen pelin yksiulotteinen "Suoja (S)" -arvo ei riitä. Uudistetussa pelissä otetaan käyttöön seuraavat parannukset:</p>
+                <ul>
+                    <li><strong>Moniosainen Panssarointi:</strong> Jokaisella panssaroidulla yksiköllä on erilliset Suoja-arvot eri suunnille: Etu, Sivu, Taka ja Katto.</li>
+                    <li><strong>Asekohtainen Läpäisy (PEN):</strong> Osuman jälkeen aseen PEN-arvoa verrataan kohteen tulosuunnan Suoja-arvoon. Jos PEN ≥ Suoja, osuma läpäisee.</li>
+                    <li><strong>Panssarityypit ja Erikoissäännöt:</strong>
+                        <ul>
+                            <li><strong>Komposiittipanssari:</strong> Tarjoaa hyvän perussuojan.</li>
+                            <li><strong>Explosive Reactive Armour (ERA):</strong> Antaa merkittävän lisäsuojan HEAT-ammuksia vastaan. Voi neutraloida osuman, mutta on sen jälkeen "käytetty".</li>
+                            <li><strong>Häkkipanssari (Cage/Slat Armour):</strong> Tarjoaa lisäsuojaa RPG-tyyppisiä sinkoaseita vastaan.</li>
+                        </ul>
+                    </li>
                 </ul>
                 
-                <h3>2.5 Tiedustelu ja Informaatiosota</h3>
-                <p>Sodan sumu on alati läsnä. Yksiköiden havaitseminen vaatii onnistuneen vastakkaisen Tiedusteluheiton. Havainnon tasoja on neljä: Ei Havaintoa, Epäily, Tiedossa ja Havaittu. Modernit sensorit, kuten lämpökamerat ja tutkat, antavat merkittäviä etuja tiedusteluun, erityisesti pimeässä tai huonossa säässä.</p>
+                <h4>2.3.3 Epäsuora Tuli</h4>
+                <p>Epäsuoran tulen sääntöjä on laajennettu. Ero orgaanisen (nopea, tarkka) ja epäorgaanisen (voimakas, hitaampi) tuen välillä säilyy. Uusia elementtejä ovat:</p>
+                <ul>
+                    <li><strong>Ammustyypit:</strong> HE (High Explosive), Savu, Valaisu, ja erikoisammukset kuten termobaariset raketit (TOS-1A) tai ohjatut tykistöammukset.</li>
+                    <li><strong>Multiple Rounds Simultaneous Impact (MRSI):</strong> Modernit SPH:t (kuten K9 Thunder) voivat ampua useita kranaatteja, jotka iskeytyvät maaliin samanaikaisesti. Tämä voidaan mallintaa korkean KP-hinnan erikoiskäskyllä.</li>
+                    <li><strong>Vastatykistötuli (Counter-battery Fire):</strong> Ampuva tykistöyksikkö paljastaa sijaintinsa ja voi joutua vastatulen kohteeksi. "Shoot and scoot" -taktiikka voi suojata tältä.</li>
+                </ul>
+
+                <h4>2.3.4 Ilmapuolustus</h4>
+                <p>Tämä on uusi sääntömoduuli. Ilmatorjuntayksiköt, kuten Suomen ItPsv 90 Marksman ja Venäjän Pantsir-S1, kykenevät torjumaan ilmamaaleja. Torjuntaprosessi sisältää:</p>
+                <ol>
+                    <li><strong>Havaitsiminen:</strong> Yksikkö tekee Tiedusteluheiton havaitakseen ilmamaalin.</li>
+                    <li><strong>Lukitus ja Hyökkäys:</strong> Yksikkö hyökkää heittämällä $d20$ + TT vastaan ilmamaalin väistöarvo.</li>
+                    <li><strong>Vahinko:</strong> Osuessaan ase tekee vahinkoa. Ohjukset tekevät paljon vahinkoa, mutta niitä on rajoitetusti.</li>
+                </ol>
+                <p>Monet ilmatorjuntajärjestelmät voivat toimia rajoitetusti myös maakohteita vastaan.</p>
+
+                <h4>2.3.5 Erityisaseet ja -järjestelmät</h4>
+                <ul>
+                    <li><strong>Termobaariset Aseet (TOS-1A):</strong> Aiheuttavat erittäin suurta vahinkoa laajalla alueella, erityisesti jalkaväkeä ja rakennelmia vastaan, ja aiheuttavat vaikean Moraalitestin.</li>
+                    <li><strong>Kehittyneet Tähtäimet (Lämpökamerat yms.):</strong> Antavat bonuksia pimeässä ja huonossa näkyvyydessä sekä helpottavat piiloutuneiden yksiköiden havaitsemista.</li>
+                    <li><strong>Aktiiviset Puolustusjärjestelmät (APS):</strong> Voivat torjua lähestyviä ohjuksia ja sinkoja. Kun APS-varustettua ajoneuvoa vastaan hyökätään, heitetään $d20$, ja tietyllä tuloksella uhka torjutaan.</li>
+                </ul>
+
+                <h3>2.4 Moraali ja Tilaefektit</h3>
+                <p>Moraalisääntöjä on syvennetty. Alkuperäisten syiden lisäksi moraalitestejä voivat aiheuttaa esimerkiksi joutuminen täsmäaseen kohteeksi, raskaan kaluston menetys tai elektroninen häirintä. Tilaefektit "Vaurioitunut", "Lamautunut" ja "Vetäytyy" säilyvät, ja uusia harkittavia efektejä ovat "Häiritty" ja "Sensorivaurio".</p>
+
+                <h3>2.5 Tiedustelu, Tilannekuva ja Informaatiosota</h3>
+                <p>Informaation hallinta on elintärkeää. Havainnon tasot (Ei Havaintoa, Epäily, Tiedossa, Havaittu) säilyvät. Sensorityyppien (optiset, lämpökamerat, tutkat) vaikutusta on tarkennettu. Elektronisen sodankäynnin (EW) perusmekaniikat on hahmoteltu, mahdollistaen signaalihäirinnän, sensorihäirinnän ja signaalitiedustelun.</p>
 
                 <h3>2.6 Maaston Vaikutus</h3>
-                <p>Maasto on ratkaiseva tekijä. Se vaikuttaa liikkeeseen, suojaan ja näkyvyyteen. Suomen maasto (metsät, suot, järvet) tarjoaa haasteita ja mahdollisuuksia molemmille osapuolille.</p>
+                <p>Alkuperäistä maastotaulukkoa on laajennettu kattamaan Suomen ja Itä-Euroopan tyypillisiä maastoja yksityiskohtaisemmin.</p>
                 <table>
-                    <caption>Taulukko 2: Laajennettu Maastovaikutustaulukko (Esimerkkejä)</caption>
-                    <thead><tr><th>Maastotyyppi</th><th>Liikevaikutus (Ajoneuvot)</th><th>Suojabonus (S)</th><th>Piiloutumisbonus</th></tr></thead>
+                    <caption>Taulukko 2: Laajennettu Maastovaikutustaulukko</caption>
+                    <thead>
+                        <tr><th>Maastotyyppi</th><th>Liikevaikutus Ajoneuvoille</th><th>Liikevaikutus Jalkaväelle</th><th>Suojabonus (S) vs. Suora Tuli</th><th>Piiloutumisbonus (vs. Optinen/Lämpö)</th><th>Sensorivaikutus (Tutka/Lämpö)</th><th>Huomioita</th></tr>
+                    </thead>
                     <tbody>
-                        <tr><td>Tie/Aukea</td><td>100%</td><td>+0</td><td>+0</td></tr>
-                        <tr><td>Metsä (tiheä)</td><td>50% (tela), 25% (pyörä)</td><td>+4 - +5</td><td>+4 - +5</td></tr>
-                        <tr><td>Rakennus (kestävä)</td><td>Ei kulkua</td><td>+6 - +8</td><td>+8</td></tr>
-                        <tr><td>Urbaani (tiheä)</td><td>50% (vain teillä)</td><td>+4 (kadulla), +6-+8 (sisällä)</td><td>+6</td></tr>
-                        <tr><td>Suo/Räme</td><td>20% (tela), 0% (pyörä)</td><td>+1 (vaikeuttaa tähtäystä)</td><td>+3</td></tr>
+                        <tr><td>Tie/Aukea</td><td>100%</td><td>100%</td><td>+0</td><td>+0</td><td>Ei vaikutusta</td><td>Perustuu alkuperäiseen</td></tr>
+                        <tr><td>Matala maasto (pelto, niitty)</td><td>90%</td><td>100%</td><td>+1 (maatuvat) / +2 (kumpuileva)</td><td>+2</td><td>Lämpö: -1 (jos korkeaa kasvillisuutta)</td><td>Laajennus</td></tr>
+                        <tr><td>Metsä (harva)</td><td>75%</td><td>90%</td><td>+3</td><td>+3</td><td>Tutka: -2, Lämpö: -2</td><td></td></tr>
+                        <tr><td>Metsä (tiheä)</td><td>50% (tela-ajoneuvot), 25% (pyöräajoneuvot)</td><td>75%</td><td>+4 - +5</td><td>+4 - +5</td><td>Tutka: -4, Lämpö: -4</td><td>Eritelty</td></tr>
+                        <tr><td>Rakennus (kevyt, puu)</td><td>Ei kulkua (paitsi erikoisajoneuvot)</td><td>50% (sisällä)</td><td>+4</td><td>+6</td><td>Tutka: LoS-esto, Lämpö: LoS-esto</td><td>Perustuu alkuperäiseen</td></tr>
+                        <tr><td>Rakennus (kestävä, kivi/betoni)</td><td>Ei kulkua</td><td>50% (sisällä)</td><td>+6 - +8</td><td>+8</td><td>Tutka: LoS-esto, Lämpö: LoS-esto</td><td>Voi tarjota suojaa epäsuoralta tulelta.</td></tr>
+                        <tr><td>Urbaani (tiheä, kadut)</td><td>50% (vain teillä), erittäin hidas rakennusten välissä</td><td>75% (kaduilla), 50% (rakennusten läpi)</td><td>+4 (kadulla), +6-+8 (rakennuksissa)</td><td>+6</td><td>Tutka: Erittäin paljon katveita, Lämpö: Paljon häiriöitä</td><td>Kapeat ampumasektorit, hyvä väijytyksiin.</td></tr>
+                        <tr><td>Teollisuusalue</td><td>60% (alueella), hidas rakennusten välissä</td><td>80%</td><td>+5 (ulkona), +7 (rakennuksissa)</td><td>+5</td><td>Tutka: Paljon katveita, Lämpö: Lämpölähteitä voi hämätä</td><td>Suuret rakennelmat voivat tarjota hyvää suojaa.</td></tr>
+                        <tr><td>Suo/Räme</td><td>20% (tela, jos ylipäätään kulkukelpoinen), 0% (pyörä)</td><td>50%</td><td>+1 (ei suojaa tulelta, mutta vaikeuttaa tähtäämistä)</td><td>+3</td><td>Lämpö: Voi vaikeuttaa havaitsemista.</td><td>Erittäin vaikeakulkuista.</td></tr>
+                        <tr><td>Vesistö (matala, ylitettävä)</td><td>Erikoissäännöt (amfibio, kahlaus)</td><td>Erikoissäännöt (uinti, kahlaus)</td><td>+0</td><td>+0</td><td></td><td>Liike hidasta, yksiköt haavoittuvia.</td></tr>
+                        <tr><td>Kaivanto/Potero</td><td>-</td><td>-</td><td>+5 (jalkaväelle)</td><td>+4</td><td></td><td>Tarjoaa hyvän suojan jalkaväelle.</td></tr>
                     </tbody>
                 </table>
             </section>
-            
+
             <section id="section-3">
-                <h2>3. Kampanjapelaaminen: Rakenna Armeijasi</h2>
-                <p>Tämä osio on pelin uudistettu sydän. Se muuttaa yksittäiset taistelut osaksi laajempaa tarinaa, jossa menestys palkitaan ja tappioilla on seurauksensa. Pelaajien tehtävänä on paitsi voittaa taisteluita, myös hallinnoida resurssejaan viisaasti, kehittää veteraaniyksiköitään ja rakentaa oma, ainutlaatuinen armeijansa.</p>
+                <h2>3. Sininen Tiimi – Suomen Puolustusvoimat</h2>
+                <p>Tämä osio keskittyy Suomen Puolustusvoimiin (Sininen tiimi), sen sotilasdoktriiniin, tyypilliseen taistelujärjestykseen pelin mittakaavassa sekä yksityiskohtaisiin yksikkökortteihin keskeisimmille joukoille ja kalustolle.</p>
 
-                <h3>3.1 Kampanjan Sykli</h3>
-                <p>Kampanja etenee sykleissä, jotka koostuvat taistelua edeltävästä valmistautumisesta, itse taistelusta (skenaariosta) ja taistelun jälkeisestä vaiheesta, jossa resurssit jaetaan ja armeijaa kehitetään. Tämä sykli toistuu, ja pelaajien armeijat kehittyvät ja muuttuvat kampanjan edetessä.</p>
-                <div class="chart-container my-8">
-                    <canvas id="campaignCycleChart"></canvas>
-                </div>
-
-                <h3>3.2 Komppanian Luonti ja Teemabonukset</h3>
-                <p>Kampanjan alussa jokainen pelaaja valitsee armeijalleen <strong>komppanian tyypin</strong>. Tämä valinta määrittää pelaajan aloitusjoukot ja vaikuttaa siihen, mitä yksiköitä hän voi myöhemmin helposti hankkia. Yksiköillä on yksi tai useampi <strong>yksikkötyyppi</strong> (esim. Jalkaväki, Panssari, Tykistö, Tiedustelu).</p>
-                <p>Jos pelaaja lähtee taisteluun armeijalla, jossa <strong>kaikki yksiköt jakavat vähintään yhden yhteisen yksikkötyypin</strong>, hän saa voimakkaan <strong>Aselajikoheesio-bonuksen</strong>. Tämä voi olla esimerkiksi ylimääräinen Komentopiste (KP) per vuoro tai +1 Moraali kaikille yksiköille. Tämä kannustaa temaattisten ja realististen armeijakokoonpanojen luomiseen.</p>
-                <blockquote>
-                    <strong>Esimerkki:</strong> Pelaaja valitsee "Panssarikomppanian". Hän aloittaa yhdellä Leopard 2A6 -vaunulla (Tyyppi: Panssari) ja kahdella CV9030FIN-vaunulla (Tyyppi: Panssari, Jalkaväki). Koska kaikilla yksiköillä on "Panssari"-tyyppi, hän saa Aselajikoheesio-bonuksen. Jos hän myöhemmin lisää armeijaansa puhtaan Jääkäriryhmän (Tyyppi: Jalkaväki), hän menettää bonuksen, ellei hänellä ole myös toista jalkaväki-tyypin yksikköä, jolloin teemaksi voisi muodostua "Mekanisoitu Jalkaväki".
-                </blockquote>
-
-                <h3>3.3 Resurssien Hallinta: Voittopisteistä Resursseiksi</h3>
-                <p>Taistelun jälkeen kaikki ansaitut <strong>Voittopisteet (VP)</strong> muunnetaan suoraan <strong>Resurssipisteiksi (RP)</strong> suhteessa 1:1. Näillä pisteillä pelaaja voi "ostaa" parannuksia ja täydennyksiä armeijaansa Kasarmilta.</p>
-                
-                <h4>Kasarmi (Resurssien Käyttö)</h4>
-                <p>Ennen seuraavaa taistelua pelaajat voivat käyttää keräämiään RP-pisteitä seuraaviin asioihin:</p>
+                <h3>3.1 Doktriini: Totaalinen Maanpuolustus ja "Sisu"</h3>
+                <p>Suomen sotilasdoktriinin ytimessä on käsite totaalisesta maanpuolustuksesta. Pelissä tämä ilmenee pyrkimyksenä hyödyntää Suomen ainutlaatuista maastoa, korostaen kevyen jalkaväen taitoja. Keskeinen osa doktriinia on "Sisu", joka kuvastaa periksiantamattomuutta ja korkeaa motivaatiota. Suomalainen taktiikka painottaa usein laatua määrän sijaan, maaston tehokasta hyödyntämistä ja asymmetrisiä toimintatapoja.</p>
+                <p>Doktrinaaliset piirteet voidaan mallintaa pelissä seuraavilla tavoilla:</p>
                 <ul>
-                    <li><strong>Täydennykset:</strong> Palauta menetettyjä Taistelukunto (TK) -pisteitä vaurioituneille yksiköille. Hinta riippuu yksikön tyypistä (esim. 1 RP per 2 TK jalkaväelle, 1 RP per 1 TK panssarivaunulle). Tuhoutuneen yksikön korvaaminen maksaa sen täyden hinnan.</li>
-                    <li><strong>Kokemuksen Kehittäminen:</strong> Anna yksikölle Kokemuspisteitä (XP). Kun yksikkö kerää tarpeeksi XP:tä, sen Koulutus (K) ja siten Taitotaso (TT) nousevat, tehden siitä tehokkaamman veteraaniyksikön. Tällä tavoin yksiköille muodostuu oma tarinansa ja tunnearvoa.</li>
-                    <li><strong>Uudet Yksiköt:</strong> Osta uusia yksiköitä armeijaasi. Saatavilla oleva valikoima voi riippua komppaniasi tyypistä.</li>
-                    <li><strong>Erikoisvarusteet:</strong> Osta yksiköille erikoisammuksia, lisäpanssarointia (kuten häkkipanssari) tai muita parannuksia, jos skenaario tai kampanja sen sallii.</li>
+                    <li><strong>"Sisu":</strong> Suomalaisilla jalkaväkiyksiköillä on korkeampi perusmoraali tai kyky kestää paremmin tappioita.</li>
+                    <li><strong>"Maaston Tuntemus":</strong> Suomalaiset yksiköt saavat bonuksia tietyissä maastotyypeissä, kuten metsässä.</li>
+                    <li><strong>Erityiset Komentopistetoiminnot:</strong> Kuten "Mottitaktiikka", "Häirintäisku" (isku ja irti -taktiikka) ja "Paikallisaloite", joka heijastaa alempien portaiden oma-aloitteisuutta.</li>
                 </ul>
-                
-                <table class="w-full text-left">
-                    <caption>Taulukko 3: Esimerkkihinnasto (Resurssipisteet, RP)</caption>
-                    <thead><tr><th>Nimike</th><th>Kuvaus</th><th>Hinta (RP)</th></tr></thead>
+
+                <h3>3.2 Taistelujärjestys (Order of Battle – FDF)</h3>
+                <p>Suomen Puolustusvoimien taistelujärjestys pelissä perustuu nykyaikaisiin organisaatiomalleihin, kuten Jääkärikomppania M05.</p>
+                <table>
+                    <caption>Taulukko 3: Suomen Puolustusvoimien Esimerkkikokoonpanot (Tiivistelmä)</caption>
+                    <thead>
+                        <tr><th>Muodostelmatyyppi</th><th>Johtoelementit</th><th>Taisteluyksiköt (tyypillinen määrä)</th><th>Tukielementit (orgaaniset)</th><th>Kalustoesimerkkejä</th></tr>
+                    </thead>
                     <tbody>
-                        <tr><td>Jääkäriryhmä (Uusi)</td><td>9 miehen perusjalkaväkiryhmä.</td><td>80 RP</td></tr>
-                        <tr><td>CV9030FIN (Uusi)</td><td>Moderni rynnäkköpanssarivaunu.</td><td>250 RP</td></tr>
-                        <tr><td>Leopard 2A6 (Uusi)</td><td>Tehokas taistelupanssarivaunu.</td><td>450 RP</td></tr>
-                        <tr><td>Panssarintorjuntaohjus (Spike LR2)</td><td>Yksi täydennysammus PST-ryhmälle.</td><td>15 RP</td></tr>
-                        <tr><td>Yksikön kokemustason nosto (XP -> +1 K)</td><td>Kehittää ryhmän veteraaniksi.</td><td>100 RP (vaihtelee)</td></tr>
-                        <tr><td>TK-pisteen täydennys (Jalkaväki)</td><td>Korjaa yhden TK-pisteen.</td><td>0.5 RP</td></tr>
-                        <tr><td>TK-pisteen täydennys (Panssari)</td><td>Korjaa yhden TK-pisteen.</td><td>1 RP</td></tr>
+                        <tr><td>Jääkärikomppania (M05-tyyppinen)</td><td>Kompp. Päällikkö, Varapäällikkö, Tulenjohtopäällikkö</td><td>3x Jääkärijoukkuetta (kussakin 3x Jääkäriryhmä, Raskaskertasinkopartio, Tulenjohtopartio)</td><td>Komento- ja Tukijoukkue (Komento-, Tulituki- (81mm Krh), PST-ryhmät), Huoltojoukkue</td><td>RK62M/95TP, KES12, PKM, 81mm Krh, NLAW/Spike SR</td></tr>
+                        <tr><td>Panssarijääkärikomppania (Mekanisoitu)</td><td>Kompp. Päällikkö (CV9030), Varapäällikkö</td><td>3x Panssarijääkärijoukkuetta (kussakin 3-4x CV9030FIN ja 3-4x Panssarijääkäriryhmää)</td><td>Tukijoukkue (CV9030-pohjainen, voi sisältää PST-ohjusversion tai Krh-version)</td><td>CV9030FIN, RK62M/95TP, Spike LR/ER</td></tr>
+                        <tr><td>Panssarikomppania</td><td>Kompp. Päällikkö (Leopard 2A6)</td><td>3x Panssarijoukkuetta (kussakin 3-4x Leopard 2A6)</td><td>Huolto- ja tukielementti</td><td>Leopard 2A6 (tai 2A4)</td></tr>
+                        <tr><td>Tykistöpatteri (Itseliikkuva)</td><td>Patterin Päällikkö, Tulenjohtue</td><td>2-3x Tulijaosta (kussakin 2-3x K9 Thunder)</td><td>Ammusajoneuvot, tukielementit</td><td>K9 Thunder "Moukari"</td></tr>
                     </tbody>
                 </table>
+
+                <h3>3.3 Yksikkökortit – Suomi</h3>
+                <p>Seuraavassa esitellään esimerkkejä keskeisten suomalaisten yksiköiden ominaisuuskorteista. Oletusarvoisesti Koulutus (K) on +2 Jääkäreille ja ammattisotilaille.</p>
+
+                <div class="unit-card">
+                    <h4>JÄÄKÄRIRYHMÄ (Päivitetty)</h4>
+                    <div class="unit-card-content">
+                        <ul>
+                            <li><strong>Tyyppi:</strong> Jalkaväki (9 miestä)</li>
+                            <li><strong>TK:</strong> 10 | <strong>M:</strong> +3 (Sisulla +3 vaurioituneenakin) | <strong>S (Perus):</strong> 11 (ilman maastoa)</li>
+                            <li><strong>Liike:</strong> 10 cm (Maasto), 10 cm (Metsä), 12 cm (Tie)</li>
+                            <li><strong>TT (Koulutus +2, XP +0):</strong> +2</li>
+                            <li><strong>Aseistus:</strong>
+                                <ul>
+                                    <li><strong>RK 95 TP (7.62mm):</strong> Kantama 0-15/15-30/30-45cm. PEN: 1. TI: d6. RoF: 1.</li>
+                                    <li><strong>PKM Kevyt Konekivääri (1 kpl):</strong> Kantama 0-20/20-40/40-60cm. PEN: 2. TI: d8. Erikois: Lamauttava.</li>
+                                    <li><strong>KES 12 (66mm LAW) (2 kpl):</strong> Kantama 0-10/10-20cm. Hyökkäys: TT-1. PEN: 10 (HEAT). TI: 2d6. Erikois: Kertakäyttöinen.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Kyvyt:</strong>
+                                <ul>
+                                    <li><strong>Sisu:</strong> Kun yksikkö on "Vaurioitunut", sen Moraali pysyy +3.</li>
+                                    <li><strong>Maastoon Tottunut:</strong> Ei kärsi liikehidasteesta metsässä.</li>
+                                    <li><strong>Partisaanitaktiikat (1 KP):</strong> Voi yrittää piiloutua uudelleen ampumisen jälkeen metsässä tai rakennuksessa.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit-card">
+                    <h4>LEOPARD 2A6 (Taistelupanssarivaunu)</h4>
+                    <div class="unit-card-content">
+                        <ul>
+                            <li><strong>Tyyppi:</strong> Ajoneuvo (Taistelupanssarivaunu) | <strong>Miehistö:</strong> 4</li>
+                            <li><strong>TK:</strong> 45 | <strong>M:</strong> +4</li>
+                            <li><strong>Suoja (S):</strong> Etu: 22, Sivu: 16, Taka: 10, Katto: 8 (Komposiittipanssari)</li>
+                            <li><strong>Liike:</strong> 14 cm (Maasto), 18 cm (Tie)</li>
+                            <li><strong>TT (Koulutus +2, XP +0):</strong> +2</li>
+                            <li><strong>Aseistus:</strong>
+                                <ul>
+                                    <li><strong>120mm Rheinmetall L55 PSTVK:</strong>
+                                        <ul>
+                                            <li>APFSDS-T (DM63): Kantama 0-90cm. Hyökkäys: TT+2. PEN: 25. TI: 3d10.</li>
+                                            <li>HEAT-MP-T (DM12A1): Kantama 0-80cm. Hyökkäys: TT+1. PEN: 20 (HEAT). TI: 2d12. Aluevaikutus.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>7.62mm Konekivääri (Koaksiaalinen & IT):</strong> Kantama 0-40cm. PEN: 2. TI: d8.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Kyvyt:</strong>
+                                <ul>
+                                    <li><strong>Kehittyneet Tähtäimet (Lämpökamera):</strong> Ei pimeyden haittoja, +2 Tiedusteluun pimeässä.</li>
+                                    <li><strong>Vakaaja:</strong> Voi ampua liikkeestä ilman rangaistusta.</li>
+                                    <li><strong>Savunheittimet:</strong> Voi luoda savuverhon.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit-card">
+                    <h4>CV9030FIN (Rynnäkköpanssarivaunu)</h4>
+                    <div class="unit-card-content">
+                        <ul>
+                            <li><strong>Tyyppi:</strong> Ajoneuvo (Rynnäkköpanssarivaunu) | <strong>Miehistö:</strong> 3 + 8 Kuljetettavaa</li>
+                            <li><strong>TK:</strong> 30 | <strong>M:</strong> +3</li>
+                            <li><strong>Suoja (S):</strong> Etu: 15, Sivu: 12, Taka: 10, Katto: 6 (MEXAS-lisäpanssarointi)</li>
+                            <li><strong>Liike:</strong> 16 cm (Maasto), 20 cm (Tie)</li>
+                            <li><strong>TT (Koulutus +2, XP +0):</strong> +2</li>
+                            <li><strong>Aseistus:</strong>
+                                <ul>
+                                    <li><strong>30mm Bushmaster II Autokanuuna:</strong> Kantama 0-50cm. RoF: 2.
+                                        <ul>
+                                            <li>APFSDS-T: PEN: 12. TI: d10.</li>
+                                            <li>HEI-T: PEN: 4. TI: d8. Aluevaikutus.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>7.62mm PKMT Konekivääri (Koaksiaalinen):</strong> Kantama 0-40cm. PEN: 2. TI: d8.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Kyvyt:</strong>
+                                <ul>
+                                    <li><strong>Kehittyneet Sensorit:</strong> Lämpökamerat.</li>
+                                    <li><strong>Jalkaväen Kuljetus:</strong> Voi kuljettaa yhden Jääkäriryhmän.</li>
+                                    <li><strong>Tulenjohtokyky:</strong> Voi toimia tulenjohtajana.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </section>
             
             <section id="section-4">
-                <h2>4. Osapuolet: Suomi ja Venäjä</h2>
-                <p>Tässä osiossa esitellään pelin kaksi osapuolta, niiden doktriinit ja esimerkkejä keskeisistä yksiköistä. Jokaisella yksiköllä on nyt Yksikkötyyppi ja Resurssipiste-hinta kampanjapelaamista varten.</p>
+                <h2>4. Punainen Tiimi – Venäjän Asevoimat</h2>
+                 <p>Tämä osio käsittelee Venäjän Asevoimia (Punainen tiimi), sen sotilasdoktriinia, tyypillistä taistelujärjestystä pelin mittakaavassa sekä yksityiskohtaisia yksikkökortteja keskeisimmille joukoille ja kalustolle.</p>
+
+                <h3>4.1 Doktriini: Massa, Tulivoima ja Kehittyvät Taktiikat</h3>
+                <p>Perinteisesti Venäjän sotilasdoktriini on painottanut massan keskittämistä, ylivoimaista tulivoimaa ja syvää offensiivista toimintaa. Viimeaikaisten konfliktien myötä taktiikassa on nähtävissä myös kehittyviä piirteitä, kuten pienempien taktisten osastojen (BTG), lennokkien ja elektronisen sodankäynnin laajempaa hyödyntämistä.</p>
+                 <p>Pelissä tämä kaksijakoisuus mallinnetaan seuraavilla tavoilla:</p>
+                <ul>
+                    <li><strong>"Massavaikutus":</strong> Jos useampi venäläinen yksikkö keskittää tulensa yhteen kohteeseen, ne voivat saada bonuksen osumiseen tai vahinkoon.</li>
+                    <li><strong>"Tulivalmistelu":</strong> Komentaja voi käyttää merkittävän määrän KP:itä kutsuakseen voimakkaan tykistökeskityksen ennen hyökkäystä.</li>
+                    <li><strong>Erityiset Komentopistetoiminnot:</strong> Kuten "Massahyökkäys", "Tulituen Maksimointi" ja "Läpimurto", jotka tukevat offensiivista doktriinia.</li>
+                </ul>
+
+                <h3>4.2 Taistelujärjestys (Order of Battle – RuAF)</h3>
+                <p>Venäjän taistelujärjestys heijastelee niiden tyypillistä organisaatiota moottoroiduissa jalkaväkiprikaateissa ja -divisiooneissa.</p>
+                <table>
+                    <caption>Taulukko 4: Venäjän Asevoimien Esimerkkikokoonpanot (Tiivistelmä)</caption>
+                    <thead>
+                        <tr><th>Muodostelmatyyppi</th><th>Johtoelementit</th><th>Taisteluyksiköt (tyypillinen määrä)</th><th>Tukielementit (orgaaniset/liitetyt)</th><th>Kalustoesimerkkejä</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Moottoroitu Jalkaväkikomppania (BMP-3)</td><td>Kompp. Päällikkö (BMP-3K)</td><td>3x Mot. Jalkaväkijoukkuetta (kussakin 3x BMP-3 ja 3x Mot. Jv. Ryhmää)</td><td>Konekiväärijaos, Krh-tuki</td><td>BMP-3, AK-12, RPG-7/29, PKP Pecheneg</td></tr>
+                        <tr><td>Panssarikomppania</td><td>Kompp. Päällikkö (T-90M/T-72B3M)</td><td>3x Panssarijoukkuetta (kussakin 3x T-90M tai T-72B3M)</td><td>Huolto- ja tukielementti</td><td>T-90M "Proryv", T-72B3M</td></tr>
+                        <tr><td>Haupitsipatteristo (Itseliikkuva)</td><td>Patteriston Komentaja</td><td>3x Tulipatteria (kussakin 6x 2S19 Msta-S)</td><td>Tulenjohto, ammusajoneuvot</td><td>2S19/M1/M2 Msta-S</td></tr>
+                        <tr><td>Raketinheitinpatteri (Raskas)</td><td>Patterin Päällikkö</td><td>2-3x Tulijaosta (kussakin 2-3x TOS-1A)</td><td>Ammusajoneuvot (TZM-T)</td><td>TOS-1A "Solntsepyok"</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>4.3 Yksikkökortit – Venäjä</h3>
+                <p>Seuraavassa esimerkkejä keskeisten venäläisten yksiköiden ominaisuuskorteista. Oletusarvoisesti Koulutus on +1 perusjalkaväelle.</p>
                 
-                <h3>4.1 Sininen Tiimi – Suomen Puolustusvoimat</h3>
-                <p><strong>Doktriini: Totaalinen Maanpuolustus ja "Sisu".</strong> Suomalainen taktiikka painottaa laatua määrän sijaan, maaston tehokasta hyödyntämistä, asymmetrisiä toimintatapoja ja korkeaa moraalia. Puolustuksen sitkeys ja paikallisaloite ovat avainasemassa.</p>
+                <div class="unit-card">
+                    <h4>MOTORISOITU JALKAVÄKIRYHMÄ (Päivitetty)</h4>
+                    <div class="unit-card-content">
+                        <ul>
+                            <li><strong>Tyyppi:</strong> Jalkaväki (8 miestä)</li>
+                            <li><strong>TK:</strong> 10 | <strong>M:</strong> +2 (Aaltohyökkäyksellä +3) | <strong>S (Perus):</strong> 10</li>
+                            <li><strong>Liike:</strong> 10 cm (Maasto), 12 cm (Tie)</li>
+                            <li><strong>TT (Koulutus +1, XP +0):</strong> +1</li>
+                            <li><strong>Aseistus:</strong>
+                                <ul>
+                                    <li><strong>AK-12 (5.45mm):</strong> Kantama 0-45cm. PEN: 1. TI: d6.</li>
+                                    <li><strong>PKP Pecheneg LMG (1 kpl):</strong> Kantama 0-60cm. PEN: 2. TI: d8. Erikois: Lamauttava.</li>
+                                    <li><strong>RPG-29 "Vampir" (1 kpl, 2 ammusta):</strong> Kantama 0-30cm. PEN: 22 (HEAT Tandem). TI: 2d12.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Kyvyt:</strong>
+                                <ul>
+                                    <li><strong>Peräänantamaton:</strong> Ei tee ylimääräistä Moraalitestiä "Vaurioituneeksi" joutuessaan.</li>
+                                    <li><strong>Aaltohyökkäys:</strong> Jos ≥ 3 ryhmää hyökkää samaan kohteeseen, ne saavat +1 Moraaliin seuraavalla vuorolla.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="unit-card">
+                    <h4>T-90M "PRORYV" (Taistelupanssarivaunu)</h4>
+                    <div class="unit-card-content">
+                        <ul>
+                            <li><strong>Tyyppi:</strong> Ajoneuvo (Taistelupanssarivaunu) | <strong>Miehistö:</strong> 3</li>
+                            <li><strong>TK:</strong> 50 | <strong>M:</strong> +5</li>
+                            <li><strong>Suoja (S):</strong> Etu: 24, Sivu: 18, Taka: 12, Katto: 10 (Relikt ERA)</li>
+                            <li><strong>Liike:</strong> 13 cm (Maasto), 17 cm (Tie)</li>
+                            <li><strong>TT (Koulutus +2, XP +0):</strong> +2</li>
+                            <li><strong>Aseistus:</strong>
+                                <ul>
+                                    <li><strong>125mm 2A46M-5 PSTVK:</strong>
+                                        <ul>
+                                            <li>APFSDS-T (3BM60): Kantama 0-90cm. Hyökkäys: TT+2. PEN: 26. TI: 3d10+2.</li>
+                                            <li>ATGM (9M119M1): Kantama 0-70cm. Hyökkäys: TT+2. PEN: 24 (HEAT Tandem). TI: 2d12+2. Ohjattu (SACLOS).</li>
+                                            <li>HE-FRAG: Kantama 0-80cm. Hyökkäys: TT+1. PEN: 6. TI: 2d10. Aluevaikutus.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>12.7mm Kord HMG (Kauko-ohjattu):</strong> Kantama 0-50cm. PEN: 4. TI: d10. Voi ampua ilmamaaleja.</li>
+                                    <li><strong>7.62mm PKTM Konekivääri (Koaksiaalinen):</strong> Kantama 0-40cm. PEN: 2. TI: d8.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Kyvyt:</strong>
+                                <ul>
+                                    <li><strong>Relikt ERA:</strong> Erinomainen suoja HEAT- ja kineettisiä ammuksia vastaan.</li>
+                                    <li><strong>Arena-M APS:</strong> Voi torjua ohjuksia ja sinkoja (d20, 10+). Rajoitettu käyttö.</li>
+                                    <li><strong>Kalina Tulenjohtojärjestelmä:</strong> +1 hyökkäysheittoihin, lämpökamerat.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 
-                <div class="unit-card p-4 rounded-lg my-4">
-                    <h4 class="text-xl font-bold">JÄÄKÄRIRYHMÄ</h4>
-                    <ul>
-                        <li><strong>Tyyppi:</strong> Jalkaväki (9 miestä)</li>
-                        <li><strong>Yksikkötyyppi:</strong> Jalkaväki</li>
-                        <li><strong>TK:</strong> 10 | <strong>M:</strong> +3 | <strong>S:</strong> 11</li>
-                        <li><strong>Liike:</strong> 10 cm | <strong>TT:</strong> +2</li>
-                        <li><strong>Aseistus:</strong> RK 95 TP, PKM, KES 12</li>
-                        <li><strong>Kyvyt:</strong> Sisu, Maastoon Tottunut, Partisaanitaktiikat (1 KP)</li>
-                        <li><strong>Hinta (RP):</strong> 80</li>
-                    </ul>
-                </div>
-                <div class="unit-card p-4 rounded-lg my-4">
-                    <h4 class="text-xl font-bold">LEOPARD 2A6</h4>
-                    <ul>
-                        <li><strong>Tyyppi:</strong> Taistelupanssarivaunu</li>
-                        <li><strong>Yksikkötyyppi:</strong> Panssari</li>
-                        <li><strong>TK:</strong> 45 | <strong>M:</strong> +4</li>
-                        <li><strong>Suoja (E/S/T/K):</strong> 22 / 16 / 10 / 8</li>
-                        <li><strong>Liike:</strong> 14 cm | <strong>TT:</strong> +2</li>
-                        <li><strong>Aseistus:</strong> 120mm L55 (APFSDS, HEAT), 2x 7.62mm KK</li>
-                        <li><strong>Kyvyt:</strong> Kehittyneet Tähtäimet, Vakaaja, Savunheittimet</li>
-                        <li><strong>Hinta (RP):</strong> 450</li>
-                    </ul>
-                </div>
-                <div class="unit-card p-4 rounded-lg my-4">
-                    <h4 class="text-xl font-bold">CV9030FIN</h4>
-                    <ul>
-                        <li><strong>Tyyppi:</strong> Rynnäkköpanssarivaunu</li>
-                        <li><strong>Yksikkötyyppi:</strong> Panssari, Jalkaväki</li>
-                        <li><strong>TK:</strong> 30 | <strong>M:</strong> +3</li>
-                        <li><strong>Suoja (E/S/T/K):</strong> 15 / 12 / 10 / 6</li>
-                        <li><strong>Liike:</strong> 16 cm | <strong>TT:</strong> +2</li>
-                        <li><strong>Aseistus:</strong> 30mm Bushmaster II (AP, HEI), 7.62mm KK</li>
-                        <li><strong>Kyvyt:</strong> Kehittyneet Sensorit, Jalkaväen Kuljetus, Tulenjohtokyky</li>
-                        <li><strong>Hinta (RP):</strong> 250</li>
-                    </ul>
-                </div>
-                
-                <h3>4.2 Punainen Tiimi – Venäjän Asevoimat</h3>
-                <p><strong>Doktriini: Massa, Tulivoima ja Kehittyvät Taktiikat.</strong> Venäjän doktriini painottaa perinteisesti massan keskittämistä, ylivoimaista tulivoimaa ja nopeaa offensiivista toimintaa. Modernit piirteet, kuten lennokkien ja elektronisen sodankäynnin hyödyntäminen, ovat kuitenkin yleistymässä.</p>
-                
-                <div class="unit-card p-4 rounded-lg my-4">
-                    <h4 class="text-xl font-bold">MOTORISOITU JALKAVÄKIRYHMÄ</h4>
-                    <ul>
-                        <li><strong>Tyyppi:</strong> Jalkaväki (8 miestä)</li>
-                        <li><strong>Yksikkötyyppi:</strong> Jalkaväki</li>
-                        <li><strong>TK:</strong> 10 | <strong>M:</strong> +2 | <strong>S:</strong> 10</li>
-                        <li><strong>Liike:</strong> 10 cm | <strong>TT:</strong> +1</li>
-                        <li><strong>Aseistus:</strong> AK-12, PKP Pecheneg, RPG-29</li>
-                        <li><strong>Kyvyt:</strong> Peräänantamaton, Aaltohyökkäys</li>
-                        <li><strong>Hinta (RP):</strong> 70</li>
-                    </ul>
-                </div>
-                <div class="unit-card p-4 rounded-lg my-4">
-                    <h4 class="text-xl font-bold">T-90M "PRORYV"</h4>
-                    <ul>
-                        <li><strong>Tyyppi:</strong> Taistelupanssarivaunu</li>
-                        <li><strong>Yksikkötyyppi:</strong> Panssari</li>
-                        <li><strong>TK:</strong> 50 | <strong>M:</strong> +5</li>
-                        <li><strong>Suoja (E/S/T/K):</strong> 24 / 18 / 12 / 10 (Relikt ERA)</li>
-                        <li><strong>Liike:</strong> 13 cm | <strong>TT:</strong> +2</li>
-                        <li><strong>Aseistus:</strong> 125mm 2A46M-5 (APFSDS, ATGM, HE-FRAG), 12.7mm HMG, 7.62mm KK</li>
-                        <li><strong>Kyvyt:</strong> Relikt ERA, Arena-M APS, Kalina Tulenjohtojärjestelmä</li>
-                        <li><strong>Hinta (RP):</strong> 500</li>
-                    </ul>
-                </div>
-                 <div class="unit-card p-4 rounded-lg my-4">
-                    <h4 class="text-xl font-bold">BMP-3</h4>
-                    <ul>
-                        <li><strong>Tyyppi:</strong> Rynnäkköpanssarivaunu</li>
-                        <li><strong>Yksikkötyyppi:</strong> Panssari, Jalkaväki</li>
-                        <li><strong>TK:</strong> 28 | <strong>M:</strong> +3</li>
-                        <li><strong>Suoja (E/S/T/K):</strong> 14 / 11 / 9 / 5</li>
-                        <li><strong>Liike:</strong> 15 cm | <strong>TT:</strong> +1</li>
-                        <li><strong>Aseistus:</strong> 100mm 2A70 (HE-FRAG, ATGM), 30mm 2A72, 2x 7.62mm KK</li>
-                        <li><strong>Kyvyt:</strong> Amfibio, Kehittynyt Tulenjohtojärjestelmä, Jalkaväen Kuljetus</li>
-                        <li><strong>Hinta (RP):</strong> 220</li>
-                    </ul>
+                <div class="unit-card">
+                    <h4>BMP-3 (Rynnäkköpanssarivaunu)</h4>
+                    <div class="unit-card-content">
+                        <ul>
+                            <li><strong>Tyyppi:</strong> Ajoneuvo (Rynnäkköpanssarivaunu) | <strong>Miehistö:</strong> 3 + 7 Kuljetettavaa</li>
+                            <li><strong>TK:</strong> 28 | <strong>M:</strong> +3</li>
+                            <li><strong>Suoja (S):</strong> Etu: 14, Sivu: 11, Taka: 9, Katto: 5</li>
+                            <li><strong>Liike:</strong> 15 cm (Maasto), 18 cm (Tie), 8 cm (Vesi) | <strong>TT:</strong> +1</li>
+                            <li><strong>Aseistus:</strong>
+                                <ul>
+                                    <li><strong>100mm 2A70 Kanuuna/Laukaisin:</strong>
+                                        <ul>
+                                            <li>HE-FRAG (3OF32): Kantama 0-50cm. PEN: 5. TI: 2d8. Aluevaikutus.</li>
+                                            <li>ATGM (9M117M1 "Arkan"): Kantama 0-55cm. PEN: 20 (HEAT Tandem). TI: 2d10+2. Ohjattu (SACLOS).</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>30mm 2A72 Autokanuuna:</strong> Kantama 0-40cm. RoF: 2. AP-T (PEN 10, TI d10) / HEI-T (PEN 3, TI d8).</li>
+                                    <li><strong>7.62mm PKTM Konekivääri (2 kpl, keulassa):</strong> Kantama 0-40cm. PEN: 2. TI: d6 (per kk).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Kyvyt:</strong>
+                                <ul>
+                                    <li><strong>Amfibio:</strong> Voi ylittää vesistöjä.</li>
+                                    <li><strong>Kehittynyt Tulenjohtojärjestelmä:</strong> +1 hyökkäysheittoihin pääaseilla, lämpökamerat.</li>
+                                    <li><strong>Jalkaväen Kuljetus:</strong> Voi kuljettaa yhden Mot. Jalkaväkiryhmän.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </section>
             
             <section id="section-5">
-                <h2>5. Pelinjohtajan Opas</h2>
-                <p>Tämä osio on suunnattu pelinjohtajalle (GM). Se sisältää ohjeita ja neuvoja tasapainoisten ja mielenkiintoisten skenaarioiden ja karttojen luomiseen, jotka tukevat pelin mekaniikkoja ja teemaa.</p>
+                <h2>5. Uudistetut Skenaariot ja Kampanjapelaaminen</h2>
+                <p>Uudistetut säännöt ja yksityiskohtaiset yksikköluettelot mahdollistavat entistä syvällisempien ja realistisempien skenaarioiden ja kampanjoiden luomisen.</p>
 
-                <h3>5.1 Hyvän Kartan Rakentaminen</h3>
-                <p>Hyvä kartta on enemmän kuin vain pelialusta; se on taktinen palapeli, joka haastaa pelaajat. Tässä muutamia periaatteita hyvän sotapelikartan suunnitteluun:</p>
+                <h3>5.1 Ohjeita Skenaarioiden Luomiseen</h3>
+                <p>Skenaariosuunnittelussa tulee korostaa seuraavia näkökohtia:</p>
                 <ul>
-                    <li><strong>Tavoitteet:</strong> Määritä kartalle selkeät ja strategisesti järkevät tavoitteet molemmille osapuolille (esim. sillat, kukkulat, rakennukset, tienristeykset). Tavoitteiden tulisi ohjata pelaajien liikkeitä ja luoda konfliktin keskipisteitä.</li>
-                    <li><strong>Tasapaino:</strong> Kartan ei tule suosia lähtökohtaisesti kumpaakaan osapuolta liikaa, ellei skenaarion asymmetrinen luonne sitä vaadi. Tarjoa molemmille osapuolille sekä hyviä etenemisreittejä että puolustusasemia.</li>
-                    <li><strong>Suoja ja Katveet:</strong> Kartalla tulee olla runsaasti suojaa tarjoavaa maastoa (metsiä, rakennuksia, kumpareita). Avoimet alueet (aukeat, pellot) ovat vaarallisia "kuoleman kenttiä", joita pelaajien on opittava ylittämään varoen tai savuverhon suojassa.</li>
-                    <li><strong>Tulilinjat (Lines of Sight):</strong> Suunnittele sekä pitkiä että lyhyitä tulilinjoja. Pitkät tulilinjat (esim. tiet, aukeat) suosivat panssarivaunuja ja tarkka-ampujia, kun taas lyhyet ja katkeilevat linjat (urbaani maasto, tiheä metsä) ovat jalkaväen ja väijytysten valtakuntaa.</li>
-                    <li><strong>Pullonkaulat (Chokepoints):</strong> Sillat, solat ja kapeat kadut ovat luonnollisia pullonkauloja. Ne ovat erinomaisia puolustuspaikkoja, mutta myös hyökkääjälle tärkeitä välitavoitteita.</li>
+                    <li><strong>Asymmetrinen Sodankäynti:</strong> Skenaarioiden tulisi heijastaa Suomen ja Venäjän erilaista doktriinia ja voimasuhteita.</li>
+                    <li><strong>Modernit Tavoitteet:</strong> Maantieteen valtaamisen sijaan tavoitteet voivat liittyä kriittisen infrastruktuurin hallintaan, komento- ja johtamisjärjestelmien lamauttamiseen tai tiedusteluylivoiman saavuttamiseen.</li>
+                    <li><strong>Uusien Yksiköiden Hyödyntäminen:</strong> Skenaarioiden tulisi antaa tilaa erikoistuneiden yksiköiden (ilmatorjunta, EW, tarkkuustykistö) käytölle.</li>
+                    <li><strong>Informaation Epäsymmetria:</strong> Sodan sumu on keskeistä. Osapuolilla voi olla alussa eritasoinen tilannekuva.</li>
+                    <li><strong>Maaston Merkitys:</strong> Korosta maaston vaikutusta, erityisesti Suomen olosuhteissa.</li>
+                    <li><strong>Voitonpisteiden Tasapaino:</strong> VP-järjestelmän tulee kannustaa pelaajia doktriininsa mukaisiin päämääriin.</li>
                 </ul>
-                
-                <h3>5.2 Mittakaava ja Realismi</h3>
-                <p>Oikea mittakaava on avainasemassa, jotta peli tuntuu uskottavalta ja yksiköiden liikkuminen on loogista. Suosittelemme käyttämään seuraavaa mittakaavaa, joka on suunniteltu tasapainottamaan pelattavuus ja realismi.</p>
-                <blockquote>
-                    <p><strong>Suositeltu mittakaava: 1 cm = 40 metriä</strong></p>
-                </blockquote>
-                <p>Tämä mittakaava on valittu seuraavin perustein:</p>
+
+                <h3>5.2 Esimerkkiskenaario: Operaatio Nokian Portti – Uudistettu</h3>
+                <p>Alkuperäinen "Operaatio Nokian Portti" tarjoaa erinomaisen pohjan uudistetulle skenaariolle.</p>
+                <h4>1. Tilannekuvaus:</h4>
+                <p>Venäläiset kärkijoukot ovat edenneet Nokian tuntumaan ja pyrkivät valtaamaan Nokianvirran sillat avatakseen reitin kohti Tamperetta. Suomalainen Panssarijääkärikomppania vahvennuksineen on ryhmittynyt puolustukseen siltojen ympärille urbaaniin ja teolliseen maastoon.</p>
+                <h4>2. Voiton Ehdot (Voittopisteet):</h4>
+                <p>Peli kestää 15 vuoroa. Voittopisteitä jaetaan seuraavasti:</p>
                 <ul>
-                    <li><strong>Jalkaväen Liike:</strong> Pelissä jalkaväen (esim. Jääkäriryhmä) perusliike on 10 cm. Tässä mittakaavassa se vastaa <strong>400 metriä</strong>. Jos oletamme yhden pelivuoron kuvaavan noin 5 minuuttia reaalimaailman taistelutoimintaa, tämä on hyvin realistinen etenemisnopeus jalkaväkiryhmälle vaihtelevassa maastossa (vastaa noin 4.8 km/h). Kysymyksessä mainittu "5 cm liike" vastaisi siis 200 metrin siirtymää, mikä on sekin täysin uskottava taktinen liike vuoron aikana.</li>
-                    <li><strong>Panssarivaunujen Kantama:</strong> Modernin taistelupanssarivaunun (kuten Leopard 2A6) pääaseen tehokas kantama on useita kilometrejä. Pelissä sen kantama on määritelty jopa 90 cm asti, mikä vastaa 3600 metriä (3.6 km). Tämä mallintaa hyvin modernien panssarivaunukanuunoiden kyvyn hallita taistelukenttää pitkiltä etäisyyksiltä.</li>
-                    <li><strong>Pelipöydän Koko:</strong> Tavallinen 120 cm x 180 cm pelipöytä edustaa tässä mittakaavassa <strong>4.8 km x 7.2 km</strong> kokoista taistelualuetta. Tämä on erinomainen koko komppania- tai pataljoonatason operaatioille, jotka ovat pelin keskiössä.</li>
+                    <li><strong>Sininen Tiimi (Suomi):</strong> Saa pisteitä tuhotuista Punaisista yksiköistä (erityisesti panssaroiduista ajoneuvoista) ja jokaisesta vuorosta, jonka aikana sillat pysyvät hallinnassa.</li>
+                    <li><strong>Punainen Tiimi (Venäjä):</strong> Saa pisteitä tuhotuista Sinisistä yksiköistä ja siltojen valtaamisesta sekä sillanpääaseman luomisesta.</li>
                 </ul>
-                <p>Käyttämällä tätä mittakaavaa varmistat, että etäisyydet, liike ja asekantamat tuntuvat johdonmukaisilta ja tukevat taktista päätöksentekoa.</p>
+                <h4>3. Taisteluosapuolet (Order of Battle):</h4>
+                <ul>
+                    <li><strong>SININEN TIIMI: Suomalainen Panssarijääkärikomppania (vahvennettu)</strong>
+                        <ul>
+                            <li><strong>Kokoonpano:</strong> Komppanian esikunta, 2x Panssarijääkärijoukkuetta (CV9030FIN + psj-ryhmät), liitetty Panssarijoukkue (2x Leopard 2A6), Tukijoukkue (81mm krh, Spike LR2 -ryhmä), Ilmatorjuntajaos (1x ItPsv 90 Marksman). Pääsy epäorgaaniseen 120mm krh-tukeen.</li>
+                        </ul>
+                    </li>
+                    <li><strong>PUNAINEN TIIMI: Venäläinen Moottoroitu Jalkaväkipataljoona (kärki)</strong>
+                        <ul>
+                            <li><strong>Kokoonpano (saapuu aalloittain):</strong> Pataljoonan esikunta, 2x Mot. Jalkaväkikomppaniaa (BMP-3 & BTR-82A), Panssarikomppanian kärki (T-72B3M/T-90M), Tiedustelujoukkue. Pääsy orgaaniseen tykistötukeen (120mm krh, 2S19 Msta-S) ja erikoistukeen (TOS-1A, Pantsir-S1).</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>4. Karttaehdotus ja Erityissäännöt:</h4>
+                <p>Kartta kuvaa Nokian keskustaa ja teollisuusaluetta jokivarsineen. Erityissääntöjä sovelletaan siltojen tuhoamiseen ja urbaaniin taisteluun.</p>
+
+                <h3>5.3 Kampanjapelaamisen Laajennukset</h3>
+                <p>Alkuperäisen pelin kampanjasääntöjä voidaan laajentaa moderniin konfliktiin sopiviksi:</p>
+                <ul>
+                    <li><strong>Yksiköiden Teknologinen Kehitys:</strong> Pelaajat voivat käyttää Voittopisteitä (VP) päivittääkseen kalustoaan kampanjan aikana (esim. T-72B3 -> T-72B3M, Leopard 2A4 -> Leopard 2A6) tai avatakseen uusia ammustyyppejä.</li>
+                    <li><strong>Resurssien Hallinta ja Logistiikka:</strong> Kehittyneet ampumatarvikkeet (Spike ER2, Kornet-EM, täsmäammukset) voivat olla kalliimpia ja niiden saatavuus rajoitettua.</li>
+                    <li><strong>Doktriinin Kehitys:</strong> Pelaajat voivat käyttää VP:itä "doktriinipäivityksiin", jotka avaavat uusia Komppanian Taktiikoita tai parantavat yksiköiden perusominaisuuksia.</li>
+                    <li><strong>Informaatiosodan Vaikutus:</strong> Onnistuneet tiedustelu- tai EW-operaatiot voivat antaa etuja seuraavaan skenaarioon.</li>
+                    <li><strong>Strategiset Tavoitteet:</strong> Kampanjassa voi olla laajempia tavoitteita kuin yksittäisten taisteluiden voittaminen, kuten huoltoreittien katkaisu.</li>
+                </ul>
             </section>
+            
+            <section id="section-6">
+                 <h2>Liitteet</h2>
+                 
+                 <h3>A. Yhteenveto Keskeisistä Taulukoista</h3>
+                 <p>Tässä dokumentissa esitellyt keskeiset taulukot ovat:</p>
+                 <ul>
+                     <li>Taulukko 1: Uudistetut Komentopistetoiminnot (Osiossa 2.1)</li>
+                     <li>Taulukko 2: Laajennettu Maastovaikutustaulukko (Osiossa 2.6)</li>
+                     <li>Taulukko 3: Suomen Puolustusvoimien Esimerkkikokoonpanot (Osiossa 3.2)</li>
+                     <li>Taulukko 4: Venäjän Asevoimien Esimerkkikokoonpanot (Osiossa 4.2)</li>
+                 </ul>
+
+                 <h3>B. Sanasto</h3>
+                 <ul>
+                    <li><strong>APFSDS:</strong> Armour-Piercing Fin-Stabilized Discarding Sabot. Alikaliiperinen, pyrstövakautettu panssariammus.</li>
+                    <li><strong>APS:</strong> Active Protection System. Aktiivinen puolustusjärjestelmä.</li>
+                    <li><strong>ATGM:</strong> Anti-Tank Guided Missile. Panssarintorjuntaohjus.</li>
+                    <li><strong>C4ISR:</strong> Command, Control, Communications, Computers, Intelligence, Surveillance, and Reconnaissance.</li>
+                    <li><strong>DC:</strong> Difficulty Class. Vaikeusaste heitolle.</li>
+                    <li><strong>ERA:</strong> Explosive Reactive Armour. Räjähtävä reaktiivipanssari.</li>
+                    <li><strong>EW:</strong> Electronic Warfare. Elektroninen sodankäynti.</li>
+                    <li><strong>HEAT:</strong> High-Explosive Anti-Tank. Ontelokranaatti.</li>
+                    <li><strong>KP:</strong> Komentopiste.</li>
+                    <li><strong>PEN:</strong> Penetration. Aseen läpäisyarvo.</li>
+                    <li><strong>RoF:</strong> Rate of Fire. Tulinopeus.</li>
+                    <li><strong>S:</strong> Suoja. Yksikön suoja-arvo.</li>
+                    <li><strong>SACLOS:</strong> Semi-Automatic Command to Line of Sight. Puoliautomaattinen komentohjaus.</li>
+                    <li><strong>SPH:</strong> Self-Propelled Howitzer. Itseliikkuva haupitsi.</li>
+                    <li><strong>TI:</strong> Tuli-isku. Aseen aiheuttama vahinko.</li>
+                    <li><strong>TK:</strong> Taistelukunto. Yksikön kestopisteet.</li>
+                    <li><strong>TT:</strong> Taitotaso. (Koulutus + Kokemus).</li>
+                 </ul>
+                 
+                 <h3>C. Yksikkökorttien Mallipohja</h3>
+                 <p>Pelaajien ja skenaariosuunnittelijoiden käyttöön tarjotaan seuraava mallipohja uusien yksiköiden luomiseksi:</p>
+                 <div class="unit-card">
+                     <h4>YKSIKÖN NIMI</h4>
+                     <div class="unit-card-content">
+                         <ul>
+                            <li><strong>Tyyppi:</strong> (esim. Jalkaväki, Ajoneuvo...) | <strong>Osapuoli:</strong> (Suomi / Venäjä)</li>
+                            <li><strong>Miehistö/Vahvuus:</strong> (esim. 3+8, 10 miestä...)</li>
+                            <li><strong>TK:</strong> __ | <strong>M:</strong> +__</li>
+                            <li><strong>Suoja (S):</strong> Etu: __, Sivu: __, Taka: __, Katto: __ (Erikoismaininnat:...)</li>
+                            <li><strong>Liike (Tie / Maasto...):</strong> __ cm / __ cm ...</li>
+                            <li><strong>TT (Koulutus +__, XP +__):</strong> +__</li>
+                            <li><strong>Aseistus:</strong>
+                                <ul>
+                                    <li><strong>[Aseen Nimi 1]:</strong> Kantama: __/__/__ cm. Hyökkäys: TT+__. PEN: __. TI: XdN(+_). RoF: __. Erikois: ___</li>
+                                    <li><strong>[Aseen Nimi 2]:</strong> Kantama: __/__/__ cm. Hyökkäys: TT+__. PEN: __. TI: XdN(+_). RoF: __. Erikois: ___</li>
+                                </ul>
+                            </li>
+                            <li><strong>Kyvyt:</strong>
+                                <ul><li><strong>[Kyvyn Nimi 1]:</strong> (Kuvaus ja KP-hinta)</li></ul>
+                            </li>
+                            <li><strong>Kuljetuskapasiteetti:</strong> (Jos on)</li>
+                            <li><strong>Muistiinpanot/Erikoissäännöt:</strong> (Lisätietoja)</li>
+                         </ul>
+                     </div>
+                 </div>
+            </section>
+
         </div>
     </main>
     
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const sections = document.querySelectorAll('main section');
+            const allSections = document.querySelectorAll('main section');
             const navMenu = document.getElementById('nav-menu');
             const mainContent = document.getElementById('main-content');
             const sidebar = document.getElementById('sidebar');
             const menuToggle = document.getElementById('menu-toggle');
 
+            const sectionsForNav = Array.from(allSections).filter(section => section.querySelector('h1, h2'));
+
             // Populate navigation
-            sections.forEach((section, index) => {
-                const title = section.querySelector('h2').textContent;
+            sectionsForNav.forEach(section => {
+                const titleElement = section.querySelector('h1, h2');
+                const title = titleElement.textContent;
                 const link = document.createElement('a');
                 link.href = `#${section.id}`;
                 link.textContent = title;
                 link.className = 'block py-2 px-4 rounded-md text-stone-700 hover:bg-purple-100 nav-link';
+                if (titleElement.tagName === 'H1') {
+                    link.classList.add('font-bold');
+                }
+                
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     section.scrollIntoView({ behavior: 'smooth' });
@@ -399,57 +675,14 @@
                 entries.forEach(entry => {
                     const id = entry.target.getAttribute('id');
                     const navLink = navMenu.querySelector(`a[href="#${id}"]`);
-                    if (entry.isIntersecting) {
+                    if (navLink && entry.isIntersecting) {
                         document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
                         navLink.classList.add('active');
                     }
                 });
-            }, { rootMargin: "-30% 0px -70% 0px", threshold: 0 });
+            }, { rootMargin: "-20% 0px -80% 0px", threshold: 0 });
 
-            sections.forEach(section => observer.observe(section));
-
-            // Chart.js implementation for Campaign Cycle
-            const ctx = document.getElementById('campaignCycleChart').getContext('2d');
-            const campaignCycleChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['1. Valmistautuminen & Armeijan Kehitys (RP:n käyttö)', '2. Taistelu (Skenaarion pelaaminen)', '3. Taistelun Jälkeinen Vaihe (VP -> RP muunnos)'],
-                    datasets: [{
-                        label: 'Kampanjan Vaihe',
-                        data: [30, 50, 20],
-                        backgroundColor: [
-                            'rgba(168, 85, 247, 0.6)', // purple-500
-                            'rgba(239, 68, 68, 0.6)',   // red-500
-                            'rgba(34, 197, 94, 0.6)',  // green-500
-                        ],
-                        borderColor: [
-                            'rgba(168, 85, 247, 1)',
-                            'rgba(239, 68, 68, 1)',
-                            'rgba(34, 197, 94, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Kampanjan Kiertokulku',
-                            font: { size: 18, family: 'Inter' },
-                            color: '#44403C'
-                        },
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                font: { size: 12, family: 'Inter' },
-                                color: '#57534E'
-                            }
-                        }
-                    }
-                }
-            });
+            sectionsForNav.forEach(section => observer.observe(section));
         });
     </script>
 </body>
