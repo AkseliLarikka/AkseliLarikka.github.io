@@ -16,8 +16,8 @@
 <body class="text-stone-900">
 
     <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-20 p-4 overflow-y-auto sidebar-hidden md:sidebar-visible md:translate-x-0">
-        <h1 class="text-xl font-bold text-purple-700 mb-6">Taistelukenttä d20 Sisällys</h1>
-        <img src="images/taistelukenttäisologo.png" alt="taistelukenttä logo">
+        <!--<h1 class="text-xl font-bold text-purple-700 mb-6">Taistelukenttä d20 Sisällys</h1>-->
+        <img src="images/TKD20LOGO.png" alt="taistelukenttä logo">
         <nav id="nav-menu" class="space-y-1">
             </nav>
     </div>
@@ -31,409 +31,417 @@
     <main id="main-content" class="md:ml-64 p-4 md:p-8">
         <div class="prose max-w-none">
             
-            <section id="ydin-saannot">
-                <h2>Taistelukenttä d20 – Ydinsäännöt</h2>
-                <img src="images/TKD20LOGO.png" alt="Taistelukenttä d20" style="width: 600px; height: 400px;">
-
-                <h3>Johdanto</h3>
-                <h4>Pelin Visio</h4>
-                <p>Tervetuloa Taistelukenttä d20 -sotapeliin! Tämä sääntöjärjestelmä on suunniteltu simuloimaan modernia sodankäyntiä joukkue-, komppania- ja pataljoonatasolla. Tässä pelissä et ole yksittäinen sotilas, vaan <strong>johtaja</strong> tai <strong>komentaja</strong>. Menestyksesi ei riipu niinkään nopanheittojen onnekkuudesta, vaan kyvystäsi suunnitella, ennakoida, johtaa joukkojasi ja hallita resurssejasi. Pelin keskiössä on sodan sumu, epätäydellinen tieto ja vaikeiden päätösten tekeminen paineen alla.</p>
-
-                <h4>Tarvittavat Välineet</h4>
-                <ul>
-                    <li><strong>Pelilauta:</strong> Alueen maastokartta (Pelimuodosta riippuen 1:1000, 1:10 000, 1:25 000 tai 1:50 000).</li>
-                    <li><strong>Yksiköt:</strong> Muovisotilaita, nappuloita tai pahvisia tokeneita kuvaamaan joukkoja.</li>
-                    <li><strong>Nopat:</strong> d20, d12, d10, d8, d6, d4 -noppia.
-                        <ul>
-                            <li><strong>Selvennys:</strong> Nopissa käytetty merkintä, kuten d20, kertoo nopan tyypin. Kirjain d tarkoittaa noppaa (engl. die), ja sen perässä oleva numero kertoo nopan sivujen määrän. Esimerkiksi d6 on tavallinen kuusisivuinen noppa ja d20 on 20-sivuinen noppa.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Yksikkökortit:</strong> Paperilaput tai kortit, joihin merkitään yksiköiden ominaisuudet.</li>
-                    <li><strong>Pelinjohtajan (GM) varusteet:</strong> Oma salainen kartta, GM-screeni (valinnainen), muistiinpanovälineet.</li>
-                </ul>
-
-                <h4>Pikastartti</h4>
-                <ol>
-                    <li><strong>Valmistelu:</strong>
-                        <ul>
-                            <li>Tulosta kartta (1:1000, ruudut 10 mm).</li>
-                            <li>Aseta yksiköt kartalle, jokaisella pelaajalla 3–4 yksikköä (ryhmiä).</li>
-                            <li>Anna pelaajille 3 KP/vuoro, GM toimii vihollisjoukkojen komentajana.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Vuoron kulku:</strong>
-                        <ul>
-                            <li><strong>Komentovaihe:</strong> Pelaajat käyttävät KP:t komentokäskyihin.</li>
-                            <li><strong>Liikevaihe:</strong> Siirrä yksiköt kartalla.</li>
-                            <li><strong>Tiedustelu:</strong> TT vs. piiloutuneen yksikön suoja.</li>
-                            <li><strong>Tulitoiminta:</strong> Kaikki ampuvat yhtä aikaa (osuma = d20 + TT + asebonus ≥ kohteen Suoja).</li>
-                            <li><strong>Tilanne:</strong> TK:t vähenevät, tehdään moraalitestit (d20 + M).</li>
-                        </ul>
-                    </li>
-                    <li><strong>Tavoite:</strong> Tuhota vihollista ja saavuttaa skenaarion tehtävät.</li>
-                </ol>
-
-                <h3>Komentajan Rooli ja Pelin Kulku</h3>
-                <h4>Komentopisteet (KP)</h4>
-                <p>Strategia perustuu resurssien hallintaan. Tärkein resurssisi on johtamiskykysi, jota kuvastavat <strong>Komentopisteet (KP)</strong>. Saat joka vuoron alussa tietyn määrän pisteitä komentamasi tason mukaan. Käyttämättömät pisteet haihtuvat vuoron lopussa. <strong>Komentopisteet pelin koon mukaan:</strong> Pelaajien saama Komentopisteiden määrä riippuu pelin koosta. <strong>Joukkuetason pelissä:</strong> Jokainen pelaaja johtaa yhtä tai useampaa ryhmää ja saa <strong>3 KP</strong> per vuoro. <strong>Komppaniatason pelissä:</strong> Yksi pelaaja toimii Komppanianpäällikkönä (<strong>5 KP/vuoro</strong>) ja muut Joukkueenjohtajina (<strong>3 KP/vuoro</strong> kukin), kuten Komentajan Laajennuksessa kuvaillaan. Tässä pelissä jokainen pelaaja toimii joukkueenjohtajana, joka komentaa useampaa ryhmää. Jokainen pelaaja saa vuoron alussa <strong>3 Komentopistettä (KP)</strong>. Nämä pisteet ovat pelaajan henkilökohtainen resurssipooli, jonka hän voi jakaa vapaasti komentamiensa ryhmien kesken erikoistoimintojen suorittamiseen. Komppaniatason peleissä yhdellä pelaajalla voi olla Komppanianpäällikön rooli, jolloin hän saa <strong>5 KP / vuoro</strong> ja pääsyn komppaniatason taktiikoihin. <strong>Käyttämättömät pisteet haihtuvat vuoron lopussa.</strong> Perustoiminnot, kuten asemissa puolustaminen tai ennalta suunniteltu liike, eivät maksa pisteitä. <strong>Aktiiviset ja vaativat toiminnot kuluttavat KP:tä</strong>.</p>
-
-                <h5>Pelinjohtajan (GM) Komentopisteet</h5>
-                <p>Pelinjohtaja saa Komentopisteitä samojen periaatteiden mukaisesti kuin pelaajat (Blue Team). GM:n KP-määrä riippuu hänen komentamansa Punaisen puolen joukkojen rakenteesta:</p>
-                <ul>
-                    <li>Jos Punaisella puolella on komppaniarakenne, jossa on nimetty Komppanianpäällikkö-yksikkö, GM saa käyttöönsä 5 KP/vuoro tälle päällikölle ja 3 KP/vuoro jokaiselle Punaisen puolen Joukkueenjohtajalle.</li>
-                    <li>Jos Punaisella puolella ei ole Komppanianpäällikköä (kuten joukkuetason pelissä "Operaatio Puskutraktori"), GM saa 3 KP/vuoro jokaista komentamaansa joukkuetta tai vastaavaa osastoa kohden.</li>
-                    <li>GM hallinnoi näitä pisteitä omien joukkueidenjohtajiensa "pooleina". Esimerkiksi, jos GM komentaa kolmea joukkuetta, hänellä on käytössään yhteensä 9 KP, mutta hänen on seurattava, minkä joukkueen pisteitä hän käyttää mihinkin toimintoon.</li>
-                </ul>
-                <p><strong>Yhteenveto GM:n Komentopisteiden hallinnasta:</strong> On tärkeää huomata, että GM:n KP-hallinta poikkeaa pelaajien Komppanianpäälliköstä: * <strong>Erilliset poolit:</strong> Jos GM ohjaa useampaa joukkuetta ilman nimettyä Päällikkö-yksikköä (kuten "Operaatio Puskutraktori" -skenaariossa), hän hallinnoi jokaista 3 KP:n poolia erikseen. <strong>Ei siirtoja poolien välillä:</strong> Toisin kuin pelaajien Komppanianpäällikkö, GM <strong>ei voi</strong> siirtää Komentopisteitä yhden joukkueen poolista toiseen. Tämä simuloi komentoketjun jäykkyyttä ja rajoittaa GM:n taktista joustavuutta.</p>
+            <div class="relative h-96 w-full bg-cover bg-center mb-8" style="background-image: url('images/bannertkd.jpg');">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
                 
-                <h5>Joukkueenjohtajan perustoiminnot (Jokainen pelaaja)</h5>
-                <p>Nämä ovat peruskäskyjä, joita kuka tahansa joukkueenjohtajan roolissa oleva pelaaja voi käyttää hallitsemilleen ryhmille.</p>
-                <table>
-                    <thead>
-                        <tr><th>Toiminto</th><th>Hinta (KP)</th><th>Kuvaus</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><strong>Hyökkäyskäsky</strong></td><td>1 KP / ryhmä</td><td>Käske ryhmää aktiivisesti hyökkäämään tai rynnäköimään.</td></tr>
-                        <tr><td><strong>Tulen Keskittäminen</strong></td><td>1 KP</td><td>Normaalisti jokainen ryhmä hyökkää itsenäisesti. Käyttämällä 1 KP:n komentaja koordinoi tulen. Kaikki tähän komentoon osallistuvat ryhmät saavat <strong>+1 bonuksen hyökkäysheittoihinsa</strong> kyseistä maalia vastaan tällä vuorolla.</td></tr>
-                        <tr><td><strong>Irtautuminen</strong></td><td>2 KP / ryhmä</td><td>Käske taistelukontaktissa olevaa ryhmää vetäytymään hallitusti. Tämä on kontrolloitu toimi. Hallitsematon vetäytyminen on seurausta epäonnistuneesta Moraalitestistä, joka aiheuttaa Vetäytyy -tilan.</td></tr>
-                        <tr><td><strong>Moraalin Kohotus</strong></td><td>2 KP</td><td>Poista "Lamautunut"-tila yhdeltä omalta yksiköltä.</td></tr>
-                        <tr><td><strong>Tulitukipyyntö (orgaaninen)</strong></td><td>1 KP</td><td>Tee pyyntö epäsuorasta tulesta krh-ryhmältä.</td></tr>
-                        <tr><td><strong>Erikoiskyvyn käyttö</strong></td><td>Vaihtelee</td><td>Monien yksiköiden erityiskyvyt vaativat KP:n käyttöä.</td></tr>
-                    </tbody>
-                </table>
+                <div class="relative z-10 flex h-full items-center justify-center">
+                    <h1 class="text-white text-4xl md:text-6xl font-bold text-center">
+                    Taistelukenttä d20 – Ydinsäännöt
+                    </h1>
+                </div>
+            </div>
 
-                <h4>Pelivuoron Vaiheet</h4>
-                <p>Peli etenee vuoroissa, jotka suoritetaan samanaikaisesti kaikille osapuolille. Tämä luo dynaamisen ja arvaamattoman taistelukentän.</p>
-                <ol>
-                    <li><strong>Komentovaihe:</strong> Pelaajat (ja GM salassa) päättävät, mitä yksiköt tekevät ja käyttävät tähän Komentopisteitä. Kaikki päätökset tehdään nyt.
-                        <ul>
-                            <li>Kaikki valinnat tehdään <strong>samanaikaisesti</strong>.</li>
-                            <li>Pelaajat ja GM paljastavat käskyt yhtä aikaa.</li>
-                            <li>Jos käskyjen yhteisvaikutus aiheuttaa ristiriidan:
-                                <ul>
-                                    <li><strong>Liike vs. Tuli:</strong> Tulitoiminta tapahtuu, vaikka yksikkö tuhoutuu samassa vuorossa ("tulitahto" säilyy vuoron loppuun).</li>
-                                    <li><strong>Tiedustelu vs. Tulituki:</strong> Jos kohde havaitaan tiedusteluvaiheessa, sen voi ampua vuorolla.</li>
-                                </ul>
-                            </li>
-                            <li>GM toimii tuomarina ristiriidoissa.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Liikevaihe:</strong> Kaikki liikkuviksi määrätyt yksiköt siirretään kartalla.</li>
-                    <li><strong>Tiedusteluvaihe:</strong> Tiedustelua suorittavat yksiköt tekevät testinsä. GM paljastaa havaitut viholliset.</li>
-                    <li><strong>Tulitoimintavaihe:</strong> Kaikki Komentovaiheessa annetut tulikomennot ovat samanaikaisia ja ne ratkaistaan yhtä aikaa. Tämä tarkoittaa, että vaikka yksikkö tuhoutuisi, se ehtii ampua oman laukauksensa tällä vuorolla. Kaikki tappiot ja tilaefektit astuvat voimaan vasta Tilannevaiheessa.</li>
-                    <li><strong>Tilannevaihe:</strong> Vahinkoa kärsineet yksiköt tekevät moraalitestit. Tilaefektit päivitetään. Vuoro päättyy.</li>
-                </ol>
+                <section id="ydin-saannot">
+                    <h2 class="sr-only">Taistelukenttä d20 – Ydinsäännöt</h2>
+                    <h3>Johdanto</h3>
+                    <h4>Pelin Visio</h4>
+                    <p>Tervetuloa Taistelukenttä d20 -sotapeliin! Tämä sääntöjärjestelmä on suunniteltu simuloimaan modernia sodankäyntiä joukkue-, komppania- ja pataljoonatasolla. Tässä pelissä et ole yksittäinen sotilas, vaan <strong>johtaja</strong> tai <strong>komentaja</strong>. Menestyksesi ei riipu niinkään nopanheittojen onnekkuudesta, vaan kyvystäsi suunnitella, ennakoida, johtaa joukkojasi ja hallita resurssejasi. Pelin keskiössä on sodan sumu, epätäydellinen tieto ja vaikeiden päätösten tekeminen paineen alla.</p>
 
-                <h3>Yksiköt ja Ominaisuudet</h3>
-                <h4>Ominaisuuskortti Selitettynä</h4>
-                <p>Jokainen ryhmä on yksi entiteetti, jolla on seuraavat ominaisuudet:</p>
-                <ul>
-                    <li><strong>Taistelukunto (TK):</strong> Kuvaa yksikön vahvuutta ja selviytymiskykyä. Esimerkiksi täysivahvuisella Jääkäriryhmällä on 10 TK. Arvo vaihtelee yksikön koon ja tyypin mukaan, ja se on merkitty jokaisen yksikön omalle yksikkökortille. Kun TK laskee, ryhmä on kärsinyt tappioita ja sen toimintakyky heikkenee.</li>
-                    <li><strong>Moraali (M):</strong> Bonus (esim. +1..+5), joka lisätään moraalitesteihin. Kuvaa taistelutahtoa ja kuria.</li>
-                    <li><strong>Koulutus (K):</strong> Yksikön peruskoulutuksen laatu. Pysyvä arvo.</li>
-                    <li><strong>Kokemus (XP):</strong> Yksikön taistelukokemus. Kasvaa kampanjan aikana.</li>
-                    <li><strong>Taitotaso (TT):</strong> Yksikön yleinen tehokkuus. <strong>TT = Koulutus + Kokemus</strong>. Lisätään hyökkäys-, tiedustelu- ja moniin muihin heittoihin.</li>
-                    <li><strong>Liike (L):</strong> Liikkumisnopeus eri maastotyypeissä senttimetreinä (Tie / Maasto / Metsä).</li>
-                    <li><strong>Suoja (S):</strong> Koostuu perussuojasta (varustus) ja maaston antamasta bonuksesta. Hyökkäysheiton on oltava <strong>vähintään yhtä suuri</strong> kuin tämä arvo osuakseen.</li>
-                    <li><strong>Tuli-isku (TI) ja Aseistus:</strong> Nämä kertovat yksikön hyökkäyspotentiaalin. Jokaisella yksiköllä on <strong>perushyökkäys</strong> (esim. "Jalkaväkiaseistus"), jota se käyttää normaalissa tulitoiminnassa. Tämän lisäksi yksikkökortilla voi olla lueteltu <strong>erikoisaseita</strong> (esim. "Konekivääri", "PST-ase"). Näitä erikoisaseita ja niiden vahinkoarvoja käytetään <strong>ainoastaan</strong> silloin, kun jokin yksikön erityinen kyky (esim. "Lamauttava Tuli") tai tilanne (esim. panssarintorjunta) niin määrää.</li>
-                    <li><strong>Kyvyt:</strong> Yksikön erityisominaisuudet ja -toiminnot. Erikoisaseistusta käyttävät ryhmät, kuten Kranaatinheitinryhmät ja PST-ryhmät, voivat käyttää erikoisaseidensa vahinkoarvoja tietyissä tilanteissa (esim. tulituki, panssarintorjunta).</li>
-                </ul>
+                    <h4>Tarvittavat Välineet</h4>
+                    <ul>
+                        <li><strong>Pelilauta:</strong> Alueen maastokartta (Pelimuodosta riippuen 1:1000, 1:10 000, 1:25 000 tai 1:50 000).</li>
+                        <li><strong>Yksiköt:</strong> Muovisotilaita, nappuloita tai pahvisia tokeneita kuvaamaan joukkoja.</li>
+                        <li><strong>Nopat:</strong> d20, d12, d10, d8, d6, d4 -noppia.
+                            <ul>
+                                <li><strong>Selvennys:</strong> Nopissa käytetty merkintä, kuten d20, kertoo nopan tyypin. Kirjain d tarkoittaa noppaa (engl. die), ja sen perässä oleva numero kertoo nopan sivujen määrän. Esimerkiksi d6 on tavallinen kuusisivuinen noppa ja d20 on 20-sivuinen noppa.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Yksikkökortit:</strong> Paperilaput tai kortit, joihin merkitään yksiköiden ominaisuudet.</li>
+                        <li><strong>Pelinjohtajan (GM) varusteet:</strong> Oma salainen kartta, GM-screeni (valinnainen), muistiinpanovälineet.</li>
+                    </ul>
 
-                <h4>Tilaefektit</h4>
-                <ul>
-                    <li><strong>Vaurioitunut:</strong> Kun yksikön TK putoaa alle puoleen maksimista. Sen <strong>Liike</strong> ja <strong>Tuli-isku</strong> puolittuvat (pyöristä alas). Kuvaa haavoittuneiden sitomaa kapasiteettia.</li>
-                    <li><strong>Lamautunut (Suppressed):</strong> Epäonnistuneen moraalitestin seuraus. Yksikkö ei voi liikkua tai käyttää toimintoja, kuten hyökätä tai tiedustella. Sitä vastaan tehdyt hyökkäykset saavat <strong>Edun (Advantage)</strong>. Tila poistuu onnistuneella moraalitestillä vuoron lopussa tai <strong>Moraalin Kohotus</strong> -komennolla.</li>
-                    <li><strong>Vetäytyy:</strong> Kriittisesti epäonnistuneen moraalitestin seuraus. Yksikkö liikkuu seuraavalla vuorollaan hallitsemattomasti täyden liikkeensä verran lähintä suojaa kohti.</li>
-                    <li><strong>Huom:</strong> Ajoneuvoilla voi olla niiden yksikkökorteissa tarkempia tai poikkeavia sääntöjä vaurioitumiselle, jotka korvaavat tämän yleisen säännön osittain tai kokonaan.</li>
-                </ul>
+                    <h4>Pikastartti</h4>
+                    <ol>
+                        <li><strong>Valmistelu:</strong>
+                            <ul>
+                                <li>Tulosta kartta (1:1000, ruudut 10 mm).</li>
+                                <li>Aseta yksiköt kartalle, jokaisella pelaajalla 3–4 yksikköä (ryhmiä).</li>
+                                <li>Anna pelaajille 3 KP/vuoro, GM toimii vihollisjoukkojen komentajana.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Vuoron kulku:</strong>
+                            <ul>
+                                <li><strong>Komentovaihe:</strong> Pelaajat käyttävät KP:t komentokäskyihin.</li>
+                                <li><strong>Liikevaihe:</strong> Siirrä yksiköt kartalla.</li>
+                                <li><strong>Tiedustelu:</strong> TT vs. piiloutuneen yksikön suoja.</li>
+                                <li><strong>Tulitoiminta:</strong> Kaikki ampuvat yhtä aikaa (osuma = d20 + TT + asebonus ≥ kohteen Suoja).</li>
+                                <li><strong>Tilanne:</strong> TK:t vähenevät, tehdään moraalitestit (d20 + M).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tavoite:</strong> Tuhota vihollista ja saavuttaa skenaarion tehtävät.</li>
+                    </ol>
 
-                <h3>Sääntömekaniikat</h3>
-                <h4>Taistelu</h4>
-                <ol>
-                    <li><strong>Käsky:</strong> Hyökkääminen vaatii yleensä <strong>Hyökkäyskäsky</strong>-komennon (1 KP).</li>
-                    <li><strong>Heitto:</strong> Heitto: Hyökkääjä heittää d20 + oma Taitotaso (TT) + käytetyn aseen hyökkäysbonus. Osuma, jos tulos >= kohteen Suoja (S).</li>
-                    <li><strong>Osuma:</strong> Jos tulos on yhtä suuri tai suurempi kuin kohteen <strong>Suoja (S)</strong>, hyökkäys osuu.</li>
-                    <li><strong>Vahinko:</strong> Kohde menettää <strong>Taistelukuntoa (TK)</strong> hyökkääjän <strong>Tuli-isku (TI)</strong> -nopan verran.</li>
-                </ol>
-                <ul>
-                    <li><strong>Etu (Advantage) ja Haitta (Disadvantage):</strong> Tietyt tilanteet voivat antaa hyökkääjälle <em>Edun</em> tai <em>Haitan</em>. Nämä muokkaavat nopanheittoa seuraavasti:
-                        <ul>
-                            <li><strong>Etu (Advantage):</strong> Heitä kaksi d20-noppaa (2d20) ja käytä niistä korkeampaa tulosta.</li>
-                            <li><strong>Haitta (Disadvantage):</strong> Heitä kaksi d20-noppaa (2d20) ja käytä niistä matalampaa tulosta.</li>
-                        </ul>
-                    </li>
-                    <li>Tyypillisiä syitä:
-                        <ul>
-                            <li><strong>Etu:</strong> Hyökkäys kylkeen/selkään, kohde on lamautunut, kohde on täysin avoimella.</li>
-                            <li><strong>Haitta:</strong> Kohde on kaivautunut, erittäin huono näkyvyys.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Sarjatuli/Aluevaikutus:</strong> Aseet, joiden kuvauksessa on tämä ominaisuus, voivat hyökätä yksittäisen kohteen sijaan nimetylle alueelle (esim. 2x1cm alue). Hyökkääjä heittää yhden hyökkäysheiton. Tätä tulosta verrataan erikseen jokaiseen alueella olevaan vihollisyksikköön. Jokainen yksikkö, jonka Suoja-arvo on pienempi tai yhtä suuri kuin heiton tulos, kärsii aseen normaalin vahingon.</li>
-                </ul>
+                    <h3>Komentajan Rooli ja Pelin Kulku</h3>
+                    <h4>Komentopisteet (KP)</h4>
+                    <p>Strategia perustuu resurssien hallintaan. Tärkein resurssisi on johtamiskykysi, jota kuvastavat <strong>Komentopisteet (KP)</strong>. Saat joka vuoron alussa tietyn määrän pisteitä komentamasi tason mukaan. Käyttämättömät pisteet haihtuvat vuoron lopussa. <strong>Komentopisteet pelin koon mukaan:</strong> Pelaajien saama Komentopisteiden määrä riippuu pelin koosta. <strong>Joukkuetason pelissä:</strong> Jokainen pelaaja johtaa yhtä tai useampaa ryhmää ja saa <strong>3 KP</strong> per vuoro. <strong>Komppaniatason pelissä:</strong> Yksi pelaaja toimii Komppanianpäällikkönä (<strong>5 KP/vuoro</strong>) ja muut Joukkueenjohtajina (<strong>3 KP/vuoro</strong> kukin), kuten Komentajan Laajennuksessa kuvaillaan. Tässä pelissä jokainen pelaaja toimii joukkueenjohtajana, joka komentaa useampaa ryhmää. Jokainen pelaaja saa vuoron alussa <strong>3 Komentopistettä (KP)</strong>. Nämä pisteet ovat pelaajan henkilökohtainen resurssipooli, jonka hän voi jakaa vapaasti komentamiensa ryhmien kesken erikoistoimintojen suorittamiseen. Komppaniatason peleissä yhdellä pelaajalla voi olla Komppanianpäällikön rooli, jolloin hän saa <strong>5 KP / vuoro</strong> ja pääsyn komppaniatason taktiikoihin. <strong>Käyttämättömät pisteet haihtuvat vuoron lopussa.</strong> Perustoiminnot, kuten asemissa puolustaminen tai ennalta suunniteltu liike, eivät maksa pisteitä. <strong>Aktiiviset ja vaativat toiminnot kuluttavat KP:tä</strong>.</p>
 
-                <h4>Moraali</h4>
-                <p>Yksikön henkinen kestävyys on yhtä tärkeää kuin fyysinen. Yksikön on tehtävä <strong>Moraalitesti</strong> (d20 + Moraalibonus (M)) seuraavissa tilanteissa:</p>
-                <ul>
-                    <li>Kun se kärsii vahinkoa ensimmäistä kertaa taistelussa (DC 10).</li>
-                    <li>Kun sen TK putoaa alle puoleen (DC 12).</li>
-                    <li>Joutuessaan epäsuoran tulen alle (DC 13).</li>
-                    <li>Nähdessään vihollisen panssarivaunun ensimmäistä kertaa lähietäisyydellä (DC 10).
-                        <ul><li>Lähietäisyys on 10cm säde</li></ul>
-                    </li>
-                    <li>Kun viereinen ystävällinen yksikkö tuhoutuu tai vetäytyy (DC 12).</li>
-                </ul>
+                    <h5>Pelinjohtajan (GM) Komentopisteet</h5>
+                    <p>Pelinjohtaja saa Komentopisteitä samojen periaatteiden mukaisesti kuin pelaajat (Blue Team). GM:n KP-määrä riippuu hänen komentamansa Punaisen puolen joukkojen rakenteesta:</p>
+                    <ul>
+                        <li>Jos Punaisella puolella on komppaniarakenne, jossa on nimetty Komppanianpäällikkö-yksikkö, GM saa käyttöönsä 5 KP/vuoro tälle päällikölle ja 3 KP/vuoro jokaiselle Punaisen puolen Joukkueenjohtajalle.</li>
+                        <li>Jos Punaisella puolella ei ole Komppanianpäällikköä (kuten joukkuetason pelissä "Operaatio Puskutraktori"), GM saa 3 KP/vuoro jokaista komentamaansa joukkuetta tai vastaavaa osastoa kohden.</li>
+                        <li>GM hallinnoi näitä pisteitä omien joukkueidenjohtajiensa "pooleina". Esimerkiksi, jos GM komentaa kolmea joukkuetta, hänellä on käytössään yhteensä 9 KP, mutta hänen on seurattava, minkä joukkueen pisteitä hän käyttää mihinkin toimintoon.</li>
+                    </ul>
+                    <p><strong>Yhteenveto GM:n Komentopisteiden hallinnasta:</strong> On tärkeää huomata, että GM:n KP-hallinta poikkeaa pelaajien Komppanianpäälliköstä: * <strong>Erilliset poolit:</strong> Jos GM ohjaa useampaa joukkuetta ilman nimettyä Päällikkö-yksikköä (kuten "Operaatio Puskutraktori" -skenaariossa), hän hallinnoi jokaista 3 KP:n poolia erikseen. <strong>Ei siirtoja poolien välillä:</strong> Toisin kuin pelaajien Komppanianpäällikkö, GM <strong>ei voi</strong> siirtää Komentopisteitä yhden joukkueen poolista toiseen. Tämä simuloi komentoketjun jäykkyyttä ja rajoittaa GM:n taktista joustavuutta.</p>
+                    
+                    <h5>Joukkueenjohtajan perustoiminnot (Jokainen pelaaja)</h5>
+                    <p>Nämä ovat peruskäskyjä, joita kuka tahansa joukkueenjohtajan roolissa oleva pelaaja voi käyttää hallitsemilleen ryhmille.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Toiminto</th><th>Hinta (KP)</th><th>Kuvaus</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Hyökkäyskäsky</strong></td><td>1 KP / ryhmä</td><td>Käske ryhmää aktiivisesti hyökkäämään tai rynnäköimään.</td></tr>
+                            <tr><td><strong>Tulen Keskittäminen</strong></td><td>1 KP</td><td>Normaalisti jokainen ryhmä hyökkää itsenäisesti. Käyttämällä 1 KP:n komentaja koordinoi tulen. Kaikki tähän komentoon osallistuvat ryhmät saavat <strong>+1 bonuksen hyökkäysheittoihinsa</strong> kyseistä maalia vastaan tällä vuorolla.</td></tr>
+                            <tr><td><strong>Irtautuminen</strong></td><td>2 KP / ryhmä</td><td>Käske taistelukontaktissa olevaa ryhmää vetäytymään hallitusti. Tämä on kontrolloitu toimi. Hallitsematon vetäytyminen on seurausta epäonnistuneesta Moraalitestistä, joka aiheuttaa Vetäytyy -tilan.</td></tr>
+                            <tr><td><strong>Moraalin Kohotus</strong></td><td>2 KP</td><td>Poista "Lamautunut"-tila yhdeltä omalta yksiköltä.</td></tr>
+                            <tr><td><strong>Tulitukipyyntö (orgaaninen)</strong></td><td>1 KP</td><td>Tee pyyntö epäsuorasta tulesta krh-ryhmältä.</td></tr>
+                            <tr><td><strong>Erikoiskyvyn käyttö</strong></td><td>Vaihtelee</td><td>Monien yksiköiden erityiskyvyt vaativat KP:n käyttöä.</td></tr>
+                        </tbody>
+                    </table>
 
-                <h5>Moraalitestitaulukko</h5>
-                <table>
-                    <thead>
-                        <tr><th>Tilanne</th><th>DC</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Kärsii ensimmäistä kertaa vahinkoa</td><td>10</td></tr>
-                        <tr><td>TK putoaa alle puoleen</td><td>12</td></tr>
-                        <tr><td>Epäsuora tuli</td><td>13</td></tr>
-                        <tr><td>Näkee panssarivaunun lähietäisyydellä</td><td>10</td></tr>
-                        <tr><td>Ystäväyksikkö tuhoutuu tai vetäytyy vieressä</td><td>12</td></tr>
-                    </tbody>
-                </table>
-                <ul>
-                    <li>Epäonnistuminen: yksikkö on <strong>Lamautunut</strong>.</li>
-                    <li><strong>Kriittinen epäonnistuminen:</strong> Jos testin tulos (d20 + M) on <strong>vähintään 5 pistettä alle vaaditun DC-arvon</strong>, yksikkö joutuu <strong>Vetäytyy</strong>-tilaan. <em>Esimerkki: DC on 12. Jos tulos on 7 tai alle, yksikkö vetäytyy.</em></li>
-                </ul>
+                    <h4>Pelivuoron Vaiheet</h4>
+                    <p>Peli etenee vuoroissa, jotka suoritetaan samanaikaisesti kaikille osapuolille. Tämä luo dynaamisen ja arvaamattoman taistelukentän.</p>
+                    <ol>
+                        <li><strong>Komentovaihe:</strong> Pelaajat (ja GM salassa) päättävät, mitä yksiköt tekevät ja käyttävät tähän Komentopisteitä. Kaikki päätökset tehdään nyt.
+                            <ul>
+                                <li>Kaikki valinnat tehdään <strong>samanaikaisesti</strong>.</li>
+                                <li>Pelaajat ja GM paljastavat käskyt yhtä aikaa.</li>
+                                <li>Jos käskyjen yhteisvaikutus aiheuttaa ristiriidan:
+                                    <ul>
+                                        <li><strong>Liike vs. Tuli:</strong> Tulitoiminta tapahtuu, vaikka yksikkö tuhoutuu samassa vuorossa ("tulitahto" säilyy vuoron loppuun).</li>
+                                        <li><strong>Tiedustelu vs. Tulituki:</strong> Jos kohde havaitaan tiedusteluvaiheessa, sen voi ampua vuorolla.</li>
+                                    </ul>
+                                </li>
+                                <li>GM toimii tuomarina ristiriidoissa.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Liikevaihe:</strong> Kaikki liikkuviksi määrätyt yksiköt siirretään kartalla.</li>
+                        <li><strong>Tiedusteluvaihe:</strong> Tiedustelua suorittavat yksiköt tekevät testinsä. GM paljastaa havaitut viholliset.</li>
+                        <li><strong>Tulitoimintavaihe:</strong> Kaikki Komentovaiheessa annetut tulikomennot ovat samanaikaisia ja ne ratkaistaan yhtä aikaa. Tämä tarkoittaa, että vaikka yksikkö tuhoutuisi, se ehtii ampua oman laukauksensa tällä vuorolla. Kaikki tappiot ja tilaefektit astuvat voimaan vasta Tilannevaiheessa.</li>
+                        <li><strong>Tilannevaihe:</strong> Vahinkoa kärsineet yksiköt tekevät moraalitestit. Tilaefektit päivitetään. Vuoro päättyy.</li>
+                    </ol>
 
-                <h4>Tiedustelu ja Informaatiosota</h4>
-                <p>Tiedon saaminen on avain voittoon. Tiedustelu on vastakkainen heitto.</p>
-                <p>Tiedustelijan d20 + TT vs. Kohteen d20 + maaston antama suojausbonus</p>
-                <h5>Havainnon Tasot:</h5>
-                <ol>
-                    <li><strong>Ei Havaintoa:</strong> Vihollinen on piilossa.</li>
-                    <li><strong>Epäily:</strong> GM asettaa "?-merkin" kartalle. Tiedät, että <em>jotain</em> siellä on.</li>
-                    <li><strong>Tiedossa:</strong> Yksikön tyyppi ja summittainen sijainti tiedetään. Voidaan ampua epäsuoralla tulella.</li>
-                    <li><strong>Havaittu:</strong> Tarkka sijainti tiedossa. Voidaan ampua suoralla tulella.</li>
-                </ol>
-                
-                <h4>Orgaaninen Tulituki (Yksikkö Pelilaudalla)</h4>
-                <p>Kun tulitukea antaa pelaajan suoraan komennossa oleva, pelilaudalla sijaitseva yksikkö (kuten Kranaatinheitinryhmä), se toimii eri säännöillä kuin ulkopuolinen, yleinen tuki. Tämä korostaa komppanian oman orgaanisen tuen nopeutta ja joustavuutta.</p>
-                <p>Pelaajan ohjaamalla tulitukiyksiköllä on seuraavat edut ja rajoitteet:</p>
-                <ul>
-                    <li><strong>Nopea Vaste:</strong> Viive ei ole satunnainen. Tulitukipyyntöön käytetty isku saapuu aina <strong>seuraavan vuoron Tulitoimintavaiheessa</strong> (kiinteä 1 vuoron viive).</li>
-                    <li><strong>Parannettu Tarkkuus:</strong> Koska tulenjohto on tehokkaampaa yksikön sisällä, <strong>perushajonta on vain 1d4 cm</strong> (normaalin 2d4 cm sijaan).</li>
-                    <li><strong>Rajoitetut Ammukset:</strong> Yksiköllä on skenaariokohtainen määrä kranaatteja (esim. <strong>Ammukset: 10</strong>). Jokainen tulitukipyyntö kuluttaa yhden ammuksen.</li>
-                    <li><strong>Haavoittuvuus:</strong> Koska yksikkö on fyysisesti pelilaudalla, vihollinen voi tiedustella, lamauttaa ja tuhota sen vastatulella tai suoralla hyökkäyksellä. Tukiyksikön suojaaminen on osa pelaajan vastuuta.</li>
-                    <li><strong>Minimiampumaetäisyys ja 'Vaara Lähellä':</strong>
-                        <ol>
-                            <li><strong>Minimietäisyys:</strong> Kranaatinheitinryhmä ei voi ampua kohteeseen, joka on <strong>5 cm tai lähempänä</strong> heitintä itseään.</li>
-                            <li><strong>'Vaara Lähellä' (Danger Close):</strong> Kranaatinheitinryhmä ei voi normaalisti ampua, jos sen iskun vaikutusalueelle (esim. 5 cm säde) osuisi ystävällinen yksikkö. Äärimmäisessä hädässä yksikköä suoraan johtava komentaja (joukkueenjohtaja tai komppanianpäällikkö) voi antaa '<strong>Vaara Lähellä'</strong> -käskyn. Tällöin isku on mahdollinen, mutta se on erittäin riskialtis. Jokaisesta vaikutusalueella olevasta ystävällisestä yksiköstä heitetään d6-noppaa: tuloksella 1-2 oma yksikkö kärsii puolet iskun normaalista vahingosta sirpaleiden vuoksi.</li>
-                        </ol>
-                    </li>
-                </ul>
+                    <h3>Yksiköt ja Ominaisuudet</h3>
+                    <h4>Ominaisuuskortti Selitettynä</h4>
+                    <p>Jokainen ryhmä on yksi entiteetti, jolla on seuraavat ominaisuudet:</p>
+                    <ul>
+                        <li><strong>Taistelukunto (TK):</strong> Kuvaa yksikön vahvuutta ja selviytymiskykyä. Esimerkiksi täysivahvuisella Jääkäriryhmällä on 10 TK. Arvo vaihtelee yksikön koon ja tyypin mukaan, ja se on merkitty jokaisen yksikön omalle yksikkökortille. Kun TK laskee, ryhmä on kärsinyt tappioita ja sen toimintakyky heikkenee.</li>
+                        <li><strong>Moraali (M):</strong> Bonus (esim. +1..+5), joka lisätään moraalitesteihin. Kuvaa taistelutahtoa ja kuria.</li>
+                        <li><strong>Koulutus (K):</strong> Yksikön peruskoulutuksen laatu. Pysyvä arvo.</li>
+                        <li><strong>Kokemus (XP):</strong> Yksikön taistelukokemus. Kasvaa kampanjan aikana.</li>
+                        <li><strong>Taitotaso (TT):</strong> Yksikön yleinen tehokkuus. <strong>TT = Koulutus + Kokemus</strong>. Lisätään hyökkäys-, tiedustelu- ja moniin muihin heittoihin.</li>
+                        <li><strong>Liike (L):</strong> Liikkumisnopeus eri maastotyypeissä senttimetreinä (Tie / Maasto / Metsä).</li>
+                        <li><strong>Suoja (S):</strong> Koostuu perussuojasta (varustus) ja maaston antamasta bonuksesta. Hyökkäysheiton on oltava <strong>vähintään yhtä suuri</strong> kuin tämä arvo osuakseen.</li>
+                        <li><strong>Tuli-isku (TI) ja Aseistus:</strong> Nämä kertovat yksikön hyökkäyspotentiaalin. Jokaisella yksiköllä on <strong>perushyökkäys</strong> (esim. "Jalkaväkiaseistus"), jota se käyttää normaalissa tulitoiminnassa. Tämän lisäksi yksikkökortilla voi olla lueteltu <strong>erikoisaseita</strong> (esim. "Konekivääri", "PST-ase"). Näitä erikoisaseita ja niiden vahinkoarvoja käytetään <strong>ainoastaan</strong> silloin, kun jokin yksikön erityinen kyky (esim. "Lamauttava Tuli") tai tilanne (esim. panssarintorjunta) niin määrää.</li>
+                        <li><strong>Kyvyt:</strong> Yksikön erityisominaisuudet ja -toiminnot. Erikoisaseistusta käyttävät ryhmät, kuten Kranaatinheitinryhmät ja PST-ryhmät, voivat käyttää erikoisaseidensa vahinkoarvoja tietyissä tilanteissa (esim. tulituki, panssarintorjunta).</li>
+                    </ul>
 
-                <h4>Maaston Vaikutus</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Maastotyyppi</th>
-                            <th>Liike</th>
-                            <th>Suojabonus (S)</th>
-                            <th>Piiloutumisbonus</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Tie/Aukea</strong></td>
-                            <td>+0cm</td>
-                            <td>+0</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Matala maasto (kuten pelto)</strong></td>
-                            <td>-2cm</td>
-                            <td>+2</td>
-                            <td>+2</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Metsä</strong></td>
-                            <td>50%</td>
-                            <td>+4</td>
-                            <td>+4</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Rakennus/Asema</strong></td>
-                            <td>-</td>
-                            <td>+6</td>
-                            <td>+6</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5>Hallintavyöhyke (Zone of Control, ZoC)</h5>
-                <p>Jokaisella yksiköllä on näkymätön <strong>2 cm säteinen hallintavyöhyke</strong> ympärillään. Tämä vyöhyke kuvaa yksikön välitöntä vaikutusaluetta ja vaikeuttaa vihollisen liikkumista.</p>
-                <ul>
-                    <li><strong>Liikkuminen ZoC:lle:</strong> Kun yksikkö liikutetaan vihollisen hallintavyöhykkeelle, sen liike päättyy välittömästi. Se ei voi jatkaa liikettään saman vuoron aikana.</li>
-                    <li><strong>Liikkuminen ZoC:n läpi:</strong> Yksikkö ei voi liikkua suoraan vihollisen hallintavyöhykkeen läpi. Sen on pysähdyttävä vyöhykkeelle. Irtautuakseen vyöhykkeeltä vaaditaan <strong>Irtautuminen</strong>-komento (2 KP).</li>
-                </ul>
+                    <h4>Tilaefektit</h4>
+                    <ul>
+                        <li><strong>Vaurioitunut:</strong> Kun yksikön TK putoaa alle puoleen maksimista. Sen <strong>Liike</strong> ja <strong>Tuli-isku</strong> puolittuvat (pyöristä alas). Kuvaa haavoittuneiden sitomaa kapasiteettia.</li>
+                        <li><strong>Lamautunut (Suppressed):</strong> Epäonnistuneen moraalitestin seuraus. Yksikkö ei voi liikkua tai käyttää toimintoja, kuten hyökätä tai tiedustella. Sitä vastaan tehdyt hyökkäykset saavat <strong>Edun (Advantage)</strong>. Tila poistuu onnistuneella moraalitestillä vuoron lopussa tai <strong>Moraalin Kohotus</strong> -komennolla.</li>
+                        <li><strong>Vetäytyy:</strong> Kriittisesti epäonnistuneen moraalitestin seuraus. Yksikkö liikkuu seuraavalla vuorollaan hallitsemattomasti täyden liikkeensä verran lähintä suojaa kohti.</li>
+                        <li><strong>Huom:</strong> Ajoneuvoilla voi olla niiden yksikkökorteissa tarkempia tai poikkeavia sääntöjä vaurioitumiselle, jotka korvaavat tämän yleisen säännön osittain tai kokonaan.</li>
+                    </ul>
 
-                <h3>Sanasto</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Lyhenne / Termi</th>
-                            <th>Selitys</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>KP (Komentopisteet)</td><td>Pelaajan komentajan kyky vaikuttaa yksiköihin. Käytetään erikoistoimintoihin.</td></tr>
-                        <tr><td>VP (Voittopisteet)</td><td>Mittaa taistelun tai kampanjan menestystä. Käytetään yksiköiden kehittämiseen ja täydennyksiin.</td></tr>
-                        <tr><td>XP (Kokemus)</td><td>Yksikön taistelukokemusta. Lisää yksikön tehokkuutta kampanjapelissä.</td></tr>
-                        <tr><td>TT (Taitotaso)</td><td>Yksikön osaaminen. Lasketaan: Koulutus + Kokemus. Käytetään heitoissa.</td></tr>
-                        <tr><td>TK (Taistelukunto)</td><td>Yksikön elinvoima. Vahingot vähentävät tätä.</td></tr>
-                        <tr><td>M (Moraali)</td><td>Moraalitestin bonus. Korkeampi tarkoittaa parempaa henkistä kestävyyttä.</td></tr>
-                        <tr><td>S (Suoja)</td><td>Vastaa "Armor Classia". Kuinka vaikea yksikkö on osua.</td></tr>
-                        <tr><td>TI (Tuli-isku)</td><td>Vahinkoarvo, jota käytetään osumien jälkeen.</td></tr>
-                        <tr><td>Orgaaninen tulituki</td><td>Pelaajan suoraan ohjaama tulitukiyksikkö pelilaudalla.</td></tr>
-                        <tr><td>Epäorgaaninen tulituki</td><td>Kartan ulkopuolinen tulituki, kuten pataljoonan tykistö.</td></tr>
-                        <tr><td>GM (Pelinjohtaja)</td><td>Toimii Red Teamin komentajana ja tuomarina.</td></tr>
-                    </tbody>
-                </table>
+                    <h3>Sääntömekaniikat</h3>
+                    <h4>Taistelu</h4>
+                    <ol>
+                        <li><strong>Käsky:</strong> Hyökkääminen vaatii yleensä <strong>Hyökkäyskäsky</strong>-komennon (1 KP).</li>
+                        <li><strong>Heitto:</strong> Heitto: Hyökkääjä heittää d20 + oma Taitotaso (TT) + käytetyn aseen hyökkäysbonus. Osuma, jos tulos >= kohteen Suoja (S).</li>
+                        <li><strong>Osuma:</strong> Jos tulos on yhtä suuri tai suurempi kuin kohteen <strong>Suoja (S)</strong>, hyökkäys osuu.</li>
+                        <li><strong>Vahinko:</strong> Kohde menettää <strong>Taistelukuntoa (TK)</strong> hyökkääjän <strong>Tuli-isku (TI)</strong> -nopan verran.</li>
+                    </ol>
+                    <ul>
+                        <li><strong>Etu (Advantage) ja Haitta (Disadvantage):</strong> Tietyt tilanteet voivat antaa hyökkääjälle <em>Edun</em> tai <em>Haitan</em>. Nämä muokkaavat nopanheittoa seuraavasti:
+                            <ul>
+                                <li><strong>Etu (Advantage):</strong> Heitä kaksi d20-noppaa (2d20) ja käytä niistä korkeampaa tulosta.</li>
+                                <li><strong>Haitta (Disadvantage):</strong> Heitä kaksi d20-noppaa (2d20) ja käytä niistä matalampaa tulosta.</li>
+                            </ul>
+                        </li>
+                        <li>Tyypillisiä syitä:
+                            <ul>
+                                <li><strong>Etu:</strong> Hyökkäys kylkeen/selkään, kohde on lamautunut, kohde on täysin avoimella.</li>
+                                <li><strong>Haitta:</strong> Kohde on kaivautunut, erittäin huono näkyvyys.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Sarjatuli/Aluevaikutus:</strong> Aseet, joiden kuvauksessa on tämä ominaisuus, voivat hyökätä yksittäisen kohteen sijaan nimetylle alueelle (esim. 2x1cm alue). Hyökkääjä heittää yhden hyökkäysheiton. Tätä tulosta verrataan erikseen jokaiseen alueella olevaan vihollisyksikköön. Jokainen yksikkö, jonka Suoja-arvo on pienempi tai yhtä suuri kuin heiton tulos, kärsii aseen normaalin vahingon.</li>
+                    </ul>
 
-                <h3>Esimerkkipelin Kulku – Operaatio Puskutraktori</h3>
-                <p>Tässä muokatussa esimerkkipelin kulussa "Operaatio Puskutraktori" -skenaario on laajennettu neljällä pelaajalla, joista jokainen ohjaa yhtä joukkuepelitasolla olevaa ryhmää. Joukkueenjohtajan rooli on annettu yhdelle pelaajalle (Pelaaja 1, Karhu 1), mutta koska kyseessä on "Joukkuepeli" ja kukin pelaaja toimii joukkueenjohtajana omille ryhmilleen, jokainen pelaaja saa silti vuoronsa alussa omat 3 Komentopistettä (KP).</p>
-                <h4>6.1 Asetelma:</h4>
-                <p><strong>Pelilauta:</strong> Metsäinen alue, keskellä pohjois-eteläsuuntainen tie. Kartan mittakaava on 1:1000, ja yksiköt ovat ryhmätasolla.</p>
-                <h5>6.1.1 BLUE TEAM (Pelaajat): Suomalainen Jääkärijoukkue.</h5>
-                <ul>
-                    <li>Pelaaja 1: Karhu 1 (Jääkäriryhmä). Pelaaja 1 toimii myös joukkueenjohtajana, joka koordinoi Blue Teamin toimintaa.</li>
-                    <li>Pelaaja 2: Karhu 2 (Jääkäriryhmä).</li>
-                    <li>Pelaaja 3: Karhu 3 (Tukiryhmä KK).</li>
-                    <li>Pelaaja 4: Haukka 1 (Kranaatinheitinryhmä).</li>
-                </ul>
-                <p>Joukot on sijoitettu puolustusasemiin kartan eteläosan metsiin. Jokainen pelaaja saa vuoron alussa 3 KP.</p>
-                <h5>RED TEAM (GM): Venäläinen mekanisoitu tiedustelujoukkue.</h5>
-                <p>Aloittaa yhdellä Motorisoidulla Jalkaväkiryhmällä (MOTO A) tien pohjoispäässä. Se on aluksi piilossa "? "-merkin alla.</p>
-                <h4>Vuoro 1: Kontakti</h4>
-                <ul>
-                    <li><strong>Komentovaihe:</strong>
-                        <ul>
-                            <li><strong>BLUE TEAM:</strong> Pelaajat (jokainen 3 KP/hlö) käyttävät 0 KP:tä ja asettuvat puolustusasemiin metsiin. Tavoitteena on väijyttää vihollinen.
-                                <ul>
-                                    <li>Pelaaja 1 (Karhu 1, Jääkäriryhmä) valmistautuu puolustukseen.</li>
-                                    <li>Pelaaja 2 (Karhu 2, Jääkäriryhmä) valmistautuu puolustukseen.</li>
-                                    <li>Pelaaja 3 (Karhu 3, Tukiryhmä KK) valmistautuu puolustukseen.</li>
-                                    <li>Pelaaja 4 (Haukka 1, Kranaatinheitinryhmä) valmistautuu epäsuoran tulen antamiseen.</li>
-                                </ul>
-                            </li>
-                            <li><strong>RED TEAM:</strong> GM käyttää 1 KP lähettääkseen MOTO A -ryhmän etenemään tietä pitkin.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Liikevaihe:</strong> Red Teamin ?-merkki liikkuu 10 cm etelään tietä pitkin.</li>
-                    <li><strong>Tiedusteluvaihe:</strong> Karhu 2 (Pelaaja 2) tekee onnistuneen tiedusteluheiton (15 vs. 10). GM vaihtaa ?-merkin MOTO A -yksikönappulaksi. Yksikkö on nyt "Havaittu".</li>
-                    <li><strong>Tulitoiminta- ja Tilannevaihe:</strong> Kumpikaan osapuoli ei ammu. Vuoro päättyy.</li>
-                </ul>
-                <h4>Vuoro 2: Väijytys</h4>
-                <ul>
-                    <li><strong>Komentovaihe:</strong>
-                        <ul>
-                            <li><strong>BLUE TEAM:</strong> Pelaajat päättävät iskeä.
-                                <ul>
-                                    <li>Pelaaja 1 (Karhu 1, Jääkäriryhmä) käyttää 1 KP:n Hyökkäyskäskyyn.</li>
-                                    <li>Pelaaja 2 (Karhu 2, Jääkäriryhmä) käyttää 1 KP:n Hyökkäyskäskyyn ja 1 KP:n Tulen Keskittämiseen Karhu 1:n kanssa.</li>
-                                    <li>Pelaaja 3 (Karhu 3, Tukiryhmä KK) käyttää 2 KP:tä Lamauttava Tuli -erikoiskykyyn.</li>
-                                    <li>Pelaaja 4 (Haukka 1, Kranaatinheitinryhmä) päättää tukea hyökkäystä. Hän käyttää 1 KP:n Tulitukipyyntöön (orgaaninen), kohdistaen sen MOTO A -ryhmän viimeisimpään tunnettuun sijaintiin. Isku saapuu seuraavan vuoron (vuoro 3) Tulitoimintavaiheessa. Haukka 1 kuluttaa yhden ammuksen.</li>
-                                </ul>
-                            </li>
-                            <li><strong>RED TEAM:</strong> GM reagoi.
-                                <ul>
-                                    <li>GM käyttää 1 KP:n vastatakseen tuleen Karhu 1:tä vastaan.</li>
-                                    <li>GM käyttää 2 KP:tä kutsuakseen vahvistuksia (MOTO B ja BTR-82A), jotka saapuvat vuorolla 3.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><strong>Liikevaihe:</strong> Ei merkittäviä liikkeitä Karhu 1, Karhu 2 ja Karhu 3 -ryhmiltä. Haukka 1 pysyy paikallaan valmistautuen tulitukeen.</li>
-                    <li><strong>Tiedusteluvaihe:</strong> Ei uusia tiedustelutoimia.</li>
-                    <li><strong>Tulitoimintavaihe (Ratkaistaan sääntöjen mukaisesti samanaikaisesti):</strong>
-                        <ul>
-                            <li>Karhu 3 (Tukiryhmä KK) ampuu: Lamauttava Tuli -kyky pakottaa MOTO A:n tekemään moraalitestin (DC 10). GM heittää d20 + M(+2) = 15, onnistuen. Yksikkö ei lamannu.</li>
-                            <li>Karhu 1 ja Karhu 2 (Jääkäriryhmät) ampuvat: Koska tuli on keskitetty, molemmat saavat +1 bonuksen hyökkäysheittoihinsa. MOTO A:n Suoja (S) on 10.</li>
-                            <li>Karhu 1: d20(10) + TT(+3) + 1 (keskitys) + 3 (Jalkaväkiaseistus) = 17. Osuma. Vahinko (d6) on 4.</li>
-                            <li>Karhu 2: d20(8) + TT(+3) + 1 (keskitys) + 3 (Jalkaväkiaseistus) = 15. Osuma. Vahinko (d6) on 3.</li>
-                            <li>RED TEAM (MOTO A) ampuu: Vaikka MOTO A kärsii vahinkoa, se ehtii ampua tällä vuorolla. Se ampuu Karhu 1:tä, jonka Suoja (S) metsässä on 11 (perus) + 4 (metsä) = 15.</li>
-                            <li>GM heittää d20(3) + TT(+2) + 3 (Jalkaväkiaseistus) = 8. Ei osumaa.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Tilannevaihe:</strong>
-                        <ul>
-                            <li>MOTO A on ottanut yhteensä 7 vahinkoa. Sen TK putoaa 10 -&gt; 3.</li>
-                            <li>Koska TK (3) on alle puolet maksimista (5), yksikkö on nyt "Vaurioitunut". Sen Liike ja Tuli-isku puolittuvat tästä eteenpäin.</li>
-                            <li>MOTO A:n on tehtävä Moraalitesti ensimmäisestä kärsimästään vahingosta (DC 10). Sen ei kuitenkaan tarvitse tehdä testiä "Vaurioituneeksi" joutumisesta "Peräänantamaton"-erikoiskykynsä ansiosta. GM heittää testin (DC 10): d20 + M(+2) = 3. Epäonnistuu pahasti. Koska tulos on alle 5, yksikkö joutuu "Vetäytyy"-tilaan.</li>
-                        </ul>
-                    </li>
-                </ul>
-                <h4>Vuoro 3: Vahvistukset ja vetäytyminen</h4>
-                <ul>
-                    <li><strong>Komentovaihe:</strong>
-                        <ul>
-                            <li><strong>BLUE TEAM:</strong> Pelaajat näkevät vihollisen vetäytyvän ja päättävät painostaa.
-                                <ul>
-                                    <li>Pelaaja 1 (Karhu 1, Jääkäriryhmä) käyttää 1 KP ja hyökkää vetäytyvää MOTO A:ta vastaan.</li>
-                                    <li>Pelaaja 2 (Karhu 2, Jääkäriryhmä) päättää säästää KP:t ja siirtyy parempaan asemaan ilman kustannuksia.</li>
-                                    <li>Pelaaja 3 (Karhu 3, Tukiryhmä KK) käyttää 0 KP ja pysyy asemissaan.</li>
-                                    <li>Pelaaja 4 (Haukka 1, Kranaatinheitinryhmä) valmistautuu uuteen tulitukipyyntöön seuraavalla vuorolla tai seuraamaan tulenjohtoa (käyttämättömät KP:t haihtuvat).</li>
-                                </ul>
-                            </li>
-                            <li><strong>RED TEAM:</strong> GM:n vetäytyvä yksikkö ei voi saada käskyjä. GM tuo kartalle aiemmin kutsutut vahvistukset: toinen Motorisoitu Jalkaväkiryhmä (MOTO B) ja sitä kuljettava BTR-82A-vaunu. Ne ilmestyvät kartan pohjoisreunaan.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Liikevaihe:</strong> MOTO A, ollessaan "Vetäytyy"-tilassa, liikkuu hallitsemattomasti 10 cm pohjoiseen päin (lähin suoja on poistumistie). Karhu 2 siirtyy uuteen asemaan. Uudet Red Teamin yksiköt (MOTO B ja BTR-82A) liikkuvat 15 cm etelään tietä pitkin.</li>
-                    <li><strong>Tiedusteluvaihe:</strong> Uudet Red Teamin yksiköt ovat avoimella tiellä ja siten automaattisesti "Havaittu".</li>
-                    <li><strong>Tulitoimintavaihe:</strong>
-                        <ul>
-                            <li>Karhu 1 (Jääkäriryhmä) ampuu vetäytyvää MOTO A:ta (Suoja S 10). Heitto d20+TT(+3) = 19. Osuma. Vahinko (d6) on 5.</li>
-                            <li>Haukka 1:n (Krh-ryhmä) tulituki saapuu: Haukka 1:n Vuoro 2:lla pyytämä orgaaninen tulituki saapuu nyt. Haukka 1:n tulenjohtaja (Pelaaja 4) tarkistaa hajontanopan (1d4 cm). Oletetaan, että isku osuu uusia vahvistuksia (MOTO B ja BTR-82A) lähelle ja vaikutusalue (5 cm säde) osuu MOTO B:hen.</li>
-                            <li>MOTO B kärsii 1d8 vahinkoa (esim. 5 vahinkoa).</li>
-                            <li>MOTO B joutuu tekemään Moraalitestin (DC 13), koska joutuu epäsuoran tulen alle. GM heittää d20 + M(+2) = esim. 10. Epäonnistuu. MOTO B on "Lamautunut".</li>
-                        </ul>
-                    </li>
-                    <li><strong>Tilannevaihe:</strong>
-                        <ul>
-                            <li>MOTO A:n TK putoaa 3 -&gt; -2. Yksikkö tuhoutuu. Pelaajat saavat +1 VP.</li>
-                            <li>MOTO B:n TK putoaa (esim. 10 -&gt; 5). Yksikkö on nyt "Vaurioitunut" ja "Lamautunut". Sen Liike ja Tuli-isku puolittuvat.</li>
-                            <li>Vuoro päättyy. Blue Team on voittanut ensimmäisen kohtaamisen, mutta uusi, vahvempi uhka on jo saapunut. Krh-tuli on kuitenkin hidastanut sitä.</li>
-                        </ul>
-                    </li>
-                </ul>
-                <h4>Vuoro 4: Panssariuhka</h4>
-                <ul>
-                    <li><strong>Komentovaihe:</strong>
-                        <ul>
-                            <li><strong>BLUE TEAM:</strong> BTR-82A:n saapuminen muuttaa tilanteen. Tavalliset rynnäkkökiväärit eivät tehoa siihen. Pelaajien on pakko reagoida.
-                                <ul>
-                                    <li>Pelaaja 1 (Karhu 1, Jääkäriryhmä) voi harkita KP:n käyttöä Moraalin Kohotukseen Lamautetulle Karhu 2:lle, tai jatkaa painostusta.</li>
-                                    <li>Pelaaja 2 (Karhu 2, Jääkäriryhmä) on lamautunut eikä voi käyttää toimintoja.</li>
-                                    <li>Pelaaja 3 (Karhu 3, Tukiryhmä KK) voi jatkaa lamauttavaa tulta uusille kohteille tai tukea Karhu 1:n toimintaa.</li>
-                                    <li>Pelaaja 4 (Haukka 1, Kranaatinheitinryhmä), jonka yksikkö on orgaaninen ja käyttää kohdan 4.5 sääntöjä, päättää ampua BTR-82A:ta vastaan. Hän käyttää 1 Komentopisteen (omasta KP-poolistaan) ja kuluttaa yhden ammuksen Kranaatinheitinryhmän kyvystä 'Pelaajan Ohjaama Tuli (Orgaaninen)'. Hän nimeää koordinaatit BTR-82A:n sijainnin lähelle. Isku saapuu seuraavan vuoron (vuoro 5) Tulitoimintavaiheessa. Haukka 1:lla on nyt 8 ammusta jäljellä.</li>
-                                </ul>
-                            </li>
-                            <li><strong>RED TEAM:</strong> GM haluaa hyödyntää tulivoimaansa.
-                                <ul>
-                                    <li>1 KP: BTR-82A:lle Hyökkäyskäsky Karhu 1:tä vastaan.</li>
-                                    <li>MOTO B -ryhmä on lamautunut, joten se ei voi toimia.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><strong>Liikevaihe:</strong> BTR-82A liikkuu hieman eteenpäin saadakseen paremman ampumalinjan. Lamautunut MOTO B ei voi liikkua.</li>
-                    <li><strong>Tiedusteluvaihe:</strong> Ei uusia tiedustelutoimia.</li>
-                    <li><strong>Tulitoimintavaihe:</strong> BTR-82A ampuu 30mm konetykillään Karhu 1:tä (Suoja S 15 metsässä). GM heittää d20 + hyökkäys(+4) = 20. Osuma. Vahinko jalkaväkeä vastaan on 2d6, tulos 9.</li>
-                    <li><strong>Tilannevaihe:</strong>
-                        <ul>
-                            <li>Karhu 1:n TK putoaa 10 -&gt; 1. Se on nyt "Vaurioitunut".</li>
-                            <li>Karhu 1:n on tehtävä moraalitesti DC 12 (vaurioitumisesta). Pelaaja 1 heittää d20+M(+3) = 7. Epäonnistuminen. Ryhmä on "Lamautunut".</li>
-                            <li>Lamautunut MOTO B yrittää poistaa "Lamautunut"-tilan, heittää d20 + M(+2) = 14. Onnistuu. Tila poistuu.</li>
-                        </ul>
-                    </li>
-                </ul>
-                <h4>Pelin jatkaminen</h4>
-                <p>Tästä peli jatkuisi. Pelaajien olisi yritettävä selvitä vaurioituneen ja lamautuneen Karhu 1:n kanssa, vältettävä BTR-vaunun tulta, ja toivottava, että Haukka 1:n orgaaninen tulituki saapuu ajoissa tuhoamaan panssariuhan. GM puolestaan pyrkisi ajamaan päälle Karhu 2:n ja Karhu 3:n lamauttamisesta toipuneella MOTO B -ryhmällä ja hyödyntämään BTR:n tulivoimaa ennen kuin kranaatit iskevät. Blue Teamin joukkueenjohtaja (Pelaaja 1) joutuu nyt punnitsemaan, miten käyttää jäljellä olevat KP:nsä johtamiskyvyn ylläpitämiseen tilanteessa, jossa hänen oma yksikkönsä on vaikeuksissa, mutta samalla on vastattava BTR-uhan kaltaisiin uhkiin.</p>
+                    <h4>Moraali</h4>
+                    <p>Yksikön henkinen kestävyys on yhtä tärkeää kuin fyysinen. Yksikön on tehtävä <strong>Moraalitesti</strong> (d20 + Moraalibonus (M)) seuraavissa tilanteissa:</p>
+                    <ul>
+                        <li>Kun se kärsii vahinkoa ensimmäistä kertaa taistelussa (DC 10).</li>
+                        <li>Kun sen TK putoaa alle puoleen (DC 12).</li>
+                        <li>Joutuessaan epäsuoran tulen alle (DC 13).</li>
+                        <li>Nähdessään vihollisen panssarivaunun ensimmäistä kertaa lähietäisyydellä (DC 10).
+                            <ul><li>Lähietäisyys on 10cm säde</li></ul>
+                        </li>
+                        <li>Kun viereinen ystävällinen yksikkö tuhoutuu tai vetäytyy (DC 12).</li>
+                    </ul>
+
+                    <h5>Moraalitestitaulukko</h5>
+                    <table>
+                        <thead>
+                            <tr><th>Tilanne</th><th>DC</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Kärsii ensimmäistä kertaa vahinkoa</td><td>10</td></tr>
+                            <tr><td>TK putoaa alle puoleen</td><td>12</td></tr>
+                            <tr><td>Epäsuora tuli</td><td>13</td></tr>
+                            <tr><td>Näkee panssarivaunun lähietäisyydellä</td><td>10</td></tr>
+                            <tr><td>Ystäväyksikkö tuhoutuu tai vetäytyy vieressä</td><td>12</td></tr>
+                        </tbody>
+                    </table>
+                    <ul>
+                        <li>Epäonnistuminen: yksikkö on <strong>Lamautunut</strong>.</li>
+                        <li><strong>Kriittinen epäonnistuminen:</strong> Jos testin tulos (d20 + M) on <strong>vähintään 5 pistettä alle vaaditun DC-arvon</strong>, yksikkö joutuu <strong>Vetäytyy</strong>-tilaan. <em>Esimerkki: DC on 12. Jos tulos on 7 tai alle, yksikkö vetäytyy.</em></li>
+                    </ul>
+
+                    <h4>Tiedustelu ja Informaatiosota</h4>
+                    <p>Tiedon saaminen on avain voittoon. Tiedustelu on vastakkainen heitto.</p>
+                    <p>Tiedustelijan d20 + TT vs. Kohteen d20 + maaston antama suojausbonus</p>
+                    <h5>Havainnon Tasot:</h5>
+                    <ol>
+                        <li><strong>Ei Havaintoa:</strong> Vihollinen on piilossa.</li>
+                        <li><strong>Epäily:</strong> GM asettaa "?-merkin" kartalle. Tiedät, että <em>jotain</em> siellä on.</li>
+                        <li><strong>Tiedossa:</strong> Yksikön tyyppi ja summittainen sijainti tiedetään. Voidaan ampua epäsuoralla tulella.</li>
+                        <li><strong>Havaittu:</strong> Tarkka sijainti tiedossa. Voidaan ampua suoralla tulella.</li>
+                    </ol>
+                    
+                    <h4>Orgaaninen Tulituki (Yksikkö Pelilaudalla)</h4>
+                    <p>Kun tulitukea antaa pelaajan suoraan komennossa oleva, pelilaudalla sijaitseva yksikkö (kuten Kranaatinheitinryhmä), se toimii eri säännöillä kuin ulkopuolinen, yleinen tuki. Tämä korostaa komppanian oman orgaanisen tuen nopeutta ja joustavuutta.</p>
+                    <p>Pelaajan ohjaamalla tulitukiyksiköllä on seuraavat edut ja rajoitteet:</p>
+                    <ul>
+                        <li><strong>Nopea Vaste:</strong> Viive ei ole satunnainen. Tulitukipyyntöön käytetty isku saapuu aina <strong>seuraavan vuoron Tulitoimintavaiheessa</strong> (kiinteä 1 vuoron viive).</li>
+                        <li><strong>Parannettu Tarkkuus:</strong> Koska tulenjohto on tehokkaampaa yksikön sisällä, <strong>perushajonta on vain 1d4 cm</strong> (normaalin 2d4 cm sijaan).</li>
+                        <li><strong>Rajoitetut Ammukset:</strong> Yksiköllä on skenaariokohtainen määrä kranaatteja (esim. <strong>Ammukset: 10</strong>). Jokainen tulitukipyyntö kuluttaa yhden ammuksen.</li>
+                        <li><strong>Haavoittuvuus:</strong> Koska yksikkö on fyysisesti pelilaudalla, vihollinen voi tiedustella, lamauttaa ja tuhota sen vastatulella tai suoralla hyökkäyksellä. Tukiyksikön suojaaminen on osa pelaajan vastuuta.</li>
+                        <li><strong>Minimiampumaetäisyys ja 'Vaara Lähellä':</strong>
+                            <ol>
+                                <li><strong>Minimietäisyys:</strong> Kranaatinheitinryhmä ei voi ampua kohteeseen, joka on <strong>5 cm tai lähempänä</strong> heitintä itseään.</li>
+                                <li><strong>'Vaara Lähellä' (Danger Close):</strong> Kranaatinheitinryhmä ei voi normaalisti ampua, jos sen iskun vaikutusalueelle (esim. 5 cm säde) osuisi ystävällinen yksikkö. Äärimmäisessä hädässä yksikköä suoraan johtava komentaja (joukkueenjohtaja tai komppanianpäällikkö) voi antaa '<strong>Vaara Lähellä'</strong> -käskyn. Tällöin isku on mahdollinen, mutta se on erittäin riskialtis. Jokaisesta vaikutusalueella olevasta ystävällisestä yksiköstä heitetään d6-noppaa: tuloksella 1-2 oma yksikkö kärsii puolet iskun normaalista vahingosta sirpaleiden vuoksi.</li>
+                            </ol>
+                        </li>
+                    </ul>
+
+                    <h4>Maaston Vaikutus</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Maastotyyppi</th>
+                                <th>Liike</th>
+                                <th>Suojabonus (S)</th>
+                                <th>Piiloutumisbonus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Tie/Aukea</strong></td>
+                                <td>+0cm</td>
+                                <td>+0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Matala maasto (kuten pelto)</strong></td>
+                                <td>-2cm</td>
+                                <td>+2</td>
+                                <td>+2</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Metsä</strong></td>
+                                <td>50%</td>
+                                <td>+4</td>
+                                <td>+4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rakennus/Asema</strong></td>
+                                <td>-</td>
+                                <td>+6</td>
+                                <td>+6</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5>Hallintavyöhyke (Zone of Control, ZoC)</h5>
+                    <p>Jokaisella yksiköllä on näkymätön <strong>2 cm säteinen hallintavyöhyke</strong> ympärillään. Tämä vyöhyke kuvaa yksikön välitöntä vaikutusaluetta ja vaikeuttaa vihollisen liikkumista.</p>
+                    <ul>
+                        <li><strong>Liikkuminen ZoC:lle:</strong> Kun yksikkö liikutetaan vihollisen hallintavyöhykkeelle, sen liike päättyy välittömästi. Se ei voi jatkaa liikettään saman vuoron aikana.</li>
+                        <li><strong>Liikkuminen ZoC:n läpi:</strong> Yksikkö ei voi liikkua suoraan vihollisen hallintavyöhykkeen läpi. Sen on pysähdyttävä vyöhykkeelle. Irtautuakseen vyöhykkeeltä vaaditaan <strong>Irtautuminen</strong>-komento (2 KP).</li>
+                    </ul>
+
+                    <h3>Sanasto</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Lyhenne / Termi</th>
+                                <th>Selitys</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>KP (Komentopisteet)</td><td>Pelaajan komentajan kyky vaikuttaa yksiköihin. Käytetään erikoistoimintoihin.</td></tr>
+                            <tr><td>VP (Voittopisteet)</td><td>Mittaa taistelun tai kampanjan menestystä. Käytetään yksiköiden kehittämiseen ja täydennyksiin.</td></tr>
+                            <tr><td>XP (Kokemus)</td><td>Yksikön taistelukokemusta. Lisää yksikön tehokkuutta kampanjapelissä.</td></tr>
+                            <tr><td>TT (Taitotaso)</td><td>Yksikön osaaminen. Lasketaan: Koulutus + Kokemus. Käytetään heitoissa.</td></tr>
+                            <tr><td>TK (Taistelukunto)</td><td>Yksikön elinvoima. Vahingot vähentävät tätä.</td></tr>
+                            <tr><td>M (Moraali)</td><td>Moraalitestin bonus. Korkeampi tarkoittaa parempaa henkistä kestävyyttä.</td></tr>
+                            <tr><td>S (Suoja)</td><td>Vastaa "Armor Classia". Kuinka vaikea yksikkö on osua.</td></tr>
+                            <tr><td>TI (Tuli-isku)</td><td>Vahinkoarvo, jota käytetään osumien jälkeen.</td></tr>
+                            <tr><td>Orgaaninen tulituki</td><td>Pelaajan suoraan ohjaama tulitukiyksikkö pelilaudalla.</td></tr>
+                            <tr><td>Epäorgaaninen tulituki</td><td>Kartan ulkopuolinen tulituki, kuten pataljoonan tykistö.</td></tr>
+                            <tr><td>GM (Pelinjohtaja)</td><td>Toimii Red Teamin komentajana ja tuomarina.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Esimerkkipelin Kulku – Operaatio Puskutraktori</h3>
+                    <p>Tässä muokatussa esimerkkipelin kulussa "Operaatio Puskutraktori" -skenaario on laajennettu neljällä pelaajalla, joista jokainen ohjaa yhtä joukkuepelitasolla olevaa ryhmää. Joukkueenjohtajan rooli on annettu yhdelle pelaajalle (Pelaaja 1, Karhu 1), mutta koska kyseessä on "Joukkuepeli" ja kukin pelaaja toimii joukkueenjohtajana omille ryhmilleen, jokainen pelaaja saa silti vuoronsa alussa omat 3 Komentopistettä (KP).</p>
+                    <h4>6.1 Asetelma:</h4>
+                    <p><strong>Pelilauta:</strong> Metsäinen alue, keskellä pohjois-eteläsuuntainen tie. Kartan mittakaava on 1:1000, ja yksiköt ovat ryhmätasolla.</p>
+                    <h5>6.1.1 BLUE TEAM (Pelaajat): Suomalainen Jääkärijoukkue.</h5>
+                    <ul>
+                        <li>Pelaaja 1: Karhu 1 (Jääkäriryhmä). Pelaaja 1 toimii myös joukkueenjohtajana, joka koordinoi Blue Teamin toimintaa.</li>
+                        <li>Pelaaja 2: Karhu 2 (Jääkäriryhmä).</li>
+                        <li>Pelaaja 3: Karhu 3 (Tukiryhmä KK).</li>
+                        <li>Pelaaja 4: Haukka 1 (Kranaatinheitinryhmä).</li>
+                    </ul>
+                    <p>Joukot on sijoitettu puolustusasemiin kartan eteläosan metsiin. Jokainen pelaaja saa vuoron alussa 3 KP.</p>
+                    <h5>RED TEAM (GM): Venäläinen mekanisoitu tiedustelujoukkue.</h5>
+                    <p>Aloittaa yhdellä Motorisoidulla Jalkaväkiryhmällä (MOTO A) tien pohjoispäässä. Se on aluksi piilossa "? "-merkin alla.</p>
+                    <h4>Vuoro 1: Kontakti</h4>
+                    <ul>
+                        <li><strong>Komentovaihe:</strong>
+                            <ul>
+                                <li><strong>BLUE TEAM:</strong> Pelaajat (jokainen 3 KP/hlö) käyttävät 0 KP:tä ja asettuvat puolustusasemiin metsiin. Tavoitteena on väijyttää vihollinen.
+                                    <ul>
+                                        <li>Pelaaja 1 (Karhu 1, Jääkäriryhmä) valmistautuu puolustukseen.</li>
+                                        <li>Pelaaja 2 (Karhu 2, Jääkäriryhmä) valmistautuu puolustukseen.</li>
+                                        <li>Pelaaja 3 (Karhu 3, Tukiryhmä KK) valmistautuu puolustukseen.</li>
+                                        <li>Pelaaja 4 (Haukka 1, Kranaatinheitinryhmä) valmistautuu epäsuoran tulen antamiseen.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>RED TEAM:</strong> GM käyttää 1 KP lähettääkseen MOTO A -ryhmän etenemään tietä pitkin.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Liikevaihe:</strong> Red Teamin ?-merkki liikkuu 10 cm etelään tietä pitkin.</li>
+                        <li><strong>Tiedusteluvaihe:</strong> Karhu 2 (Pelaaja 2) tekee onnistuneen tiedusteluheiton (15 vs. 10). GM vaihtaa ?-merkin MOTO A -yksikönappulaksi. Yksikkö on nyt "Havaittu".</li>
+                        <li><strong>Tulitoiminta- ja Tilannevaihe:</strong> Kumpikaan osapuoli ei ammu. Vuoro päättyy.</li>
+                    </ul>
+                    <h4>Vuoro 2: Väijytys</h4>
+                    <ul>
+                        <li><strong>Komentovaihe:</strong>
+                            <ul>
+                                <li><strong>BLUE TEAM:</strong> Pelaajat päättävät iskeä.
+                                    <ul>
+                                        <li>Pelaaja 1 (Karhu 1, Jääkäriryhmä) käyttää 1 KP:n Hyökkäyskäskyyn.</li>
+                                        <li>Pelaaja 2 (Karhu 2, Jääkäriryhmä) käyttää 1 KP:n Hyökkäyskäskyyn ja 1 KP:n Tulen Keskittämiseen Karhu 1:n kanssa.</li>
+                                        <li>Pelaaja 3 (Karhu 3, Tukiryhmä KK) käyttää 2 KP:tä Lamauttava Tuli -erikoiskykyyn.</li>
+                                        <li>Pelaaja 4 (Haukka 1, Kranaatinheitinryhmä) päättää tukea hyökkäystä. Hän käyttää 1 KP:n Tulitukipyyntöön (orgaaninen), kohdistaen sen MOTO A -ryhmän viimeisimpään tunnettuun sijaintiin. Isku saapuu seuraavan vuoron (vuoro 3) Tulitoimintavaiheessa. Haukka 1 kuluttaa yhden ammuksen.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>RED TEAM:</strong> GM reagoi.
+                                    <ul>
+                                        <li>GM käyttää 1 KP:n vastatakseen tuleen Karhu 1:tä vastaan.</li>
+                                        <li>GM käyttää 2 KP:tä kutsuakseen vahvistuksia (MOTO B ja BTR-82A), jotka saapuvat vuorolla 3.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Liikevaihe:</strong> Ei merkittäviä liikkeitä Karhu 1, Karhu 2 ja Karhu 3 -ryhmiltä. Haukka 1 pysyy paikallaan valmistautuen tulitukeen.</li>
+                        <li><strong>Tiedusteluvaihe:</strong> Ei uusia tiedustelutoimia.</li>
+                        <li><strong>Tulitoimintavaihe (Ratkaistaan sääntöjen mukaisesti samanaikaisesti):</strong>
+                            <ul>
+                                <li>Karhu 3 (Tukiryhmä KK) ampuu: Lamauttava Tuli -kyky pakottaa MOTO A:n tekemään moraalitestin (DC 10). GM heittää d20 + M(+2) = 15, onnistuen. Yksikkö ei lamannu.</li>
+                                <li>Karhu 1 ja Karhu 2 (Jääkäriryhmät) ampuvat: Koska tuli on keskitetty, molemmat saavat +1 bonuksen hyökkäysheittoihinsa. MOTO A:n Suoja (S) on 10.</li>
+                                <li>Karhu 1: d20(10) + TT(+3) + 1 (keskitys) + 3 (Jalkaväkiaseistus) = 17. Osuma. Vahinko (d6) on 4.</li>
+                                <li>Karhu 2: d20(8) + TT(+3) + 1 (keskitys) + 3 (Jalkaväkiaseistus) = 15. Osuma. Vahinko (d6) on 3.</li>
+                                <li>RED TEAM (MOTO A) ampuu: Vaikka MOTO A kärsii vahinkoa, se ehtii ampua tällä vuorolla. Se ampuu Karhu 1:tä, jonka Suoja (S) metsässä on 11 (perus) + 4 (metsä) = 15.</li>
+                                <li>GM heittää d20(3) + TT(+2) + 3 (Jalkaväkiaseistus) = 8. Ei osumaa.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tilannevaihe:</strong>
+                            <ul>
+                                <li>MOTO A on ottanut yhteensä 7 vahinkoa. Sen TK putoaa 10 -&gt; 3.</li>
+                                <li>Koska TK (3) on alle puolet maksimista (5), yksikkö on nyt "Vaurioitunut". Sen Liike ja Tuli-isku puolittuvat tästä eteenpäin.</li>
+                                <li>MOTO A:n on tehtävä Moraalitesti ensimmäisestä kärsimästään vahingosta (DC 10). Sen ei kuitenkaan tarvitse tehdä testiä "Vaurioituneeksi" joutumisesta "Peräänantamaton"-erikoiskykynsä ansiosta. GM heittää testin (DC 10): d20 + M(+2) = 3. Epäonnistuu pahasti. Koska tulos on alle 5, yksikkö joutuu "Vetäytyy"-tilaan.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h4>Vuoro 3: Vahvistukset ja vetäytyminen</h4>
+                    <ul>
+                        <li><strong>Komentovaihe:</strong>
+                            <ul>
+                                <li><strong>BLUE TEAM:</strong> Pelaajat näkevät vihollisen vetäytyvän ja päättävät painostaa.
+                                    <ul>
+                                        <li>Pelaaja 1 (Karhu 1, Jääkäriryhmä) käyttää 1 KP ja hyökkää vetäytyvää MOTO A:ta vastaan.</li>
+                                        <li>Pelaaja 2 (Karhu 2, Jääkäriryhmä) päättää säästää KP:t ja siirtyy parempaan asemaan ilman kustannuksia.</li>
+                                        <li>Pelaaja 3 (Karhu 3, Tukiryhmä KK) käyttää 0 KP ja pysyy asemissaan.</li>
+                                        <li>Pelaaja 4 (Haukka 1, Kranaatinheitinryhmä) valmistautuu uuteen tulitukipyyntöön seuraavalla vuorolla tai seuraamaan tulenjohtoa (käyttämättömät KP:t haihtuvat).</li>
+                                    </ul>
+                                </li>
+                                <li><strong>RED TEAM:</strong> GM:n vetäytyvä yksikkö ei voi saada käskyjä. GM tuo kartalle aiemmin kutsutut vahvistukset: toinen Motorisoitu Jalkaväkiryhmä (MOTO B) ja sitä kuljettava BTR-82A-vaunu. Ne ilmestyvät kartan pohjoisreunaan.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Liikevaihe:</strong> MOTO A, ollessaan "Vetäytyy"-tilassa, liikkuu hallitsemattomasti 10 cm pohjoiseen päin (lähin suoja on poistumistie). Karhu 2 siirtyy uuteen asemaan. Uudet Red Teamin yksiköt (MOTO B ja BTR-82A) liikkuvat 15 cm etelään tietä pitkin.</li>
+                        <li><strong>Tiedusteluvaihe:</strong> Uudet Red Teamin yksiköt ovat avoimella tiellä ja siten automaattisesti "Havaittu".</li>
+                        <li><strong>Tulitoimintavaihe:</strong>
+                            <ul>
+                                <li>Karhu 1 (Jääkäriryhmä) ampuu vetäytyvää MOTO A:ta (Suoja S 10). Heitto d20+TT(+3) = 19. Osuma. Vahinko (d6) on 5.</li>
+                                <li>Haukka 1:n (Krh-ryhmä) tulituki saapuu: Haukka 1:n Vuoro 2:lla pyytämä orgaaninen tulituki saapuu nyt. Haukka 1:n tulenjohtaja (Pelaaja 4) tarkistaa hajontanopan (1d4 cm). Oletetaan, että isku osuu uusia vahvistuksia (MOTO B ja BTR-82A) lähelle ja vaikutusalue (5 cm säde) osuu MOTO B:hen.</li>
+                                <li>MOTO B kärsii 1d8 vahinkoa (esim. 5 vahinkoa).</li>
+                                <li>MOTO B joutuu tekemään Moraalitestin (DC 13), koska joutuu epäsuoran tulen alle. GM heittää d20 + M(+2) = esim. 10. Epäonnistuu. MOTO B on "Lamautunut".</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tilannevaihe:</strong>
+                            <ul>
+                                <li>MOTO A:n TK putoaa 3 -&gt; -2. Yksikkö tuhoutuu. Pelaajat saavat +1 VP.</li>
+                                <li>MOTO B:n TK putoaa (esim. 10 -&gt; 5). Yksikkö on nyt "Vaurioitunut" ja "Lamautunut". Sen Liike ja Tuli-isku puolittuvat.</li>
+                                <li>Vuoro päättyy. Blue Team on voittanut ensimmäisen kohtaamisen, mutta uusi, vahvempi uhka on jo saapunut. Krh-tuli on kuitenkin hidastanut sitä.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h4>Vuoro 4: Panssariuhka</h4>
+                    <ul>
+                        <li><strong>Komentovaihe:</strong>
+                            <ul>
+                                <li><strong>BLUE TEAM:</strong> BTR-82A:n saapuminen muuttaa tilanteen. Tavalliset rynnäkkökiväärit eivät tehoa siihen. Pelaajien on pakko reagoida.
+                                    <ul>
+                                        <li>Pelaaja 1 (Karhu 1, Jääkäriryhmä) voi harkita KP:n käyttöä Moraalin Kohotukseen Lamautetulle Karhu 2:lle, tai jatkaa painostusta.</li>
+                                        <li>Pelaaja 2 (Karhu 2, Jääkäriryhmä) on lamautunut eikä voi käyttää toimintoja.</li>
+                                        <li>Pelaaja 3 (Karhu 3, Tukiryhmä KK) voi jatkaa lamauttavaa tulta uusille kohteille tai tukea Karhu 1:n toimintaa.</li>
+                                        <li>Pelaaja 4 (Haukka 1, Kranaatinheitinryhmä), jonka yksikkö on orgaaninen ja käyttää kohdan 4.5 sääntöjä, päättää ampua BTR-82A:ta vastaan. Hän käyttää 1 Komentopisteen (omasta KP-poolistaan) ja kuluttaa yhden ammuksen Kranaatinheitinryhmän kyvystä 'Pelaajan Ohjaama Tuli (Orgaaninen)'. Hän nimeää koordinaatit BTR-82A:n sijainnin lähelle. Isku saapuu seuraavan vuoron (vuoro 5) Tulitoimintavaiheessa. Haukka 1:lla on nyt 8 ammusta jäljellä.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>RED TEAM:</strong> GM haluaa hyödyntää tulivoimaansa.
+                                    <ul>
+                                        <li>1 KP: BTR-82A:lle Hyökkäyskäsky Karhu 1:tä vastaan.</li>
+                                        <li>MOTO B -ryhmä on lamautunut, joten se ei voi toimia.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Liikevaihe:</strong> BTR-82A liikkuu hieman eteenpäin saadakseen paremman ampumalinjan. Lamautunut MOTO B ei voi liikkua.</li>
+                        <li><strong>Tiedusteluvaihe:</strong> Ei uusia tiedustelutoimia.</li>
+                        <li><strong>Tulitoimintavaihe:</strong> BTR-82A ampuu 30mm konetykillään Karhu 1:tä (Suoja S 15 metsässä). GM heittää d20 + hyökkäys(+4) = 20. Osuma. Vahinko jalkaväkeä vastaan on 2d6, tulos 9.</li>
+                        <li><strong>Tilannevaihe:</strong>
+                            <ul>
+                                <li>Karhu 1:n TK putoaa 10 -&gt; 1. Se on nyt "Vaurioitunut".</li>
+                                <li>Karhu 1:n on tehtävä moraalitesti DC 12 (vaurioitumisesta). Pelaaja 1 heittää d20+M(+3) = 7. Epäonnistuminen. Ryhmä on "Lamautunut".</li>
+                                <li>Lamautunut MOTO B yrittää poistaa "Lamautunut"-tilan, heittää d20 + M(+2) = 14. Onnistuu. Tila poistuu.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h4>Pelin jatkaminen</h4>
+                    <p>Tästä peli jatkuisi. Pelaajien olisi yritettävä selvitä vaurioituneen ja lamautuneen Karhu 1:n kanssa, vältettävä BTR-vaunun tulta, ja toivottava, että Haukka 1:n orgaaninen tulituki saapuu ajoissa tuhoamaan panssariuhan. GM puolestaan pyrkisi ajamaan päälle Karhu 2:n ja Karhu 3:n lamauttamisesta toipuneella MOTO B -ryhmällä ja hyödyntämään BTR:n tulivoimaa ennen kuin kranaatit iskevät. Blue Teamin joukkueenjohtaja (Pelaaja 1) joutuu nyt punnitsemaan, miten käyttää jäljellä olevat KP:nsä johtamiskyvyn ylläpitämiseen tilanteessa, jossa hänen oma yksikkönsä on vaikeuksissa, mutta samalla on vastattava BTR-uhan kaltaisiin uhkiin.</p>
             </section>
 
             <section id="komppania-pataljoona-peli">
