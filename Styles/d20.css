@@ -1,0 +1,83 @@
+/* Chosen Palette: Warm Neutral Harmony */
+        body {
+            background-color: #F5F5F4; /* stone-100 */
+            color: #1C1917; /* stone-900 */
+            font-family: 'Inter', sans-serif;
+        }
+        .prose {
+            color: #44403C; /* stone-700 */
+        }
+        .prose h1, .prose h2, .prose h3, .prose h4 {
+            color: #A855F7; /* purple-500 */
+            border-bottom: 2px solid #E5E7EB; /* gray-200 */
+            padding-bottom: 0.3em;
+        }
+        .prose h1 { font-size: 2.25rem; }
+        .prose h2 { font-size: 1.875rem; margin-top: 2em; }
+        .prose h3 { font-size: 1.5rem; margin-top: 1.8em; border-bottom-style: dashed; }
+        .prose h4 { font-size: 1.2rem; margin-top: 1.5em; border-bottom: 1px solid #E5E7EB; }
+        .prose a { color: #6D28D9; /* purple-700 */ }
+        .prose strong { color: #44403C; } /* stone-700 */
+        .prose blockquote {
+            border-left-color: #A855F7; /* purple-500 */
+            background-color: #FAFAF9; /* stone-50 */
+            color: #57534E; /* stone-600 */
+        }
+        .prose table {
+             width: 100%;
+             margin-top: 1.5em;
+             margin-bottom: 1.5em;
+        }
+        .prose table thead {
+            background-color: #581C87; /* purple-900 */
+            color: #F5F5F4; /* stone-100 */
+        }
+        .prose th, .prose td {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #E5E7EB; /* gray-200 */
+        }
+        .prose table tbody tr:nth-child(even) {
+            background-color: #FAFAF9; /* stone-50 */
+        }
+        .unit-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E7E5E4; /* stone-200 */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease-in-out;
+            margin-top: 1.5rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .unit-card h4 {
+            background-color: #F3E8FF; /* purple-100 */
+            color: #581C87; /* purple-900 */
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #E5E7EB;
+            margin-top: 0;
+            border-bottom-color: #D8B4FE; /* purple-300 */
+        }
+        .unit-card-content {
+            padding: 1rem;
+        }
+        .unit-card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .unit-card ul li {
+            padding-bottom: 0.5rem;
+        }
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+        .nav-link {
+            transition: all 0.2s;
+            border-left: 4px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            background-color: #F3E8FF; /* purple-100 */
+            border-left-color: #A855F7; /* purple-500 */
+            color: #581C87; /* purple-900 */
+        }
