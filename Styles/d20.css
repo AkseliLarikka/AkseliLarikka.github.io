@@ -81,3 +81,37 @@
             border-left-color: #A855F7; /* purple-500 */
             color: #581C87; /* purple-900 */
         }
+        .lisenssi-container { /* Asettaa säiliön käyttämään Flexbox-asettelua */
+            align-items: center; /* Tasaa tekstin ja kuvat pystysuunnassa keskelle */
+            flex-wrap: wrap; /* Sallii elementtien rivittyä, jos tila loppuu (esim. mobiililaitteilla) */
+            gap: 0.5rem; /* Lisää pienen välin teksti- ja kuvaosioiden väliin */
+            justify-content: center; /* Keskittää sisällön, jos haluat */
+            padding: 1rem 0rem; /* Lisää hieman ilmavuutta reunohin */
+            border-top: 1px solid #e5e7eb; /* Esimerkki: lisää siistin yläreunan */
+        }
+        .lisenssi-kuvakkeet {
+            display: flex; /* Varmistaa, että myös kuvakkeet ovat joustavassa säiliössä */
+            align-items: center;
+            gap: 0.25rem; /* Lisää pienen välin kuvakkeiden väliin */
+        }
+            /* Määritellään kuvakkeille kiinteä korkeus, jotta ne ovat samankokoisia */
+        .lisenssi-kuvakkeet img {
+            height: 1.25rem; 
+        }
+        .yhteystiedot-lista {
+            list-style-type: none; /* Poistaa listapallerot */
+            padding: 0;
+        }
+        .yhteystiedot-lista li {
+        margin-bottom: 0.5rem; /* Lisää pystysuuntaista väliä linkkien väliin */
+        }
+        .yhteystiedot-lista a {
+        display: inline-flex; /* Asettaa kuvakkeen ja tekstin vierekkäin */
+        align-items: center;  /* Tasaa kuvakkeen ja tekstin pystysuunnassa */
+        gap: 0.5rem;          /* Lisää välin kuvakkeen ja tekstin väliin */
+        text-decoration: none;
+        color: #3b82f6; /* Esimerkki linkin väriksi */
+        }
+        .yhteystiedot-lista a:hover {
+        text-decoration: underline; /* Korostaa linkin, kun hiiri on sen päällä */
+        }
