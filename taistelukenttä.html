@@ -372,6 +372,22 @@
                             vaurioitumiselle, jotka korvaavat tämän yleisen säännön osittain
                             tai kokonaan.
                         </li>
+                        <li>
+                            <strong>Piiloutunut:</strong> Tämä tila kuvaa yksikköä, joka on aktiivisesti naamioitunut ja
+                            välttelee havaituksi tulemista.
+                            <ul>
+                                <li><strong>Vaikutus:</strong> Piiloutunut-tilassa olevaa yksikköä ei voi valita suoran
+                                    tai epäsuoran tulen kohteeksi, ellei hyökkääjä ole 5 cm tai lähempänä sitä. Tila
+                                    estää myös joutumasta aluevaikutteisten kykyjen, kuten Lamauttava tuli, kohteeksi.
+                                </li>
+                                <li><strong>Tilaan siirtyminen:</strong> Yksikkö voi siirtyä tähän tilaan ainoastaan
+                                    käyttämällä kykyä, joka nimenomaisesti myöntää "Piiloutunut"-tilan.</li>
+                                <li><strong>Tilan poistuminen:</strong> Tila poistuu välittömästi, jos yksikkö liikkuu,
+                                    hyökkää tai käyttää muuta kuin piiloutumiseen liittyvää toimintoa, TAI jos
+                                    vihollisyksikkö liikkuu 5 cm etäisyydelle siitä. Yksikkökortti voi määrittää
+                                    poikkeuksia tähän sääntöön.</li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <h3>Sääntö&shy;mekaniikat</h3>
@@ -412,17 +428,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            Tyypillisiä syitä:
+                        <li><strong>Etu (Advantage) myönnetään seuraavissa tilanteissa:</strong>
                             <ul>
-                                <li>
-                                    <strong>Etu:</strong> Hyökkäys kylkeen/selkään, kohde on
-                                    lamautunut, kohde on täysin avoimella.
-                                </li>
-                                <li>
-                                    <strong>Haitta:</strong> Kohde on kaivautunut, erittäin huono
-                                    näkyvyys.
-                                </li>
+                                <li>Hyökkäys kohdistuu yksikön sivustaan tai selustaan.</li>
+                                <li>Kohde on <em>Lamautunut</em>-tilassa.</li>
+                                <li>Kohde on täysin avoimella maastolla ilman minkäänlaista suojaa.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Haitta (Disadvantage) myönnetään seuraavissa tilanteissa:</strong>
+                            <ul>
+                                <li>Kohde on linnoittautunut tai kaivautunut asemiin.</li>
+                                <li>Näkyvyys kohteeseen on erittäin huono (esim. rankkasade, savu).</li>
                             </ul>
                         </li>
                         <li>
@@ -503,6 +519,20 @@
                         </li>
                     </ul>
 
+                    <h4>Ansat ja Sulutteet</h4>
+                    <p>Tietyt yksiköt voivat asettaa taistelukentälle ansoja, kuten miinakenttiä. Näihin sovelletaan
+                        seuraavia yleissääntöjä.</p>
+                    <ul>
+                        <li><strong>Asettaminen:</strong> Ansan asettaminen vaatii yksikön kyvyn kuvaaman toiminnon.
+                            Pelinjohtaja merkitsee ansan tarkan sijainnin omaan karttaansa. Pelaajille aluetta ei
+                            paljasteta.</li>
+                        <li><strong>Laukeaminen:</strong> Ansa laukeaa välittömästi, kun vihollisyksikkö liikkuu sen
+                            vaikutusalueelle. Yksikön liike päättyy ja se kärsii ansan vaikutukset.</li>
+                        <li><strong>Havaitseminen:</strong> Yksikkö, jonka TT on +3 tai korkeampi, voi yrittää havaita
+                            ansoja ennen liikkumistaan alueelle. Tämä vaatii onnistuneen TT-testin (DC 13).
+                            Onnistuessaan Pelinjohtaja paljastaa ansan sijainnin.</li>
+                    </ul>
+
                     <h4>Tiedustelu ja Informaatiosota</h4>
                     <p>
                         Tiedon saaminen on avain voittoon. Tiedustelu on vastakkainen
@@ -510,6 +540,13 @@
                     </p>
                     <p>
                         Tiedustelijan d20 + TT vs. Kohteen d20 + maaston antama suojausbonus
+                    </p>
+                    <p>
+                        <strong>Huom:</strong> Normaali vastakkainen tiedusteluheitto koskee yksiköitä, jotka ovat
+                        maaston suojassa. <em>Piiloutunut</em>-tila on kuitenkin voimakkaampi erikoiskyky, joka estää
+                        havaitsemisen kauempaa kokonaan. Piiloutunutta yksikköä ei voi paljastaa tiedusteluheitolla,
+                        vaan vihollisen on liikuttava sen lähelle (yleensä 5 cm päähän) paljastaakseen sen
+                        automaattisesti.
                     </p>
                     <h5>Havainnon Tasot:</h5>
                     <ol>
@@ -791,6 +828,16 @@
                             <tr>
                                 <td>GM (Pelinjohtaja)</td>
                                 <td>Toimii Red Teamin komentajana ja tuomarina.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Piiloutunut</strong></td>
+                                <td>Erityinen tilaefekti, joka estää yksikön joutumasta kohteeksi, ellei vihollinen ole
+                                    hyvin lähellä. Vaatii yleensä erikoiskyvyn aktivoinnin.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ansat ja Sulutteet</strong></td>
+                                <td>Pelaajien salaa asettamia vaaroja, kuten miinakenttiä, jotka laukeavat vihollisen
+                                    liikkeestä.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1910,7 +1957,7 @@
                                             <strong>Jalkaväkiaseistus:</strong> +3 (Hyökkäys), d6
                                             (Vahinko)
                                         </li>
-                                        <li><strong>Parrot Anafi USA:</strong> +3 (Tiedustelu)</li>
+                                        <li><strong>Tiedustelulennokki:</strong> +3 (Tiedustelu)</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -2001,13 +2048,13 @@
                                     <strong>Varustus:</strong>
                                     <ul>
                                         <li>
-                                            <strong>PST-ase (esim. NLAW/APILAS):</strong> +2
+                                            <strong>PST-ase:</strong> +2
                                             (Hyökkäys), 2d12 (PST-Vahinko, Yksikkö voi ampua
                                             PST-aseellaan kerran. Uudelleenlataus vaatii
                                             Varustautuminen-toiminnon).
                                         </li>
                                         <li><strong>Ammukset:</strong> 3 kpl</li>
-                                        <li><strong>Phantom IRXR:</strong> +2 (Tiedustelu)</li>
+                                        <li><strong>Lämpökamera:</strong> +2 (Tiedustelu)</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -2061,6 +2108,87 @@
                                             <strong>Lähietäisyydellä (alle 10cm) jalkaväkiaseistus:</strong>
                                             +3 (Hyökkäys), d6 (Vahinko)
                                         </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="unit-card">
+                        <h4>SISSI-JÄÄKÄRIT</h4>
+                        <div class="unit-card-content">
+                            <ul>
+                                <li><strong>Tyyppi:</strong> Jalkaväki (Sissi, 7 sotilasta)</li>
+                                <li><strong>TK:</strong> 8</li>
+                                <li><strong>M:</strong> +3</li>
+                                <li><strong>S:</strong> 12</li>
+                                <li><strong>Liike:</strong> 12 cm</li>
+                                <li><strong>TT:</strong> +4</li>
+                                <li><strong>Kyvyt:</strong>
+                                    <ul>
+                                        <li><strong>Koukkaus:</strong> Hyökätessään vihollisen sivustaan tai selustaan,
+                                            tämä yksikkö saa Edun (Advantage) hyökkäysheittoonsa.</li>
+                                        <li><strong>Metsänpeitto (1 KP):</strong> Yksikkö voi käyttää koko vuoronsa ja
+                                            kuluttaa 1 KP:n asettuakseen asemiin metsässä tai tiheässä suojassa. Se
+                                            muuttuu "Piiloutunut"-tilaan. Yksikkö paljastuu, jos se liikkuu tai hyökkää.
+                                        </li>
+                                        <li><strong>Murtosulute (2 KP):</strong> Taistelupioneeri voi käyttää koko
+                                            vuoronsa asettaakseen 5cm leveän miinakentän. Kentän läpi liikkuva
+                                            vihollisyksikkö tekee testin: epäonnistuessaan se kärsii d6 vahinkoa ja sen
+                                            liike pysähtyy. Vihollisyksikkö, jonka TT on +3 tai korkeampi, voi yrittää
+                                            havaita sulutteen onnistuneella TT-testillä (DC 13) ennen liikkumistaan.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><strong>Varustus:</strong>
+                                    <ul>
+                                        <li><strong>Jääkäriaseistus:</strong> +3 (Hyökkäys), d6 (Vahinko)</li>
+                                        <li><strong>Konekivääri:</strong> +4 (Hyökkäys), d8 (Vahinko)</li>
+                                        <li><strong>Kevyt PST-ase:</strong> +2 (Hyökkäys), 2d12 (PST-Vahinko). Ammukset:
+                                            1 kpl.</li>
+                                        <li><strong>Tarkkuuskivääri:</strong> +5 (Hyökkäys), d10 (Vahinko). Osuessaan
+                                            hyökkääjä voi valita yhden kohteen erikoiskyvyn; kohde ei voi käyttää tätä
+                                            kykyä seuraavan vuoronsa aikana. Jos kohteella ei ole erikoiskykyjä, sen on
+                                            tehtävä Moraalitesti (DC 13).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="unit-card">
+                        <h4>ERIKOISJÄÄKÄRI-OSASTO</h4>
+                        <div class="unit-card-content">
+                            <ul>
+                                <li><strong>Tyyppi:</strong> Jalkaväki (Erikoisjoukko, 5 sotilasta)</li>
+                                <li><strong>TK:</strong> 10</li>
+                                <li><strong>M:</strong> +5</li>
+                                <li><strong>S:</strong> 13</li>
+                                <li><strong>Liike:</strong> 12 cm</li>
+                                <li><strong>TT:</strong> +5</li>
+                                <li><strong>Kyvyt:</strong>
+                                    <ul>
+                                        <li><strong>Toimintakyky (1 KP):</strong> Jos yksikkö epäonnistuu
+                                            Moraalitestissä, pelaaja voi välittömästi kuluttaa 1 KP:n, jolloin yksikkö
+                                            läpäisee testin automaattisesti.</li>
+                                        <li><strong>Iskuosasto (3 KP):</strong> Yhden vuoron ajan yksikkö saa +2
+                                            Hyökkäykseen ja sen iskut jättävät huomiotta kohteen suojan (rakennus,
+                                            juoksuhauta) antaman puolustusbonuksen.</li>
+                                        <li><strong>Tulenjohto (4 KP):</strong> JTAC-asiantuntija voi merkitä yhden
+                                            kohteen näkökentässä. Hänen on pysyttävä paikallaan koko vuoron ajan ja
+                                            säilytettävä näköyhteys maaliin. Seuraavan vuoron alussa kohteeseen iskee
+                                            kartan ulkopuolinen tarkka isku (2d12 vahinkoa 10 cm säteellä, ei hajontaa).
+                                            Voi käyttää kerran pelissä.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Varustus:</strong>
+                                    <ul>
+                                        <li><strong>Erikoisjoukkojen rynnäkkökivääri:</strong> +5 (Hyökkäys), d8
+                                            (Vahinko)</li>
+                                        <li><strong>Raskas tarkkuuskivääri:</strong> +6 (Hyökkäys), d12 (Vahinko).
+                                            Osuessaan hyökkääjä voi valita yhden kohteen erikoiskyvyn; kohde ei voi
+                                            käyttää tätä kykyä seuraavan vuoronsa aikana. Jos kohteella ei ole
+                                            erikoiskykyjä, sen on tehtävä Moraalitesti (DC 14).</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -2319,7 +2447,7 @@
                         <h4>TIEDUSTELU&shy;ERIKOISRYHMÄ</h4>
                         <div class="unit-card-content">
                             <ul>
-                                <li><strong>Tyyppi:</strong> Jalkaväki (9 sotilasta)</li>
+                                <li><strong>Tyyppi:</strong> Jalkaväki (Tiedustelu, 9 sotilasta)</li>
                                 <li><strong>TK:</strong> 10</li>
                                 <li><strong>M:</strong> +2</li>
                                 <li><strong>S:</strong> 10</li>
@@ -2329,23 +2457,12 @@
                                     <strong>Kyvyt:</strong>
                                     <ul>
                                         <li>
-                                            <strong>Tehostettu Tiedustelu:</strong> Tämä erikoisryhmä
-                                            saa +2 bonuksen Taitotasoonsa (TT) tehdessään
-                                            tiedusteluheittoja. Yksikön kokonaisbonus tiedusteluun on
-                                            siis +4. Sen normaali Taitotaso taistelussa säilyy
-                                            muuttumattomana (+2).
+                                            <strong>Tehostettu Tiedustelu:</strong> Yksikkö saa +2 bonuksen tehdessään
+                                            tiedusteluheittoja (kokonaisbonus tiedusteluun +4).
                                         </li>
                                         <li>
-                                            <strong>Peräänantamaton:</strong> Yksikkö ei tee
-                                            ylimääräistä Moraalitestiä, kun se joutuu
-                                            "Vaurioituneeksi", mutta liike ja tuli-isku puolittuvat
-                                            silti.
-                                        </li>
-                                        <li>
-                                            <strong>Aaltohyökkäys (0 KP):</strong> Jos vähintään 3
-                                            Motorisoitua Jalkaväkiryhmää hyökkää samaan kohteeseen, ne
-                                            saavat +1 Moraaliin seuraavalla vuorolla. Tämä kyky on
-                                            passiivinen eikä vaadi Komentopisteiden käyttöä.
+                                            <strong>Peräänantamaton:</strong> Yksikkö ei tee ylimääräistä Moraalitestiä
+                                            joutuessaan "Vaurioitunut"-tilaan.
                                         </li>
                                     </ul>
                                 </li>
@@ -2353,14 +2470,95 @@
                                     <strong>Varustus:</strong>
                                     <ul>
                                         <li>
-                                            <strong>Jalkaväkiaseistus:</strong> +2 (Hyökkäys), d6
-                                            (Vahinko)
+                                            <strong>Jalkaväkiaseistus:</strong> +2 (Hyökkäys), d6 (Vahinko).
+                                        </li>
+                                        <li>
+                                            <strong>Tarkkuuskivääri:</strong> +3 (Hyökkäys), d10 (Vahinko). Osuessaan
+                                            hyökkääjä voi valita yhden kohteen erikoiskyvyn; kohde ei voi käyttää tätä
+                                            kykyä seuraavan vuoronsa aikana. Jos kohteella ei ole erikoiskykyjä, sen on
+                                            tehtävä Moraalitesti (DC 13).
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
+
+                    <div class="unit-card">
+                        <h4>SHTURMOVAYA GRUPPA (RYNNÄKKÖRYHMÄ)</h4>
+                        <div class="unit-card-content">
+                            <ul>
+                                <li><strong>Tyyppi:</strong> Jalkaväki (Rynnäkköryhmä, 9 sotilasta)</li>
+                                <li><strong>TK:</strong> 12</li>
+                                <li><strong>M:</strong> +2</li>
+                                <li><strong>S:</strong> 10</li>
+                                <li><strong>Liike:</strong> 6 cm</li>
+                                <li><strong>TT:</strong> +1</li>
+                                <li><strong>Kyvyt:</strong>
+                                    <ul>
+                                        <li><strong>Tiazholaya Bronya (Raskas panssari):</strong> Yksikkö vähentää 1
+                                            pisteen kaikesta jalkaväkiaseiden aiheuttamasta vahingosta (minimivahinko
+                                            1).</li>
+                                        <li><strong>Ochishcheniye (Puhdistus) (4 KP):</strong> Valitse yksi rakennus tai
+                                            juoksuhauta-asema 20 cm etäisyydellä. Kaikki vihollisen jalkaväkiyksiköt
+                                            kohteessa kärsivät 2d8 vahinkoa ja tekevät Moraalitestin (DC 15) Haitalla
+                                            (Disadvantage). Käytettyään kykyä yksikkö ei voi liikkua tai hyökätä
+                                            seuraavalla vuorollaan ("Uudelleenjärjestäytyminen"). Voi käyttää kerran
+                                            pelissä.</li>
+                                        <li><strong>Ognennyy Val (Tulimuuri) (2 KP):</strong> Valitse 5x5 cm alue.
+                                            Alueella olevat tai sinne liikkuvat vihollisyksiköt kärsivät -2 Hyökkäykseen
+                                            ja niiden on tehtävä Moraalitesti (DC 10).</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Varustus:</strong>
+                                    <ul>
+                                        <li><strong>Rynnäkköaseistus:</strong> +3 (Hyökkäys), d8 (Vahinko)</li>
+                                        <li><strong>Termobaarinen raketinheitin:</strong> +2 (Hyökkäys), 2d8 (Vahinko,
+                                            jättää huomiotta suojan, +2 vahinkoa rakennuksissa olevia yksiköitä
+                                            vastaan). Ammukset: 4 kpl.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="unit-card">
+                        <h4>SPETSNAZ GRU:N DIVERSIORYHMÄ</h4>
+                        <div class="unit-card-content">
+                            <ul>
+                                <li><strong>Tyyppi:</strong> Jalkaväki (Erikoisjoukko, 6 sotilasta)</li>
+                                <li><strong>TK:</strong> 7</li>
+                                <li><strong>M:</strong> +4</li>
+                                <li><strong>S:</strong> 12</li>
+                                <li><strong>Liike:</strong> 12 cm</li>
+                                <li><strong>TT:</strong> +4</li>
+                                <li><strong>Kyvyt:</strong>
+                                    <ul>
+                                        <li><strong>Maskirovka (Naamiointi/Petos):</strong> Pelin alussa tämän yksikön
+                                            voi sijoittaa minne tahansa pelilaudalla, vähintään 30 cm etäisyydelle
+                                            vihollisyksiköistä. Yksikkö on "Piiloutunut"-tilassa.</li>
+                                        <li><strong>Likvidatsiya (Likvidointi) (3 KP):</strong> Yksi kohdennettu
+                                            hyökkäys Johtohenkilö-tyypin yksikköä vastaan. Osuessaan hyökkäys tekee 2d12
+                                            vahinkoa, jota ei voi vähentää millään tavalla. Jos hyökkäys epäonnistuu,
+                                            Spetsnaz-yksikön sijainti paljastuu välittömästi.</li>
+                                        <li><strong>Sabotazh (Sabotaasi) (2 KP):</strong> Yksikkö voi käyttää koko
+                                            vuoronsa asettaakseen räjähteitä rakenteeseen tai ajoneuvoon, jonka vieressä
+                                            se on. Yksikön on pysyttävä "Piiloutunut"-tilassa koko vuoron. Seuraavan
+                                            vuoron alussa kohde kärsii 3d12 vahinkoa. Jos yksikkö paljastuu
+                                            asennusvuoron aikana, operaatio epäonnistuu.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Varustus:</strong>
+                                    <ul>
+                                        <li><strong>Vaimennettu erikoiskivääri:</strong> +4 (Hyökkäys), d10 (Vahinko).
+                                            Yksikön ampuminen ei poista sen "Piiloutunut"-tilaa, ellei kohde ole 15 cm
+                                            etäisyydellä.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </section>
 
                 <section id="skenaariot">
@@ -2403,6 +2601,12 @@
                             miinakentät tai rajalliset ampumatarvikkeet.
                         </li>
                     </ol>
+
+                    <p>
+                        <strong>Huom:</strong> Vaikka skenaariot määrittävät yleiset ryhmitysalueet, jotkin
+                        erikoisyksiköt (kuten <em>Spetsnaz GRU</em>) voivat omilla kyvyillään ohittaa nämä rajoitukset.
+                        Näiden yksiköiden erityiset sijoittumissäännöt on kuvattu niiden omilla yksikkökorteilla.
+                    </p>
 
                     <h3>
                         Yleinen Asetelma: TKd20 Neljälle Pelaajalle ja Pelinjohtajalle (GM)
@@ -2501,645 +2705,645 @@
 
                     <h2>Skenaarioesimerkit</h2>
 
-                        <article>
-                            <h3>Operaatio Teräsvalli (Puolustus / Viivytys)</h3>
+                    <article>
+                        <h3>Operaatio Teräsvalli (Puolustus / Viivytys)</h3>
 
-                            <h4>Tilannekuvaus ja Tausta</h4>
-                            <p>
-                                Vihollisen (Red Team) mekanisoitu pataljoona etenee vääjäämättä kohti Tamperetta. Blue
-                                Teamin Jääkärikomppania on saanut kriittisen tehtävän: pystyttää puolustusasema
-                                strategisesti tärkeään laaksoon ja hidastaa vihollisen kärkijoukkoa hinnalla millä
-                                hyvänsä.
-                            </p>
-                            <p>
-                                Tehtävänä ei ole saavuttaa ratkaisevaa voittoa, vaan toteuttaa klassinen
-                                viivytystaistelu. Tavoitteena on aiheuttaa vihollisen panssaroidulle kärkiosastolle
-                                mahdollisimman paljon tappioita ja viivettä, jotta pääpuolustuslinjalle saadaan aikaa
-                                valmistautua. Taistelukenttä on metsäinen laakso, jonka läpi kulkeva päätie on
-                                vihollisen todennäköisin etenemisreitti. Maasto tarjoaa erinomaiset mahdollisuudet
-                                väijytyksiin ja syvään puolustukseen.
-                            </p>
+                        <h4>Tilannekuvaus ja Tausta</h4>
+                        <p>
+                            Vihollisen (Red Team) mekanisoitu pataljoona etenee vääjäämättä kohti Tamperetta. Blue
+                            Teamin Jääkärikomppania on saanut kriittisen tehtävän: pystyttää puolustusasema
+                            strategisesti tärkeään laaksoon ja hidastaa vihollisen kärkijoukkoa hinnalla millä
+                            hyvänsä.
+                        </p>
+                        <p>
+                            Tehtävänä ei ole saavuttaa ratkaisevaa voittoa, vaan toteuttaa klassinen
+                            viivytystaistelu. Tavoitteena on aiheuttaa vihollisen panssaroidulle kärkiosastolle
+                            mahdollisimman paljon tappioita ja viivettä, jotta pääpuolustuslinjalle saadaan aikaa
+                            valmistautua. Taistelukenttä on metsäinen laakso, jonka läpi kulkeva päätie on
+                            vihollisen todennäköisin etenemisreitti. Maasto tarjoaa erinomaiset mahdollisuudet
+                            väijytyksiin ja syvään puolustukseen.
+                        </p>
 
-                            <h4>Taistelu&shy;osapuolet (Order of Battle)</h4>
-                            <ul>
-                                <li>
-                                    <strong>Blue Team (Pelaajat): Suomalainen Jääkärikomppania</strong>
-                                    <ul>
-                                        <li>
-                                            <strong>Johtodoktriini:</strong> Laatu, kurinalainen puolustus ja maaston
-                                            tehokas hyödyntäminen. Blue Team pyrkii iskemään vihollisen heikkouksiin,
-                                            hajottamaan sen hyökkäysmuodostelmia ja vetäytymään hallitusti uusiin
-                                            asemiin.
-                                        </li>
-                                        <li>
-                                            <strong>Komentorakenne:</strong> Komppaniatason peli.
-                                            <ul>
-                                                <li><strong>Pelaaja 1 (Komppanianpäällikkö):</strong> Saa 5 KP/vuoro,
-                                                    kontrolloi Komppanianpäällikkö-yksikköä ja johtaa 1. Joukkuetta (saa
-                                                    lisäksi 3 KP/vuoro joukkueelleen).</li>
-                                                <li><strong>Pelaajat 2 & 3 (Joukkueenjohtajat):</strong> Saavat 3
-                                                    KP/vuoro omien joukkueidensa komentamiseen.</li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <strong>Kokoonpano:</strong>
-                                            <ul>
-                                                <li><strong>1. Joukkue (Pelaaja 1):</strong> 2x Jääkäriryhmä, 1x
-                                                    PST-ryhmä.</li>
-                                                <li><strong>2. Joukkue (Pelaaja 2):</strong> 2x Jääkäriryhmä, 1x
-                                                    Tukiryhmä (KK).</li>
-                                                <li><strong>3. Joukkue (Pelaaja 3):</strong> 1x Jääkäriryhmä, 1x
-                                                    PST-ryhmä, 1x Kranaatinheitinryhmä (81mm).</li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <strong>Tulituki:</strong> Blue Teamilla on käytössään <strong>5</strong>
-                                            erillistä tulitukipyyntöä pataljoonan 155mm kenttätykistöltä. Vain
-                                            Komppanianpäällikkö voi kutsua tätä tukea.
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <strong>Red Team (GM): Mekanisoidun Pataljoonan Kärkiosasto</strong>
-                                    <ul>
-                                        <li>
-                                            <strong>Johtodoktriini:</strong> Massa, ylivoimainen tulivoima ja jatkuva
-                                            painostus. Red Team pyrkii murtamaan puolustuksen panssarikiilojen ja
-                                            jalkaväen aaltohyökkäysten avulla.
-                                        </li>
-                                        <li>
-                                            <strong>Komentorakenne:</strong> Pelinjohtaja (GM) ohjaa Red Teamia ja tuo
-                                            vahvistuksia kartalle aalloittain simuloiden suuremman osaston etenemistä.
-                                        </li>
-                                        <li>
-                                            <strong>Kokoonpano:</strong>
-                                            <ul>
-                                                <li>1x T-72B3 (Panssarivaunu)</li>
-                                                <li>2x BTR-82A (Panssaroitu miehistönkuljetusvaunu)</li>
-                                                <li>4x Motorisoitu Jalkaväkiryhmä</li>
-                                                <li>1x Kranaatinheitinryhmä (120mm)</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <h4>Taistelu&shy;osapuolet (Order of Battle)</h4>
+                        <ul>
+                            <li>
+                                <strong>Blue Team (Pelaajat): Suomalainen Jääkärikomppania</strong>
+                                <ul>
+                                    <li>
+                                        <strong>Johtodoktriini:</strong> Laatu, kurinalainen puolustus ja maaston
+                                        tehokas hyödyntäminen. Blue Team pyrkii iskemään vihollisen heikkouksiin,
+                                        hajottamaan sen hyökkäysmuodostelmia ja vetäytymään hallitusti uusiin
+                                        asemiin.
+                                    </li>
+                                    <li>
+                                        <strong>Komentorakenne:</strong> Komppaniatason peli.
+                                        <ul>
+                                            <li><strong>Pelaaja 1 (Komppanianpäällikkö):</strong> Saa 5 KP/vuoro,
+                                                kontrolloi Komppanianpäällikkö-yksikköä ja johtaa 1. Joukkuetta (saa
+                                                lisäksi 3 KP/vuoro joukkueelleen).</li>
+                                            <li><strong>Pelaajat 2 & 3 (Joukkueenjohtajat):</strong> Saavat 3
+                                                KP/vuoro omien joukkueidensa komentamiseen.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Kokoonpano:</strong>
+                                        <ul>
+                                            <li><strong>1. Joukkue (Pelaaja 1):</strong> 2x Jääkäriryhmä, 1x
+                                                PST-ryhmä.</li>
+                                            <li><strong>2. Joukkue (Pelaaja 2):</strong> 2x Jääkäriryhmä, 1x
+                                                Tukiryhmä (KK).</li>
+                                            <li><strong>3. Joukkue (Pelaaja 3):</strong> 1x Jääkäriryhmä, 1x
+                                                PST-ryhmä, 1x Kranaatinheitinryhmä (81mm).</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Tulituki:</strong> Blue Teamilla on käytössään <strong>5</strong>
+                                        erillistä tulitukipyyntöä pataljoonan 155mm kenttätykistöltä. Vain
+                                        Komppanianpäällikkö voi kutsua tätä tukea.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Red Team (GM): Mekanisoidun Pataljoonan Kärkiosasto</strong>
+                                <ul>
+                                    <li>
+                                        <strong>Johtodoktriini:</strong> Massa, ylivoimainen tulivoima ja jatkuva
+                                        painostus. Red Team pyrkii murtamaan puolustuksen panssarikiilojen ja
+                                        jalkaväen aaltohyökkäysten avulla.
+                                    </li>
+                                    <li>
+                                        <strong>Komentorakenne:</strong> Pelinjohtaja (GM) ohjaa Red Teamia ja tuo
+                                        vahvistuksia kartalle aalloittain simuloiden suuremman osaston etenemistä.
+                                    </li>
+                                    <li>
+                                        <strong>Kokoonpano:</strong>
+                                        <ul>
+                                            <li>1x T-72B3 (Panssarivaunu)</li>
+                                            <li>2x BTR-82A (Panssaroitu miehistönkuljetusvaunu)</li>
+                                            <li>4x Motorisoitu Jalkaväkiryhmä</li>
+                                            <li>1x Kranaatinheitinryhmä (120mm)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
 
-                            <h4>Tavoitteet ja Voittoehdot (VP)</h4>
-                            <p>
-                                Peli kestää enintään 12 vuoroa. Voittaja on osapuoli, jolla on enemmän Voittopisteitä
-                                pelin lopussa.
-                            </p>
-                            <ul>
-                                <li>
-                                    <strong>Blue Team VP:</strong>
-                                    <ul>
-                                        <li><strong>+15 VP (Päätavoite):</strong> Jos pelin lopussa yksikään Red Teamin
-                                            taisteluyksikkö ei ole poistunut kartan eteläreunasta.</li>
-                                        <li><strong>+10 VP:</strong> Jos Red Teamin T-72B3-panssarivaunu on tuhottu.
-                                        </li>
-                                        <li><strong>+5 VP:</strong> Jokaista tuhottua Red Team -ajoneuvoa (BTR) kohden.
-                                        </li>
-                                        <li><strong>+2 VP:</strong> Jokaista tuhottua Red Team -jalkaväkiryhmää kohden.
-                                        </li>
-                                        <li><strong>-3 VP:</strong> Jokaista menetettyä omaa ryhmää kohden.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <strong>Red Team VP:</strong>
-                                    <ul>
-                                        <li><strong>+20 VP (Päätavoite):</strong> Jos vähintään kaksi Red Teamin
-                                            taisteluyksikköä (joista vähintään yksi on ajoneuvo) poistuu kartan
-                                            eteläreunasta.</li>
-                                        <li><strong>+10 VP:</strong> Jos Blue Teamin Komppanianpäällikkö-yksikkö on
-                                            tuhottu.</li>
-                                        <li><strong>+2 VP:</strong> Jokaista tuhottua Blue Team -ryhmää kohden.</li>
-                                        <li><strong>+5 VP:</strong> Jos Red Team tuhoaa yli 50% Blue Teamin yksiköistä.
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </article>
-                        <article>
-                            <h3>Operaatio Nokian Portti (Puolustus & Läpimurron Esto)</h3>
-                            <h4>Tilannekuvaus ja Tausta</h4>
-                            <p>
-                                Vihollisen (Red Team) mekanisoitu jalkaväkipataljoona on edennyt
-                                voitokkaasti ja saavuttanut Nokian kaupungin reuna-alueet. Heidän
-                                seuraava, kriittinen tavoitteensa on ylittää Emäkoski ja
-                                Nokianvirta valtaamalla kaksi avainsiltaa: Emäkosken silta ja
-                                Nokianvirran silta. Onnistuessaan tässä he loisivat vankan
-                                sillanpääaseman joen länsipuolelle, mikä avaisi suoran reitin
-                                jatkohyökkäykselle kohti Tamperetta ja uhkaisi koko alueen
-                                puolustusta.
-                            </p>
-                            <p>
-                                Vastassa on suomalainen jääkärikomppania (Blue Team), joka on
-                                ryhmittynyt puolustukseen siltojen ympärille. Taistelumaasto on
-                                urbaania ja teollista, täynnä rakennuksia, kapeita katuja ja
-                                näköesteitä, jotka tarjoavat puolustajalle etuja. Blue Teamin
-                                tehtävä on yksiselitteinen: estää vihollisen läpimurto hinnalla
-                                millä hyvänsä.
-                            </p>
+                        <h4>Tavoitteet ja Voittoehdot (VP)</h4>
+                        <p>
+                            Peli kestää enintään 12 vuoroa. Voittaja on osapuoli, jolla on enemmän Voittopisteitä
+                            pelin lopussa.
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>Blue Team VP:</strong>
+                                <ul>
+                                    <li><strong>+15 VP (Päätavoite):</strong> Jos pelin lopussa yksikään Red Teamin
+                                        taisteluyksikkö ei ole poistunut kartan eteläreunasta.</li>
+                                    <li><strong>+10 VP:</strong> Jos Red Teamin T-72B3-panssarivaunu on tuhottu.
+                                    </li>
+                                    <li><strong>+5 VP:</strong> Jokaista tuhottua Red Team -ajoneuvoa (BTR) kohden.
+                                    </li>
+                                    <li><strong>+2 VP:</strong> Jokaista tuhottua Red Team -jalkaväkiryhmää kohden.
+                                    </li>
+                                    <li><strong>-3 VP:</strong> Jokaista menetettyä omaa ryhmää kohden.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Red Team VP:</strong>
+                                <ul>
+                                    <li><strong>+20 VP (Päätavoite):</strong> Jos vähintään kaksi Red Teamin
+                                        taisteluyksikköä (joista vähintään yksi on ajoneuvo) poistuu kartan
+                                        eteläreunasta.</li>
+                                    <li><strong>+10 VP:</strong> Jos Blue Teamin Komppanianpäällikkö-yksikkö on
+                                        tuhottu.</li>
+                                    <li><strong>+2 VP:</strong> Jokaista tuhottua Blue Team -ryhmää kohden.</li>
+                                    <li><strong>+5 VP:</strong> Jos Red Team tuhoaa yli 50% Blue Teamin yksiköistä.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>Operaatio Nokian Portti (Puolustus & Läpimurron Esto)</h3>
+                        <h4>Tilannekuvaus ja Tausta</h4>
+                        <p>
+                            Vihollisen (Red Team) mekanisoitu jalkaväkipataljoona on edennyt
+                            voitokkaasti ja saavuttanut Nokian kaupungin reuna-alueet. Heidän
+                            seuraava, kriittinen tavoitteensa on ylittää Emäkoski ja
+                            Nokianvirta valtaamalla kaksi avainsiltaa: Emäkosken silta ja
+                            Nokianvirran silta. Onnistuessaan tässä he loisivat vankan
+                            sillanpääaseman joen länsipuolelle, mikä avaisi suoran reitin
+                            jatkohyökkäykselle kohti Tamperetta ja uhkaisi koko alueen
+                            puolustusta.
+                        </p>
+                        <p>
+                            Vastassa on suomalainen jääkärikomppania (Blue Team), joka on
+                            ryhmittynyt puolustukseen siltojen ympärille. Taistelumaasto on
+                            urbaania ja teollista, täynnä rakennuksia, kapeita katuja ja
+                            näköesteitä, jotka tarjoavat puolustajalle etuja. Blue Teamin
+                            tehtävä on yksiselitteinen: estää vihollisen läpimurto hinnalla
+                            millä hyvänsä.
+                        </p>
 
-                            <h4>Taistelu&shy;osapuolet (Order of Battle)</h4>
-                            <ul>
-                                <li>
-                                    <strong>Blue Team (Pelaajat): Suomalainen Jääkärikomppania</strong>
-                                    <ul>
-                                        <li>
-                                            <strong>Johtodoktriini:</strong> Laatu, sitkeä puolustus ja
-                                            "Sisu". Blue Team hyödyntää rakennettua ympäristöä ja pyrkii
-                                            kanavoimaan vihollisen hyökkäykset ennalta valmisteltuihin
-                                            tuhoamisalueisiin.
-                                        </li>
-                                        <li>
-                                            <strong>Komentorakenne:</strong> Komppaniatason peli, jossa
-                                            yksi pelaaja on Komppanianpäällikkö (5 KP/vuoro) ja muut
-                                            Joukkueenjohtajia (3 KP/vuoro).
-                                        </li>
-                                        <li>
-                                            <strong>Kokoonpano:</strong> Komppanianpäällikkö, 3
-                                            Jääkärijoukkuetta ja 1 Tukijoukkue.
-                                        </li>
-                                        <li>
-                                            <strong>Tulituki:</strong>
-                                            <ul>
-                                                <li>
-                                                    <strong>Orgaaninen tuki:</strong> Komppaniaan kuuluu
-                                                    pelaajan ohjaama 81mm Kranaatinheitinryhmä, joka toimii
-                                                    nopean vasteen säännöillä.
-                                                </li>
-                                                <li>
-                                                    <strong>Ulkopuolinen tuki:</strong> Komppanianpäällikkö
-                                                    voi kerran pelin aikana pyytää raskasta 120mm
-                                                    kranaatinheitintukea prikaatilta (viive d4 vuoroa).
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <strong>Red Team (GM): Venäläinen Mekanisoitu Jalkaväkipataljoona
-                                        (kärki)</strong>
-                                    <ul>
-                                        <li>
-                                            <strong>Johtodoktriini:</strong> Massa, tulivoima ja jatkuva
-                                            painostus. Red Team pyrkii murtamaan puolustuksen
-                                            keskitetyllä voimalla ja hyödyntämään runsasta epäsuoraa
-                                            tulta.
-                                        </li>
-                                        <li>
-                                            <strong>Komentorakenne:</strong> GM ohjaa pataljoonan
-                                            kärkiosia ja tuo niitä kartalle aalloittain.
-                                        </li>
-                                        <li>
-                                            <strong>Tulituki:</strong> GM:llä on käytössään pataljoonan
-                                            oma, kartan ulkopuolinen 120mm raskas
-                                            kranaatinheitinkomppania, jota on runsaasti saatavilla
-                                            (viive d4 vuoroa).
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <h4>Taistelu&shy;osapuolet (Order of Battle)</h4>
+                        <ul>
+                            <li>
+                                <strong>Blue Team (Pelaajat): Suomalainen Jääkärikomppania</strong>
+                                <ul>
+                                    <li>
+                                        <strong>Johtodoktriini:</strong> Laatu, sitkeä puolustus ja
+                                        "Sisu". Blue Team hyödyntää rakennettua ympäristöä ja pyrkii
+                                        kanavoimaan vihollisen hyökkäykset ennalta valmisteltuihin
+                                        tuhoamisalueisiin.
+                                    </li>
+                                    <li>
+                                        <strong>Komentorakenne:</strong> Komppaniatason peli, jossa
+                                        yksi pelaaja on Komppanianpäällikkö (5 KP/vuoro) ja muut
+                                        Joukkueenjohtajia (3 KP/vuoro).
+                                    </li>
+                                    <li>
+                                        <strong>Kokoonpano:</strong> Komppanianpäällikkö, 3
+                                        Jääkärijoukkuetta ja 1 Tukijoukkue.
+                                    </li>
+                                    <li>
+                                        <strong>Tulituki:</strong>
+                                        <ul>
+                                            <li>
+                                                <strong>Orgaaninen tuki:</strong> Komppaniaan kuuluu
+                                                pelaajan ohjaama 81mm Kranaatinheitinryhmä, joka toimii
+                                                nopean vasteen säännöillä.
+                                            </li>
+                                            <li>
+                                                <strong>Ulkopuolinen tuki:</strong> Komppanianpäällikkö
+                                                voi kerran pelin aikana pyytää raskasta 120mm
+                                                kranaatinheitintukea prikaatilta (viive d4 vuoroa).
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Red Team (GM): Venäläinen Mekanisoitu Jalkaväkipataljoona
+                                    (kärki)</strong>
+                                <ul>
+                                    <li>
+                                        <strong>Johtodoktriini:</strong> Massa, tulivoima ja jatkuva
+                                        painostus. Red Team pyrkii murtamaan puolustuksen
+                                        keskitetyllä voimalla ja hyödyntämään runsasta epäsuoraa
+                                        tulta.
+                                    </li>
+                                    <li>
+                                        <strong>Komentorakenne:</strong> GM ohjaa pataljoonan
+                                        kärkiosia ja tuo niitä kartalle aalloittain.
+                                    </li>
+                                    <li>
+                                        <strong>Tulituki:</strong> GM:llä on käytössään pataljoonan
+                                        oma, kartan ulkopuolinen 120mm raskas
+                                        kranaatinheitinkomppania, jota on runsaasti saatavilla
+                                        (viive d4 vuoroa).
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
 
-                            <h4>Aloitusryhmitys</h4>
-                            <p>
-                                Blue Team ryhmittyy puolustukseen siltojen ympärille ja joen
-                                länsirannalle. Red Team aloittaa kartan itäreunalta ja etenee
-                                kohti siltoja.
-                            </p>
+                        <h4>Aloitusryhmitys</h4>
+                        <p>
+                            Blue Team ryhmittyy puolustukseen siltojen ympärille ja joen
+                            länsirannalle. Red Team aloittaa kartan itäreunalta ja etenee
+                            kohti siltoja.
+                        </p>
 
-                            <h4>Tavoitteet ja Voittoehdot (VP)</h4>
-                            <p>
-                                Peli kestää 15 vuoroa tai kunnes Red Team on luonut vakaan
-                                sillanpääaseman.
-                            </p>
-                            <ul>
-                                <li>
-                                    <strong>Blue Team VP:</strong>
-                                    <ul>
-                                        <li>
-                                            <strong>+1 VP</strong> jokaista tuhottua Red Team
-                                            -jalkaväkiryhmää kohden.
-                                        </li>
-                                        <li>
-                                            <strong>+5 VP</strong> jokaista tuhottua Red Team -ajoneuvoa
-                                            kohden.
-                                        </li>
-                                        <li>
-                                            <strong>+5 VP</strong> jokaista pelivuoroa kohden, jonka
-                                            aikana Red Teamilla ei ole yhtään taisteluyksikköä
-                                            Nokianvirran länsipuolella.
-                                        </li>
-                                        <li>
-                                            <strong>-2 VP</strong> jokaista menetettyä omaa ryhmää
-                                            kohden.
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <strong>Red Team VP:</strong>
-                                    <ul>
-                                        <li>
-                                            <strong>+2 VP</strong> jokaista tuhottua Blue Team -ryhmää
-                                            kohden.
-                                        </li>
-                                        <li>
-                                            <strong>+15 VP</strong> ensimmäisen sillanpääaseman
-                                            perustamisesta (vähintään 2 taisteluyksikköä pidettynä joen
-                                            länsipuolella yhden vuoron ajan).
-                                        </li>
-                                        <li>
-                                            <strong>+15 VP</strong> toisen sillanpääaseman
-                                            perustamisesta samoin ehdoin.
-                                        </li>
-                                        <li>
-                                            <strong>+5 VP</strong> avainkohteiden (esim.
-                                            teollisuusrakennus) valtaamisesta joen itärannalla.
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </article>
+                        <h4>Tavoitteet ja Voittoehdot (VP)</h4>
+                        <p>
+                            Peli kestää 15 vuoroa tai kunnes Red Team on luonut vakaan
+                            sillanpääaseman.
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>Blue Team VP:</strong>
+                                <ul>
+                                    <li>
+                                        <strong>+1 VP</strong> jokaista tuhottua Red Team
+                                        -jalkaväkiryhmää kohden.
+                                    </li>
+                                    <li>
+                                        <strong>+5 VP</strong> jokaista tuhottua Red Team -ajoneuvoa
+                                        kohden.
+                                    </li>
+                                    <li>
+                                        <strong>+5 VP</strong> jokaista pelivuoroa kohden, jonka
+                                        aikana Red Teamilla ei ole yhtään taisteluyksikköä
+                                        Nokianvirran länsipuolella.
+                                    </li>
+                                    <li>
+                                        <strong>-2 VP</strong> jokaista menetettyä omaa ryhmää
+                                        kohden.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Red Team VP:</strong>
+                                <ul>
+                                    <li>
+                                        <strong>+2 VP</strong> jokaista tuhottua Blue Team -ryhmää
+                                        kohden.
+                                    </li>
+                                    <li>
+                                        <strong>+15 VP</strong> ensimmäisen sillanpääaseman
+                                        perustamisesta (vähintään 2 taisteluyksikköä pidettynä joen
+                                        länsipuolella yhden vuoron ajan).
+                                    </li>
+                                    <li>
+                                        <strong>+15 VP</strong> toisen sillanpääaseman
+                                        perustamisesta samoin ehdoin.
+                                    </li>
+                                    <li>
+                                        <strong>+5 VP</strong> avainkohteiden (esim.
+                                        teollisuusrakennus) valtaamisesta joen itärannalla.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </article>
 
-                        <article>
-                            <h3>Operaatio Jäänmurtaja (Hyökkäys / Torjunta)</h3>
-                            <h4>Tilannekuvaus</h4>
-                            <p>
-                                Talvisodassa Punainen armeija kohtasi usein vastustusta teillä, ja
-                                heidän panssariensa eteneminen aiheutti alussa pakokauhua. Tämä
-                                skenaario kuvaa Sinisen komppanian päättäväistä torjuntahyökkäystä
-                                Punaisen panssarijohtoisen etenemisen pysäyttämiseksi avoimella ja
-                                jäätyneellä maastolla.
-                            </p>
+                    <article>
+                        <h3>Operaatio Jäänmurtaja (Hyökkäys / Torjunta)</h3>
+                        <h4>Tilannekuvaus</h4>
+                        <p>
+                            Talvisodassa Punainen armeija kohtasi usein vastustusta teillä, ja
+                            heidän panssariensa eteneminen aiheutti alussa pakokauhua. Tämä
+                            skenaario kuvaa Sinisen komppanian päättäväistä torjuntahyökkäystä
+                            Punaisen panssarijohtoisen etenemisen pysäyttämiseksi avoimella ja
+                            jäätyneellä maastolla.
+                        </p>
 
-                            <h4>2. Pelaajien roolit ja joukot</h4>
-                            <ul>
-                                <li>
-                                    <strong>Sininen (Torjuntahyökkäys):</strong> Pyrkii pysäyttämään
-                                    Punaisen panssarikärjen ja tuhoamaan sen.
-                                    <ul>
-                                        <li>KP-pelaaja: 1x Komppanianpäällikkö.</li>
-                                        <li>
-                                            JJ1-pelaaja: 3x Jalkaväkiryhmä, 1x Kranaatinheitinryhmä
-                                            (81mm).
-                                        </li>
-                                        <li>JJ2-pelaaja: 3x Jalkaväkiryhmä, 1x PST-ryhmä.</li>
-                                        <li>JJ3-pelaaja: 3x Jalkaväkiryhmä.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <strong>Punainen (Eteneminen):</strong> Tavoitteena on nopea
-                                    läpimurto. GM pyrkii hyödyntämään panssarien pelotetta ja
-                                    jalkaväen massaa.
-                                    <ul>
-                                        <li>
-                                            Yksiköt: 2x T-72B3, 1x BTR-82A, 5x Motorisoitu
-                                            Jalkaväkiryhmä, 1x Kranaatinheitinryhmä (120mm).
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <h4>2. Pelaajien roolit ja joukot</h4>
+                        <ul>
+                            <li>
+                                <strong>Sininen (Torjuntahyökkäys):</strong> Pyrkii pysäyttämään
+                                Punaisen panssarikärjen ja tuhoamaan sen.
+                                <ul>
+                                    <li>KP-pelaaja: 1x Komppanianpäällikkö.</li>
+                                    <li>
+                                        JJ1-pelaaja: 3x Jalkaväkiryhmä, 1x Kranaatinheitinryhmä
+                                        (81mm).
+                                    </li>
+                                    <li>JJ2-pelaaja: 3x Jalkaväkiryhmä, 1x PST-ryhmä.</li>
+                                    <li>JJ3-pelaaja: 3x Jalkaväkiryhmä.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Punainen (Eteneminen):</strong> Tavoitteena on nopea
+                                läpimurto. GM pyrkii hyödyntämään panssarien pelotetta ja
+                                jalkaväen massaa.
+                                <ul>
+                                    <li>
+                                        Yksiköt: 2x T-72B3, 1x BTR-82A, 5x Motorisoitu
+                                        Jalkaväkiryhmä, 1x Kranaatinheitinryhmä (120mm).
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
 
-                            <h4>Tavoitteet</h4>
-                            <ul>
-                                <li>
-                                    <strong>Sininen:</strong> Tuhoa molemmat Punaisen T-72B3-yksiköt
-                                    TAI estä Punaisia pääsemästä kartan länsipuolelle vuoroon 5
-                                    mennessä.
-                                </li>
-                                <li>
-                                    <strong>Punainen:</strong> Vie vähintään 4 omaa yksikköä (joista
-                                    vähintään yksi on T-72B3) kartan länsireunalle vuoroon 5
-                                    mennessä.
-                                </li>
-                            </ul>
+                        <h4>Tavoitteet</h4>
+                        <ul>
+                            <li>
+                                <strong>Sininen:</strong> Tuhoa molemmat Punaisen T-72B3-yksiköt
+                                TAI estä Punaisia pääsemästä kartan länsipuolelle vuoroon 5
+                                mennessä.
+                            </li>
+                            <li>
+                                <strong>Punainen:</strong> Vie vähintään 4 omaa yksikköä (joista
+                                vähintään yksi on T-72B3) kartan länsireunalle vuoroon 5
+                                mennessä.
+                            </li>
+                        </ul>
 
-                            <h4>Aloitusryhmitys</h4>
-                            <ul>
-                                <li>
-                                    <strong>Kartan teema:</strong> Jäätynyt järvi tai suuri aukea
-                                    keskellä, jonka poikki kulkee kapea tie. Reunamaastossa on
-                                    metsää ja harvakseltaan rakennuksia.
-                                </li>
-                                <li>
-                                    <strong>Sininen:</strong> Sijoittaa yksikkönsä kartan keskiosaan
-                                    (20 cm Punaisen aloitusreunasta) puolustusasemiin tien varrelle
-                                    tai sen läheisyyteen. Kaikki yksiköt voivat aloittaa
-                                    kaivautuneina.
-                                </li>
-                                <li>
-                                    <strong>Punainen:</strong> Kaikki yksiköt aloittavat
-                                    ryhmittyneenä kartan itäreunalle tien varteen. GM voi sijoittaa
-                                    Punaiset yksiköt "?"-merkkeinä metsäalueille.
-                                </li>
-                            </ul>
+                        <h4>Aloitusryhmitys</h4>
+                        <ul>
+                            <li>
+                                <strong>Kartan teema:</strong> Jäätynyt järvi tai suuri aukea
+                                keskellä, jonka poikki kulkee kapea tie. Reunamaastossa on
+                                metsää ja harvakseltaan rakennuksia.
+                            </li>
+                            <li>
+                                <strong>Sininen:</strong> Sijoittaa yksikkönsä kartan keskiosaan
+                                (20 cm Punaisen aloitusreunasta) puolustusasemiin tien varrelle
+                                tai sen läheisyyteen. Kaikki yksiköt voivat aloittaa
+                                kaivautuneina.
+                            </li>
+                            <li>
+                                <strong>Punainen:</strong> Kaikki yksiköt aloittavat
+                                ryhmittyneenä kartan itäreunalle tien varteen. GM voi sijoittaa
+                                Punaiset yksiköt "?"-merkkeinä metsäalueille.
+                            </li>
+                        </ul>
 
-                            <h4>Erityissäännöt</h4>
-                            <ul>
-                                <li>
-                                    <strong>Panssarikauhu:</strong> Kun Siniset yksiköt näkevät
-                                    Punaisen T-72B3-yksikön ensimmäistä kertaa lähietäisyydeltä (10
-                                    cm säde), niiden on tehtävä Moriaalitesti (DC 10). Jos testi
-                                    epäonnistuu, yksikkö on "Lamautunut" seuraavaan vuoroonsa asti.
-                                </li>
-                                <li>
-                                    <strong>Jäätynyt Maasto:</strong> Ajoneuvot ja jalkaväki voivat
-                                    liikkua jäätyneillä vesialueilla. Liikepisteet ovat samat kuin
-                                    aukealla maastolla, mutta jää ei anna Suoja-arvoa.
-                                </li>
-                                <li>
-                                    <strong>Valmius:</strong> Sinisen JJ1-pelaaja voi valita yhden
-                                    Jalkaväkiryhmän, joka saa +1 hyökkäysbonuksen ensimmäiseen
-                                    taisteluunsa, mikäli se on väijytyksessä.
-                                </li>
-                            </ul>
+                        <h4>Erityissäännöt</h4>
+                        <ul>
+                            <li>
+                                <strong>Panssarikauhu:</strong> Kun Siniset yksiköt näkevät
+                                Punaisen T-72B3-yksikön ensimmäistä kertaa lähietäisyydeltä (10
+                                cm säde), niiden on tehtävä Moriaalitesti (DC 10). Jos testi
+                                epäonnistuu, yksikkö on "Lamautunut" seuraavaan vuoroonsa asti.
+                            </li>
+                            <li>
+                                <strong>Jäätynyt Maasto:</strong> Ajoneuvot ja jalkaväki voivat
+                                liikkua jäätyneillä vesialueilla. Liikepisteet ovat samat kuin
+                                aukealla maastolla, mutta jää ei anna Suoja-arvoa.
+                            </li>
+                            <li>
+                                <strong>Valmius:</strong> Sinisen JJ1-pelaaja voi valita yhden
+                                Jalkaväkiryhmän, joka saa +1 hyökkäysbonuksen ensimmäiseen
+                                taisteluunsa, mikäli se on väijytyksessä.
+                            </li>
+                        </ul>
 
-                            <h4>6. Voittoehdot</h4>
-                            <ul>
-                                <li>
-                                    <strong>Sininen Voitto:</strong> Jos Sininen tuhoaa molemmat
-                                    T-72B3-yksiköt TAI Punainen ei saavuta tavoitettaan vuoroon 5
-                                    mennessä.
-                                </li>
-                                <li>
-                                    <strong>Punainen Voitto:</strong> Jos Punainen vie vähintään 4
-                                    omaa yksikköä (joista vähintään yksi on T-72B3) kartan
-                                    länsireunalle vuoroon 5 mennessä.
-                                </li>
-                            </ul>
+                        <h4>6. Voittoehdot</h4>
+                        <ul>
+                            <li>
+                                <strong>Sininen Voitto:</strong> Jos Sininen tuhoaa molemmat
+                                T-72B3-yksiköt TAI Punainen ei saavuta tavoitettaan vuoroon 5
+                                mennessä.
+                            </li>
+                            <li>
+                                <strong>Punainen Voitto:</strong> Jos Punainen vie vähintään 4
+                                omaa yksikköä (joista vähintään yksi on T-72B3) kartan
+                                länsireunalle vuoroon 5 mennessä.
+                            </li>
+                        </ul>
 
-                            <h4>Skaalausohjeet</h4>
-                            <ul>
-                                <li>
-                                    <strong>Pienempi (2 pelaajaa + GM):</strong> Sinisellä on KP +
-                                    JJ1 (2x Jalkaväkiryhmä, 1x PST-ryhmä). Punaisella on 1x T-72B3
-                                    ja 3x Motorisoitu Jalkaväkiryhmä. Kartan kokoa ja vuorojen
-                                    määrää vähennetään (esim. 3 vuoroa).
-                                </li>
-                                <li>
-                                    <strong>Isompi (6 pelaajaa + GM):</strong> Sinisellä on KP + 4x
-                                    Joukkueenjohtajaa (lisää yksi Jalkaväkiryhmä per JJ ja yksi
-                                    lisä-PST/KH-ryhmä). Punaisella on lisäksi 1x T-72B3, 2x BTR-82A
-                                    ja 4x Motorisoitu Jalkaväkiryhmä. Vuorojen määrää lisätään
-                                    (esim. 7 vuoroa) ja Punaiselle voidaan lisätä toinen
-                                    etenemisreitti.
-                                </li>
-                            </ul>
-                        </article>
+                        <h4>Skaalausohjeet</h4>
+                        <ul>
+                            <li>
+                                <strong>Pienempi (2 pelaajaa + GM):</strong> Sinisellä on KP +
+                                JJ1 (2x Jalkaväkiryhmä, 1x PST-ryhmä). Punaisella on 1x T-72B3
+                                ja 3x Motorisoitu Jalkaväkiryhmä. Kartan kokoa ja vuorojen
+                                määrää vähennetään (esim. 3 vuoroa).
+                            </li>
+                            <li>
+                                <strong>Isompi (6 pelaajaa + GM):</strong> Sinisellä on KP + 4x
+                                Joukkueenjohtajaa (lisää yksi Jalkaväkiryhmä per JJ ja yksi
+                                lisä-PST/KH-ryhmä). Punaisella on lisäksi 1x T-72B3, 2x BTR-82A
+                                ja 4x Motorisoitu Jalkaväkiryhmä. Vuorojen määrää lisätään
+                                (esim. 7 vuoroa) ja Punaiselle voidaan lisätä toinen
+                                etenemisreitti.
+                            </li>
+                        </ul>
+                    </article>
 
-                        <article>
-                            <h3>Operaatio Motti! (Encirclement / Viivytys)</h3>
-                            <h4>Tilannekuvaus</h4>
-                            <p>
-                                Suomalaisten taistelutaktiikkaan kuului kulkureittien tukkiminen
-                                ja vihollisen selustaan kiertäminen huoltoyhteyksien
-                                katkaisemiseksi. Tämä skenaario simuloi Sinisen komppanian
-                                yritystä motittaa edenneen Punaisen yksikön ja katkaista sen
-                                huolto.
-                            </p>
+                    <article>
+                        <h3>Operaatio Motti! (Encirclement / Viivytys)</h3>
+                        <h4>Tilannekuvaus</h4>
+                        <p>
+                            Suomalaisten taistelutaktiikkaan kuului kulkureittien tukkiminen
+                            ja vihollisen selustaan kiertäminen huoltoyhteyksien
+                            katkaisemiseksi. Tämä skenaario simuloi Sinisen komppanian
+                            yritystä motittaa edenneen Punaisen yksikön ja katkaista sen
+                            huolto.
+                        </p>
 
-                            <h4>2. Pelaajien roolit ja joukot</h4>
-                            <ul>
-                                <li>
-                                    <strong>Sininen (Mottioperaatio):</strong> Pyrkii saartamaan ja
-                                    tuhoamaan Punaisen etujoukon.
-                                    <ul>
-                                        <li>KP-pelaaja: 1x Komppanianpäällikkö.</li>
-                                        <li>
-                                            JJ1-pelaaja: 3x Jalkaväkiryhmä, 1x Kranaatinheitinryhmä
-                                            (81mm).
-                                        </li>
-                                        <li>JJ2-pelaaja: 3x Jalkaväkiryhmä, 1x PST-ryhmä.</li>
-                                        <li>JJ3-pelaaja: 3x Jalkaväkiryhmä.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <strong>Punainen (Kiinnitystaistelu):</strong> GM:n tavoitteena
-                                    on pitää huoltoyhteys auki ja murtautua ulos motista.
-                                    <ul>
-                                        <li>
-                                            Yksiköt: 1x Komppanianpäällikkö (Punainen), 4x Motorisoitu
-                                            Jalkaväkiryhmä, 1x T-72B3.
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <h4>2. Pelaajien roolit ja joukot</h4>
+                        <ul>
+                            <li>
+                                <strong>Sininen (Mottioperaatio):</strong> Pyrkii saartamaan ja
+                                tuhoamaan Punaisen etujoukon.
+                                <ul>
+                                    <li>KP-pelaaja: 1x Komppanianpäällikkö.</li>
+                                    <li>
+                                        JJ1-pelaaja: 3x Jalkaväkiryhmä, 1x Kranaatinheitinryhmä
+                                        (81mm).
+                                    </li>
+                                    <li>JJ2-pelaaja: 3x Jalkaväkiryhmä, 1x PST-ryhmä.</li>
+                                    <li>JJ3-pelaaja: 3x Jalkaväkiryhmä.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Punainen (Kiinnitystaistelu):</strong> GM:n tavoitteena
+                                on pitää huoltoyhteys auki ja murtautua ulos motista.
+                                <ul>
+                                    <li>
+                                        Yksiköt: 1x Komppanianpäällikkö (Punainen), 4x Motorisoitu
+                                        Jalkaväkiryhmä, 1x T-72B3.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
 
-                            <h4>Tavoitteet</h4>
-                            <ul>
-                                <li>
-                                    <strong>Sininen:</strong> Motita Punainen
-                                    Komppanianpäällikkö-yksikkö ja tuhoa vähintään 2 muuta Punaisen
-                                    yksikköä vuoroon 6 mennessä.
-                                </li>
-                                <li>
-                                    <strong>Punainen:</strong> Estä motitus TAI murtaudu ulos
-                                    motista ja vie Punaisen Komppanianpäällikkö-yksikkö kartan
-                                    itäreunalle vuoroon 6 mennessä.
-                                </li>
-                            </ul>
+                        <h4>Tavoitteet</h4>
+                        <ul>
+                            <li>
+                                <strong>Sininen:</strong> Motita Punainen
+                                Komppanianpäällikkö-yksikkö ja tuhoa vähintään 2 muuta Punaisen
+                                yksikköä vuoroon 6 mennessä.
+                            </li>
+                            <li>
+                                <strong>Punainen:</strong> Estä motitus TAI murtaudu ulos
+                                motista ja vie Punaisen Komppanianpäällikkö-yksikkö kartan
+                                itäreunalle vuoroon 6 mennessä.
+                            </li>
+                        </ul>
 
-                            <h4>Aloitusryhmitys</h4>
-                            <ul>
-                                <li>
-                                    <strong>Kartan teema:</strong> Metsäinen maasto, jossa on
-                                    muutama tie, joista yksi on pääasiallinen tie kartan poikki.
-                                </li>
-                                <li>
-                                    <strong>Punainen:</strong> Punaisen Komppanianpäällikkö ja 3
-                                    Motorisoitua Jalkaväkiryhmää ovat edenneet kartan keskiosaan
-                                    tien varrelle. GM asettaa Komppanianpäällikön ("?"-merkkinä) ja
-                                    2 Motorisoitua Jalkaväkiryhmää heti paljastettuna kartalle.
-                                    Loput Punaiset yksiköt (1x T-72B3, 1x Motorisoitu
-                                    Jalkaväkiryhmä, 1x 120mm Kranaatinheitinryhmä) aloittavat
-                                    huoltoreitin alusta kartan itäreunasta.
-                                </li>
-                                <li>
-                                    <strong>Sininen:</strong> Yksiköt aloittavat kartan
-                                    länsireunasta ja sivuilta valmiina kiertoliikkeeseen.
-                                </li>
-                            </ul>
+                        <h4>Aloitusryhmitys</h4>
+                        <ul>
+                            <li>
+                                <strong>Kartan teema:</strong> Metsäinen maasto, jossa on
+                                muutama tie, joista yksi on pääasiallinen tie kartan poikki.
+                            </li>
+                            <li>
+                                <strong>Punainen:</strong> Punaisen Komppanianpäällikkö ja 3
+                                Motorisoitua Jalkaväkiryhmää ovat edenneet kartan keskiosaan
+                                tien varrelle. GM asettaa Komppanianpäällikön ("?"-merkkinä) ja
+                                2 Motorisoitua Jalkaväkiryhmää heti paljastettuna kartalle.
+                                Loput Punaiset yksiköt (1x T-72B3, 1x Motorisoitu
+                                Jalkaväkiryhmä, 1x 120mm Kranaatinheitinryhmä) aloittavat
+                                huoltoreitin alusta kartan itäreunasta.
+                            </li>
+                            <li>
+                                <strong>Sininen:</strong> Yksiköt aloittavat kartan
+                                länsireunasta ja sivuilta valmiina kiertoliikkeeseen.
+                            </li>
+                        </ul>
 
-                            <h4>Erityissäännöt</h4>
-                            <ul>
-                                <li>
-                                    <strong>Motti:</strong> Yksikkö on motissa, jos kaikki sen
-                                    poistumisreitit (vähintään 3 cm leveät) ovat vastustajan
-                                    vyöhykkeen (ZoC) estämiä. Motitetut yksiköt kärsivät -1 kaikkiin
-                                    Moraali- ja Hyökkäystesteihin. Jos motitetun yksikön TK putoaa
-                                    alle puoleen, se tekee automaattisesti Moriaalitestin (DC 15) ja
-                                    vetäytyy lähimpään turvaan, jos mahdollista.
-                                </li>
-                                <li>
-                                    <strong>Mottitaktiikka (Sininen):</strong> Komppanianpäällikkö
-                                    voi kerran pelissä käyttää "Mottitaktiikka"-komentoa (5 KP).
-                                    Valitun 10 cm säteisen alueen vihollisyksiköt tekevät
-                                    Moriaalitestin (DC 15) tai vetäytyvät.
-                                </li>
-                                <li>
-                                    <strong>Huollon Katkaisu:</strong> Jos Punaisen huoltoreitti
-                                    katkeaa, huollon ulkopuolella olevat Punaiset yksiköt eivät voi
-                                    toipua vaurioista, ostaa täydennyksiä tai tulla
-                                    uudelleenrakennetuiksi.
-                                </li>
-                            </ul>
+                        <h4>Erityissäännöt</h4>
+                        <ul>
+                            <li>
+                                <strong>Motti:</strong> Yksikkö on motissa, jos kaikki sen
+                                poistumisreitit (vähintään 3 cm leveät) ovat vastustajan
+                                vyöhykkeen (ZoC) estämiä. Motitetut yksiköt kärsivät -1 kaikkiin
+                                Moraali- ja Hyökkäystesteihin. Jos motitetun yksikön TK putoaa
+                                alle puoleen, se tekee automaattisesti Moriaalitestin (DC 15) ja
+                                vetäytyy lähimpään turvaan, jos mahdollista.
+                            </li>
+                            <li>
+                                <strong>Mottitaktiikka (Sininen):</strong> Komppanianpäällikkö
+                                voi kerran pelissä käyttää "Mottitaktiikka"-komentoa (5 KP).
+                                Valitun 10 cm säteisen alueen vihollisyksiköt tekevät
+                                Moriaalitestin (DC 15) tai vetäytyvät.
+                            </li>
+                            <li>
+                                <strong>Huollon Katkaisu:</strong> Jos Punaisen huoltoreitti
+                                katkeaa, huollon ulkopuolella olevat Punaiset yksiköt eivät voi
+                                toipua vaurioista, ostaa täydennyksiä tai tulla
+                                uudelleenrakennetuiksi.
+                            </li>
+                        </ul>
 
-                            <h4>Voittoehdot</h4>
-                            <ul>
-                                <li>
-                                    <strong>Sininen Voitto:</strong> Jos Punaisen KP-yksikkö
-                                    tuhoutuu tai on motitettu pelin lopussa JA Sininen on tuhonnut
-                                    vähintään 2 muuta Punaista yksikköä.
-                                </li>
-                                <li>
-                                    <strong>Punainen Voitto:</strong> Jos Punaisen KP-yksikkö pääsee
-                                    kartan itäreunalle TAI vähintään 4 Punaista yksikköä (mukaan
-                                    lukien KP) ovat hengissä ja huollossa pelin lopussa.
-                                </li>
-                            </ul>
+                        <h4>Voittoehdot</h4>
+                        <ul>
+                            <li>
+                                <strong>Sininen Voitto:</strong> Jos Punaisen KP-yksikkö
+                                tuhoutuu tai on motitettu pelin lopussa JA Sininen on tuhonnut
+                                vähintään 2 muuta Punaista yksikköä.
+                            </li>
+                            <li>
+                                <strong>Punainen Voitto:</strong> Jos Punaisen KP-yksikkö pääsee
+                                kartan itäreunalle TAI vähintään 4 Punaista yksikköä (mukaan
+                                lukien KP) ovat hengissä ja huollossa pelin lopussa.
+                            </li>
+                        </ul>
 
-                            <h4>Skaalausohjeet</h4>
-                            <ul>
-                                <li>
-                                    <strong>Pienempi (2 pelaajaa + GM):</strong> Sinisellä on KP +
-                                    JJ1 (2x Jalkaväkiryhmä, 1x PST-ryhmä). Punaisella on 1x KP ja 3x
-                                    Motorisoitu Jalkaväkiryhmä. Käytetään pienempää karttaa ja
-                                    peliaika on 4 vuoroa.
-                                </li>
-                                <li>
-                                    <strong>Isompi (6 pelaajaa + GM):</strong> Sinisellä on KP + 4x
-                                    Joukkueenjohtajaa (lisää yksi yksikkö per JJ). Punaisella on
-                                    lisäksi 1x T-72B3, 2x BTR-82A ja 4x Motorisoitu Jalkaväkiryhmä.
-                                    Vuorojen määrä on 8, ja Sinisellä voi olla toinen mottiin
-                                    pyrkivä joukko.
-                                </li>
-                            </ul>
-                        </article>
+                        <h4>Skaalausohjeet</h4>
+                        <ul>
+                            <li>
+                                <strong>Pienempi (2 pelaajaa + GM):</strong> Sinisellä on KP +
+                                JJ1 (2x Jalkaväkiryhmä, 1x PST-ryhmä). Punaisella on 1x KP ja 3x
+                                Motorisoitu Jalkaväkiryhmä. Käytetään pienempää karttaa ja
+                                peliaika on 4 vuoroa.
+                            </li>
+                            <li>
+                                <strong>Isompi (6 pelaajaa + GM):</strong> Sinisellä on KP + 4x
+                                Joukkueenjohtajaa (lisää yksi yksikkö per JJ). Punaisella on
+                                lisäksi 1x T-72B3, 2x BTR-82A ja 4x Motorisoitu Jalkaväkiryhmä.
+                                Vuorojen määrä on 8, ja Sinisellä voi olla toinen mottiin
+                                pyrkivä joukko.
+                            </li>
+                        </ul>
+                    </article>
 
-                        <article>
-                            <h3>Operaatio Jalansija (Puolustus / Etenemisen Pysäyttäminen)</h3>
-                            <h4>Tilannekuvaus</h4>
-                            <p>
-                                Punainen joukko on saanut jalansijan strategisesti tärkeällä
-                                alueella, kuten kylässä, ja pyrkii vahvistamaan asemiaan. Sinisen
-                                tehtävä on estää Punaisen vahvistuminen ja työntää se takaisin.
-                            </p>
+                    <article>
+                        <h3>Operaatio Jalansija (Puolustus / Etenemisen Pysäyttäminen)</h3>
+                        <h4>Tilannekuvaus</h4>
+                        <p>
+                            Punainen joukko on saanut jalansijan strategisesti tärkeällä
+                            alueella, kuten kylässä, ja pyrkii vahvistamaan asemiaan. Sinisen
+                            tehtävä on estää Punaisen vahvistuminen ja työntää se takaisin.
+                        </p>
 
-                            <h4>Pelaajien roolit ja joukot</h4>
-                            <ul>
-                                <li>
-                                    <strong>Sininen (Kiinteä Puolustus):</strong> Tavoitteena on
-                                    pysäyttää Punaisen eteneminen ja pitää hallussa avainasemat.
-                                    <ul>
-                                        <li>KP-pelaaja: 1x Komppanianpäällikkö.</li>
-                                        <li>
-                                            JJ1-pelaaja: 3x Jalkaväkiryhmä, 1x Kranaatinheitinryhmä
-                                            (81mm).
-                                        </li>
-                                        <li>JJ2-pelaaja: 3x Jalkaväkiryhmä, 1x PST-ryhmä.</li>
-                                        <li>JJ3-pelaaja: 3x Jalkaväkiryhmä.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <strong>Punainen (Vahvistus ja Eteneminen):</strong> Tavoitteena
-                                    on varmistaa nykyiset asemat ja edetä. GM käyttää massaa ja
-                                    tulivoimaa.
-                                    <ul>
-                                        <li>
-                                            Yksiköt: 6x Motorisoitu Jalkaväkiryhmä, 2x BTR-82A, 2x
-                                            Kranaatinheitinryhmä (120mm).
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <h4>Pelaajien roolit ja joukot</h4>
+                        <ul>
+                            <li>
+                                <strong>Sininen (Kiinteä Puolustus):</strong> Tavoitteena on
+                                pysäyttää Punaisen eteneminen ja pitää hallussa avainasemat.
+                                <ul>
+                                    <li>KP-pelaaja: 1x Komppanianpäällikkö.</li>
+                                    <li>
+                                        JJ1-pelaaja: 3x Jalkaväkiryhmä, 1x Kranaatinheitinryhmä
+                                        (81mm).
+                                    </li>
+                                    <li>JJ2-pelaaja: 3x Jalkaväkiryhmä, 1x PST-ryhmä.</li>
+                                    <li>JJ3-pelaaja: 3x Jalkaväkiryhmä.</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Punainen (Vahvistus ja Eteneminen):</strong> Tavoitteena
+                                on varmistaa nykyiset asemat ja edetä. GM käyttää massaa ja
+                                tulivoimaa.
+                                <ul>
+                                    <li>
+                                        Yksiköt: 6x Motorisoitu Jalkaväkiryhmä, 2x BTR-82A, 2x
+                                        Kranaatinheitinryhmä (120mm).
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
 
-                            <h4>Tavoitteet</h4>
-                            <ul>
-                                <li>
-                                    <strong>Sininen:</strong> Pitää hallussaan vähintään 2/3 alun
-                                    tärkeistä kohteista pelin loppuun mennessä JA tuhota vähintään 4
-                                    Punaisen yksikköä.
-                                </li>
-                                <li>
-                                    <strong>Punainen:</strong> Vallata vähintään 2 tärkeää kohdetta
-                                    Siniseltä TAI tuhota vähintään 5 Sinisen yksikköä vuoroon 7
-                                    mennessä.
-                                </li>
-                            </ul>
+                        <h4>Tavoitteet</h4>
+                        <ul>
+                            <li>
+                                <strong>Sininen:</strong> Pitää hallussaan vähintään 2/3 alun
+                                tärkeistä kohteista pelin loppuun mennessä JA tuhota vähintään 4
+                                Punaisen yksikköä.
+                            </li>
+                            <li>
+                                <strong>Punainen:</strong> Vallata vähintään 2 tärkeää kohdetta
+                                Siniseltä TAI tuhota vähintään 5 Sinisen yksikköä vuoroon 7
+                                mennessä.
+                            </li>
+                        </ul>
 
-                            <h4>Aloitusryhmitys</h4>
-                            <ul>
-                                <li>
-                                    <strong>Kartan teema:</strong> Pieni kylä tai rakennusryhmä
-                                    metsäisen ja avoimen maaston keskellä, jossa on useita
-                                    strategisesti tärkeitä kohteita.
-                                </li>
-                                <li>
-                                    <strong>Punainen:</strong> Sijoittaa 3 Motorisoitua
-                                    Jalkaväkiryhmää ja 1 BTR-82A:n kartan keskiosaan edenneisiin
-                                    asemiin. Loput Punaiset yksiköt saapuvat kartan itäreunasta
-                                    ensimmäisellä vuorolla.
-                                </li>
-                                <li>
-                                    <strong>Sininen:</strong> Sijoittaa kaikki yksikkönsä kartan
-                                    länsi- ja keskiosaan puolustusasemiin. Sinisillä on 2
-                                    "Linnoittaudu"-tokenia, jotka voi asettaa kahden Jalkaväkiryhmän
-                                    kanssa (antaa +1 Suoja ja +1 Morale-testiin).
-                                </li>
-                            </ul>
+                        <h4>Aloitusryhmitys</h4>
+                        <ul>
+                            <li>
+                                <strong>Kartan teema:</strong> Pieni kylä tai rakennusryhmä
+                                metsäisen ja avoimen maaston keskellä, jossa on useita
+                                strategisesti tärkeitä kohteita.
+                            </li>
+                            <li>
+                                <strong>Punainen:</strong> Sijoittaa 3 Motorisoitua
+                                Jalkaväkiryhmää ja 1 BTR-82A:n kartan keskiosaan edenneisiin
+                                asemiin. Loput Punaiset yksiköt saapuvat kartan itäreunasta
+                                ensimmäisellä vuorolla.
+                            </li>
+                            <li>
+                                <strong>Sininen:</strong> Sijoittaa kaikki yksikkönsä kartan
+                                länsi- ja keskiosaan puolustusasemiin. Sinisillä on 2
+                                "Linnoittaudu"-tokenia, jotka voi asettaa kahden Jalkaväkiryhmän
+                                kanssa (antaa +1 Suoja ja +1 Morale-testiin).
+                            </li>
+                        </ul>
 
-                            <h4>Erityissäännöt</h4>
-                            <ul>
-                                <li>
-                                    <strong>Vahvistettu Maali (Sininen):</strong> KP-pelaaja voi
-                                    käyttää 1 KP "Vahvistaakseen Maalin", kun kaksi yksikköä näkee
-                                    saman vihollisen. Seuraava hyökkäys saa +2 bonuksen osumiseen.
-                                </li>
-                                <li>
-                                    <strong>Tykistökeskitykset (Punainen):</strong> GM voi käyttää
-                                    120mm Kranaatinheitinryhmiä "Tulitukipyyntöinä" (3 KP).
-                                </li>
-                                <li>
-                                    <strong>Rakennusten Valtaaminen:</strong> Rakennuksessa olevat
-                                    yksiköt saavat +2 Suojaa ja tekevät Moriaalitestit Edulla.
-                                    Rakennus on vallattu, kun Punainen yksikkö on sen heksassa eikä
-                                    Sinisiä yksiköitä ole siellä.
-                                </li>
-                            </ul>
+                        <h4>Erityissäännöt</h4>
+                        <ul>
+                            <li>
+                                <strong>Vahvistettu Maali (Sininen):</strong> KP-pelaaja voi
+                                käyttää 1 KP "Vahvistaakseen Maalin", kun kaksi yksikköä näkee
+                                saman vihollisen. Seuraava hyökkäys saa +2 bonuksen osumiseen.
+                            </li>
+                            <li>
+                                <strong>Tykistökeskitykset (Punainen):</strong> GM voi käyttää
+                                120mm Kranaatinheitinryhmiä "Tulitukipyyntöinä" (3 KP).
+                            </li>
+                            <li>
+                                <strong>Rakennusten Valtaaminen:</strong> Rakennuksessa olevat
+                                yksiköt saavat +2 Suojaa ja tekevät Moriaalitestit Edulla.
+                                Rakennus on vallattu, kun Punainen yksikkö on sen heksassa eikä
+                                Sinisiä yksiköitä ole siellä.
+                            </li>
+                        </ul>
 
-                            <h4>Voittoehdot</h4>
-                            <ul>
-                                <li>
-                                    <strong>Sininen Voitto:</strong> Jos Sininen hallitsee vähintään
-                                    2/3 alussa hallussaan olleista kohteista TAI tuhoaa 4+ Punaista
-                                    yksikköä pelin loppuun mennessä.
-                                </li>
-                                <li>
-                                    <strong>Punainen Voitto:</strong> Jos Punainen hallitsee
-                                    vähintään 2 tärkeää kohdetta TAI tuhoaa 5+ Sinisen yksikköä
-                                    vuoroon 7 mennessä.
-                                </li>
-                            </ul>
+                        <h4>Voittoehdot</h4>
+                        <ul>
+                            <li>
+                                <strong>Sininen Voitto:</strong> Jos Sininen hallitsee vähintään
+                                2/3 alussa hallussaan olleista kohteista TAI tuhoaa 4+ Punaista
+                                yksikköä pelin loppuun mennessä.
+                            </li>
+                            <li>
+                                <strong>Punainen Voitto:</strong> Jos Punainen hallitsee
+                                vähintään 2 tärkeää kohdetta TAI tuhoaa 5+ Sinisen yksikköä
+                                vuoroon 7 mennessä.
+                            </li>
+                        </ul>
 
-                            <h4>Skaalausohjeet</h4>
-                            <ul>
-                                <li>
-                                    <strong>Pienempi (2 pelaajaa + GM):</strong> Sinisellä on KP +
-                                    JJ1 (2x Jalkaväkiryhmä, 1x PST-ryhmä). Punaisella on 4x
-                                    Motorisoitu Jalkaväkiryhmä ja 1x BTR-82A. Kohteiden ja vuorojen
-                                    määrää vähennetään.
-                                </li>
-                                <li>
-                                    <strong>Isompi (6 pelaajaa + GM):</strong> Sinisellä on KP + 4x
-                                    Joukkueenjohtajaa (lisää yksi Jalkaväkiryhmä per JJ ja yksi
-                                    lisä-KH-ryhmä). Punaisella on lisäksi 2x Motorisoitu
-                                    Jalkaväkiryhmä ja 1x T-72B3. Kohteiden ja vuorojen määrää
-                                    lisätään (9 vuoroa). Punaiselle voidaan lisätä
-                                    "Massahyökkäys"-kyky.
-                                </li>
-                            </ul>
-                        </article>
+                        <h4>Skaalausohjeet</h4>
+                        <ul>
+                            <li>
+                                <strong>Pienempi (2 pelaajaa + GM):</strong> Sinisellä on KP +
+                                JJ1 (2x Jalkaväkiryhmä, 1x PST-ryhmä). Punaisella on 4x
+                                Motorisoitu Jalkaväkiryhmä ja 1x BTR-82A. Kohteiden ja vuorojen
+                                määrää vähennetään.
+                            </li>
+                            <li>
+                                <strong>Isompi (6 pelaajaa + GM):</strong> Sinisellä on KP + 4x
+                                Joukkueenjohtajaa (lisää yksi Jalkaväkiryhmä per JJ ja yksi
+                                lisä-KH-ryhmä). Punaisella on lisäksi 2x Motorisoitu
+                                Jalkaväkiryhmä ja 1x T-72B3. Kohteiden ja vuorojen määrää
+                                lisätään (9 vuoroa). Punaiselle voidaan lisätä
+                                "Massahyökkäys"-kyky.
+                            </li>
+                        </ul>
+                    </article>
                 </section>
 
                 <section id="pelinjohtajan-opas">
@@ -3236,6 +3440,19 @@
                         </li>
                     </ul>
 
+                    <h3>Uusien Mekaniikkojen Hallinta</h3>
+                    <p>Kun peliin tulee uusia sääntöjä, on hyvä pitää muutama asia mielessä:</p>
+                    <ul>
+                        <li><strong>Merkitse sulutteet salaa:</strong> Kun pelaaja käyttää kykyä kuten
+                            <em>Murtosulute</em>, merkitse miinakentän tarkka sijainti ja koko omaan salaiseen
+                            karttaasi. Älä anna pelaajille mitään vihjettä sen olemassaolosta ennen kuin he yrittävät
+                            havaita sitä tai liikkuvat sen päälle.
+                        </li>
+                        <li><strong>Tarkka-ampujan isku:</strong> Muista, että kun tarkkuuskiväärillä osutaan, hyökkäävä
+                            pelaaja saa päättää, minkä erikoiskyvyn hän kohteelta lamauttaa. Jos kohteella ei ole
+                            kykyjä, muistuta pelaajaa Moraalitestistä.</li>
+                    </ul>
+
                     <h3>Ole Tuomari, Älä Vihollinen:</h3>
                     <p>
                         Muista, että tehtäväsi on luoda haastava mutta reilu skenaario.
@@ -3330,7 +3547,7 @@
                 <p>
                     Kiitän suuresti, jos jaksoit lukea tänne saakka! Jos sinulle heräsi mitään kysyttävää,
                     älä epäröi ottaa minuun yhteyttä asian tiimoilta. Olen sitoutunut kehittämään tätä peliä
-                    ja vain muiden ihmisten avulla siitä on mahdollista tehdä hyvä pelattava. 
+                    ja vain muiden ihmisten avulla siitä on mahdollista tehdä hyvä pelattava.
                     Idea tähän peliin lähti halustani "sotapelata" D&D tyylisillä pelimekaniikoilla.
                     Lyhyen tutkimuksen jälkeen tulin siihen tulokseen, että tälläistä peliä ei
                     ollut/ole olemassa. Ryhdyin siis tuumasta toimeen ja aloin tekemään peliä itse.
