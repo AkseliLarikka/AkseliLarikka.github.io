@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // --- Alkuperäinen koodi pysyy pääosin ennallaan ---
+    // --- Alkuperäinen koodi ---
     const mainContent = document.getElementById('main-content');
     const navMenu = document.getElementById('nav-menu');
     const sidebar = document.getElementById('sidebar');
     const menuToggle = document.getElementById('menu-toggle');
-    
-    // (Aiempi koodisi otsikoiden numeroinnista... )
+
+    // Otsikoiden numerointi
     const headersToNumber = mainContent.querySelectorAll('h1, h2, h3, h4');
     const counters = [0, 0, 0];
     headersToNumber.forEach(header => {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // (...ja sivupalkin luonnista)
+    // Sivupalkin luonti
     const headersForSidebar = mainContent.querySelectorAll('h2, h3, h4');
     const createSlug = (text) => {
         if (!text) return '';
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         navMenu.appendChild(link);
     });
-    
+
     // --- Mobile Sidebar Controls ---
     menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('sidebar-hidden');
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // ====================================================================
-    // KORJATTU JA LISÄTTY: Sivupalkin automaattinen vieritys
+    // Sivupalkin automaattinen vieritys
     // ====================================================================
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Lisätään 'active'-luokka nykyiseen näkyvään linkkiin
                     navLink.classList.add('active');
 
-                    // UUSI OSA: Vieritetään sivupalkkia niin, että aktiivinen linkki on näkyvissä
+                    // Vieritetään sivupalkkia niin, että aktiivinen linkki on näkyvissä
                     navLink.scrollIntoView({
                         behavior: 'smooth',
                         block: 'nearest' // Vierittää vain, jos linkki ei ole jo näkyvissä
@@ -98,25 +98,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { rootMargin: "-30% 0px -60% 0px", threshold: 0.6 });
     headersForSidebar.forEach(header => observer.observe(header));
 
-// ====================================================================
-    // KORJATTU OSA: Vieritysnappien toiminnallisuus
+    // ====================================================================
+    // Vieritysnappien toiminnallisuus
     // ====================================================================
     const scrollButtonsContainer = document.getElementById('scroll-buttons-container');
     const scrollToH2Button = document.getElementById('scroll-to-h2'); // Nimeä voisi muuttaa, mutta ID:llä ei ole väliä
     const scrollToTopButton = document.getElementById('scroll-to-top');
-    
-    // KORJATTU: Haetaan ensimmäinen H3-otsikko, joka toimii kynnysarvona
-    const firstHeader = document.querySelector('#main-content h3'); 
+
+    // Haetaan ensimmäinen H3-otsikko, joka toimii kynnysarvona
+    const firstHeader = document.querySelector('#main-content h3');
 
     // Varmistetaan, että kaikki tarvittavat elementit löytyivät
     if (!scrollButtonsContainer || !scrollToH2Button || !scrollToTopButton || !firstHeader) {
         console.error("Vieritysnappien toiminnallisuutta ei voitu alustaa. Yksi tai useampi elementti puuttuu.");
         return; // Lopetetaan suoritus, jos elementtejä ei löydy
     }
-    
+
     // 1. Näytä/piilota napit vierittäessä
     window.addEventListener('scroll', () => {
-        const triggerPoint = firstHeader.offsetTop - 50; 
+        const triggerPoint = firstHeader.offsetTop - 50;
         if (window.scrollY > triggerPoint) {
             scrollButtonsContainer.classList.add('visible');
         } else {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollToH2Button.addEventListener('click', () => {
         // KORJATTU: Haetaan kaikki H3-elementit H2-elementtien sijaan
         const h3Elements = Array.from(mainContent.querySelectorAll('h3'));
-        
+
         // Etsitään kaikki H3-otsikot, jotka ovat nykyisen näkymän yläpuolella
         const h3sAbove = h3Elements.filter(h3 => h3.getBoundingClientRect().top < 0);
 
@@ -149,9 +149,9 @@ document.addEventListener('DOMContentLoaded', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     });
-    
-navLink.scrollIntoView({
-    behavior: 'smooth',
-    block: 'nearest'
-});
+
+    navLink.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest'
+    });
 });

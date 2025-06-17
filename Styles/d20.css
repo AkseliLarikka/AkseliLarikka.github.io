@@ -1,163 +1,288 @@
 /* Chosen Palette: Warm Neutral Harmony */
-        body {
-            background-color: #F5F5F4; /* stone-100 */
-            color: #1C1917; /* stone-900 */
-            font-family: 'Inter', sans-serif;
-        }
-        .prose {
-            color: #44403C; /* stone-700 */
-        }
-        .prose h1, .prose h2, .prose h3, .prose h4 {
-            color: #A855F7; /* purple-500 */
-            border-bottom: 2px solid #E5E7EB; /* gray-200 */
-            padding-bottom: 0.3em;
-        }
-        .prose h1 { font-size: 2.25rem; }
-        .prose h2 { font-size: 1.875rem; margin-top: 2em; }
-        .prose h3 { font-size: 1.5rem; margin-top: 1.8em; border-bottom-style: dashed; }
-        .prose h4 { font-size: 1.2rem; margin-top: 1.5em; border-bottom: 1px solid #E5E7EB; }
-        .prose a { color: #6D28D9; /* purple-700 */ }
-        .prose strong { color: #44403C; } /* stone-700 */
-        .prose blockquote {
-            border-left-color: #A855F7; /* purple-500 */
-            background-color: #FAFAF9; /* stone-50 */
-            color: #57534E; /* stone-600 */
-        }
-        .prose table {
-             width: 100%;
-             margin-top: 1.5em;
-             margin-bottom: 1.5em;
-        }
-        .prose table thead {
-            background-color: #581C87; /* purple-900 */
-            color: #F5F5F4; /* stone-100 */
-        }
-        .prose th, .prose td {
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #E5E7EB; /* gray-200 */
-        }
-        .prose table tbody tr:nth-child(even) {
-            background-color: #FAFAF9; /* stone-50 */
-        }
-        .unit-card {
-            background-color: #FFFFFF;
-            border: 1px solid #E7E5E4; /* stone-200 */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            transition: all 0.3s ease-in-out;
-            margin-top: 1.5rem;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-        .unit-card h4 {
-            background-color: #F3E8FF; /* purple-100 */
-            color: #581C87; /* purple-900 */
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid #E5E7EB;
-            margin-top: 0;
-            border-bottom-color: #D8B4FE; /* purple-300 */
-        }
-        .unit-card-content {
-            padding: 1rem;
-        }
-        .unit-card ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .unit-card ul li {
-            padding-bottom: 0.5rem;
-        }
-        #sidebar {
-            transition: transform 0.3s ease-in-out;
-        }
-        .sidebar-hidden {
-            transform: translateX(-100%);
-        }
-        .nav-link {
-            transition: all 0.2s;
-            border-left: 4px solid transparent;
-        }
-        .nav-link:hover, .nav-link.active {
-            background-color: #F3E8FF; /* purple-100 */
-            border-left-color: #A855F7; /* purple-500 */
-            color: #581C87; /* purple-900 */
-        }
-        .lisenssi-container { /* Asettaa säiliön käyttämään Flexbox-asettelua */
-            align-items: center; /* Tasaa tekstin ja kuvat pystysuunnassa keskelle */
-            flex-wrap: wrap; /* Sallii elementtien rivittyä, jos tila loppuu (esim. mobiililaitteilla) */
-            gap: 0.5rem; /* Lisää pienen välin teksti- ja kuvaosioiden väliin */
-            justify-content: center; /* Keskittää sisällön, jos haluat */
-            padding: 1rem 0rem; /* Lisää hieman ilmavuutta reunohin */
-            border-top: 1px solid #e5e7eb; /* Esimerkki: lisää siistin yläreunan */
-        }
-        .lisenssi-kuvakkeet {
-            display: flex; /* Varmistaa, että myös kuvakkeet ovat joustavassa säiliössä */
-            align-items: center;
-            gap: 0.25rem; /* Lisää pienen välin kuvakkeiden väliin */
-        }
-            /* Määritellään kuvakkeille kiinteä korkeus, jotta ne ovat samankokoisia */
-        .lisenssi-kuvakkeet img {
-            height: 1.25rem; 
-        }
-        .yhteystiedot-lista {
-            list-style-type: none; /* Poistaa listapallerot */
-            padding: 0;
-        }
-        .yhteystiedot-lista li {
-        margin-bottom: 0.5rem; /* Lisää pystysuuntaista väliä linkkien väliin */
-        }
-        .yhteystiedot-lista a {
-        display: inline-flex; /* Asettaa kuvakkeen ja tekstin vierekkäin */
-        align-items: center;  /* Tasaa kuvakkeen ja tekstin pystysuunnassa */
-        gap: 0.5rem;          /* Lisää välin kuvakkeen ja tekstin väliin */
-        text-decoration: none;
-        color: #3b82f6; /* Esimerkki linkin väriksi */
-        }
-        .yhteystiedot-lista a:hover {
-        text-decoration: underline; /* Korostaa linkin, kun hiiri on sen päällä */
-        }
-        /* Vieritysnappien säiliö */
-        .scroll-buttons {
-        position: fixed; /* Kiinnittää elementin näkymään */
-        bottom: 1.5rem;  /* Etäisyys alareunasta */
-        right: 1.5rem;   /* Etäisyys oikeasta reunasta */
-        z-index: 50;     /* Varmistaa, että napit ovat muiden elementtien päällä */
-        display: flex;
-        flex-direction: column; /* Asettaa napit päällekkäin */
-        gap: 0.5rem;          /* Pieni väli nappien väliin */
-        /* Oletuksena piilossa ja siirtymäefektiä varten */
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px);
-        transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
-        }
-        /* Luokka, joka tekee napeista näkyvät */
-        .scroll-buttons.visible {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        }
-        /* Yhteiset tyylit molemmille napeille */
-        #scroll-to-h2, #scroll-to-top {
-        background-color: #6D28D9; /* purple-700 */
-        color: white;
-        border: none;
-        width: 3rem;  /* 48px */
-        height: 3rem; /* 48px */
-        border-radius: 9999px; /* Tekee napista täysin pyöreän */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.2s, transform 0.2s;
-        }
-        #scroll-to-h2:hover, #scroll-to-top:hover {
-        background-color: #581C87; /* purple-900 */
-        transform: scale(1.1);
-        }
-        /* Nappien sisällä olevien SVG-kuvakkeiden koko */
-        #scroll-to-h2 svg, #scroll-to-top svg {
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-        
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #F5F5F4;
+    /* stone-100 */
+    color: #1C1917;
+    /* stone-900 */
+    font-family: 'Inter', sans-serif;
+}
+
+.prose {
+    color: #44403C;
+    /* stone-700 */
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+    color: #A855F7;
+    /* purple-500 */
+    border-bottom: 2px solid #E5E7EB;
+    /* gray-200 */
+    padding-bottom: 0.3em;
+}
+
+.prose h1 {
+    font-size: 2.25rem;
+}
+
+.prose h2 {
+    font-size: 1.875rem;
+    margin-top: 2em;
+}
+
+.prose h3 {
+    font-size: 1.5rem;
+    margin-top: 1.8em;
+    border-bottom-style: dashed;
+}
+
+.prose h4 {
+    font-size: 1.2rem;
+    margin-top: 1.5em;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.prose a {
+    color: #6D28D9;
+    /* purple-700 */
+}
+
+.prose strong {
+    color: #44403C;
+}
+
+/* stone-700 */
+.prose blockquote {
+    border-left-color: #A855F7;
+    /* purple-500 */
+    background-color: #FAFAF9;
+    /* stone-50 */
+    color: #57534E;
+    /* stone-600 */
+}
+
+.prose table {
+    width: 100%;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.prose table thead {
+    background-color: #581C87;
+    /* purple-900 */
+    color: #F5F5F4;
+    /* stone-100 */
+}
+
+.prose th,
+.prose td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #E5E7EB;
+    /* gray-200 */
+}
+
+.prose table tbody tr:nth-child(even) {
+    background-color: #FAFAF9;
+    /* stone-50 */
+}
+
+.unit-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E7E5E4;
+    /* stone-200 */
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: all 0.3s ease-in-out;
+    margin-top: 1.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.unit-card h4 {
+    background-color: #F3E8FF;
+    /* purple-100 */
+    color: #581C87;
+    /* purple-900 */
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #E5E7EB;
+    margin-top: 0;
+    border-bottom-color: #D8B4FE;
+    /* purple-300 */
+}
+
+.unit-card-content {
+    padding: 1rem;
+}
+
+.unit-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.unit-card ul li {
+    padding-bottom: 0.5rem;
+}
+
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-hidden {
+    transform: translateX(-100%);
+}
+
+.nav-link {
+    transition: all 0.2s;
+    border-left: 4px solid transparent;
+    word-wrap: break-word;
+    /* Varmistaa yhteensopivuuden vanhempien selainten kanssa */
+    overflow-wrap: break-word;
+    /* Moderni standardi: pakottaa liian pitkän sanan rivittymään */
+    hyphens: auto;
+    /* Lisää automaattisen tavutuksen suomen kielen sääntöjen mukaan */
+
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: #F3E8FF;
+    /* purple-100 */
+    border-left-color: #A855F7;
+    /* purple-500 */
+    color: #581C87;
+    /* purple-900 */
+}
+
+.lisenssi-container {
+    /* Asettaa säiliön käyttämään Flexbox-asettelua */
+    align-items: center;
+    /* Tasaa tekstin ja kuvat pystysuunnassa keskelle */
+    flex-wrap: wrap;
+    /* Sallii elementtien rivittyä, jos tila loppuu (esim. mobiililaitteilla) */
+    gap: 0.5rem;
+    /* Lisää pienen välin teksti- ja kuvaosioiden väliin */
+    justify-content: center;
+    /* Keskittää sisällön, jos haluat */
+    padding: 1rem 0rem;
+    /* Lisää hieman ilmavuutta reunohin */
+    border-top: 1px solid #e5e7eb;
+    /* Esimerkki: lisää siistin yläreunan */
+}
+
+.lisenssi-kuvake-yksi {
+  height: 5.75rem; /* Hieman suurempi korkeus, koska se on nyt yksi kuva. Muokkaa tarvittaessa. */
+  vertical-align: middle; /* Tasaa kuvan kauniisti ympäröivän tekstin kanssa. */
+  transition: opacity 0.2s ease-in-out; /* Pehmeä tehoste hiiren liikkeille. */
+}
+
+/* Lisätään pieni tehoste, kun hiiri on kuvan päällä */
+a:has(> .lisenssi-kuvake-yksi):hover {
+  opacity: 0.8;
+}
+
+.yhteystiedot-lista {
+    list-style-type: none;
+    /* Poistaa listapallerot */
+    padding: 0;
+}
+
+.yhteystiedot-lista li {
+    margin-bottom: 0.5rem;
+    /* Lisää pystysuuntaista väliä linkkien väliin */
+}
+
+.yhteystiedot-lista a {
+    display: inline-flex;
+    /* Asettaa kuvakkeen ja tekstin vierekkäin */
+    align-items: center;
+    /* Tasaa kuvakkeen ja tekstin pystysuunnassa */
+    gap: 0.5rem;
+    /* Lisää välin kuvakkeen ja tekstin väliin */
+    text-decoration: none;
+    color: #3b82f6;
+    /* Esimerkki linkin väriksi */
+}
+
+.yhteystiedot-lista a:hover {
+    text-decoration: underline;
+    /* Korostaa linkin, kun hiiri on sen päällä */
+}
+
+/* Vieritysnappien säiliö */
+.scroll-buttons {
+    position: fixed;
+    /* Kiinnittää elementin näkymään */
+    bottom: 1.5rem;
+    /* Etäisyys alareunasta */
+    right: 1.5rem;
+    /* Etäisyys oikeasta reunasta */
+    z-index: 50;
+    /* Varmistaa, että napit ovat muiden elementtien päällä */
+    display: flex;
+    flex-direction: column;
+    /* Asettaa napit päällekkäin */
+    gap: 0.5rem;
+    /* Pieni väli nappien väliin */
+    /* Oletuksena piilossa ja siirtymäefektiä varten */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+
+/* Luokka, joka tekee napeista näkyvät */
+.scroll-buttons.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Yhteiset tyylit molemmille napeille */
+#scroll-to-h2,
+#scroll-to-top {
+    background-color: #6D28D9;
+    /* purple-700 */
+    color: white;
+    border: none;
+    width: 3rem;
+    /* 48px */
+    height: 3rem;
+    /* 48px */
+    border-radius: 9999px;
+    /* Tekee napista täysin pyöreän */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#scroll-to-h2:hover,
+#scroll-to-top:hover {
+    background-color: #581C87;
+    /* purple-900 */
+    transform: scale(1.1);
+}
+
+/* Nappien sisällä olevien SVG-kuvakkeiden koko */
+#scroll-to-h2 svg,
+#scroll-to-top svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+#logo-link img {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 0.25rem; /* Lisätään pieni pyöristys tehostetta varten */
+}
+
+#logo-link:hover img {
+  transform: scale(1.03); /* Suurentaa logoa hieman, kun hiiri on päällä */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
