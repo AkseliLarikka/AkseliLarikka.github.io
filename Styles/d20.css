@@ -92,6 +92,16 @@ body {
     /* stone-50 */
 }
 
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem; /* Tärkeä! Antaa tilaa listamerkeille */
+}
+
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem; /* Tärkeä! Antaa tilaa numeroille */
+}
+
 .unit-card {
     background-color: #FFFFFF;
     border: 1px solid #E7E5E4;
@@ -285,4 +295,9 @@ a:has(> .lisenssi-kuvake-yksi):hover {
 #logo-link:hover img {
   transform: scale(1.03); /* Suurentaa logoa hieman, kun hiiri on päällä */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.banner-title {
+  font-family: 'Black Ops One', sans-serif;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
 }
