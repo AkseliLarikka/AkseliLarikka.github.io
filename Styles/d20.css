@@ -86,13 +86,12 @@ body {
 }
 
 .prose .yhteystiedot-lista {
-    list-style-type: none;  /* Poistaa listapallerot */
-    padding: 0;             /* Poistaa oletussisennyksen */
-}
-
-.yhteystiedot-lista li {
-    margin-bottom: 0.5rem;
-    /* Lisää pystysuuntaista väliä linkkien väliin */
+    list-style-type: none;      /* Poistaa listapallerot */
+    padding: 0;                 /* Poistaa oletussisennyksen */
+    display: flex;              /* ASETTAA LISTAN ELEMENTIT VIEREKKÄIN */
+    flex-wrap: wrap;            /* Sallii linkkien rivittyä, jos tila loppuu (esim. mobiilissa) */
+    gap: 1.5rem;                /* Lisää välin linkkien väliin (sekä vaaka- että pystysuunnassa, jos rivittyvät) */
+    margin-top: 1rem;           /* Lisätään hieman ilmaa otsikon ja listan väliin */
 }
 
 .prose th,
