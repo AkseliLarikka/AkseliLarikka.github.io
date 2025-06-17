@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (header.tagName === 'H4') {
             link.classList.add('ml-8', 'text-sm');
         }
-        
+
         // Lisätään klikkauskuuntelija, joka vierittää pehmeästi ja sulkee mobiilisivupalkin.
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mainContentForScroll = document.getElementById('main-content');
 
     if (scrollButtonsContainer && mainContentForScroll) {
-        
+
         // Noudetaan kaikki painike-elementit
         const scrollTopButton = document.getElementById('scroll-top');
         const scrollH2UpButton = document.getElementById('scroll-h2-up');
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const scrollY = window.scrollY;
             const pageHeight = document.documentElement.scrollHeight;
             const windowHeight = window.innerHeight;
-            
+
             const atTop = scrollY < 20;
             const atBottom = (windowHeight + scrollY) >= pageHeight - 20;
 
@@ -178,16 +178,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (scrollH2UpButton) scrollH2UpButton.disabled = atTop || !nextH2Up;
             if (scrollH2DownButton) scrollH2DownButton.disabled = atBottom || !nextH2Down;
-            
+
             if (scrollH3UpButton) scrollH3UpButton.disabled = atTop || !nextNavigableUp;
             if (scrollH3DownButton) scrollH3DownButton.disabled = atBottom || !nextNavigableDown;
         };
-        
+
         // --- Tapahtumankuuntelijat ---
         // Äärirajoihin vieritys
         if (scrollTopButton) scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         if (scrollBottomButton) scrollBottomButton.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
-        
+
         // H2-otsikoihin vieritys (tiukka haku)
         if (scrollH2UpButton) scrollH2UpButton.addEventListener('click', () => findNearestStrictHeader('h2', 'up')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
         if (scrollH2DownButton) scrollH2DownButton.addEventListener('click', () => findNearestStrictHeader('h2', 'down')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
@@ -204,11 +204,36 @@ document.addEventListener('DOMContentLoaded', function () {
             scrollTimeout = setTimeout(updateButtonStates, 50);
         });
         window.addEventListener('resize', updateButtonStates);
-        
+
         // Varmistetaan tilanpäivitys heti latauksen jälkeen
         setTimeout(updateButtonStates, 100);
 
     } else {
         console.error('VIERITYSNAPPIEN SKRIPTI EI KÄYNNISTYNYT! Varmista, että HTML-koodissa on elementit ID:llä "scroll-buttons-container" ja "main-content".');
+    }
+    // ====================================================================
+    // OSA 3: VIERITYSNAPPIEN TELAKOINTI FOOTERIN KOHDALLA
+    // ====================================================================
+    const pageFooter = document.getElementById('page-footer');
+    const scrollButtons = document.getElementById('scroll-buttons-container');
+
+    if (pageFooter && scrollButtons) {
+        const footerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Jos footer on näkyvissä, lisätään telakoitu luokka napeille.
+                if (entry.isIntersecting) {
+                    scrollButtons.classList.add('is-docked');
+                } else {
+                    scrollButtons.classList.remove('is-docked');
+                }
+            });
+        }, {
+            // Määritellään "viewport" 100 pikseliä todellista näkymää alemmaksi.
+            // Tämä saa telakoinnin tapahtumaan hieman ennen kuin footer osuu näytön alareunaan.
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Asetetaan tarkkailija päälle.
+        footerObserver.observe(pageFooter);
     }
 });

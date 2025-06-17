@@ -247,7 +247,8 @@ a:has(> .lisenssi-kuvake-yksi):hover {
 
 /* Yhteiset tyylit kaikille kuudelle napille */
 .scroll-button {
-    background-color: #6D28D9; /* purple-700 */
+    background-color: #6D28D9;
+    /* purple-700 */
     color: white;
     border: none;
     width: 3rem;
@@ -263,7 +264,8 @@ a:has(> .lisenssi-kuvake-yksi):hover {
 
 /* Hover-tila vain, kun nappi EI ole pois päältä */
 .scroll-button:hover:not(:disabled) {
-    background-color: #581C87; /* purple-900 */
+    background-color: #581C87;
+    /* purple-900 */
     transform: scale(1.1);
 }
 
@@ -271,13 +273,22 @@ a:has(> .lisenssi-kuvake-yksi):hover {
 .scroll-button:disabled {
     opacity: 0.3;
     cursor: not-allowed;
-    transform: none; /* Estetään hover-muutos */
+    transform: none;
+    /* Estetään hover-muutos */
 }
 
 /* SVG-kuvakkeiden koko nappien sisällä */
-.scroll-button svg {
-    width: 1.5rem;
-    height: 1.5rem;
+.scroll-buttons {
+    position: fixed;
+    bottom: 1.0rem;
+    right: 1.0rem;
+    z-index: 50;
+    display: flex;
+    gap: 0.5rem;
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
 }
 
 #logo-link img {
@@ -333,4 +344,14 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     /* Hieman isompi fonttikoko */
     padding: 0.5rem 0.2rem;
     /* Pieni pehmuste sivuilla */
+}
+
+@media (max-width: 768px) {
+
+    /* Kun footer tulee näkyviin, napit häivytetään pois näkyvistä. */
+#scroll-buttons-container.is-docked {
+    opacity: 0;
+    visibility: hidden; /* Estää vuorovaikutuksen näkymättömien nappien kanssa */
+    pointer-events: none; /* Varmistaa, ettei nappi ole tiellä */
+}
 }
