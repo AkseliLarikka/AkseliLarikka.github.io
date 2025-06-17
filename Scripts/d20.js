@@ -1,20 +1,28 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // --- Alkuperäinen koodi ---
+
+    // Noudetaan sivulta tarvittavat pääelementit
     const mainContent = document.getElementById('main-content');
     const navMenu = document.getElementById('nav-menu');
     const sidebar = document.getElementById('sidebar');
     const menuToggle = document.getElementById('menu-toggle');
 
-    // Otsikoiden numerointi
+    // ====================================================================
+    // OSA 1: SISÄLLÖN ALUSTUS JA SIVUPALKKI
+    // ====================================================================
+
+    // --- Otsikoiden automaattinen numerointi ---
+    // Käy läpi kaikki H1-H4-otsikot ja lisää niihin numerointi (esim. 1.1, 1.1.2).
     const headersToNumber = mainContent.querySelectorAll('h1, h2, h3, h4');
-    const counters = [0, 0, 0];
+    const counters = [0, 0, 0]; // Laskurit H2, H3 ja H4 tasoille
+
     headersToNumber.forEach(header => {
         const level = parseInt(header.tagName.substring(1));
         if (level === 1) {
-            counters.fill(0);
+            counters.fill(0); // Nollaa laskurit H1-otsikon kohdalla
         } else if (level >= 2 && level <= 4) {
             const counterIndex = level - 2;
             counters[counterIndex]++;
+            // Nollaa kaikki alemman tason laskurit
             for (let i = counterIndex + 1; i < counters.length; i++) {
                 counters[i] = 0;
             }
@@ -23,11 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Sivupalkin luonti
+    // --- Sivupalkin navigaatiolinkkien luonti ---
     const headersForSidebar = mainContent.querySelectorAll('h2, h3, h4');
+
+    // Apufunktio, joka luo otsikosta URL-ystävällisen "slugin" ankkurilinkkiä varten.
     const createSlug = (text) => {
         if (!text) return '';
-        const cleanText = text.replace(/^[\d\.]+\s/, '');
+        const cleanText = text.replace(/^[\d\.]+\s/, ''); // Poistaa numerot alusta
         return 'header-' + cleanText.toString().toLowerCase()
             .replace(/\s+/g, '-')
             .replace(/[^\w\-]+/g, '')
@@ -35,6 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .replace(/^-+/, '')
             .replace(/-+$/, '');
     };
+
+    // Luodaan jokaisesta otsikosta linkki sivupalkkiin.
     headersForSidebar.forEach(header => {
         const numberedTitle = header.textContent;
         let id = header.id;
@@ -42,10 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
             id = createSlug(numberedTitle);
             header.id = id;
         }
+
         const link = document.createElement('a');
         link.href = `#${id}`;
         link.textContent = numberedTitle;
         link.className = 'block py-1.5 px-4 rounded-md text-stone-700 hover:bg-purple-100 nav-link transition-all duration-200';
+
+        // Lisätään tyylit otsikkotason mukaan
         if (header.tagName === 'H2') {
             link.classList.add('font-bold', 'text-purple-800', 'mt-1');
         } else if (header.tagName === 'H3') {
@@ -53,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (header.tagName === 'H4') {
             link.classList.add('ml-8', 'text-sm');
         }
+        
+        // Lisätään klikkauskuuntelija, joka vierittää pehmeästi ja sulkee mobiilisivupalkin.
         link.addEventListener('click', (e) => {
             e.preventDefault();
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
@@ -63,34 +80,30 @@ document.addEventListener('DOMContentLoaded', function () {
         navMenu.appendChild(link);
     });
 
-    // --- Mobile Sidebar Controls ---
+    // --- Mobiilisivupalkin hallinta ---
     menuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('sidebar-hidden');
     });
+
     mainContent.addEventListener('click', () => {
         if (window.innerWidth < 768 && !sidebar.classList.contains('sidebar-hidden')) {
             sidebar.classList.add('sidebar-hidden');
         }
     });
 
-    // ====================================================================
-    // Sivupalkin automaattinen vieritys
-    // ====================================================================
+    // --- Sivupalkin aktiivisen linkin korostus vierittäessä ---
+    // IntersectionObserver tarkkailee, mikä otsikko on näkyvissä.
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            let id = entry.target.id;
+            const id = entry.target.id;
             const navLink = navMenu.querySelector(`a[href="#${id}"]`);
             if (navLink) {
                 if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-                    // Poistetaan ensin 'active'-luokka kaikista linkeistä
                     document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-                    // Lisätään 'active'-luokka nykyiseen näkyvään linkkiin
                     navLink.classList.add('active');
-
-                    // Vieritetään sivupalkkia niin, että aktiivinen linkki on näkyvissä
                     navLink.scrollIntoView({
                         behavior: 'smooth',
-                        block: 'nearest' // Vierittää vain, jos linkki ei ole jo näkyvissä
+                        block: 'nearest'
                     });
                 }
             }
@@ -98,65 +111,104 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { rootMargin: "-30% 0px -60% 0px", threshold: 0.6 });
     headersForSidebar.forEach(header => observer.observe(header));
 
+
     // ====================================================================
-    // Vieritysnappien toiminnallisuus
+    // OSA 2: SIVUN VIERITYSPAINIKKEET
     // ====================================================================
+
     const scrollButtonsContainer = document.getElementById('scroll-buttons-container');
-    const scrollToH2Button = document.getElementById('scroll-to-h2');
-    const scrollToTopButton = document.getElementById('scroll-to-top');
-    const firstHeader = document.querySelector('#main-content h3');
+    const mainContentForScroll = document.getElementById('main-content');
 
-    if (!scrollButtonsContainer || !scrollToH2Button || !scrollToTopButton || !firstHeader) {
-        return;
-    }
+    if (scrollButtonsContainer && mainContentForScroll) {
+        
+        // Noudetaan kaikki painike-elementit
+        const scrollTopButton = document.getElementById('scroll-top');
+        const scrollH2UpButton = document.getElementById('scroll-h2-up');
+        const scrollH3UpButton = document.getElementById('scroll-h3-up');
+        const scrollBottomButton = document.getElementById('scroll-bottom');
+        const scrollH2DownButton = document.getElementById('scroll-h2-down');
+        const scrollH3DownButton = document.getElementById('scroll-h3-down');
 
-    // Näytä/piilota napit
-    window.addEventListener('scroll', () => {
-        const triggerPoint = firstHeader.offsetTop - 50;
-        if (window.scrollY > triggerPoint) {
-            scrollButtonsContainer.classList.add('visible');
-        } else {
-            scrollButtonsContainer.classList.remove('visible');
-        }
-    });
+        // --- Etsintäfunktiot ---
+        // Käytetään getBoundingClientRect()-metodia, joka on luotettava tapa mitata sijainti suhteessa näyttöön.
 
-    // "Vieritä alkuun" -nappi
-    scrollToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // "Vieritä ylöspäin" -napin päivitetty logiikka
-    scrollToH2Button.addEventListener('click', () => {
-        const h3Elements = Array.from(mainContent.querySelectorAll('h3'));
-
-        // Etsi kaikki H3-otsikot, jotka ovat näkymän yläpuolella
-        const h3sAbove = h3Elements.filter(h3 => h3.getBoundingClientRect().top < -1); // Pieni -1 puskuri
-
-        if (h3sAbove.length > 0) {
-            // Lähin yläpuolella oleva otsikko on listan viimeinen
-            const nearestH3 = h3sAbove[h3sAbove.length - 1];
-
-            // TARKISTUS: Olemmeko jo tämän otsikon kohdalla?
-            // (Tarkistetaan, onko elementin yläreuna hyvin lähellä näkymän yläreunaa)
-            const isAtNearestH3 = Math.abs(nearestH3.getBoundingClientRect().top) < 5;
-
-            // JOS olemme jo lähimmän otsikon kohdalla JA listalla on VIELÄ sitäkin ylempänä olevia otsikoita
-            if (isAtNearestH3 && h3sAbove.length > 1) {
-                // Valitse kohdaksi seuraava otsikko ylöspäin (eli toiseksi viimeinen listalta)
-                const nextH3Up = h3sAbove[h3sAbove.length - 2];
-                nextH3Up.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        /**
+         * "Älykäs" haku: Etsii lähimmän H2- tai H3-otsikon. Käytetään yhden nuolen painikkeille.
+         */
+        const findNextNavigableHeader = (direction) => {
+            const allNavigableHeaders = Array.from(mainContentForScroll.querySelectorAll('h2, h3'));
+            if (direction === 'up') {
+                const headersAbove = allNavigableHeaders.filter(h => h.getBoundingClientRect().top < -1);
+                return headersAbove.length > 0 ? headersAbove[headersAbove.length - 1] : null;
             } else {
-                // MUUTEN vieritä normaalisti lähimpään yläpuolella olevaan otsikkoon
-                nearestH3.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return allNavigableHeaders.find(h => h.getBoundingClientRect().top > 1) || null;
             }
-        } else {
-            // Jos yläpuolella ei ole yhtään H3-otsikkoa, mennään aivan alkuun
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    });
+        };
 
-    navLink.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest'
-    });
+        /**
+         * "Tiukka" haku: Etsii vain määritellyn tyyppistä otsikkoa (H2). Käytetään kahden nuolen painikkeille.
+         */
+        const findNearestStrictHeader = (selector, direction) => {
+            const allHeaders = Array.from(mainContentForScroll.querySelectorAll(selector));
+            if (direction === 'up') {
+                const headersAbove = allHeaders.filter(h => h.getBoundingClientRect().top < -1);
+                return headersAbove.length > 0 ? headersAbove[headersAbove.length - 1] : null;
+            } else {
+                return allHeaders.find(h => h.getBoundingClientRect().top > 1) || null;
+            }
+        };
+
+        // --- Painikkeiden tilan päivitys ---
+        // Tarkistaa, mitkä painikkeet tulee näyttää aktiivisina tai pois päältä.
+        const updateButtonStates = () => {
+            const scrollY = window.scrollY;
+            const pageHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+            
+            const atTop = scrollY < 20;
+            const atBottom = (windowHeight + scrollY) >= pageHeight - 20;
+
+            const nextH2Up = findNearestStrictHeader('h2', 'up');
+            const nextH2Down = findNearestStrictHeader('h2', 'down');
+            const nextNavigableUp = findNextNavigableHeader('up');
+            const nextNavigableDown = findNextNavigableHeader('down');
+
+            if (scrollTopButton) scrollTopButton.disabled = atTop;
+            if (scrollBottomButton) scrollBottomButton.disabled = atBottom;
+
+            if (scrollH2UpButton) scrollH2UpButton.disabled = atTop || !nextH2Up;
+            if (scrollH2DownButton) scrollH2DownButton.disabled = atBottom || !nextH2Down;
+            
+            if (scrollH3UpButton) scrollH3UpButton.disabled = atTop || !nextNavigableUp;
+            if (scrollH3DownButton) scrollH3DownButton.disabled = atBottom || !nextNavigableDown;
+        };
+        
+        // --- Tapahtumankuuntelijat ---
+        // Äärirajoihin vieritys
+        if (scrollTopButton) scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        if (scrollBottomButton) scrollBottomButton.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
+        
+        // H2-otsikoihin vieritys (tiukka haku)
+        if (scrollH2UpButton) scrollH2UpButton.addEventListener('click', () => findNearestStrictHeader('h2', 'up')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+        if (scrollH2DownButton) scrollH2DownButton.addEventListener('click', () => findNearestStrictHeader('h2', 'down')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+
+        // Seuraavaan otsikkoon vieritys (älykäs haku)
+        if (scrollH3UpButton) scrollH3UpButton.addEventListener('click', () => findNextNavigableHeader('up')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+        if (scrollH3DownButton) scrollH3DownButton.addEventListener('click', () => findNextNavigableHeader('down')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+
+        // Tilanpäivityksen käynnistys ja optimointi
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            // Optimointi: Suoritetaan päivitys vasta, kun vieritys on hetkeksi pysähtynyt.
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateButtonStates, 50);
+        });
+        window.addEventListener('resize', updateButtonStates);
+        
+        // Varmistetaan tilanpäivitys heti latauksen jälkeen
+        setTimeout(updateButtonStates, 100);
+
+    } else {
+        console.error('VIERITYSNAPPIEN SKRIPTI EI KÄYNNISTYNYT! Varmista, että HTML-koodissa on elementit ID:llä "scroll-buttons-container" ja "main-content".');
+    }
 });

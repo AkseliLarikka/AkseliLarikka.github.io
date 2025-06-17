@@ -72,19 +72,6 @@ body {
     /* stone-600 */
 }
 
-.prose table {
-    width: 100%;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-}
-
-.prose table thead {
-    background-color: #581C87;
-    /* purple-900 */
-    color: #F5F5F4;
-    /* stone-100 */
-}
-
 .prose .yhteystiedot-lista {
     list-style-type: none;
     /* Poistaa listapallerot */
@@ -178,7 +165,6 @@ body {
     /* Moderni standardi: pakottaa liian pitkän sanan rivittymään */
     hyphens: auto;
     /* Lisää automaattisen tavutuksen suomen kielen sääntöjen mukaan */
-
 }
 
 .nav-link:hover,
@@ -238,66 +224,58 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     /* Korostaa linkin, kun hiiri on sen päällä */
 }
 
-/* Vieritysnappien säiliö */
+/* ==================================================================== */
+/* VIERITYSNAPPIEN TYYLIT (KORJATTU JA YHDISTETTY)                      */
+/* ==================================================================== */
+
+/* Pääsäiliö, joka on oletuksena näkyvissä */
 .scroll-buttons {
     position: fixed;
-    /* Kiinnittää elementin näkymään */
     bottom: 1.5rem;
-    /* Etäisyys alareunasta */
     right: 1.5rem;
-    /* Etäisyys oikeasta reunasta */
     z-index: 50;
-    /* Varmistaa, että napit ovat muiden elementtien päällä */
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Sarake ylös- ja alas-nappien ryhmittelyyn */
+.scroll-column {
     display: flex;
     flex-direction: column;
-    /* Asettaa napit päällekkäin */
     gap: 0.5rem;
-    /* Pieni väli nappien väliin */
-    /* Oletuksena piilossa ja siirtymäefektiä varten */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
 }
 
-/* Luokka, joka tekee napeista näkyvät */
-.scroll-buttons.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-/* Yhteiset tyylit molemmille napeille */
-#scroll-to-h2,
-#scroll-to-top {
-    background-color: #6D28D9;
-    /* purple-700 */
+/* Yhteiset tyylit kaikille kuudelle napille */
+.scroll-button {
+    background-color: #6D28D9; /* purple-700 */
     color: white;
     border: none;
     width: 3rem;
-    /* 48px */
     height: 3rem;
-    /* 48px */
     border-radius: 9999px;
-    /* Tekee napista täysin pyöreän */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: all 0.2s ease-in-out;
 }
 
-#scroll-to-h2:hover,
-#scroll-to-top:hover {
-    background-color: #581C87;
-    /* purple-900 */
+/* Hover-tila vain, kun nappi EI ole pois päältä */
+.scroll-button:hover:not(:disabled) {
+    background-color: #581C87; /* purple-900 */
     transform: scale(1.1);
 }
 
-/* Nappien sisällä olevien SVG-kuvakkeiden koko */
-#scroll-to-h2 svg,
-#scroll-to-top svg {
+/* Tila napille, kun se on pois käytöstä (esim. ylhäällä ollessa ylös-napit) */
+.scroll-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none; /* Estetään hover-muutos */
+}
+
+/* SVG-kuvakkeiden koko nappien sisällä */
+.scroll-button svg {
     width: 1.5rem;
     height: 1.5rem;
 }
@@ -319,13 +297,11 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* Lisää tämä CSS-tiedostosi loppuun */
-
+/* Taulukon vierityssäiliö */
 .table-container {
     overflow-x: auto;
-    /* Tämä on avain! Sallii vierityksen vain X-akselilla (vaakasuunnassa) */
+    /* Sallii vierityksen vain X-akselilla (vaakasuunnassa) */
     margin-top: 1.5em;
-    /* Säilytetään alkuperäiset marginaalit */
     margin-bottom: 1.5em;
     -webkit-overflow-scrolling: touch;
     /* Parantaa vierityskokemusta iOS-laitteilla */
@@ -335,4 +311,26 @@ a:has(> .lisenssi-kuvake-yksi):hover {
 .prose table {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+/* Sanaston indeksisarakkeen tyylit */
+.glossary-index-header {
+    width: 1%;
+    /* Tekee sarakkeesta mahdollisimman kapean */
+    text-align: center;
+}
+
+.glossary-index-letter {
+    text-align: center;
+    /* Keskittää kirjaimen vaakatasossa */
+    font-weight: bold;
+    /* Lihavoi kirjaimen */
+    vertical-align: middle;
+    /* Keskittää kirjaimen pystysuunnassa, jos rivi on korkea */
+    color: #6D28D9;
+    /* Käyttää violettia teemaväriäsi (purple-700) */
+    font-size: 1.1em;
+    /* Hieman isompi fonttikoko */
+    padding: 0.5rem 0.2rem;
+    /* Pieni pehmuste sivuilla */
 }
