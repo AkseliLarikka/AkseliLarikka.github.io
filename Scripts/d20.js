@@ -102,19 +102,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Vieritysnappien toiminnallisuus
     // ====================================================================
     const scrollButtonsContainer = document.getElementById('scroll-buttons-container');
-    const scrollToH2Button = document.getElementById('scroll-to-h2'); // Nimeä voisi muuttaa, mutta ID:llä ei ole väliä
+    const scrollToH2Button = document.getElementById('scroll-to-h2');
     const scrollToTopButton = document.getElementById('scroll-to-top');
-
-    // Haetaan ensimmäinen H3-otsikko, joka toimii kynnysarvona
     const firstHeader = document.querySelector('#main-content h3');
 
-    // Varmistetaan, että kaikki tarvittavat elementit löytyivät
     if (!scrollButtonsContainer || !scrollToH2Button || !scrollToTopButton || !firstHeader) {
-        console.error("Vieritysnappien toiminnallisuutta ei voitu alustaa. Yksi tai useampi elementti puuttuu.");
-        return; // Lopetetaan suoritus, jos elementtejä ei löydy
+        return;
     }
 
-    // 1. Näytä/piilota napit vierittäessä
+    // Näytä/piilota napit
     window.addEventListener('scroll', () => {
         const triggerPoint = firstHeader.offsetTop - 50;
         if (window.scrollY > triggerPoint) {
@@ -124,28 +120,37 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 2. "Vieritä alkuun" -napin toiminta (tämä oli jo kunnossa)
+    // "Vieritä alkuun" -nappi
     scrollToTopButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 3. KORJATTU: "Vieritä lähimpään" -napin logiikka etsii nyt H3-otsikoita
+    // "Vieritä ylöspäin" -napin päivitetty logiikka
     scrollToH2Button.addEventListener('click', () => {
-        // KORJATTU: Haetaan kaikki H3-elementit H2-elementtien sijaan
         const h3Elements = Array.from(mainContent.querySelectorAll('h3'));
 
-        // Etsitään kaikki H3-otsikot, jotka ovat nykyisen näkymän yläpuolella
-        const h3sAbove = h3Elements.filter(h3 => h3.getBoundingClientRect().top < 0);
+        // Etsi kaikki H3-otsikot, jotka ovat näkymän yläpuolella
+        const h3sAbove = h3Elements.filter(h3 => h3.getBoundingClientRect().top < -1); // Pieni -1 puskuri
 
         if (h3sAbove.length > 0) {
-            // Vieritä yläpuolella olevista otsikoista viimeiseen (eli lähimpään)
-            const targetH3 = h3sAbove[h3sAbove.length - 1];
-            targetH3.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            // Lähin yläpuolella oleva otsikko on listan viimeinen
+            const nearestH3 = h3sAbove[h3sAbove.length - 1];
+
+            // TARKISTUS: Olemmeko jo tämän otsikon kohdalla?
+            // (Tarkistetaan, onko elementin yläreuna hyvin lähellä näkymän yläreunaa)
+            const isAtNearestH3 = Math.abs(nearestH3.getBoundingClientRect().top) < 5;
+
+            // JOS olemme jo lähimmän otsikon kohdalla JA listalla on VIELÄ sitäkin ylempänä olevia otsikoita
+            if (isAtNearestH3 && h3sAbove.length > 1) {
+                // Valitse kohdaksi seuraava otsikko ylöspäin (eli toiseksi viimeinen listalta)
+                const nextH3Up = h3sAbove[h3sAbove.length - 2];
+                nextH3Up.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                // MUUTEN vieritä normaalisti lähimpään yläpuolella olevaan otsikkoon
+                nearestH3.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         } else {
-            // Jos yläpuolella ei ole yhtään H3:sta, mennään aivan alkuun
+            // Jos yläpuolella ei ole yhtään H3-otsikkoa, mennään aivan alkuun
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     });
