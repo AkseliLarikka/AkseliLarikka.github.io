@@ -200,7 +200,7 @@ body {
 }
 
 .lisenssi-kuvake-yksi {
-  height: 5.75rem; /* Hieman suurempi korkeus, koska se on nyt yksi kuva. Muokkaa tarvittaessa. */
+  height: 7rem; /* Hieman suurempi korkeus, koska se on nyt yksi kuva. Muokkaa tarvittaessa. */
   vertical-align: middle; /* Tasaa kuvan kauniisti ympäröivän tekstin kanssa. */
   transition: opacity 0.2s ease-in-out; /* Pehmeä tehoste hiiren liikkeille. */
 }
