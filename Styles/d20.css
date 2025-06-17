@@ -85,6 +85,16 @@ body {
     /* stone-100 */
 }
 
+.prose .yhteystiedot-lista {
+    list-style-type: none;  /* Poistaa listapallerot */
+    padding: 0;             /* Poistaa oletussisennyksen */
+}
+
+.yhteystiedot-lista li {
+    margin-bottom: 0.5rem;
+    /* Lisää pystysuuntaista väliä linkkien väliin */
+}
+
 .prose th,
 .prose td {
     padding: 0.5rem 0.75rem;
@@ -198,17 +208,6 @@ body {
 /* Lisätään pieni tehoste, kun hiiri on kuvan päällä */
 a:has(> .lisenssi-kuvake-yksi):hover {
   opacity: 0.8;
-}
-
-.yhteystiedot-lista {
-    list-style-type: none;
-    /* Poistaa listapallerot */
-    padding: 0;
-}
-
-.yhteystiedot-lista li {
-    margin-bottom: 0.5rem;
-    /* Lisää pystysuuntaista väliä linkkien väliin */
 }
 
 .yhteystiedot-lista a {
