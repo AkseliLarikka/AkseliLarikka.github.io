@@ -92,6 +92,7 @@ body {
     flex-wrap: wrap;            /* Sallii linkkien rivittyä, jos tila loppuu (esim. mobiilissa) */
     gap: 1.5rem;                /* Lisää välin linkkien väliin (sekä vaaka- että pystysuunnassa, jos rivittyvät) */
     margin-top: 1rem;           /* Lisätään hieman ilmaa otsikon ja listan väliin */
+    padding-bottom: 1.5rem;
 }
 
 .prose th,
