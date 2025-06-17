@@ -48,6 +48,11 @@ body {
     border-bottom: 1px solid #E5E7EB;
 }
 
+.prose h5 {
+    margin-top: 1.2em;
+    border-bottom: 2px dotted #E5E7EB;
+}
+
 .prose a {
     color: #6D28D9;
     /* purple-700 */
