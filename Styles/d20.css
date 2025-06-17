@@ -86,12 +86,18 @@ body {
 }
 
 .prose .yhteystiedot-lista {
-    list-style-type: none;      /* Poistaa listapallerot */
-    padding: 0;                 /* Poistaa oletussisennyksen */
-    display: flex;              /* ASETTAA LISTAN ELEMENTIT VIEREKKÄIN */
-    flex-wrap: wrap;            /* Sallii linkkien rivittyä, jos tila loppuu (esim. mobiilissa) */
-    gap: 1.5rem;                /* Lisää välin linkkien väliin (sekä vaaka- että pystysuunnassa, jos rivittyvät) */
-    margin-top: 1rem;           /* Lisätään hieman ilmaa otsikon ja listan väliin */
+    list-style-type: none;
+    /* Poistaa listapallerot */
+    padding: 0;
+    /* Poistaa oletussisennyksen */
+    display: flex;
+    /* ASETTAA LISTAN ELEMENTIT VIEREKKÄIN */
+    flex-wrap: wrap;
+    /* Sallii linkkien rivittyä, jos tila loppuu (esim. mobiilissa) */
+    gap: 1.5rem;
+    /* Lisää välin linkkien väliin (sekä vaaka- että pystysuunnassa, jos rivittyvät) */
+    margin-top: 1rem;
+    /* Lisätään hieman ilmaa otsikon ja listan väliin */
     padding-bottom: 1.5rem;
 }
 
@@ -108,13 +114,15 @@ body {
 }
 
 .prose ul {
-  list-style-type: disc;
-  padding-left: 1.5rem; /* Tärkeä! Antaa tilaa listamerkeille */
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    /* Tärkeä! Antaa tilaa listamerkeille */
 }
 
 .prose ol {
-  list-style-type: decimal;
-  padding-left: 1.5rem; /* Tärkeä! Antaa tilaa numeroille */
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    /* Tärkeä! Antaa tilaa numeroille */
 }
 
 .unit-card {
@@ -200,14 +208,17 @@ body {
 }
 
 .lisenssi-kuvake-yksi {
-  height: 7rem; /* Hieman suurempi korkeus, koska se on nyt yksi kuva. Muokkaa tarvittaessa. */
-  vertical-align: middle; /* Tasaa kuvan kauniisti ympäröivän tekstin kanssa. */
-  transition: opacity 0.2s ease-in-out; /* Pehmeä tehoste hiiren liikkeille. */
+    height: 7rem;
+    /* Hieman suurempi korkeus, koska se on nyt yksi kuva. Muokkaa tarvittaessa. */
+    vertical-align: middle;
+    /* Tasaa kuvan kauniisti ympäröivän tekstin kanssa. */
+    transition: opacity 0.2s ease-in-out;
+    /* Pehmeä tehoste hiiren liikkeille. */
 }
 
 /* Lisätään pieni tehoste, kun hiiri on kuvan päällä */
 a:has(> .lisenssi-kuvake-yksi):hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 .yhteystiedot-lista a {
@@ -292,16 +303,36 @@ a:has(> .lisenssi-kuvake-yksi):hover {
 }
 
 #logo-link img {
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border-radius: 0.25rem; /* Lisätään pieni pyöristys tehostetta varten */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 0.25rem;
+    /* Lisätään pieni pyöristys tehostetta varten */
 }
 
 #logo-link:hover img {
-  transform: scale(1.03); /* Suurentaa logoa hieman, kun hiiri on päällä */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.03);
+    /* Suurentaa logoa hieman, kun hiiri on päällä */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .banner-title {
-  font-family: 'Black Ops One', sans-serif;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
+    font-family: 'Black Ops One', sans-serif;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Lisää tämä CSS-tiedostosi loppuun */
+
+.table-container {
+    overflow-x: auto;
+    /* Tämä on avain! Sallii vierityksen vain X-akselilla (vaakasuunnassa) */
+    margin-top: 1.5em;
+    /* Säilytetään alkuperäiset marginaalit */
+    margin-bottom: 1.5em;
+    -webkit-overflow-scrolling: touch;
+    /* Parantaa vierityskokemusta iOS-laitteilla */
+}
+
+/* Poistetaan marginaalit suoraan taulukolta, jotta ne eivät tuplaannu */
+.prose table {
+    margin-top: 0;
+    margin-bottom: 0;
 }
