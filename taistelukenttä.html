@@ -242,11 +242,10 @@
                     <ol>
                         <li>
                             <strong>Komentovaihe:</strong> Pelaajat (ja GM salassa) päättävät,
-                            mitä yksiköt tekevät ja käyttävät tähän Komentopisteitä. Kaikki
-                            päätökset tehdään nyt.
+                            mitä yksiköt tekevät ja käyttävät tähän Komentopisteitä.
                             <ul>
                                 <li>
-                                    Kaikki valinnat tehdään <strong>samanaikaisesti</strong>.
+                                    Kaikki valinnat ja päätökset tehdään <strong>samanaikaisesti</strong>.
                                 </li>
                                 <li>Pelaajat ja GM paljastavat käskyt yhtä aikaa.</li>
                                 <li>
@@ -364,8 +363,8 @@
                         </li>
                         <li>
                             <strong>Vetäytyy:</strong> Kriittisesti epäonnistuneen
-                            moraalitestin seuraus. Yksikkö liikkuu seuraavalla vuorollaan
-                            hallitsemattomasti täyden liikkeensä verran lähintä suojaa kohti.
+                            moraalitestin seuraus. Yksikkö joutuu pakokauhun valtaan ja liikkuu seuraavalla vuorollaan
+                            hallitsemattomasti täyden liikkeensä verran irti taistelusta ja lähintä suojaa kohti.
                         </li>
                         <li>
                             <strong>Huom:</strong> Ajoneuvoilla voi olla niiden
@@ -658,31 +657,24 @@
                         <tbody>
                             <tr>
                                 <td>KP (Komentopisteet)</td>
-                                <td>
-                                    Pelaajan komentajan kyky vaikuttaa yksiköihin. Käytetään
-                                    erikoistoimintoihin.
-                                </td>
+                                <td>Pelaajan komentajan kyky vaikuttaa yksiköihin. Käytetään erikoistoimintoihin.</td>
                             </tr>
                             <tr>
                                 <td>VP (Voittopisteet)</td>
-                                <td>
-                                    Mittaa taistelun tai kampanjan menestystä. Käytetään
-                                    yksiköiden kehittämiseen ja täydennyksiin.
-                                </td>
+                                <td>Mittaa taistelun tai kampanjan menestystä. Käytetään yksiköiden kehittämiseen ja
+                                    täydennyksiin.</td>
                             </tr>
                             <tr>
                                 <td>XP (Kokemus)</td>
-                                <td>
-                                    Yksikön taistelukokemusta. Lisää yksikön tehokkuutta
-                                    kampanjapelissä.
-                                </td>
+                                <td>Yksikön taistelukokemusta. Lisää yksikön tehokkuutta kampanjapelissä.</td>
+                            </tr>
+                            <tr>
+                                <td>K (Koulutus)</td>
+                                <td>Yksikön peruskoulutuksen laatu. Pysyvä arvo, joka vaikuttaa Taitotasoon (TT).</td>
                             </tr>
                             <tr>
                                 <td>TT (Taitotaso)</td>
-                                <td>
-                                    Yksikön osaaminen. Lasketaan: Koulutus + Kokemus. Käytetään
-                                    heitoissa.
-                                </td>
+                                <td>Yksikön osaaminen. Lasketaan: Koulutus + Kokemus. Käytetään heitoissa.</td>
                             </tr>
                             <tr>
                                 <td>TK (Taistelukunto)</td>
@@ -690,10 +682,7 @@
                             </tr>
                             <tr>
                                 <td>M (Moraali)</td>
-                                <td>
-                                    Moraalitestin bonus. Korkeampi tarkoittaa parempaa henkistä
-                                    kestävyyttä.
-                                </td>
+                                <td>Moraalitestin bonus. Korkeampi tarkoittaa parempaa henkistä kestävyyttä.</td>
                             </tr>
                             <tr>
                                 <td>S (Suoja)</td>
@@ -704,14 +693,100 @@
                                 <td>Vahinkoarvo, jota käytetään osumien jälkeen.</td>
                             </tr>
                             <tr>
+                                <td>L (Liike)</td>
+                                <td>Yksikön liikkumisnopeus eri maastotyypeissä senttimetreinä.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pelivuoron Vaiheet</strong></td>
+                                <td>Pelin ydinmekaniikka, joka jakaantuu viiteen vaiheeseen:
+                                    <ul>
+                                        <li><strong>Komentovaihe:</strong> Pelaajat ja GM antavat käskyjä ja käyttävät
+                                            Komentopisteitä. Päätökset paljastetaan samanaikaisesti.</li>
+                                        <li><strong>Liikevaihe:</strong> Yksiköt siirretään kartalla.</li>
+                                        <li><strong>Tiedusteluvaihe:</strong> Tehdään tiedusteluheittoja ja havaitut
+                                            viholliset paljastetaan.</li>
+                                        <li><strong>Tulitoimintavaihe:</strong> Kaikki tulikomennot ratkaistaan
+                                            samanaikaisesti. Vahingot astuvat voimaan vasta Tilannevaiheessa.</li>
+                                        <li><strong>Tilannevaihe:</strong> Tehdään moraalitestit, päivitetään
+                                            tilaefektit ja päätetään vuoro.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tilaefektit</strong></td>
+                                <td>Yksiköiden toimintakykyyn vaikuttavat tilat:
+                                    <ul>
+                                        <li><strong>Vaurioitunut:</strong> Yksikkö joutuu tähän tilaan, kun sen TK
+                                            putoaa alle puoleen. Yksikön Liike ja Tuli-isku puolittuvat. Esimerkiksi
+                                            MOTO A -ryhmä vaurioitui Operaatio Puskutraktorissa.</li>
+                                        <li><strong>Lamautunut (Suppressed):</strong> Seuraus epäonnistuneesta
+                                            moraalitestistä. Yksikkö ei voi toimia ja sitä vastaan hyökätään Edulla.
+                                            Esimerkiksi MOTO B -ryhmä lamautui Operaatio Puskutraktorissa.</li>
+                                        <li><strong>Vetäytyy:</strong> Seuraus kriittisesti epäonnistuneesta
+                                            moraalitestistä. Yksikkö liikkuu hallitsemattomasti suojaa kohti.
+                                            Esimerkiksi MOTO A -ryhmä joutui vetäytymään Operaatio Puskutraktorissa.
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Etu ja Haitta</strong></td>
+                                <td>Noppamekaniikat, jotka muokkaavat heittoja:
+                                    <ul>
+                                        <li><strong>Etu (Advantage):</strong> Heitetään kaksi d20-noppaa ja käytetään
+                                            korkeampaa tulosta. Saadaan esimerkiksi hyökkäämällä kylkeen tai
+                                            lamautunutta kohdetta vastaan.</li>
+                                        <li><strong>Haitta (Disadvantage):</strong> Heitetään kaksi d20-noppaa ja
+                                            käytetään matalampaa tulosta. Aiheutuu esimerkiksi kohteiden kaivautumisesta
+                                            tai huonosta näkyvyydestä.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hallintavyöhyke (ZoC)</td>
+                                <td>Yksikön ympärillä oleva 2 cm säteinen vyöhyke, joka vaikeuttaa vihollisen
+                                    liikkumista. Vyöhykkeelle liikkuminen päättää liikkeen, ja poistuminen vaatii
+                                    Irtautuminen-komennon.</td>
+                            </tr>
+                            <tr>
+                                <td>Komentoyhteys</td>
+                                <td>Komppanianpäällikön ja Joukkueenjohtajan välinen yhteys, joka vaaditaan
+                                    Komentopisteiden siirtoon ja tiettyihin käskyihin. Edellyttää yleensä enintään 60 cm
+                                    etäisyyttä ilman välissä olevaa vihollista.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Komppaniatason taktiikat</strong></td>
+                                <td>Komppanianpäällikön käyttämiä strategisia käskyjä:
+                                    <ul>
+                                        <li><strong>Mottitaktiikka:</strong> Pakottaa viholliset tietyllä alueella
+                                            Moraalitestiin.</li>
+                                        <li><strong>Painopisteen Muodostaminen:</strong> Antaa yhdelle joukkueelle
+                                            lisäliikettä hyökkäykseen.</li>
+                                        <li><strong>Sitova Tuli:</strong> Aiheuttaa kohteelle rangaistuksen
+                                            Moraalitesteihin.</li>
+                                        <li><strong>Järjestäytynyt Vetäytyminen:</strong> Mahdollistaa vetäytymisen ja
+                                            ampumisen samalla vuorolla.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pelitasot</strong></td>
+                                <td>Kuvaavat pelin laajuutta:
+                                    <ul>
+                                        <li><strong>Joukkuepeli:</strong> Pienempi mittakaava, jossa pelaajat johtavat
+                                            ryhmiä (3 KP/vuoro).</li>
+                                        <li><strong>Komppaniapeli:</strong> Suurempi mittakaava, jossa on
+                                            Komppanianpäällikkö (5 KP/vuoro) ja Joukkueenjohtajia (3 KP/vuoro).</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Orgaaninen tulituki</td>
                                 <td>Pelaajan suoraan ohjaama tulitukiyksikkö pelilaudalla.</td>
                             </tr>
                             <tr>
                                 <td>Epäorgaaninen tulituki</td>
-                                <td>
-                                    Kartan ulkopuolinen tulituki, kuten pataljoonan tykistö.
-                                </td>
+                                <td>Kartan ulkopuolinen tulituki, kuten pataljoonan tykistö.</td>
                             </tr>
                             <tr>
                                 <td>GM (Pelinjohtaja)</td>
@@ -1992,55 +2067,6 @@
                 <section id="siniset-yksikot">
                     <h2>Siniset yksiköt</h2>
 
-                    <h3>Johdanto</h3>
-                    <p><strong>Huomioitavaa:</strong></p>
-                    <ul>
-                        <li>
-                            <strong>TK (Taistelukunto):</strong> Ilmaisee yksikön kestävyyden.
-                            Kun TK laskee puoleen tai alle, yksikkö on "Vaurioitunut" (Liike
-                            ja Tuli-isku puolittuvat, tekee Moraalitestin DC 12). Kun TK menee
-                            nollaan, yksikkö tuhoutuu. Voit käyttää pyyhekumia tai merkata
-                            lyijykynällä.
-                        </li>
-                        <li>
-                            <strong>KP (Komentopisteet):</strong> Vain johtohenkilöillä.
-                            Käytetään erikoiskykyjen ja lisätoimintojen aktivoimiseen.
-                        </li>
-                        <li>
-                            <strong>Hyökkäysheitto:</strong> Yksikön hyökkäysheitto lasketaan
-                            seuraavasti: d20 + Taitotaso (TT) + Varustuksen antama
-                            hyökkäysbonus. Esimerkiksi Jääkäriryhmä (TT+3, Jalkaväkiaseistus
-                            +3) hyökkää heittämällä d20+3+3. Tähän lisätään mahdolliset
-                            tilannekohtaiset bonukset (kuten Tulen Keskittäminen +1).
-                        </li>
-                        <li>
-                            <strong>Vahinko:</strong> Heitä mainittu noppa (d6, d8, d12) kun
-                            osuma on saatu.
-                        </li>
-                        <li>
-                            <strong>Moraali (M):</strong> Heitä d20 + tämä luku
-                            Moraalitestissä. Moraalitestin DC riippuu tilanteesta.
-                        </li>
-                        <li>
-                            <strong>Suoja (S):</strong> Yksikön kyky väistää tai kestää
-                            vahinkoa. Vihollisen heiton on ylitettävä tämä luku.
-                        </li>
-                        <li>
-                            <strong>Liike:</strong> Kuinka monta cm yksikkö voi liikkua
-                            vuorossa.
-                        </li>
-                        <li>
-                            <strong>TT (Taistelutaito):</strong> Käytetään hyökkäys-,
-                            tiedustelu- ja lähitaisteluheitoissa sekä monissa muissa
-                            tilanteissa. Kun yksikkö hyökkää, heitä d20 + TT + yksikön
-                            aseistuksen hyökkäysbonus tai tiedustellessa mahdollisen
-                            tiedusteluvälineen antama bonus.
-                        </li>
-                        <li>
-                            <strong>PST (Panssarintorjunta):</strong> PST-aseiden vahinko.
-                        </li>
-                    </ul>
-
                     <h3>Suomalaiset Yksiköt</h3>
 
                     <div class="unit-card">
@@ -2285,54 +2311,6 @@
 
                 <section id="punaiset-yksikot">
                     <h2>Punaiset yksiköt</h2>
-
-                    <h3>Johdanto</h3>
-                    <p><strong>Huomioitavaa:</strong></p>
-                    <ul>
-                        <li>
-                            <strong>TK (Taistelukunto):</strong> Ilmaisee yksikön kestävyyden.
-                            Kun TK laskee puoleen tai alle, yksikkö on "Vaurioitunut" (Liike
-                            ja Tuli-isku puolittuvat, tekee Moraalitestin DC 12). Kun TK menee
-                            nollaan, yksikkö tuhoutuu.
-                        </li>
-                        <li>
-                            <strong>KP (Komentopisteet):</strong> Vain johtohenkilöillä.
-                            Käytetään erikoiskykyjen ja lisätoimintojen aktivoimiseen.
-                        </li>
-                        <li>
-                            <strong>Hyökkäysheitto:</strong> Yksikön hyökkäysheitto lasketaan
-                            seuraavasti: d20 + Taitotaso (TT) + Varustuksen antama
-                            hyökkäysbonus. Esimerkiksi Jääkäriryhmä (TT+3, Jalkaväkiaseistus
-                            +3) hyökkää heittämällä d20+3+3. Tähän lisätään mahdolliset
-                            tilannekohtaiset bonukset (kuten Tulen Keskittäminen +1).
-                        </li>
-                        <li>
-                            <strong>Vahinko:</strong> Heitä mainittu noppa (d6, d8, d12) kun
-                            osuma on saatu.
-                        </li>
-                        <li>
-                            <strong>Moraali (M):</strong> Heitä d20 + tämä luku
-                            Moraalitestissä. Moraalitestin DC riippuu tilanteesta.
-                        </li>
-                        <li>
-                            <strong>Suoja (S):</strong> Yksikön kyky väistää tai kestää
-                            vahinkoa. Vihollisen heiton on ylitettävä tämä luku.
-                        </li>
-                        <li>
-                            <strong>Liike:</strong> Kuinka monta cm yksikkö voi liikkua
-                            vuorossa.
-                        </li>
-                        <li>
-                            <strong>TT (Taistelutaito):</strong> Käytetään hyökkäys-,
-                            tiedustelu- ja lähitaisteluheitoissa sekä monissa muissa
-                            tilanteissa. Kun yksikkö hyökkää, heitä d20 + TT + yksikön
-                            aseistuksen hyökkäysbonus tai tiedustellessa mahdollisen
-                            tiedusteluvälineen antama bonus.
-                        </li>
-                        <li>
-                            <strong>PST (Panssarintorjunta):</strong> PST-aseiden vahinko.
-                        </li>
-                    </ul>
 
                     <h3>Venäläiset Yksiköt</h3>
 
