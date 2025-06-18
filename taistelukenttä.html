@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, noarchive">
+    <!--Sitten kun haluat että löytyy hakukoneilla, niin muuta täksi <meta name="robots" content="index, follow">-->
+    <meta name="description"
+        content="Taistelukenttä d20 on ilmainen, suomenkielinen taktinen sotapeli, joka käyttää d20-noppajärjestelmää. Lataa säännöt, johda joukkojasi ja koe modernin sodankäynnin haasteet kampanjapelissä.">
+    <meta name="keywords"
+        content="sotapeli, strategiapeli, lautapeli, Taistelukenttä d20, d20 system, ilmaiset säännöt, suomalainen sotapeli, taktinen peli, noppapeli, miniatyyripeli, kampanjapeli, moderni sodankäynti, pelinjohtaja, suomi, jääkäri, puolustusvoimat">
+    <!--<meta name="description" lang="en" content="Taistelukenttä d20 is a free Finnish tactical wargame using the d20 system. Download the rules, command your troops, and experience the challenges of modern warfare in a campaign-driven strategy game.">-->
+    <meta name="keywords" lang="en"
+        content="wargame, strategy game, board game, Taistelukenttä d20, d20 system, free wargame rules, Finnish wargame, tactical game, dice game, miniatures game, campaign game, modern warfare, game master, GM, Finland">
     <title>Taistelukenttä d20 - strateginen sotapeli</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="images/tkd20ikoni.png">
@@ -175,12 +183,30 @@
                         joustavuutta.
                     </p>
 
+                    <h5>Ilmaiset Perustoiminnot (0 KP)</h5>
+                    <p>
+                        Ennen kuin syvennymme Komentopisteitä vaativiin käskyihin, on tärkeää ymmärtää perustoiminnot,
+                        jotka yksikkö voi suorittaa vuorollaan ilman KP:n kulutusta. Yksikkö voi normaalisti tehdä vain
+                        yhden ilmaisen toiminnon vuorossa (liike tai puolustus).
+                    </p>
+                    <ul>
+                        <li><strong>Asemapuolustus:</strong> Yksikkö pysyy paikallaan ja valmistautuu puolustukseen. Se
+                            voi ampua normaalisti Tulitoimintavaiheessa, jos sillä on maali näkyvissä. Tämä on yksikön
+                            oletustoiminto, jos sille ei anneta muuta käskyä.</li>
+                        <li><strong>Perusliike:</strong> Yksikkö liikkuu enintään oman Liike-arvonsa (L) verran. Yksikkö
+                            ei voi käyttää tätä toimintoa, jos se aloittaa vuoronsa vihollisen Hallintavyöhykkeellä
+                            (ZoC), jolloin poistuminen vaatii "Irtautuminen"-komennon.</li>
+                    </ul>
+                    <p>Aktiivisemmat ja monimutkaisemmat toiminnot vaativat Komentopisteitä alla olevan taulukon
+                        mukaisesti.</p>
+
                     <h5>Joukkueenjohtajan perustoiminnot (Jokainen pelaaja)</h5>
                     <p>
                         Nämä ovat peruskäskyjä, joita kuka tahansa joukkueenjohtajan
                         roolissa oleva pelaaja voi käyttää hallitsemilleen ryhmille
                         kuluttamalla Komentopisteitä.
                     </p>
+
                     <div class="table-container">
                         <table>
                             <thead>
@@ -199,13 +225,13 @@
                                 <tr>
                                     <td><strong>Tulen Keskittäminen</strong></td>
                                     <td>1 KP</td>
-                                    <td>
-                                        Normaalisti jokainen ryhmä hyökkää itsenäisesti. Käyttämällä 1
-                                        KP:n komentaja koordinoi tulen. Kaikki tähän komentoon
-                                        osallistuvat ryhmät saavat
-                                        <strong>+1 bonuksen hyökkäysheittoihinsa</strong> kyseistä
-                                        maalia vastaan tällä vuorolla.
-                                    </td>
+                                    <<td>
+                                        Joukkueenjohtaja nimeää yhden tai useamman oman ryhmänsä keskittämään tulensa
+                                        yhteen maaliin. Käskyllä tehostetaan joko usean ryhmän yhteistulta tai yhden
+                                        ainoan ryhmän (esim. tulitukiyksikön) iskun tarkkuutta. Jokainen käskyn alainen
+                                        ryhmä saa <strong>+1 bonuksen hyökkäysheittoonsa</strong> kyseistä maalia
+                                        vastaan tällä vuorolla.
+                                        </td>
                                 </tr>
                                 <tr>
                                     <td><strong>Irtautuminen</strong></td>
@@ -777,9 +803,10 @@
                     <h4>Vuoro 1: Asemiin ja ensimmäinen kontakti</h4>
                     <ul>
                         <li>
-                            <strong>Komentovaihe:</strong> Blue Team keskittyy asemiin kaivautumiseen. Pelaaja 1 siirtää
-                            2 KP:tä Pelaaja 3:lle, joka käyttää ne tukiyksiköidensä optimaaliseen sijoitteluun. Red Team
-                            aloittaa etenemisen yhdellä BTR-82A-vaunulla ja jalkaväkiryhmällä.
+                            <strong>Komentovaihe:</strong> Blue Team keskittyy asemiin kaivautumiseen. Pelaaja 1 käyttää
+                            2 KP:tä omasta poolistaan siirtääkseen ne yksitellen Pelaaja 3:lle (kokonaiskustannus 2 KP),
+                            joka saa näin +2 KP joukkueelleen ja käyttää ne tukiyksiköidensä optimaaliseen sijoitteluun.
+                            Red Team aloittaa etenemisen yhdellä BTR-82A-vaunulla ja jalkaväkiryhmällä.
                         </li>
                         <li>
                             <strong>Liike- ja Tiedusteluvaihe:</strong> Red Teamin kärkivaunu etenee. Pelaaja 2:n
@@ -905,8 +932,8 @@
                     </p>
                 </section>
 
-                <section id="komppania-kampanja-peli">
-                    <h2>Komppaniapeli & kampanja</h2>
+                <section id="komppania-tason-taistelu">
+                    <h2>Komppaniatason taistelu</h2>
 
                     <h3>Komppaniatason Komentaminen</h3>
                     <h4>Komppanian&shy;päällikön taktiset kyvyt (5KP/vuoro)</h4>
@@ -1333,388 +1360,48 @@
                         </li>
                     </ul>
 
-                    <h3>Kampanja&shy;pelaaminen</h3>
-                    <h4>Voittopisteiden käyttö (XP ja TP)</h4>
-                    <p>
-                        Vaikka "Taistelukenttä d20" -peliä voi pelata yksittäisinä
-                        taisteluina, sen syvin kokemus saavutetaan kampanjassa, jossa
-                        taisteluiden tulokset vaikuttavat tuleviin koitoksiin. Tässä
-                        mallissa <strong>Voittopisteet (VP)</strong> ovat menestyksen
-                        mittari, jolla on kolme eri käyttötarkoitusta.
-                    </p>
-                    <h5>Voittopisteiden Kolme Käyttötarkoitusta</h5>
-                    <ol>
-                        <li>
-                            <strong>Skenaarion Voittajan Määrittäminen:</strong>
-                            Yksinkertaisin käyttötarkoitus. Jokaisen skenaarion lopussa
-                            lasketaan pisteet. Eniten voittopisteitä kerännyt osapuoli voittaa
-                            kyseisen taistelun. Tämä on ainoa VP:n käyttötarkoitus
-                            yksittäisissä peleissä.<br>
-                        </li>
-                        <li>
-                            <strong>Yksiköiden Kehitys (Kokemus, XP):</strong> Kampanjapelissä
-                            voittopisteet muunnetaan kokemukseksi.<br>
-                            <ul>
-                                <li>
-                                    <strong>Kokemuspankki:</strong> Skenaarion jälkeen kerätyt
-                                    Voittopisteet lasketaan yhteen Komppanian "Kokemuspankiksi"
-                                    (XP Pool).
-                                </li>
-                                <li>
-                                    <strong>Kokemuksen Jako:</strong> Tämä kokemuspankki jaetaan
-                                    kaikkien taistelusta selvinneiden yksiköiden kesken.
-                                </li>
-                                <li>
-                                    <strong>Tappioiden Vaikutus:</strong> Jos yksikkö selvisi,
-                                    mutta oli taistelun lopussa <strong>Vaurioitunut</strong> (TK
-                                    alle puolessa maksimista), sen osuus jaettavasta kokemuksesta
-                                    <strong>puolittuu</strong> (pyöristetään alaspäin). Tämä
-                                    kuvastaa kokeneiden taistelijoiden menettämistä ja uusien
-                                    täydennysmiesten saapumista, jotka laimentavat ryhmän yleistä
-                                    kokemustasoa.
-                                </li>
-                                <li>
-                                    <strong>Kehitys:</strong> Yksiköiden Taitotaso (TT) paranee
-                                    kokemuksen kautta.
-                                    <ul>
-                                        <li>
-                                            <strong>Taitotason (TT) paraneminen:</strong> Yksikön
-                                            Taitotaso paranee kokemuksen myötä. Yksikön lopullinen
-                                            Taitotaso on sen pysyvä Koulutus-arvo + kerätyistä
-                                            kokemuspisteistä (XP) saatu XP-bonus.
-                                        </li>
-                                        <li>
-                                            <strong>XP-bonuksen laskenta:</strong> Jokaista täyttä
-                                            <strong>10 kerättyä Kokemuspistettä (XP)</strong> kohden
-                                            yksikkö saa pysyvän
-                                            <strong>+1 bonuksen</strong> Taitotasoonsa.
-                                        </li>
-                                        <li>
-                                            <em>Esimerkki: Jääkäriryhmällä on Koulutus +3. Se kerää 24
-                                                XP:tä. Sen XP-bonus on +2 (koska 24 / 10 = 2.4,
-                                                pyöristettynä alas 2). Yksikön lopullinen Taitotaso on
-                                                TT +5 (3+2).</em>
-                                        </li>
-                                        <li>
-                                            Muista, että jos yksikkö on taistelun lopussa
-                                            <strong>Vaurioitunut</strong> (TK alle puolessa), sen
-                                            osuus jaettavasta kokemuksesta
-                                            <strong>puolittuu</strong> (pyöristä alaspäin). Tämä kuvaa
-                                            kokeneiden taistelijoiden menettämistä ja uusien
-                                            täydennysmiesten saapumista, jotka laimentavat ryhmän
-                                            yleistä kokemusta.<br>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong>Täydennykset ja Huolto (Täydennyspisteet, TP):</strong>
-                            Voittopisteet toimivat myös resurssina joukkojen ylläpitoon.<br>
-                            <ul>
-                                <li>
-                                    <strong>Resurssipankki:</strong> Skenaarion jälkeen kerätyt
-                                    Voittopisteet muunnetaan myös
-                                    <strong>Täydennyspisteiksi (TP)</strong> (esim. 1 VP = 1 TP).
-                                    Nämä TP:t ovat komppanian resurssipankki.
-                                </li>
-                                <li>
-                                    <strong>Käyttökohteet:</strong> Pelaajat voivat käyttää TP:tä
-                                    ennen seuraavaa tehtävää:
-                                    <ul>
-                                        <li>
-                                            <strong>Täydennykset:</strong> Yksiköiden TK
-                                            <strong>ei palaudu automaattisesti</strong> skenaarioiden
-                                            välissä. Sen sijaan sinun täytyy
-                                            <strong>kuluttaa Täydennyspisteitä (TP)</strong>
-                                            menetettyjen TK-pisteiden palauttamiseksi. 1 TP palauttaa
-                                            2 TK:ta.
-                                        </li>
-                                        <li>
-                                            <strong>Uudet Yksiköt:</strong> Osta kokonaan uusia
-                                            perusyksiköitä (XP=0) korvaamaan tuhoutuneita. Hinta
-                                            määräytyy yksikön tyypin mukaan.
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ol>
 
-                    <h4>
-                        Universaali Voittopisteiden (VP) Seuranta- ja Laskentajärjestelmä
-                    </h4>
+                </section>
+
+                <section id="kampanja">
+                    <h2>Kampanjan Hallinta ja Eteneminen</h2>
                     <p>
-                        Tämä järjestelmä on suunniteltu tarjoamaan vankka, joustava ja
-                        tarinankerronnallinen kehys voittopisteiden laskemiseen ja
-                        seuraamiseen. Se on tarkoitettu erityisesti kampanjapelaamiseen,
-                        jossa taisteluiden tuloksilla on pitkäkestoisia vaikutuksia.
+                        Tässä osiossa käsitellään sääntöjä, jotka sitovat yksittäiset taistelut palkitsevaksi ja
+                        jatkuvaksi kampanjaksi. Pelaajat eivät ainoastaan taistele voitosta yksittäisessä skenaariossa,
+                        vaan hallinnoivat komppaniansa resursseja, kehittävät yksiköidensä kokemusta ja tekevät
+                        strategisia päätöksiä, jotka vaikuttavat koko sodan kulkuun.
                     </p>
 
-                    <h5>Järjestelmän Filosofia</h5>
+                    <h3>"Kasarmi" – Komppanian Yksikköpooli ja Hallintakeskus</h3>
                     <p>
-                        Voittopisteet eivät ole vain pelkkä pistemäärä, vaan ne ovat
-                        menestyksen mittari, joka heijastaa komppanian suorituskykyä ja sen
-                        kykyä saavuttaa sotilaallisia tavoitteita. Kampanjassa VP:t toimivat
-                        kahtena elintärkeänä resurssina:
-                        <strong>Kokemuspisteinä (XP)</strong>, jotka kehittävät yksiköitä,
-                        ja <strong>Täydennyspisteinä (TP)</strong>, joilla ylläpidetään
-                        taisteluvalmiutta.
+                        Kasarmi on komppanian sydän ja hallintakeskus taisteluiden välillä. Se on kuvitteellinen paikka,
+                        jota edustaa Komppanian Vahvuusluettelo. Täällä hallinnoidaan kaikkia komppaniaan kuuluvia
+                        yksiköitä, niiden tilaa ja kehitystä.
                     </p>
-
-                    <h5>VP-Laskennan Komponentit</h5>
+                    <h4>Yksiköiden Valinta Skenaarioon</h4>
                     <p>
-                        Jokaisen skenaarion VP-rakenne tulisi muodostaa kolmesta
-                        pääkategoriasta. Pelinjohtaja määrittää kuhunkin skenaarioon sopivat
-                        tavoitteet ja niiden pistearvot käyttäen seuraavaa kehystä:
+                        Ennen jokaista skenaariota Komppanianpäällikkö ja Joukkueenjohtajat kokoontuvat ja valitsevat
+                        kasarmilta ne yksiköt, jotka osallistuvat tulevaan tehtävään. Joukkueenjohtajilla on vapaus
+                        valita omaan joukkueeseensa kuuluvat yksiköt annettujen rajoitusten puitteissa, mutta
+                        Komppanianpäälliköllä on lopullinen sana komppanian kokoonpanosta.
                     </p>
+                    <h4>Yksiköiden Seuranta: Komppanian Vahvuusluettelo</h4>
                     <p>
-                        <strong>1. Päätavoitepisteet (Primary Objectives): 10–20 VP per
-                            tavoite</strong>
-                        Nämä ovat skenaarion voittamisen kannalta kriittisimpiä, "tehtävä
-                        suoritettu" -tyyppisiä saavutuksia. Niiden tulisi olla suoraan
-                        sidoksissa skenaarion taustatarinaan ja sotilaalliseen päämäärään.
+                        Komppanian Vahvuusluettelo on kampanjan tärkein työkalu. Se on taulukko, johon kirjataan kaikki
+                        komppanian yksiköt ja niiden tiedot. Yksilölliset tunnukset (esim. "Karhu 1", "Susi 2") ovat
+                        tärkeitä, sillä ne luovat tarinaa ja immersiota yksiköiden kehittyessä veteraaneiksi.
                     </p>
-                    <ul>
-                        <li>
-                            <em>Esimerkki (Hyökkäys):</em> "Valtaa silta ja pidä se hallussa
-                            pelin loppuun asti" (<strong>+15 VP</strong>).
-                        </li>
-                        <li>
-                            <em>Esimerkki (Puolustus):</em> "Estä vihollista valtaamasta
-                            päämajaa pelin aikana" (<strong>+20 VP</strong>).
-                        </li>
-                        <li>
-                            <em>Esimerkki (Motti):</em> "Tuhota tai motita vihollisen
-                            Komppanianpäällikkö-yksikkö" (<strong>+15 VP</strong>).
-                        </li>
-                    </ul>
-                    <p>
-                        <strong>2. Sivutavoitepisteet (Secondary Objectives): 3–10 VP per
-                            tavoite</strong>
-                        Nämä ovat taktisia tai strategisia saavutuksia, jotka tukevat
-                        päätavoitetta, tuottavat merkittävää etua tai osoittavat
-                        ylivertaista taktista osaamista.
-                    </p>
-                    <ul>
-                        <li>
-                            <em>Esimerkki:</em> "Hallitse strategisesti tärkeää kukkulaa pelin
-                            lopussa" (<strong>+5 VP</strong>).
-                        </li>
-                        <li>
-                            <em>Esimerkki:</em> "Tiedustele ja paljasta vähintään 3 vihollisen
-                            piilotettua yksikköä" (<strong>+5 VP</strong>).
-                        </li>
-                        <li>
-                            <em>Esimerkki:</em> "Katkaise vihollisen huoltoreitti" (<strong>+8 VP</strong>).
-                        </li>
-                        <li>
-                            <em>Esimerkki:</em> "Säilytä yli 75% omasta taisteluvahvuudesta"
-                            (<strong>+5 VP</strong>).
-                        </li>
-                    </ul>
-                    <p>
-                        <strong>Kulutuspisteet (Attrition): +/- 1–5 VP per yksikkö</strong>
-                        Nämä pisteet heijastavat taistelun kuluttavaa luonnetta ja
-                        palkitsevat sekä viholliselle aiheutetuista tappioista että omien
-                        joukkojen säästämisestä. Nämä ovat vakiopisteitä, jotka ovat
-                        voimassa lähes kaikissa skenaarioissa.
-                    </p>
-                    <ul>
-                        <li>
-                            <strong>Viholliselle aiheutetut tappiot (Blue Team saa):</strong>
-                            <ul>
-                                <li>
-                                    Tuhottu perusyksikkö (esim. Jalkaväkiryhmä):
-                                    <strong>+1 VP</strong>
-                                </li>
-                                <li>
-                                    Tuhottu tukiaselaji (esim. KK-ryhmä, Krh-ryhmä):
-                                    <strong>+2 VP</strong>
-                                </li>
-                                <li>
-                                    Tuhottu arvokas kohde (esim. Ajoneuvo, PST-ryhmä,
-                                    Johtoyksikkö): <strong>+5 VP</strong>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong>Omat tappiot (Blue Team menettää):</strong>
-                            <ul>
-                                <li>
-                                    Menetetty oma perus- tai tukiyksikkö: <strong>-2 VP</strong>
-                                </li>
-                                <li>
-                                    Menetetty oma arvokas yksikkö (ajoneuvo, johtoyksikkö):
-                                    <strong>-5 VP</strong>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <h5>Skenaarion Loppuraportti (VP-seurantalomake)</h5>
-                    <p>
-                        Jokaisen taistelun jälkeen Blue Team täyttää "Skenaarion
-                        Loppuraportin". Tämä asiakirja toimii virallisena pöytäkirjana
-                        taistelun tuloksesta ja pohjana kampanjan resurssien hallinnalle. Se
-                        liitetään Komppanian Vahvuusluetteloon ("Kasarmi").
-                    </p>
-                    <ul>
-                        <li><strong>Skenaario:</strong> <em>[Skenaarion Nimi]</em></li>
-                        <li><strong>Päivämäärä:</strong> <em>[Päivämäärä]</em></li>
-                        <li>
-                            <strong>Tulos:</strong>
-                            <em>[Blue Voitto / Red Voitto / Tasapeli]</em>
-                        </li>
-                        <li><strong>Voittomarginaali:</strong> <em>[Erotus VP]</em></li>
-                    </ul>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Blue Team (Pelaajat) - VP</th>
-                                    <th>Saavutus / Tapahtuma</th>
-                                    <th>Pisteet</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Päätavoitteet</strong></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><em>[Kuvaus, esim. Silta vallattu]</em></td>
-                                    <td>+15 VP</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Sivutavoitteet</strong></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><em>[Kuvaus, esim. Kukkula 101 hallussa]</em></td>
-                                    <td>+5 VP</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Kulutus (Positiivinen)</strong></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Tuhotut perusyksiköt</td>
-                                    <td><em>[Lkm] x 1 VP</em></td>
-                                    <td>+X VP</td>
-                                </tr>
-                                <tr>
-                                    <td>Tuhotut arvoyksiköt</td>
-                                    <td><em>[Lkm] x 5 VP</em></td>
-                                    <td>+Y VP</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Kulutus (Negatiivinen)</strong></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Menetetyt omat yksiköt</td>
-                                    <td><em>[Lkm] x -2 VP</em></td>
-                                    <td>-Z VP</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>BLUE TEAM YHTEENSÄ</strong></td>
-                                    <td></td>
-                                    <td><strong>XX VP</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p>
-                        <em>(Vastaava taulukko tehdään Red Teamille GM:n toimesta voittajan
-                            selvittämiseksi)</em>
-                    </p>
-
-                    <h5>VP:n Muuntaminen Kampanjaresursseiksi</h5>
-                    <p>
-                        Skenaarion lopussa Blue Teamin keräämä kokonais-VP-määrä muunnetaan
-                        suoraan kahdeksi resurssiksi komppania- ja pataljoonapelin sääntöjen
-                        mukaisesti:
-                    </p>
-                    <ol>
-                        <li>
-                            <strong>Kokemuspankki (XP Pool):</strong> Blue Teamin kokonais-VP
-                            siirretään suoraan Komppanian "Kokemuspankiksi". Pankki jaetaan
-                            taistelusta selvinneiden yksiköiden kesken.<br>
-                            <ul>
-                                <li>Kaava: 1 VP=1 XP.</li>
-                                <li>
-                                    Muista, että taistelussa <em>Vaurioituneeksi</em> jääneen
-                                    yksikön osuus jaettavasta kokemuksesta puolittuu.
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong>Täydennyspisteet (TP Pool):</strong> Blue Teamin
-                            kokonais-VP muunnetaan myös Täydennyspisteiksi, joilla
-                            ylläpidetään komppanian taisteluvalmiutta.<br>
-                            <ul>
-                                <li>Kaava: 1 VP=1 TP.</li>
-                                <li>
-                                    TP:llä palautetaan menetettyjä Taistelukunnon (TK) pisteitä
-                                    (hinta: 1 TP = 2 TK) ja ostetaan uusia yksiköitä korvaamaan
-                                    tuhoutuneita.
-                                </li>
-                            </ul>
-                        </li>
-                    </ol>
-
-                    <h5>Käyttökohteet</h5>
-                    <p>Hintalista (Esimerkki):</p>
-                    <ul>
-                        <li><strong>Palauta 2 TK-pistettä:</strong> 1 TP</li>
-                        <li>
-                            <strong>Osta uusi Jääkäriryhmä (Koulutus +3, XP 0):</strong> 15 TP
-                        </li>
-                        <li>
-                            <strong>Osta uusi Tukiryhmä (KK) (Koulutus +1, XP 0):</strong> 12
-                            TP
-                        </li>
-                    </ul>
-
-                    <h4>Yksiköiden Seuranta Kampanjassa</h4>
-                    <p>
-                        Jotta kokemuksen kertymistä voidaan seurata, jokainen yksikkö on
-                        yksilöitävä.
-                    </p>
-                    <ul>
-                        <li>
-                            <strong>Yksilölliset Tunnukset:</strong> Annetaan jokaiselle
-                            pelaajan yksikölle pysyvä ja yksilöllinen nimi tai tunnus, esim.
-                            "Karhu 1", "Susi 2" tai "Kärki 3". Nämä tunnukset säilyvät
-                            taistelusta toiseen.
-                        </li>
-                        <li>
-                            <strong>Komppanian Vahvuusluettelo ("Kasarmi"):</strong> Pelaajien
-                            kannattaa ylläpitää listaa omista yksiköistään. Tämä "kasarmi"
-                            näyttää kaikki käytettävissä olevat yksiköt, niiden kokemuksen ja
-                            mahdolliset muistiinpanot.
-                        </li>
-                    </ul>
-                    <p><em>Esimerkki Vahvuusluettelosta:</em></p>
                     <div class="table-container">
                         <table>
                             <thead>
                                 <tr>
                                     <th>Tunnus</th>
                                     <th>Tyyppi</th>
-                                    <th>Koulutus (K)</th>
-                                    <th>Kokemus (XP)</th>
-                                    <th>TT (K + XP bonus)</th>
-                                    <th>Max. TK</th>
-                                    <th>Nyk. TK</th>
-                                    <th>Tila (E/V/L)</th>
+                                    <th>K</th>
+                                    <th>XP</th>
+                                    <th>TT</th>
+                                    <th>TK</th>
+                                    <th>Tila</th>
                                     <th>Muistiinpanot</th>
                                 </tr>
                             </thead>
@@ -1723,101 +1410,115 @@
                                     <td>Karhu 1</td>
                                     <td>Jääkäriryhmä</td>
                                     <td>+3</td>
-                                    <td>+1 (12 XP)</td>
+                                    <td>12</td>
                                     <td>+4</td>
-                                    <td>10</td>
-                                    <td>10</td>
-                                    <td>E</td>
-                                    <td>Selvisi Teräsvallista</td>
+                                    <td>10/10</td>
+                                    <td>Taistelukunnossa</td>
+                                    <td>Selvisi Teräsvallista, tuhosi BTR-vaunun.</td>
                                 </tr>
                                 <tr>
-                                    <td>Karhu 2</td>
-                                    <td>Jääkäriryhmä</td>
-                                    <td>+3</td>
-                                    <td>+0 (5 XP)</td>
-                                    <td>+3</td>
-                                    <td>10</td>
-                                    <td>5</td>
-                                    <td>V</td>
-                                    <td>Otettu 5 vahinkoa, XP puolittuu seuraavassa jaossa.</td>
-                                </tr>
-                                <tr>
-                                    <td>Karhu 3</td>
-                                    <td>Tukiryhmä (KK)</td>
+                                    <td>Haukka 3</td>
+                                    <td>PST-ryhmä</td>
                                     <td>+1</td>
-                                    <td>+0 (0 XP)</td>
+                                    <td>4</td>
                                     <td>+1</td>
-                                    <td>8</td>
-                                    <td>8</td>
-                                    <td>E</td>
-                                    <td>Uusi yksikkö</td>
+                                    <td>3/6</td>
+                                    <td>Vaurioitunut</td>
+                                    <td>Tarvitsee täydennyksiä.</td>
                                 </tr>
                                 <tr>
-                                    <td>Haukka 1</td>
-                                    <td>Krh-ryhmä</td>
-                                    <td>+0</td>
-                                    <td>+1 (15 XP)</td>
-                                    <td>+1</td>
-                                    <td>8</td>
-                                    <td>3</td>
-                                    <td>V</td>
-                                    <td>Tuhosi BTR:n Nokialla, otettu 5 vahinkoa.</td>
-                                </tr>
-                                <tr>
-                                    <td>Susi 10</td>
-                                    <td>Kom. Pääll.</td>
-                                    <td>+4</td>
-                                    <td>+0 (0 XP)</td>
-                                    <td>+4</td>
-                                    <td>5</td>
-                                    <td>5</td>
-                                    <td>E</td>
-                                    <td></td>
+                                    <td>-</td>
+                                    <td><i>(Tyhjä paikka)</i></td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>Voidaan ostaa uusi yksikkö TP:llä.</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <h5>Selitykset sarakkeisiin:</h5>
+                    <h3>Kampanjan Kierto: Taistelusta Täydennyksiin</h3>
+                    <p>
+                        Kampanja etenee sykleissä: taistelu -> tulosten kirjaus -> resurssien hallinta ->
+                        valmistautuminen seuraavaan taisteluun.
+                    </p>
+                    <h4>Voittopisteet (VP) Kampanjan Resurssina</h4>
+                    <p>
+                        Taistelusta ansaitut Voittopisteet (VP) ovat kampanjan valuuttaa. Jokainen VP muunnetaan suoraan
+                        kahdeksi eri resurssiksi komppanian yhteiseen pankkiin:
+                    </p>
+                    <ul>
+                        <li><strong>1 VP = 1 Kokemuspiste (XP)</strong></li>
+                        <li><strong>1 VP = 1 Täydennyspiste (TP)</strong></li>
+                    </ul>
+                    <h4>Taistelun Jälkipyykki: Skenaarion Loppuraportti</h4>
+                    <p>
+                        Skenaarion Loppuraportti -lomake (kuvattu Skenaariot-osiossa) on kriittinen työkalu. Se toimii
+                        virallisena pöytäkirjana siitä, kuinka monta VP:tä taistelusta ansaittiin. Tämä VP-summa on
+                        perusta, josta XP ja TP lasketaan.
+                    </p>
+                    <h4>Täydennys&shy;pisteiden (TP) Käyttö</h4>
+                    <p>Taistelukunto ei palaudu automaattisesti. Pelaajien on käytettävä ansaittuja TP:itä joukkojensa
+                        ylläpitoon:</p>
                     <ul>
                         <li>
-                            <strong>Tunnus:</strong> Yksilöllinen tunnus, esim. "Karhu 1".
+                            <strong>Tappioiden paikkaaminen:</strong> Pelaajat voivat "ostaa" takaisin menetettyjä
+                            Taistelukunto (TK) -pisteitä vaurioituneille yksiköilleen. Hinta on <strong>1 TP = 2
+                                TK</strong>.
                         </li>
                         <li>
-                            <strong>Tyyppi:</strong> Yksikön tyyppi, esim. "Jääkäriryhmä".
-                        </li>
-                        <li>
-                            <strong>Koulutus (K):</strong> Yksikön peruskoulutusarvo, joka on
-                            pysyvä. (Arvo löytyy yksikkökorteista, esim. Jääkäriryhmä Koulutus
-                            +3).
-                        </li>
-                        <li>
-                            <strong>Kokemus (XP) (Kokonaispisteet):</strong> Tähän merkitään
-                            yksikön keräämä kokonais-XP. Kun XP ylittää 10, yksikön
-                            "Kokemus-arvo" (joka nostaa TT:tä) kasvaa yhdellä.
-                        </li>
-                        <li>
-                            <strong>TT (K+XP/10):</strong> Tämä on automaattisesti laskettava
-                            arvo: Yksikön Koulutus (K) + (Kokemus-XP jaettuna 10:llä, pyöristä
-                            alaspäin).
-                        </li>
-                        <li>
-                            <strong>Maksimi TK:</strong> Yksikön alkuperäinen Taistelukunto.
-                        </li>
-                        <li>
-                            <strong>Nykyinen TK:</strong> Yksikön nykyinen Taistelukunto. Tätä
-                            arvoa päivitetään, kun yksikkö kärsii vahinkoa tai sitä
-                            täydennetään TP:illä.
-                        </li>
-                        <li>
-                            <strong>Tila:</strong> Tähän merkitään yksikön status, kuten
-                            "Vaurioitunut" (TK alle puolen) tai "Lamautunut".
-                        </li>
-                        <li>
-                            <strong>Muistiinpanot:</strong> Vapaamuotoisia merkintöjä, kuten
-                            mainintoja onnistumisista tai erityisistä tapahtumista.
+                            <strong>Uusien yksiköiden hankinta:</strong> Pelaajat voivat ostaa kokonaan uusia
+                            perusyksiköitä (Koulutus-arvo normaali, XP-arvo nolla) Kasarmiin korvaamaan tuhoutuneita.
+                            Esimerkkihintoja:
+                            <ul>
+                                <li>Jääkäriryhmä: 15 TP</li>
+                                <li>Tukiryhmä (KK): 12 TP</li>
+                                <li>PST-ryhmä: 15 TP</li>
+                            </ul>
                         </li>
                     </ul>
+
+                    <h3>Yksiköiden Kehitys ja Erikoisyksiköt</h3>
+                    <h4>Kokemuksen (XP) Kertyminen ja Taitotason (TT) Paraneminen</h4>
+                    <p>
+                        Taistelun jälkeen ansaittu XP-pankki jaetaan pelaajien kesken heidän taisteluun osallistuneiden
+                        yksiköidensä kehittämiseen.
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>XP:n Jako:</strong> Pelaajat voivat vapaasti jakaa ansaitun XP-potin taistelusta
+                            selvinneille yksiköilleen.
+                        </li>
+                        <li>
+                            <strong>Tappioiden Opetus:</strong> Yksiköt, jotka olivat taistelun lopussa
+                            <strong>Vaurioitunut</strong>-tilassa (alle 50% TK), saavat vain <strong>puolet</strong>
+                            niille jaetusta XP-määrästä (pyöristettynä alas).
+                        </li>
+                        <li>
+                            <strong>Taitotason Paraneminen:</strong> Kerätty XP parantaa pysyvästi yksikön Taitotasoa
+                            (TT) kaavalla: <strong>+1 TT jokaista täyttä 10 XP:tä kohden.</strong>
+                        </li>
+                    </ul>
+                    <h4>Erikois&shy;yksiköiden Avaaminen</h4>
+                    <p>
+                        Edistyneemmät yksiköt (kuten Sissi-jääkärit tai Erikoisjääkäri-osasto) eivät ole heti
+                        saatavilla, vaan ne on ansaittava. Pelinjohtaja voi sitoa niiden avaamisen esimerkiksi
+                        seuraaviin ehtoihin:
+                    </p>
+                    <ul>
+                        <li>Kampanjan tarinallinen eteneminen (tiettyjen skenaarioiden voitto).</li>
+                        <li>Erityiset saavutukset (esim. "tuhoa 5 panssarivaunua PST-ryhmillä").</li>
+                        <li>Komppanian kokonaiskokemuksen saavuttamat rajapyykit.</li>
+                    </ul>
+                    <h4>Hinta ja Taktinen Arvo</h4>
+                    <p>
+                        Avatut erikoisyksiköt ovat merkittävästi kalliimpia (korkea TP-hinta) ostaa Kasarmiin. Niiden
+                        erikoiskyvyt voivat kuitenkin muuttaa taistelun kulkua, ja pelinjohtajan tuleekin huomioida tämä
+                        skenaarioiden suunnittelussa tasapainon säilyttämiseksi.
+                    </p>
                 </section>
 
                 <section id="siniset-yksikot">
@@ -1992,6 +1693,7 @@
                                             1 kpl.</li>
                                         <li><strong>Tarkkuuskivääri:</strong> +5 (Hyökkäys), d10 (Vahinko). Osuessaan
                                             hyökkääjä voi valita kohteen erikoiskyvyn pois käytöstä yhden vuoron ajaksi.
+                                            Jos kohteella ei ole erikoiskykyjä, sen on tehtävä Moraalitesti (DC 13).
                                         </li>
                                     </ul>
                                 </li>
@@ -2033,7 +1735,8 @@
                                             (Vahinko)</li>
                                         <li><strong>Raskas tarkkuuskivääri:</strong> +6 (Hyökkäys), d12 (Vahinko).
                                             Osuessaan hyökkääjä voi valita kohteen erikoiskyvyn pois käytöstä yhden
-                                            vuoron ajaksi.</li>
+                                            vuoron ajaksi. Jos kohteella ei ole erikoiskykyjä, sen on tehtävä
+                                            Moraalitesti (DC 13).</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -3163,6 +2866,47 @@
                         </li>
                     </ul>
 
+                    <h3>Punaisen Puolen Komentorakenne ja KP:n Hallinta</h3>
+                    <p>
+                        Toisin kuin joustavampi Sininen puoli, Punaisen puolen komentorakenne on jäykempi ja perustuu
+                        ennalta määriteltyihin taisteluryhmiin. GM:n Komentopisteet (KP) muodostetaan tämän rakenteen
+                        mukaisesti, mikä luo omanlaisensa taktisen haasteen.
+                    </p>
+
+                    <h4>Taisteluryhmien Määrittely ja KP-Poolit</h4>
+                    <p>
+                        Ennen skenaarion alkua GM jakaa Punaisen puolen yksiköt loogisiin
+                        <strong>Taisteluryhmiin</strong>. Yksi Taisteluryhmä vastaa karkeasti joukkuetta ja koostuu
+                        tyypillisesti 3–5 toisiaan tukevasta yksiköstä.
+                    </p>
+                    <p>
+                        <strong>Jokainen tällainen Taisteluryhmä tuottaa GM:lle oman, erillisen 3 KP:n pistepoolin per
+                            vuoro.</strong>
+                    </p>
+                    <ul>
+                        <li><em>Esimerkki: GM:n joukoissa on kolme motorisoitua jalkaväkiryhmää ja yksi BTR-vaunu. GM
+                                niputtaa ne "Taisteluryhmä Iskuksi". Tämä ryhmä tuottaa 3 KP:n poolin. Lisäksi GM:llä on
+                                T-72-panssarivaunu, jonka hän määrittelee "Taisteluryhmä Murtajaksi". Se tuottaa oman 3
+                                KP:n poolinsa. GM:llä on siis kaksi erillistä 3 KP:n poolia.</em></li>
+                    </ul>
+
+                    <h4>KP:n Käyttö ja Komentoyhteys</h4>
+                    <ul>
+                        <li><strong>Sidotut Poolit:</strong> Taisteluryhmän omasta KP-poolista voi käyttää pisteitä
+                            <strong>ainoastaan kyseiseen ryhmään kuuluville yksiköille</strong>. Et voi käyttää "Iskun"
+                            pisteitä "Murtajan" komentamiseen.
+                        </li>
+                        <li><strong>Ei Etäisyysrajoituksia:</strong> Punainen puoli <strong>ei käytä</strong>
+                            samanlaista etäisyyteen perustuvaa Komentoyhteys-sääntöä kuin Sininen puoli. GM voi käyttää
+                            Taisteluryhmän pisteitä mihin tahansa ryhmään kuuluvaan yksikköön riippumatta sen
+                            sijainnista kartalla. Rajoitus tulee erillisistä pooleista, ei etäisyydestä.</li>
+                        <li><strong>Komppanianpäällikön Pooli:</strong> Jos skenaarioon kuuluu Punaisen puolen
+                            Komppanianpäällikkö-yksikkö, se tuottaa oman, erillisen <strong>5 KP:n poolin</strong>.
+                            Näitä pisteitä voi käyttää komppaniatason taktiikoihin (kuten epäorgaanisen tulituen
+                            kutsumiseen) tai siirtää mille tahansa Taisteluryhmälle (1 KP siirto maksaa 1 KP päällikön
+                            poolista).</li>
+                    </ul>
+
                     <h3>Hyödynnä Doktriinia – Massa ja Tulivoima:</h3>
                     <ul>
                         <li>
@@ -3518,8 +3262,19 @@
                         <summary><strong>Mitä perustoimintoja, jotka eivät maksa Komentopisteitä, joukkueenjohtaja voi
                                 tehdä?</strong></summary>
                         <p>
-                            Sääntöjen mukaan perustoimintoja, jotka eivät vaadi Komentopisteitä, ovat esimerkiksi
-                            <strong>asemissa puolustaminen</strong> ja <strong>ennalta suunniteltu liike</strong>.
+                            Yksiköt voivat suorittaa vuorollaan yhden ilmaisen perustoiminnon ilman Komentopisteiden
+                            käyttöä. Nämä ovat:
+                        </p>
+                        <ul>
+                            <li><strong>Asemapuolustus:</strong> Yksikkö pysyy paikallaan ja valmistautuu puolustukseen.
+                                Se voi ampua normaalisti Tulitoimintavaiheessa. Tämä on yksikön oletustoiminto, jos
+                                sille ei anneta muuta käskyä.</li>
+                            <li><strong>Perusliike:</strong> Yksikkö liikkuu normaalisti oman Liike-arvonsa verran,
+                                kunhan se ei aloita vuoroaan vihollisen Hallintavyöhykkeellä.</li>
+                        </ul>
+                        <p>
+                            Kaikki monimutkaisemmat tai reaktiiviset toiminnot, kuten hyökkäyskäskyt tai erikoiskyvyt,
+                            vaativat KP:n käyttöä.
                         </p>
                     </details>
 
@@ -3527,9 +3282,13 @@
                         <summary><strong>Voiko pelinjohtaja (GM) siirtää Komentopisteitä Punaisen puolen eri komentajien
                                 välillä?</strong></summary>
                         <p>
-                            Ei voi. Säännöissä todetaan selkeästi, että toisin kuin pelaajien Komppanianpäällikkö,
-                            <strong>GM ei voi siirtää pisteitä</strong> Punaisen puolen eri komentajien (esim. eri
-                            joukkueenjohtajien) pistepoolien välillä. Tämä simuloi komentoketjun jäykkyyttä.
+                            Ei voi. Tämä on keskeinen ero pelaajien ja GM:n välillä ja simuloi Punaisen puolen jäykempää
+                            komentorakennetta.
+                        </p>
+                        <p>
+                            GM jakaa joukkonsa <strong>Taisteluryhmiin</strong> (esim. jalkaväkijoukkue, panssarikiila),
+                            ja jokainen ryhmä tuottaa oman erillisen 3 KP:n pistepoolin. Yhden Taisteluryhmän pisteitä
+                            ei voi koskaan käyttää toisen ryhmän yksiköiden komentamiseen.
                         </p>
                     </details>
 
@@ -3572,6 +3331,11 @@
                             välillä. Yksikkö on komentoyhteydessä, jos se on 60 cm säteellä päälliköstä, eikä välissä
                             ole vihollista. Komentoyhteys vaaditaan, jotta Komppanianpäällikkö voi siirtää KP:itä
                             Joukkueenjohtajalle tai käyttää useimpia kohdennettuja taktisia kykyjään.
+                        </p>
+                        <p>
+                            <strong>Punaisen puolen osalta:</strong> On tärkeää huomata, että pelinjohtajan ohjaama
+                            Punainen puoli ei käytä tätä etäisyyteen perustuvaa komentoyhteyssääntöä. Sen komentamisen
+                            rajoitukset tulevat erillisistä, toisistaan riippumattomista Taisteluryhmien KP-pooleista.
                         </p>
                     </details>
 
