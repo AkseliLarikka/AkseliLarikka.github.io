@@ -349,9 +349,87 @@ a:has(> .lisenssi-kuvake-yksi):hover {
 @media (max-width: 768px) {
 
     /* Kun footer tulee näkyviin, napit häivytetään pois näkyvistä. */
-#scroll-buttons-container.is-docked {
-    opacity: 0;
-    visibility: hidden; /* Estää vuorovaikutuksen näkymättömien nappien kanssa */
-    pointer-events: none; /* Varmistaa, ettei nappi ole tiellä */
+    #scroll-buttons-container.is-docked {
+        opacity: 0;
+        visibility: hidden;
+        /* Estää vuorovaikutuksen näkymättömien nappien kanssa */
+        pointer-events: none;
+        /* Varmistaa, ettei nappi ole tiellä */
+    }
 }
+
+/* ==================================================================== */
+/* UKK-OSION TYYLIT (<details> ja <summary>)                           */
+/* ==================================================================== */
+
+/* Säiliö jokaiselle kysymykselle ja vastaukselle */
+#ukk details {
+    background-color: #FFFFFF;
+    border: 1px solid #E7E5E4;
+    /* stone-200 */
+    border-radius: 0.375rem;
+    /* 6px */
+    margin-bottom: 0.75rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Kysymys (otsikko, jota klikataan) */
+#ukk summary {
+    cursor: pointer;
+    padding: 1rem;
+    font-weight: 600;
+    color: #44403C;
+    /* stone-700 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    /* Poistaa oletusnuolen/kolmion */
+}
+
+/* Poistetaan oletusnuoli myös Webkit-selaimista */
+#ukk summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Hover-tehoste kysymykselle */
+#ukk summary:hover {
+    background-color: #FAFAF9;
+    /* stone-50 */
+}
+
+/* Oma nuoli-ikoni, joka pyörii */
+#ukk summary::after {
+    content: '❯';
+    /* Nuolimerkki */
+    font-size: 1.25rem;
+    color: #A855F7;
+    /* purple-500 */
+    transform: rotate(0deg);
+    transition: transform 0.2s ease-in-out;
+    margin-left: 1rem;
+}
+
+/* Kun osio on auki, käännetään nuolta */
+#ukk details[open]>summary::after {
+    transform: rotate(90deg);
+}
+
+/* Vastaus-alueen tyylit (sisältö, joka tulee näkyviin) */
+#ukk details>div {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+    border-top: 1px solid #E7E5E4;
+    /* stone-200 */
+    line-height: 1.6;
+}
+
+/* Varmistetaan, että listat vastausten sisällä näyttävät hyviltä */
+#ukk details ul,
+#ukk details ol {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+#ukk p {
+    padding-left: 1rem;
 }
