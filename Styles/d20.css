@@ -235,32 +235,37 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     /* Suurentaa logoa hieman, kun hiiri on päällä */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 .banner-title {
     font-family: 'Black Ops One', sans-serif;
     display: inline-block;
     padding: 0.5em 1.5em;
-
-    /* Asetetaan teemaan sopiva, pehmeä vaalea väri tekstille */
-    color: #FDF6E3 !important; /* theme-sand-light */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-
-    /* Tausta toiveesi mukaan. Nostin hieman peittävyyttä, koska poistimme toisen peittokuvan. */
-    background-color: rgba(47, 54, 31, 0.75); /* theme-olive-dark, 75% peittävyys */
+    background-color: rgba(47, 54, 31, 0.75);
     
-    /* Huurrelasi-efekti */
+    /* Huurrelasi-efekti ja sen etuliite vanhemmille Safari-versioille */
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    
-    /* Korvataan kaikki reunukset yhdellä varmalla säännöllä */
-    border: 1px solid rgba(143, 151, 121, 0.3); /* theme-olive-muted, 30% peittävyys */
-    
-    /* LOPULLINEN KORJAUS VALKOISEEN VIIVAAN: Varmistetaan, ettei alareunusta ole */
-    border-bottom: 1px solid rgba(143, 151, 121, 0.3) !important;
 
+    /* SIIVOTTU REUNUSMÄÄRITYS: Yksi sääntö kaikille reunoille poistaa ristiriidat */
+    border: 1px solid rgba(143, 151, 121, 0.3);
+    
     border-radius: 0.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    
     text-decoration: none !important;
+
+    /* === KORJAUS MOBIILIN RENDERÖINTIONGELMIIN === */
+    /* Varmistaa, että elementti on omassa pinoamiskontekstissaan */
+    isolation: isolate;
+    /* Vihje selaimelle, että tämä elementti voi muuttua, joten kannattaa varautua */
+    will-change: transform;
+    /* "Taikatemppu", joka pakottaa laitteistokiihdytyksen päälle Webkit-selaimissa (Safari) */
+    transform: translateZ(0); 
+}
+
+@media (max-width: 768px) {
+    .banner-title {
+        text-decoration: none !important;
+    }
 }
 
 /* Taulukon vierityssäiliö */
@@ -643,33 +648,33 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     }
 
     #scroll-legend {
-        /* Irrotetaan paneeli ruudukosta ja asemoidaan se suhteessa 
-           pääsäiliöön (#scroll-buttons-container) */
         position: absolute;
-
-        /* Asetetaan se nappien yläpuolelle (100%) ja lisätään pieni marginaali */
         bottom: calc(100% + 8px);
-        right: 0;
-        /* Asetetaan paneeli säiliön oikeaan reunaan */
 
-        /* Varmistetaan, että paneelilla on oma tausta ja tyylit */
+        /* UUDET, MUKAUTUVAT SIJAINTISÄÄNNÖT */
+        right: 8px;
+        /* Kohdistaa ruudun oikean reunan siististi nappien kanssa (joilla on 8px padding) */
+        width: auto;
+        /* Nollataan aiempi leveys, jotta max-width toimii */
+        max-width: calc(100vw - 16px);
+        /* TÄRKEIN SÄÄNTÖ: Leveys on enintään näytön leveys miinus 8px pehmuste molemmilta puolilta */
+
+        /* Vanhat, toimivat säännöt säilytetään */
         background-color: white;
         padding: 1rem;
         border-radius: 0.5rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
         border: 1px solid #E7E5E4;
-        width: max-content;
-        /* Leveys määräytyy sisällön mukaan */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* Lisäsin pienen varjon takaisin selkeyden vuoksi */
 
-        /* Piilotetaan se oletuksena läpinäkyväksi ja animoidaan näkyviin */
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px);
         transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-        color: rgba(30, 27, 47, 0.9);
+        color: #1C1917;
+        /* Käytetään selkeää tummaa väriä vaalealla pohjalla */
     }
 
-    /* 2. Kun JS lisää "is-visible" -luokan, tehdään paneelista näkyvä. */
     #scroll-legend.is-visible {
         opacity: 1;
         visibility: visible;
