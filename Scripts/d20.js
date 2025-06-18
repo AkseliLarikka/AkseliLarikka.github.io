@@ -236,4 +236,24 @@ document.addEventListener('DOMContentLoaded', function () {
         // Asetetaan tarkkailija päälle.
         footerObserver.observe(pageFooter);
     }
+    // ====================================================================
+    // OSA 4: VIERITYSNAPPIEN SELITTEEN NÄYTTÖ
+    // ====================================================================
+    const infoToggle = document.getElementById('scroll-info-toggle');
+    const legendPanel = document.getElementById('scroll-legend');
+
+    if (infoToggle && legendPanel) {
+        infoToggle.addEventListener('click', (event) => {
+            // Estää klikkauksen "propagoitumisen" ylemmäs, mikä voisi sulkea paneelin heti.
+            event.stopPropagation();
+            legendPanel.classList.toggle('is-visible');
+        });
+
+        // Vapaaehtoinen: Sulkee paneelin, jos klikataan sen ulkopuolella.
+        document.addEventListener('click', () => {
+            if (legendPanel.classList.contains('is-visible')) {
+                legendPanel.classList.remove('is-visible');
+            }
+        });
+    }
 });
