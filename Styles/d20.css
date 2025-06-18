@@ -240,9 +240,17 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     font-family: 'Black Ops One', sans-serif;
     display: inline-block;
     padding: 0.5em 1.5em;
+
+    /* Asetetaan teemaan sopiva, pehmeä vaalea väri tekstille */
+    color: #FDF6E3 !important;
+    /* theme-sand-light */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+
+    /* Tausta toiveesi mukaan. Nostin hieman peittävyyttä, koska poistimme toisen peittokuvan. */
     background-color: rgba(47, 54, 31, 0.75);
-    
-    /* Huurrelasi-efekti ja sen etuliite vanhemmille Safari-versioille */
+    /* theme-olive-dark, 75% peittävyys */
+
+     /* Huurrelasi-efekti ja sen etuliite vanhemmille Safari-versioille */
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 
@@ -259,7 +267,11 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     /* Vihje selaimelle, että tämä elementti voi muuttua, joten kannattaa varautua */
     will-change: transform;
     /* "Taikatemppu", joka pakottaa laitteistokiihdytyksen päälle Webkit-selaimissa (Safari) */
-    transform: translateZ(0); 
+    transform: translateZ(0);
+
+    
+    /* LOPULLINEN KORJAUS VALKOISEEN VIIVAAN: Varmistetaan, ettei alareunusta ole */
+    border-bottom: 1px solid rgba(143, 151, 121, 0.3) !important;
 }
 
 @media (max-width: 768px) {
