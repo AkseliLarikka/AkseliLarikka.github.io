@@ -511,3 +511,15 @@ a:has(> .lisenssi-kuvake-yksi):hover {
         pointer-events: none;
     }
 }
+
+/* ==================================================================== */
+/* PDF-SÄILIÖN TYYLIT MOBIILIVIERITYSTÄ VARTEN                    */
+/* ==================================================================== */
+
+.pdf-container {
+    overflow-x: auto;
+    /* Mahdollistaa vaakatason vierityksen, jos sisältö on leveämpi */
+    -webkit-overflow-scrolling: touch;
+    /* Parantaa vierityskokemusta iOS-laitteilla */
+    max-width: 100%;
+}
