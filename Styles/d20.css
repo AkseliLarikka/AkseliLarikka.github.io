@@ -235,10 +235,32 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     /* Suurentaa logoa hieman, kun hiiri on päällä */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 .banner-title {
     font-family: 'Black Ops One', sans-serif;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    display: inline-block;
+    padding: 0.5em 1.5em;
+
+    /* Asetetaan teemaan sopiva, pehmeä vaalea väri tekstille */
+    color: #FDF6E3 !important; /* theme-sand-light */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+
+    /* Tausta toiveesi mukaan. Nostin hieman peittävyyttä, koska poistimme toisen peittokuvan. */
+    background-color: rgba(47, 54, 31, 0.75); /* theme-olive-dark, 75% peittävyys */
+    
+    /* Huurrelasi-efekti */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    
+    /* Korvataan kaikki reunukset yhdellä varmalla säännöllä */
+    border: 1px solid rgba(143, 151, 121, 0.3); /* theme-olive-muted, 30% peittävyys */
+    
+    /* LOPULLINEN KORJAUS VALKOISEEN VIIVAAN: Varmistetaan, ettei alareunusta ole */
+    border-bottom: 1px solid rgba(143, 151, 121, 0.3) !important;
+
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    
+    text-decoration: none !important;
 }
 
 /* Taulukon vierityssäiliö */
@@ -548,15 +570,18 @@ a:has(> .lisenssi-kuvake-yksi):hover {
           levyiseksi palkiksi alareunaan. */
     #scroll-buttons-container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 saraketta */
-        grid-template-rows: repeat(2, 1fr);    /* 2 riviä */
-        
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 saraketta */
+        grid-template-rows: repeat(2, 1fr);
+        /* 2 riviä */
+
         /* Asetetaan palkki alareunaan */
         width: 50%;
         bottom: 0;
         right: 0;
         padding: 8px;
-        border-radius: 0; /* Ei pyöristyksiä reunassa */
+        border-radius: 0;
+        /* Ei pyöristyksiä reunassa */
         background-color: rgba(245, 245, 244, 0.0);
         border-top: 1px solid #E7E5E4;
     }
@@ -567,9 +592,9 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     #scroll-buttons-container .scroll-column {
         display: contents;
     }
-    
+
     /* 3. Asetellaan jokainen nappi ID:n perusteella omaan ruutuunsa. */
-    
+
     /* Info-nappi: sarake 1, rivit 1 & 2 */
     #scroll-info-toggle {
         grid-column: 1 / 2;
@@ -577,39 +602,65 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     }
 
     /* Ylärivin napit */
-    #scroll-top   { grid-column: 2 / 3; grid-row: 1 / 2; }
-    #scroll-h2-up { grid-column: 3 / 4; grid-row: 1 / 2; }
-    #scroll-h3-up { grid-column: 4 / 5; grid-row: 1 / 2; }
+    #scroll-top {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    #scroll-h2-up {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+    }
+
+    #scroll-h3-up {
+        grid-column: 4 / 5;
+        grid-row: 1 / 2;
+    }
 
     /* Alarivin napit */
-    #scroll-bottom   { grid-column: 2 / 3; grid-row: 2 / 3; }
-    #scroll-h2-down  { grid-column: 3 / 4; grid-row: 2 / 3; }
-    #scroll-h3-down  { grid-column: 4 / 5; grid-row: 2 / 3; }
-    
+    #scroll-bottom {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+
+    #scroll-h2-down {
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+    }
+
+    #scroll-h3-down {
+        grid-column: 4 / 5;
+        grid-row: 2 / 3;
+    }
+
     /* 4. Viimeistellään nappien ulkoasu ruudukossa. */
     .scroll-button {
-        width: auto;  /* Annetaan ruudukon määrittää koko */
+        width: auto;
+        /* Annetaan ruudukon määrittää koko */
         height: 100%;
-        border-radius: 6px; /* Hieman pehmeyttä kulmiin */
+        border-radius: 6px;
+        /* Hieman pehmeyttä kulmiin */
     }
-    
+
     #scroll-legend {
         /* Irrotetaan paneeli ruudukosta ja asemoidaan se suhteessa 
            pääsäiliöön (#scroll-buttons-container) */
         position: absolute;
-        
+
         /* Asetetaan se nappien yläpuolelle (100%) ja lisätään pieni marginaali */
         bottom: calc(100% + 8px);
-        right: 0; /* Asetetaan paneeli säiliön oikeaan reunaan */
-        
+        right: 0;
+        /* Asetetaan paneeli säiliön oikeaan reunaan */
+
         /* Varmistetaan, että paneelilla on oma tausta ja tyylit */
         background-color: white;
         padding: 1rem;
         border-radius: 0.5rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
         border: 1px solid #E7E5E4;
-        width: max-content; /* Leveys määräytyy sisällön mukaan */
-        
+        width: max-content;
+        /* Leveys määräytyy sisällön mukaan */
+
         /* Piilotetaan se oletuksena läpinäkyväksi ja animoidaan näkyviin */
         opacity: 0;
         visibility: hidden;
@@ -617,7 +668,7 @@ a:has(> .lisenssi-kuvake-yksi):hover {
         transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
         color: rgba(30, 27, 47, 0.9);
     }
-    
+
     /* 2. Kun JS lisää "is-visible" -luokan, tehdään paneelista näkyvä. */
     #scroll-legend.is-visible {
         opacity: 1;
