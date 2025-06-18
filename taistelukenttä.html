@@ -253,11 +253,6 @@
                                     <td>1 KP</td>
                                     <td>Tee pyyntö epäsuorasta tulesta krh-ryhmältä.</td>
                                 </tr>
-                                <tr>
-                                    <td><strong>Erikoiskyvyn käyttö</strong></td>
-                                    <td>Vaihtelee</td>
-                                    <td>Monien yksiköiden erityiskyvyt vaativat KP:n käyttöä.</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -354,16 +349,16 @@
                             <strong>vähintään yhtä suuri</strong> kuin tämä arvo osuakseen.
                         </li>
                         <li>
-                            <strong>Tuli-isku (TI) ja Aseistus:</strong> Nämä kertovat yksikön
-                            hyökkäyspotentiaalin. Jokaisella yksiköllä on
-                            <strong>perushyökkäys</strong> (esim. "Jalkaväkiaseistus"), jota
-                            se käyttää normaalissa tulitoiminnassa. Tämän lisäksi
-                            yksikkökortilla voi olla lueteltu
-                            <strong>erikoisaseita</strong> (esim. "Konekivääri", "PST-ase").
-                            Näitä erikoisaseita ja niiden vahinkoarvoja käytetään
-                            <strong>ainoastaan</strong> silloin, kun jokin yksikön erityinen
-                            kyky (esim. "Lamauttava Tuli") tai tilanne (esim.
-                            panssarintorjunta) niin määrää.
+                            <strong>Tuli-isku (TI) ja Aseistus:</strong> Nämä kertovat yksikön hyökkäyspotentiaalin.
+                            <ul>
+                                <li>Yksikön normaali hyökkäys käyttää sen yksikkökortin
+                                    <strong>Varustus</strong>-kohdassa ensimmäisenä mainittua asetta (pääase).
+                                    Esimerkiksi Tukiryhmä (KK) käyttää normaalisti konekivääriään.</li>
+                                <li>Termi "Jalkaväkiaseistus" on yleistermi perusrynnäkkökivääreille.</li>
+                                <li>Muut kortilla listatut erikoisaseet (kuten kertakäyttöiset singot) tai
+                                    ampumatarvikkeet ovat käytettävissä vain, kun yksikön erityinen kyky tai sääntö niin
+                                    määrää.</li>
+                            </ul>
                         </li>
                         <li>
                             <strong>Kyvyt:</strong> Yksikön erityisominaisuudet ja -toiminnot.
@@ -472,11 +467,11 @@
                         <li>
                             <strong>Sarjatuli/Aluevaikutus:</strong> Aseet, joiden kuvauksessa
                             on tämä ominaisuus, voivat hyökätä yksittäisen kohteen sijaan
-                            nimetylle alueelle (esim. 2x1cm alue). Hyökkääjä heittää yhden
-                            hyökkäysheiton. Tätä tulosta verrataan erikseen jokaiseen alueella
-                            olevaan vihollisyksikköön. Jokainen yksikkö, jonka Suoja-arvo on
-                            pienempi tai yhtä suuri kuin heiton tulos, kärsii aseen normaalin
-                            vahingon.
+                            nimetylle alueelle. Hyökkääjä heittää yhden hyökkäysheiton, jota verrataan
+                            erikseen jokaiseen alueella olevaan vihollisyksikköön.
+                            <strong>Huom:</strong> Yksikön oma erikoiskyky määrittää aina lopullisen vaikutuksen. Jos
+                            kyky (esim. "Lamauttava Tuli") määrää, että se ei aiheuta vahinkoa vaan esimerkiksi
+                            ainoastaan moraalitestin, kyseinen kuvaus korvaa tämän yleisen säännön vahingon osalta.
                         </li>
                     </ul>
 
@@ -947,7 +942,9 @@
                         vahvistaakseen heidän toimintakykyään. Nämä ovat laajempia,
                         strategisia käskyjä, joita vain Komppanianpäällikön roolissa oleva
                         pelaaja voi käyttää. Ne maksavat päällikön omasta, isommasta
-                        KP-poolista (5 KP/vuoro).
+                        KP-poolista (5 KP/vuoro). <strong>Kyvyt, joiden kohdalla "Vaatii komentoyhteyden?" on merkitty
+                            "Ei", edustavat päällikön omaa strategista päätöksentekoa tai yhteyttä ylempiin portaisiin,
+                            eivätkä ne vaadi näkö- tai komentoyhteyttä alaisiin.</strong>
                     </p>
                     <div class="table-container">
                         <table>
@@ -1118,7 +1115,7 @@
                             <strong>Painopisteen Muodostaminen (3 KP):</strong> Päällikkö
                             nimeää yhden joukkueistaan hyökkäyksen painopisteeksi. Tämän
                             vuoron ajan kaikki kyseisen joukkueen yksiköt saavat +5 cm lisää
-                            liikkumista hyökätessään/rynnäköidessään.
+                            liikkumista, <strong>kun niille annetaan Hyökkäyskäsky</strong>.
                         </li>
                         <li>
                             <strong>Sitova Tuli (2 KP):</strong> Päällikkö käskee yhden
@@ -1365,6 +1362,10 @@
 
                 <section id="kampanja">
                     <h2>Kampanjan Hallinta ja Eteneminen</h2>
+
+                    <p>Vaikka "Taistelukenttä d20" -peliä voi pelata yksittäisinä taisteluina, sen syvin kokemus
+                        saavutetaan kampanjassa, jossa taisteluiden tulokset vaikuttavat tuleviin koitoksiin.</p>
+                    <br>
                     <p>
                         Tässä osiossa käsitellään sääntöjä, jotka sitovat yksittäiset taistelut palkitsevaksi ja
                         jatkuvaksi kampanjaksi. Pelaajat eivät ainoastaan taistele voitosta yksittäisessä skenaariossa,
@@ -1383,7 +1384,9 @@
                         Ennen jokaista skenaariota Komppanianpäällikkö ja Joukkueenjohtajat kokoontuvat ja valitsevat
                         kasarmilta ne yksiköt, jotka osallistuvat tulevaan tehtävään. Joukkueenjohtajilla on vapaus
                         valita omaan joukkueeseensa kuuluvat yksiköt annettujen rajoitusten puitteissa, mutta
-                        Komppanianpäälliköllä on lopullinen sana komppanian kokoonpanosta.
+                        Komppanianpäälliköllä on lopullinen sana komppanian kokoonpanosta. <strong>Pelinjohtaja
+                            määrittelee aina skenaariokohtaisesti tarkemmat rajoitukset, kuten suurimman sallitun
+                            yksikkömäärän tai pistearvon.</strong>
                     </p>
                     <h4>Yksiköiden Seuranta: Komppanian Vahvuusluettelo</h4>
                     <p>
@@ -1694,7 +1697,9 @@
                                         <li><strong>Tarkkuuskivääri:</strong> +5 (Hyökkäys), d10 (Vahinko). Osuessaan
                                             hyökkääjä voi valita kohteen erikoiskyvyn pois käytöstä yhden vuoron ajaksi.
                                             Jos kohteella ei ole erikoiskykyjä, sen on tehtävä Moraalitesti (DC 13).
-                                        </li>
+                                            <strong>Kykyä ei voi käyttää passiivisiin ominaisuuksiin, kuten
+                                                panssarointiin, mutta sitä voi käyttää aktiivisiin järjestelmiin
+                                                perustuviin kykyihin.</strong></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -1736,7 +1741,9 @@
                                         <li><strong>Raskas tarkkuuskivääri:</strong> +6 (Hyökkäys), d12 (Vahinko).
                                             Osuessaan hyökkääjä voi valita kohteen erikoiskyvyn pois käytöstä yhden
                                             vuoron ajaksi. Jos kohteella ei ole erikoiskykyjä, sen on tehtävä
-                                            Moraalitesti (DC 13).</li>
+                                            Moraalitesti (DC 13). <strong>Kykyä ei voi käyttää passiivisiin
+                                                ominaisuuksiin, kuten panssarointiin, mutta sitä voi käyttää aktiivisiin
+                                                järjestelmiin perustuviin kykyihin.</strong></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -1853,9 +1860,10 @@
                                     <strong>Kyvyt:</strong>
                                     <ul>
                                         <li>
-                                            <strong>Pelote:</strong> Lähialueella (10cm säde) olevat
-                                            vihollisen jalkaväkiyksiköt tekevät Moraalitestin DC 10
-                                            vuoron alussa.
+                                            <strong>Pelote:</strong> Vaunun läsnäolo herättää kauhua. Jokaisen vuoron
+                                            alussa kaikki vihollisen jalkaväkiyksiköt 10 cm säteellä tekevät
+                                            Moraalitestin (DC 10). Tämä jatkuva kyky korvaa yleisen säännön "nähdessään
+                                            vihollisen panssarivaunun ensimmäistä kertaa" tätä yksikköä vastaan.
                                         </li>
                                         <li>
                                             <strong>Raskas Panssari:</strong> Kaikki vahingot
@@ -1973,7 +1981,9 @@
                                             <strong>Tarkkuuskivääri:</strong> +3 (Hyökkäys), d10 (Vahinko). Osuessaan
                                             hyökkääjä voi valita yhden kohteen erikoiskyvyn; kohde ei voi käyttää tätä
                                             kykyä seuraavan vuoronsa aikana. Jos kohteella ei ole erikoiskykyjä, sen on
-                                            tehtävä Moraalitesti (DC 13).
+                                            tehtävä Moraalitesti (DC 13). <strong>Kykyä ei voi käyttää passiivisiin
+                                                ominaisuuksiin, kuten panssarointiin, mutta sitä voi käyttää aktiivisiin
+                                                järjestelmiin perustuviin kykyihin.</strong>
                                         </li>
                                     </ul>
                                 </li>
