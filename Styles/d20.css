@@ -356,6 +356,11 @@ a:has(> .lisenssi-kuvake-yksi):hover {
     padding-left: 1rem;
 }
 
+.vaurioitunut-tila {
+    color: crimson;
+    font-weight: bold;
+}
+
 /* ==================================================================== */
 /* VIERITYSNAPIT JA SELITE (Uusi ruudukkoasettelu)                      */
 /* ==================================================================== */

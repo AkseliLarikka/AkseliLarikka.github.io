@@ -353,7 +353,8 @@
                             <ul>
                                 <li>Yksikön normaali hyökkäys käyttää sen yksikkökortin
                                     <strong>Varustus</strong>-kohdassa ensimmäisenä mainittua asetta (pääase).
-                                    Esimerkiksi Tukiryhmä (KK) käyttää normaalisti konekivääriään.</li>
+                                    Esimerkiksi Tukiryhmä (KK) käyttää normaalisti konekivääriään.
+                                </li>
                                 <li>Termi "Jalkaväkiaseistus" on yleistermi perusrynnäkkökivääreille.</li>
                                 <li>Muut kortilla listatut erikoisaseet (kuten kertakäyttöiset singot) tai
                                     ampumatarvikkeet ovat käytettävissä vain, kun yksikön erityinen kyky tai sääntö niin
@@ -371,10 +372,23 @@
                     <h4>Tilaefektit</h4>
                     <ul>
                         <li>
-                            <strong>Vaurioitunut:</strong> Kun yksikön TK putoaa alle puoleen
-                            maksimista. Sen <strong>Liike</strong> ja
-                            <strong>Tuli-isku</strong> puolittuvat (pyöristä alas). Kuvaa
-                            haavoittuneiden sitomaa kapasiteettia.
+                            <p><strong>Vaurioitunut:</strong> Yksikkö siirtyy tähän tilaan välittömästi, kun sen
+                                Taistelukunto (TK) putoaa alle 50 % maksimiarvostaan. Tila aiheuttaa seuraavat yleiset
+                                vaikutukset:</p>
+                            <ul>
+                                <li><strong>Moraalitesti:</strong> Yksikön on tehtävä välittömästi Moraalitesti (DC 12).
+                                </li>
+                                <li><strong>Liikkeen puolittuminen:</strong> Yksikön Liike-arvo (L) puolittuu (pyöristä
+                                    alaspäin).</li>
+                                <li><strong>Tuli-iskun puolittuminen:</strong> Yksikön perushyökkäyksen Tuli-isku (TI)
+                                    -noppa pienenee yhdellä asteikolla (esim. d8 -> d6, d6 -> d4). Minimi on d4.</li>
+                                <li><strong>Kokemuksen väheneminen:</strong> Kampanjapelissä yksikkö ansaitsee
+                                    taistelusta vain puolet normaalista kokemuksesta (XP).</li>
+                            </ul>
+                            <p>Jotkin yksikön erikoiskyvyt voivat myös heikentyä tai muuttua sen ollessa Vaurioitunut.
+                                Tällaiset kyvyt on merkitty yksikkökortissa
+                                <strong>(Vaurioitunut)</strong>-tunnisteella.
+                            </p>
                         </li>
                         <li>
                             <strong>Lamautunut (Suppressed):</strong> Epäonnistuneen
@@ -799,9 +813,10 @@
                     <ul>
                         <li>
                             <strong>Komentovaihe:</strong> Blue Team keskittyy asemiin kaivautumiseen. Pelaaja 1 käyttää
-                            2 KP:tä omasta poolistaan siirtääkseen ne yksitellen Pelaaja 3:lle (kokonaiskustannus 2 KP),
-                            joka saa näin +2 KP joukkueelleen ja käyttää ne tukiyksiköidensä optimaaliseen sijoitteluun.
-                            Red Team aloittaa etenemisen yhdellä BTR-82A-vaunulla ja jalkaväkiryhmällä.
+                            <strong>2 KP:tä omasta poolistaan siirtääkseen ne yksitellen Pelaaja 3:lle
+                                (kokonaiskustannus 2 KP), joka saa näin +2 KP joukkueelleen</strong> ja käyttää ne
+                            tukiyksiköidensä optimaaliseen sijoitteluun. Red Team aloittaa etenemisen yhdellä
+                            BTR-82A-vaunulla ja jalkaväkiryhmällä.
                         </li>
                         <li>
                             <strong>Liike- ja Tiedusteluvaihe:</strong> Red Teamin kärkivaunu etenee. Pelaaja 2:n
@@ -1546,9 +1561,11 @@
                                             (ei putoa +1).</li>
                                         <li><strong>Maastoon Tottunut:</strong> Jättää huomiotta metsämaaston
                                             aiheuttaman liikehidasteen.</li>
-                                        <li><strong>Tulenjohto (Passiivinen):</strong> Voi johtaa orgaanista ja
-                                            epäorgaanista tulta säännön 1.4.6 mukaisesti. Kyvyn onnistuminen riippuu
-                                            yksikön TK:sta.</li>
+                                        <li><strong>Tulenjohto (Passiivinen) <span
+                                                    class="vaurioitunut-tila">(Vaurioitunut)</span>:</strong> Voi
+                                            johtaa orgaanista ja epäorgaanista tulta säännön 1.4.6 mukaisesti. Yksikön
+                                            ollessa vaurioitunut, kyvyn käyttö vaatii onnistuneen d6-heiton (4+).
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
@@ -1579,8 +1596,10 @@
                                             vihollisyksikkö valitulla alueella tekee välittömästi Moraalitestin (DC 10).
                                             Epäonnistuessaan yksikkö on "Lamautunut" seuraavaan vuoroonsa asti. Tämä
                                             kyky ei aiheuta TK-vahinkoa.</li>
-                                        <li><strong>Tuliasema:</strong> +1 Hyökkäykseen, jos pysyy paikallaan vuoron
-                                            ajan ja ei liiku.</li>
+                                        <li><strong>Tuliasema <span
+                                                    class="vaurioitunut-tila">(Vaurioitunut)</span>:</strong> +1
+                                            Hyökkäykseen, jos pysyy paikallaan vuoron ajan ja ei liiku. Yksikön
+                                            ollessa vaurioitunut, kykyä ei voi käyttää.</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -1608,8 +1627,10 @@
                                     <strong>Kyvyt:</strong>
                                     <ul>
                                         <li><strong>Panssarintuhoaja:</strong> +2 Hyökkäykseen ajoneuvoja vastaan.</li>
-                                        <li><strong>Kertakäyttöisyys:</strong> Jos PST-ase on lataamaton, voi siirtyä
-                                            nopeammin (+2cm).</li>
+                                        <li><strong>Kertakäyttöisyys <span
+                                                    class="vaurioitunut-tila">(Vaurioitunut)</span>:</strong> Jos
+                                            PST-ase on lataamaton, voi siirtyä nopeammin (+2cm). Yksikön
+                                            ollessa vaurioitunut, kykyä ei voi käyttää.</li>
                                         <li><strong>Varustautuminen:</strong> PST-aseen voi ladata, mutta se kuluttaa
                                             koko vuoron, eikä ryhmä voi liikkua. Ei kuluta Komentopisteitä.</li>
                                     </ul>
@@ -1674,7 +1695,7 @@
                                 <li>
                                     <strong>Kyvyt:</strong>
                                     <ul>
-                                        <li><strong>Koukkaus:</strong> Hyökätessään vihollisen sivustaan tai selustaan,
+                                        <li><strong>Koukkaus :</strong> Hyökätessään vihollisen sivustaan tai selustaan,
                                             tämä yksikkö saa Edun (Advantage) hyökkäysheittoonsa.</li>
                                         <li><strong>Metsänpeitto (1 KP):</strong> Yksikkö voi käyttää koko vuoronsa ja
                                             kuluttaa 1 KP:n asettuakseen asemiin metsässä tai tiheässä suojassa. Se
@@ -1682,9 +1703,11 @@
                                         <li><strong>Murtosulute (2 KP):</strong> Voi käyttää koko vuoronsa asettaakseen
                                             5cm leveän miinakentän. Kentän läpi liikkuva vihollisyksikkö tekee testin:
                                             epäonnistuessaan se kärsii d6 vahinkoa ja sen liike pysähtyy.</li>
-                                        <li><strong>Tulenjohto (Passiivinen):</strong> Voi johtaa orgaanista ja
-                                            epäorgaanista tulta säännön 1.4.6 mukaisesti. Kyvyn onnistuminen riippuu
-                                            yksikön TK:sta.</li>
+                                        <li><strong>Tulenjohto (Passiivinen) <span
+                                                    class="vaurioitunut-tila">(Vaurioitunut)</span>:</strong> Voi johtaa
+                                            orgaanista ja epäorgaanista tulta säännön 1.4.6 mukaisesti. Kyvyn
+                                            onnistuminen riippuu yksikön TK:sta. Yksikön ollessa vaurioitunut, kyvyn
+                                            käyttö vaatii onnistuneen d6-heiton (4+).</li>
                                     </ul>
                                 </li>
                                 <li>
@@ -1699,7 +1722,8 @@
                                             Jos kohteella ei ole erikoiskykyjä, sen on tehtävä Moraalitesti (DC 13).
                                             <strong>Kykyä ei voi käyttää passiivisiin ominaisuuksiin, kuten
                                                 panssarointiin, mutta sitä voi käyttää aktiivisiin järjestelmiin
-                                                perustuviin kykyihin.</strong></li>
+                                                perustuviin kykyihin.</strong>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -1729,8 +1753,11 @@
                                             merkitä yhden kohteen. Seuraavan vuoron alussa kohteeseen iskee kartan
                                             ulkopuolinen tarkka isku (2d12 vahinkoa 10 cm säteellä, ei hajontaa). Voi
                                             käyttää kerran pelissä. Vaatii näköyhteyden ja paikallaan pysymisen.</li>
-                                        <li><strong>Tulenjohto (Peruskyky):</strong> Tällä yksiköllä on myös normaali,
-                                            passiivinen tulenjohtokyky säännön 1.4.6 mukaisesti.</li>
+                                        <li><strong>Tulenjohto (Passiivinen) <span
+                                                    class="vaurioitunut-tila">(Vaurioitunut)</span>:</strong> Voi
+                                            johtaa orgaanista ja epäorgaanista tulta säännön 1.4.6 mukaisesti. Yksikön
+                                            ollessa vaurioitunut, kyvyn käyttö vaatii onnistuneen d6-heiton (4+).
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
@@ -1776,10 +1803,15 @@
                                             silti.
                                         </li>
                                         <li>
-                                            <strong>Aaltohyökkäys (0 KP):</strong> Jos vähintään 3
+                                            <strong>Aaltohyökkäys (0 KP) <span
+                                                    class="vaurioitunut-tila">(Vaurioitunut)</span>:</strong> Jos
+                                            vähintään 3
                                             Motorisoitua Jalkaväkiryhmää hyökkää samaan kohteeseen, ne
                                             saavat +1 Moraaliin seuraavalla vuorolla. Tämä kyky on
-                                            passiivinen eikä vaadi Komentopisteiden käyttöä.
+                                            passiivinen eikä vaadi Komentopisteiden käyttöä. Yksikön ollessa
+                                            vaurioitunut
+                                            ryhmien välinen koheesio heikkenee ja aaltohyökkäyksestä ei voi saada
+                                            bonusta.
                                         </li>
                                     </ul>
                                 </li>
@@ -1823,7 +1855,8 @@
                                             ajoneuvoon osutaan.
                                         </li>
                                         <li>
-                                            Kun TK on 50% tai alle, BTR on Vaurioitunut: sen Liike
+                                            <span class="vaurioitunut-tila">(Vaurioitunut):</span> Kun TK on 50% tai
+                                            alle, BTR on Vaurioitunut: sen Liike
                                             puolittuu. Sen Tuli-isku ei heikkene.
                                         </li>
                                     </ul>
@@ -1870,7 +1903,8 @@
                                             vähenevät 1 pisteellä ennen TK-vähennystä.
                                         </li>
                                         <li>
-                                            Kun TK on 50% tai alle, T-72B3 on Vaurioitunut: sen Raskas
+                                            <span class="vaurioitunut-tila">(Vaurioitunut):</span> Kun TK on 50% tai
+                                            alle, T-72B3 on Vaurioitunut: sen Raskas
                                             Panssari -kyky menetetään ja kaikki tuleva vahinko
                                             lasketaan normaalisti. Sen Tuli-isku tai Liike eivät
                                             heikkene tässä vaiheessa.
@@ -1962,8 +1996,11 @@
                                     <strong>Kyvyt:</strong>
                                     <ul>
                                         <li>
-                                            <strong>Tehostettu Tiedustelu:</strong> Yksikkö saa +2 bonuksen tehdessään
-                                            tiedusteluheittoja (kokonaisbonus tiedusteluun +4).
+                                            <strong>Tehostettu Tiedustelu <span
+                                                    class="vaurioitunut-tila">(Vaurioitunut)</span>:</strong> Yksikkö
+                                            saa +2 bonuksen tehdessään
+                                            tiedusteluheittoja (kokonaisbonus tiedusteluun +4). Yksikön ollessa
+                                            vaurioitunut, se ei saa tiedustelubonusta.
                                         </li>
                                         <li>
                                             <strong>Peräänantamaton:</strong> Yksikkö ei tee ylimääräistä Moraalitestiä
@@ -2003,9 +2040,12 @@
                                 <li><strong>TT:</strong> +1</li>
                                 <li><strong>Kyvyt:</strong>
                                     <ul>
-                                        <li><strong>Tiazholaya Bronya (Raskas panssari):</strong> Yksikkö vähentää 1
+                                        <li><strong>Tiazholaya Bronya (Raskas panssari) <span
+                                                    class="vaurioitunut-tila">(Vaurioitunut)</span>:</strong> Yksikkö
+                                            vähentää 1
                                             pisteen kaikesta jalkaväkiaseiden aiheuttamasta vahingosta (minimivahinko
-                                            1).</li>
+                                            1). Yksikön ollessa vaurioitunut, heidän panssari on kulutettu loppuun ja he
+                                            ottavat vastedes +1 lisää vahinkoa.</li>
                                         <li><strong>Ochishcheniye (Puhdistus) (4 KP):</strong> Valitse yksi rakennus tai
                                             juoksuhauta-asema 20 cm etäisyydellä. Kaikki vihollisen jalkaväkiyksiköt
                                             kohteessa kärsivät 2d8 vahinkoa ja tekevät Moraalitestin (DC 15) Haitalla
@@ -2043,16 +2083,30 @@
                                     <ul>
                                         <li><strong>Maskirovka (Naamiointi/Petos):</strong> Pelin alussa tämän yksikön
                                             voi sijoittaa minne tahansa pelilaudalla, vähintään 30 cm etäisyydelle
-                                            vihollisyksiköistä. Yksikkö on "Piiloutunut"-tilassa.</li>
-                                        <li><strong>Likvidatsiya (Likvidointi) (3 KP):</strong> Yksi kohdennettu
-                                            hyökkäys Johtohenkilö-tyypin yksikköä vastaan. Osuessaan hyökkäys tekee 2d12
-                                            vahinkoa, jota ei voi vähentää millään tavalla. Jos hyökkäys epäonnistuu,
-                                            Spetsnaz-yksikön sijainti paljastuu välittömästi.</li>
-                                        <li><strong>Sabotazh (Sabotaasi) (2 KP):</strong> Yksikkö voi käyttää koko
-                                            vuoronsa asettaakseen räjähteitä rakenteeseen tai ajoneuvoon, jonka vieressä
-                                            se on. Yksikön on pysyttävä "Piiloutunut"-tilassa koko vuoron. Seuraavan
-                                            vuoron alussa kohde kärsii 3d12 vahinkoa. Jos yksikkö paljastuu
-                                            asennusvuoron aikana, operaatio epäonnistuu.</li>
+                                            vihollisyksiköistä. Yksikkö aloittaa pelin "Piiloutunut"-tilassa.</li>
+                                        <li><strong>Iskuväijytys (3 KP):</strong> Voidaan käyttää "Piiloutunut"-tilasta.
+                                            Nimeä maalipiste 10 cm säteellä tästä yksiköstä. Kaikki vihollisyksiköt 5 cm
+                                            säteellä maalipisteestä joutuvat välittömästi
+                                            <strong>Lamautunut</strong>-tilaan ja kärsivät d6 TK-vahinkoa. Tämän kyvyn
+                                            käytön jälkeen Spetsnaz-yksikön sijainti paljastuu.
+                                        </li>
+                                        <li><strong>Häirintäoperaatiot (2 KP):</strong> Niin kauan
+                                            kuin tämä yksikkö on
+                                            "Piiloutunut"-tilassa, voit komentovaiheessa käyttää tämän kyvyn ja valita
+                                            yhden seuraavista vaikutuksista:
+                                            <ul>
+                                                <li>&rarr; <strong>Elektroninen häirintä:</strong> Yksi vihollisen
+                                                    Joukkueenjohtaja 20 cm säteellä menettää 1 KP:n seuraavalla
+                                                    vuorollaan.</li>
+                                                <li>&rarr; <strong>Pikasulute:</strong> Aseta 5 cm leveä
+                                                    miinasulute-merkki mille tahansa tielle tai kulku-uralle 10 cm
+                                                    säteellä tästä yksiköstä. Ensimmäinen yksikkö, joka liikkuu
+                                                    sulutteen läpi, pysähtyy välittömästi ja sen liike päättyy tähän
+                                                    vuoroon.</li>
+                                            </ul>
+                                            <span class="vaurioitunut-tila">(Vaurioitunut):</span> Yksikön ollessa
+                                            vaurioitunut se ei kykene suorittamaan häirintäoperaatioita.
+                                        </li>
                                     </ul>
                                 </li>
                                 <li><strong>Varustus:</strong>
@@ -2901,20 +2955,18 @@
                     </ul>
 
                     <h4>KP:n Käyttö ja Komentoyhteys</h4>
+                    <h4>KP:n Käyttö ja Komentoyhteys</h4>
                     <ul>
-                        <li><strong>Sidotut Poolit:</strong> Taisteluryhmän omasta KP-poolista voi käyttää pisteitä
-                            <strong>ainoastaan kyseiseen ryhmään kuuluville yksiköille</strong>. Et voi käyttää "Iskun"
-                            pisteitä "Murtajan" komentamiseen.
-                        </li>
-                        <li><strong>Ei Etäisyysrajoituksia:</strong> Punainen puoli <strong>ei käytä</strong>
-                            samanlaista etäisyyteen perustuvaa Komentoyhteys-sääntöä kuin Sininen puoli. GM voi käyttää
-                            Taisteluryhmän pisteitä mihin tahansa ryhmään kuuluvaan yksikköön riippumatta sen
-                            sijainnista kartalla. Rajoitus tulee erillisistä pooleista, ei etäisyydestä.</li>
-                        <li><strong>Komppanianpäällikön Pooli:</strong> Jos skenaarioon kuuluu Punaisen puolen
-                            Komppanianpäällikkö-yksikkö, se tuottaa oman, erillisen <strong>5 KP:n poolin</strong>.
-                            Näitä pisteitä voi käyttää komppaniatason taktiikoihin (kuten epäorgaanisen tulituen
-                            kutsumiseen) tai siirtää mille tahansa Taisteluryhmälle (1 KP siirto maksaa 1 KP päällikön
-                            poolista).</li>
+                        <li><strong>Perussääntö: Eristetyt poolit.</strong> GM hallinnoi kunkin Taisteluryhmän 3 KP:n
+                            poolia erikseen. Yhden ryhmän pisteitä <strong>ei voi siirtää</strong> toisen ryhmän
+                            käyttöön.</li>
+                        <li><strong>Ei Etäisyysrajoituksia:</strong> Punaisen puolen komentamisen haaste ei synny
+                            etäisyydestä, vaan eristetyistä pooleista. GM voi käyttää Taisteluryhmän pisteitä kaikkiin
+                            sen yksiköihin riippumatta niiden sijainnista.</li>
+                        <li><strong>Poikkeus: Punaisen Komppanianpäällikkö.</strong> Jos skenaarioon kuuluu KP-yksikkö,
+                            se luo oman 5 KP:n poolin. <strong>Tästä erillisestä poolista pisteitä voi siirtää</strong>
+                            mille tahansa Taisteluryhmälle (hinta 1 KP per siirretty piste) tai käyttää pataljoonatason
+                            tulitukeen.</li>
                     </ul>
 
                     <h3>Hyödynnä Doktriinia – Massa ja Tulivoima:</h3>
@@ -3058,7 +3110,7 @@
                                     <td>Joukkue</td>
                                     <td>1:10 000</td>
                                     <td>Valmis tai piirretty</td>
-                                    <td>Komentopisteet: TBD</td>
+                                    <td><strong>Patalj. Komentaja: 8 KP. Kompp. Päälliköt: 5 KP kukin.</strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -3072,17 +3124,20 @@
                     </p>
                     <ul>
                         <li>
-                            <strong>Komppaniapelissä</strong> (pienempi mittakaava) kukin
-                            pelaaja toimii itsenäisenä joukkueenjohtajana, joka komentaa
-                            useampaa ryhmää.
-                        </li>
-                        <li>
-                            <strong>Komppaniapelissä</strong> (suurempi mittakaava) yksi
+                            <strong>Komppaniapelissä</strong> yksi
                             pelaaja on Komppanianpäällikkö ja muut pelaajat ovat
                             Joukkueenjohtajia. Jokainen Joukkueenjohtaja komentaa usean ryhmän
                             muodostamaa joukkuetta. Pelissä ei siis käytetä erillisiä
                             'joukkue'-yksiköitä tai -kortteja, vaan Joukkueenjohtaja hallinnoi
                             useita ryhmäkortteja.
+                        </li>
+                        <li>
+                            <strong>Pataljoonapelissä</strong> pelaajien roolit nousevat pykälällä: yksi pelaaja on
+                            <strong>Pataljoonan komentaja (8KP)</strong> ja muut ovat hänen alaisiaan
+                            <strong>Komppanianpäälliköitä (5KP kukin)</strong>. Pataljoonan komentaja voi käyttää
+                            pisteitään strategisiin erikoiskykyihin ja siirtää niitä alaisilleen. Komppanianpäälliköt
+                            johtavat omia komppanioitaan (jotka koostuvat pelilaudalla esim. joukkue-tokeneista) omilla,
+                            pienemmillä KP-pooleillaan.
                         </li>
                     </ul>
                     <p>
@@ -3091,6 +3146,15 @@
                         <strong>Tulituki:</strong> Epäorgaaninen tuki voi olla käytössä
                         vain, jos skenaario niin määrittää.
                     </p>
+
+                    <figure class="text-center">
+                        <img src="images/tkdkesken.png" alt="Työ kesken -kuvake" class="mx-auto my-4 h-48">
+                        <figcaption>
+                            <strong>Huom:</strong> Vaikka pataljoonapelin perusrakenne on yllä hahmoteltu, sen
+                            yksityiskohtaiset säännöt, taktiikat ja joukkuekohtaiset yksikkökortit ovat vielä aktiivisen
+                            kehitystyön alla.
+                        </figcaption>
+                    </figure>
                 </section>
 
                 <h2>Sanasto</h2>
