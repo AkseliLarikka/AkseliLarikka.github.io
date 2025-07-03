@@ -291,6 +291,22 @@ Käynnistämme tehojakson siirtymällä kuntosalilla perusvoimasta maksimivoimaa
 | **Lauantai** | **Pitkä PK-juoksu** | 75 minuuttia rauhallisella vauhdilla. |
 | **Sunnuntai** | **Lepo** | |
 
+#### Testisimulaatiopäivä 1
+
+Suorita tämä treeni kuukauden kolmannen viikon Lauantain pitkän lenkin sijasta. Muista käyttää myös edellinen päivä lepoon.
+
+| Vaihe | Kesto | Suoritus / Ohje | Tulos |
+|:---|:---|:---|:---|
+| **Yleislämmittely** | 10 min | Kevyttä hölkkää ja dynaamisia venytyksiä aiemman ohjeen mukaan. | x |
+| **Lihaskuntotestit: Osa 1** | 1 min | Etunojapunnerrukset (maksimitoistot testin säännöillä). | ___ toistoa |
+| **Tauko & Siirtymä 1** | 3–5 min | Kävele, ravistele käsiä ja valmistaudu henkisesti seuraavaan suoritukseen. | x |
+| **Lihaskuntotestit: Osa 2** | 1 min | Istumaannousut (maksimitoistot testin säännöillä). | ___ toistoa |
+| **Tauko & Siirtymä 2** | 3–5 min | Kävele, tee muutama kevyt harjoitushyppy vauhdittomaan pituuteen. | x |
+| **Lihaskuntotestit: Osa 3** | n. 2 min | Vauhditon pituushyppy (3 virallista suoritusta täydellä palautuksella). | ___ metriä |
+| **Juoksun Valmistelu** | 5 min | Lyhennetty Cooper-lämmittely, joka sisältää 1-2 kevyttä kiihdytysjuoksua. | x |
+| **Testisuoritus** | 12 min | Cooperin testi (maksimaalinen juoksusuoritus). | ___ metriä |
+| **Jäähdyttely** | 10+ min | Rauhallinen kävely ja kevyet, pitkät venytykset. Erittäin tärkeä osa. | x |
+
 ---
 
 ### **Helmikuu 2026: Räjähtävä Voima & Intervallit**
@@ -312,6 +328,24 @@ Vaihdamme juoksuärsykkeen intervalleihin ja lisäämme voimaharjoitteluun räj�
 | **Perjantai** | **Kevyt PK-juoksu + Keskivartalo** | 45 min palauttava juoksu. Lopuksi: 3 kierrosta (Etunojapunnerrus x max, Jalan nostot roikkuen x max, Sivulankku x 45s/puoli). |
 | **Lauantai** | **Pitkä PK-juoksu** | 90 minuuttia rauhallisella vauhdilla. |
 | **Sunnuntai** | **Lepo** | |
+
+#### Testisimulaatiopäivä 2
+
+Suorita tämä treeni kuukauden kolmannen viikon Lauantain pitkän lenkin sijasta
+
+Suorita tämä treeni kuukauden kolmannen viikon Lauantain pitkän lenkin sijasta. Muista käyttää myös edellinen päivä lepoon.
+
+| Vaihe | Kesto | Suoritus / Ohje | Tulos |
+|:---|:---|:---|:---|
+| **Yleislämmittely** | 10 min | Kevyttä hölkkää ja dynaamisia venytyksiä aiemman ohjeen mukaan. | x |
+| **Lihaskuntotestit: Osa 1** | 1 min | Etunojapunnerrukset (maksimitoistot testin säännöillä). | ___ toistoa |
+| **Tauko & Siirtymä 1** | 3–5 min | Kävele, ravistele käsiä ja valmistaudu henkisesti seuraavaan suoritukseen. | x |
+| **Lihaskuntotestit: Osa 2** | 1 min | Istumaannousut (maksimitoistot testin säännöillä). | ___ toistoa |
+| **Tauko & Siirtymä 2** | 3–5 min | Kävele, tee muutama kevyt harjoitushyppy vauhdittomaan pituuteen. | x |
+| **Lihaskuntotestit: Osa 3** | n. 2 min | Vauhditon pituushyppy (3 virallista suoritusta täydellä palautuksella). | ___ metriä |
+| **Juoksun Valmistelu** | 5 min | Lyhennetty Cooper-lämmittely, joka sisältää 1-2 kevyttä kiihdytysjuoksua. | x |
+| **Testisuoritus** | 12 min | Cooperin testi (maksimaalinen juoksusuoritus). | ___ metriä |
+| **Jäähdyttely** | 10+ min | Rauhallinen kävely ja kevyet, pitkät venytykset. Erittäin tärkeä osa. | x |
 
 ---
 
@@ -338,6 +372,22 @@ Keskitymme voimatasojen huippuun ja alamme tuoda harjoitteluun yhä enemmän tes
 | **Lauantai** | **Pitkä PK-juoksu** | 60 minuuttia rauhallisella vauhdilla. |
 | **Sunnuntai** | **Lepo** | |
 
+#### Testisimulaatiopäivä 3
+
+Suorita tämä treeni kuukauden kolmannen viikon Lauantain pitkän lenkin sijasta. Muista käyttää myös edellinen päivä lepoon.
+
+| Vaihe | Kesto | Suoritus / Ohje | Tulos |
+|:---|:---|:---|:---|
+| **Yleislämmittely** | 10 min | Kevyttä hölkkää ja dynaamisia venytyksiä aiemman ohjeen mukaan. | x |
+| **Lihaskuntotestit: Osa 1** | 1 min | Etunojapunnerrukset (maksimitoistot testin säännöillä). | ___ toistoa |
+| **Tauko & Siirtymä 1** | 3–5 min | Kävele, ravistele käsiä ja valmistaudu henkisesti seuraavaan suoritukseen. | x |
+| **Lihaskuntotestit: Osa 2** | 1 min | Istumaannousut (maksimitoistot testin säännöillä). | ___ toistoa |
+| **Tauko & Siirtymä 2** | 3–5 min | Kävele, tee muutama kevyt harjoitushyppy vauhdittomaan pituuteen. | x |
+| **Lihaskuntotestit: Osa 3** | n. 2 min | Vauhditon pituushyppy (3 virallista suoritusta täydellä palautuksella). | ___ metriä |
+| **Juoksun Valmistelu** | 5 min | Lyhennetty Cooper-lämmittely, joka sisältää 1-2 kevyttä kiihdytysjuoksua. | x |
+| **Testisuoritus** | 12 min | Cooperin testi (maksimaalinen juoksusuoritus). | ___ metriä |
+| **Jäähdyttely** | 10+ min | Rauhallinen kävely ja kevyet, pitkät venytykset. Erittäin tärkeä osa. | x |
+
 ---
 
 ### **Huhtikuu 2026: Tehon Ylläpito & Testivalmistelu**
@@ -354,14 +404,28 @@ Viimeinen kova kuukausi ennen viimeistelyä. Ylläpidämme voimatasoja ja hiomme
 | **Torstai** | **Voima: Kompleksiharjoitus (Ylävartalo)** | |
 | | Penkkipunnerrus (3 toistoa) + heti perään Räjähtävät punnerrukset (8 toistoa). Tee 4 sarjaa. | |
 | | Leuanveto (3 toistoa) + heti perään Kuntopallon heitot (8 toistoa). Tee 4 sarjaa. | |
-| **Perjantai** | **Testisimulaatio** | Suorita seuraavat liikkeet testijärjestyksessä lyhyillä tauoilla: |
-| | | 1 min Etunojapunnerrus (max toistot) |
-| | | 2 min tauko |
-| | | 1 min Istumaannousu (max toistot) |
-| | | 2 min tauko |
-| | | Vauhditon pituushyppy (3 yritystä, paras tulos) |
-| **Lauantai** | **Kevyt PK-juoksu** | 45 minuuttia erittäin kevyesti. |
+| **Perjantai** | **Lajitekniikka & Räjähtävyys** | Keskity laadukkaaseen tekniikkaan ja räjähtävään voimantuottoon ilman maksimiväsymystä. |
+| | | Etunojapunnerrukset: 3x10 (fokus nopeassa ja terävässä suorituksessa) |
+| | | Istumaannousut: 3x15 (lisäpainolla, jos mahdollista, keskity vatsalihasten aktivointiin) |
+| | | Vauhditon pituushyppy: 6-8 teknistä hyppyä täydellä palautuksella. |
+| **Lauantai** | **Juoksu: Vauhtikestävyys (VK)** | 10min lämmittely + 20min reipasta, mutta hallittua vauhtikestävyysjuoksua + 10min jäähdyttely. |
 | **Sunnuntai** | **Lepo** | |
+
+#### Testisimulaatiopäivä 4
+
+Suorita tämä treeni kuukauden kolmannen viikon Lauantain pitkän lenkin sijasta. Muista käyttää myös edellinen päivä lepoon.
+
+| Vaihe | Kesto | Suoritus / Ohje | Tulos |
+|:---|:---|:---|:---|
+| **Yleislämmittely** | 10 min | Kevyttä hölkkää ja dynaamisia venytyksiä aiemman ohjeen mukaan. | x |
+| **Lihaskuntotestit: Osa 1** | 1 min | Etunojapunnerrukset (maksimitoistot testin säännöillä). | ___ toistoa |
+| **Tauko & Siirtymä 1** | 3–5 min | Kävele, ravistele käsiä ja valmistaudu henkisesti seuraavaan suoritukseen. | x |
+| **Lihaskuntotestit: Osa 2** | 1 min | Istumaannousut (maksimitoistot testin säännöillä). | ___ toistoa |
+| **Tauko & Siirtymä 2** | 3–5 min | Kävele, tee muutama kevyt harjoitushyppy vauhdittomaan pituuteen. | x |
+| **Lihaskuntotestit: Osa 3** | n. 2 min | Vauhditon pituushyppy (3 virallista suoritusta täydellä palautuksella). | ___ metriä |
+| **Juoksun Valmistelu** | 5 min | Lyhennetty Cooper-lämmittely, joka sisältää 1-2 kevyttä kiihdytysjuoksua. | x |
+| **Testisuoritus** | 12 min | Cooperin testi (maksimaalinen juoksusuoritus). | ___ metriä |
+| **Jäähdyttely** | 10+ min | Rauhallinen kävely ja kevyet, pitkät venytykset. Erittäin tärkeä osa. | x |
 
 Tämän jakson jälkeen siirrytään viimeistelyvaiheeseen, jossa tavoitteena on palautua ja ajoittaa huippukunto testipäivään.
 
