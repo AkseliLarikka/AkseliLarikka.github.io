@@ -36,21 +36,26 @@
         .strikethrough {
             text-decoration: line-through;
         }
+
+        .tag-button.active {
+            background-color: #be123c;
+            /* rose-700 */
+            color: #fff;
+        }
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Pääkontti -->
     <div id="app" class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-5xl">
 
-        <!-- Otsikko ja navigaatio -->
         <header class="mb-8 text-center">
             <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-2">Akselin reseptikirja</h1>
             <p class="text-gray-500">Kokoelma ruoanlaitto- ja leivontareseptejä.</p>
             <nav class="mt-6">
-                <button onclick="showPage('home')"
-                    class="text-lg text-rose-600 hover:text-rose-800 font-medium px-4 py-2">Kaikki reseptit</button>
+                <button onclick="filterRecipes('all')"
+                    class="text-lg text-rose-600 hover:text-rose-800 font-medium px-4 py-2"
+                    id="all-recipes-button">Kaikki reseptit</button>
                 <button onclick="showPage('new-recipe')"
                     class="text-lg text-rose-600 hover:text-rose-800 font-medium px-4 py-2" style="display: none;">Lisää
                     uusi resepti</button>
@@ -58,19 +63,16 @@
         </header>
 
         <main>
-            <!-- Kotisivu: Reseptilistaus -->
             <div id="home-page">
+                <div id="tag-filter-container" class="flex flex-wrap justify-center gap-2 mb-8">
+                </div>
                 <div id="recipe-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    <!-- Reseptikortit lisätään tänne JavaScriptillä -->
                 </div>
             </div>
 
-            <!-- Yksittäisen reseptin sivu -->
             <div id="recipe-page" class="hidden bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
-                <!-- Reseptin sisältö lisätään tänne JavaScriptillä -->
             </div>
 
-            <!-- Uuden reseptin pohja -->
             <div id="new-recipe-page" class="hidden bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
                 <button onclick="showPage('home')"
                     class="mb-6 inline-flex items-center text-rose-600 hover:text-rose-800 font-medium">
@@ -84,9 +86,9 @@
                 </button>
                 <h2 class="text-4xl font-bold text-gray-800 mb-4 font-display">[Reseptin nimi]</h2>
                 <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="bg-rose-100 text-rose-800 text-sm font-medium px-3 py-1 rounded-full">#ruoka</span>
+                    <span class="bg-rose-100 text-rose-800 text-sm font-medium px-3 py-1 rounded-full">ruoka</span>
                     <span
-                        class="bg-amber-100 text-amber-800 text-sm font-medium px-3 py-1 rounded-full">#leivonta</span>
+                        class="bg-amber-100 text-amber-800 text-sm font-medium px-3 py-1 rounded-full">leivonta</span>
                 </div>
                 <img src="https://placehold.co/800x400/e2e8f0/94a3b8?text=Lis%C3%A4%C3%A4+kuva" alt="[Kuva reseptistä]"
                     class="w-full h-64 object-cover rounded-xl mb-6">
@@ -121,7 +123,7 @@
             {
                 id: 'nyhtopossu',
                 title: 'Nyhtöpossu',
-                tags: ['#ruoka'],
+                tags: ['Suolainen ruoka'],
                 ingredients: [
                     { heading: null, items: ['n. 1 kg:n painoinen pala porsaan niskaa', 'suolaa'] },
                     { heading: 'Mausteliemi:', items: ['3 rkl tomaattipyreetä', '½ l kolajuomaa (ei light)', '1 dl lihalientä', '2 rkl chilitahnaa', '1 tl kanelia', '1 rkl korianterinsiemeniä', '2 tl suolaa', '4 sipulia', '8 valkosipulinkynttä'] }
@@ -143,7 +145,7 @@
             {
                 id: 'mac-and-cheese',
                 title: 'Mac & Cheese pekonilla',
-                tags: ['#ruoka'],
+                tags: ['Suolainen ruoka'],
                 ingredients: [
                     { heading: '3-4 annosta', items: ['300g pastaa/makaronia', '150-200g pekonia', '200-300g (Koskenlaskija) cheddar-sulatejuustoa'] }
                 ],
@@ -161,7 +163,7 @@
             {
                 id: 'lihapullat',
                 title: 'Kaunottaren ja kulkurin lihapullat',
-                tags: ['#ruoka'],
+                tags: ['Suolainen ruoka'],
                 ingredients: [
                     { heading: 'Lihapullat:', items: ['700g jauhelihaa', '1/2 sipuli hienonnettuna', '2 kananmunaa', '1/3 dl vettä', '1/2 dl korppujauhoja', '1/2 tl jauhettua maustepippuria', '1/3 tl valkopippuria', '1/2 tl juustokuminaa', '1/2 tl savupaprikajauhetta', '1 tl suolaa'] },
                     { heading: 'Kastike:', items: ['1 rkl oliiviöljyä', '1/2 sipuli hienonnettuna', '2-3 valkosipulin kynttä hienonnettuna', '1 tölkki tomaattimurskaa', '2 kanaliemikuutiota', '1 prk ruokakermaa', '1/3 tl juustokuminaa', '1/3 tl savupaprikaa', '1 tl Pizza-yrttisekoitusta (kuiva)', '1/3 tl mustapippurirouhetta', 'Suolaa (tarvittaessa)', 'Hyppysellinen sokeria (noin 1/3tl)', '8 tippaa omenaviinietikkaa'] }
@@ -179,7 +181,7 @@
             {
                 id: 'snickers-kakku',
                 title: 'Snickers-juustokakku',
-                tags: ['#leivonta', '#kakku'],
+                tags: ['leivonta', 'kakku'],
                 ingredients: [
                     { heading: 'Pohja (24cm vuoka)', items: ['300g Bastogne-keksiä', '100g voita'] },
                     { heading: 'Täyte', items: ['500g maustamatonta tuorejuustoa', '150g juoksevaa maapähkinävoita', '150g tomusokeria', '3dl kuohukermaa'] },
@@ -200,7 +202,7 @@
             {
                 id: 'kinder-kakku',
                 title: 'Kinderkakku',
-                tags: ['#leivonta', '#kakku'],
+                tags: ['leivonta', 'kakku'],
                 ingredients: [
                     { heading: 'Pohja (20-22cm vuoka)', items: ['200g Oreo-keksejä', '70g voita'] },
                     { heading: 'Täyte', items: ['2dl vispikermaa', '400g maustamatonta tuorejuustoa', '0.5dl tomusokeria', '200g Kinder Maxi -suklaata'] },
@@ -218,7 +220,7 @@
             {
                 id: 'kalakukko',
                 title: 'Kalakukko',
-                tags: ['#ruoka', '#perinneruoka'],
+                tags: ['Suolainen ruoka', 'perinneruoka', 'leivonta'],
                 ingredients: [
                     { heading: 'Kuori', items: ['5 dl vettä', '1 dl vehnäjauhoja', 'vajaa kilo (950g) ruisjauhoja', '1 dl voisulaa', '1-2 rkl suolaa'] },
                     { heading: 'Täyte', items: ['1 kg muikkuja (tai muuta pientä kalaa)', '400 g rasvaista siankylkeä (tai pekonia)', 'suolaa (jos et käytä pekonia)'] }
@@ -245,6 +247,10 @@
         const newRecipePage = document.getElementById('new-recipe-page');
         const recipeGrid = document.getElementById('recipe-grid');
         const recipeDetailContainer = document.getElementById('recipe-page');
+        const tagFilterContainer = document.getElementById('tag-filter-container'); // Uusi
+        const allRecipesButton = document.getElementById('all-recipes-button'); // Uusi
+
+        let activeTag = 'all'; // Pitää kirjaa aktiivisesta tagista, aluksi 'all'
 
         // Funktio, joka näyttää halutun sivun ja piilottaa muut
         function showPage(pageId) {
@@ -336,10 +342,58 @@
             showPage('recipe');
         }
 
+        // UUSI: Funktio, joka suodattaa reseptit tagin perusteella
+        function filterRecipes(tag) {
+            activeTag = tag;
+            const filteredRecipes = tag === 'all' ? recipes : recipes.filter(recipe => recipe.tags.includes(tag));
+            recipeGrid.innerHTML = filteredRecipes.map(createRecipeCard).join('');
+            showPage('home');
+            updateTagButtonStyles(); // Päivitä tag-painikkeiden tyylit
+        }
+
+        // UUSI: Funktio, joka luo ja näyttää uniikit tagipainikkeet
+        function renderTagFilters() {
+            const allTags = new Set();
+            recipes.forEach(recipe => {
+                recipe.tags.forEach(tag => allTags.add(tag));
+            });
+
+            tagFilterContainer.innerHTML = Array.from(allTags).map(tag => `
+                <button onclick="filterRecipes('${tag}')"
+                    class="tag-button bg-gray-200 text-gray-700 hover:bg-rose-500 hover:text-white text-sm font-medium px-3 py-1 rounded-full transition-colors duration-200">
+                    ${tag}
+                </button>
+            `).join('');
+
+            updateTagButtonStyles(); // Päivitä tag-painikkeiden tyylit heti luomisen jälkeen
+        }
+
+        // UUSI: Funktio, joka päivittää tag-painikkeiden aktiivisen tilan
+        function updateTagButtonStyles() {
+            document.querySelectorAll('.tag-button').forEach(button => {
+                if (button.textContent.trim() === activeTag) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+
+            // Päivitä "Kaikki reseptit" -napin tila
+            if (activeTag === 'all') {
+                allRecipesButton.classList.add('active');
+                allRecipesButton.classList.remove('text-rose-600', 'hover:text-rose-800'); // Poista vanhat värit
+                allRecipesButton.classList.add('bg-rose-700', 'text-white'); // Lisää aktiiviset värit
+            } else {
+                allRecipesButton.classList.remove('active', 'bg-rose-700', 'text-white'); // Poista aktiiviset värit
+                allRecipesButton.classList.add('text-rose-600', 'hover:text-rose-800'); // Lisää takaisin vanhat värit
+            }
+        }
+
+
         // Alustetaan sivu: luodaan reseptikortit ja näytetään kotisivu
         function initialize() {
-            recipeGrid.innerHTML = recipes.map(createRecipeCard).join('');
-            showPage('home');
+            renderTagFilters(); // Luodaan tag-suodattimet
+            filterRecipes('all'); // Näytä aluksi kaikki reseptit
         }
 
         // Käynnistetään sovellus kun sivu on latautunut
