@@ -3,8 +3,13 @@
 Welcome to my personal portfolio website! This site showcases my projects, skills, and professional background. It is hosted on GitHub Pages and serves as a digital resume and portfolio.
 
 ## 🚀 Live Demo
-You can view the live version of my portfolio here: <a href="https://akselilarikka.github.io/" target="_blank">https://akselilarikka.github.io/</a>  
-I also have a "hidden" collection of <a href="https://akselilarikka.github.io/rus.html" target="_blank">russian linguistic rules cheatsheets</a>
+You can view the live version of my portfolio here: <a href="https://akselilarikka.github.io/" target="_blank">https://akselilarikka.github.io/</a>
+
+### Stuff other than my portfolio:
+
+* a collection of [russian linguistic rules cheatsheet](https://akselilarikka.github.io/rus.html)
+* a collection of [my favorite recipes](https://akselilarikka.github.io/reseptit.html)
+* a strategic ttrpg wargame ruleset [Taistelukenttä d20](https://akselilarikka.github.io/taistelukentta/)
 
 ## 📌 Features
 - **About Me**: A brief introduction about myself.

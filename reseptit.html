@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseptikirja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .recipe-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        .strikethrough {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Pääkontti -->
+    <div id="app" class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-5xl">
+
+        <!-- Otsikko ja navigaatio -->
+        <header class="mb-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-2">Akselin reseptikirja</h1>
+            <p class="text-gray-500">Kokoelma ruoanlaitto- ja leivontareseptejä.</p>
+            <nav class="mt-6">
+                <button onclick="showPage('home')"
+                    class="text-lg text-rose-600 hover:text-rose-800 font-medium px-4 py-2">Kaikki reseptit</button>
+                <button onclick="showPage('new-recipe')"
+                    class="text-lg text-rose-600 hover:text-rose-800 font-medium px-4 py-2" style="display: none;">Lisää
+                    uusi resepti</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Kotisivu: Reseptilistaus -->
+            <div id="home-page">
+                <div id="recipe-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Reseptikortit lisätään tänne JavaScriptillä -->
+                </div>
+            </div>
+
+            <!-- Yksittäisen reseptin sivu -->
+            <div id="recipe-page" class="hidden bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+                <!-- Reseptin sisältö lisätään tänne JavaScriptillä -->
+            </div>
+
+            <!-- Uuden reseptin pohja -->
+            <div id="new-recipe-page" class="hidden bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+                <button onclick="showPage('home')"
+                    class="mb-6 inline-flex items-center text-rose-600 hover:text-rose-800 font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    Takaisin
+                </button>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 font-display">[Reseptin nimi]</h2>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-rose-100 text-rose-800 text-sm font-medium px-3 py-1 rounded-full">#ruoka</span>
+                    <span
+                        class="bg-amber-100 text-amber-800 text-sm font-medium px-3 py-1 rounded-full">#leivonta</span>
+                </div>
+                <img src="https://placehold.co/800x400/e2e8f0/94a3b8?text=Lis%C3%A4%C3%A4+kuva" alt="[Kuva reseptistä]"
+                    class="w-full h-64 object-cover rounded-xl mb-6">
+
+                <div class="prose max-w-none">
+                    <h3 class="font-display text-2xl">Ainekset</h3>
+                    <h4>[Ainesosien osio, esim. Pohja]</h4>
+                    <ul>
+                        <li>[Ainesosa 1]</li>
+                        <li>[Ainesosa 2]</li>
+                    </ul>
+
+                    <h3 class="font-display text-2xl">Valmistusohjeet</h3>
+                    <ol>
+                        <li>[Vaihe 1]</li>
+                        <li>[Vaihe 2]</li>
+                    </ol>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 text-gray-400 text-sm">
+            <p>Akseli Larikka &copy; 2025.<br>Reseptit eivät alun perin ole minun, mutta osaa olen muokannut.</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- TIETOKANTA ---
+        // Kaikki reseptit tallennetaan tähän JavaScript-objektien listaan.
+        const recipes = [
+            {
+                id: 'nyhtopossu',
+                title: 'Nyhtöpossu',
+                tags: ['#ruoka'],
+                ingredients: [
+                    { heading: null, items: ['n. 1 kg:n painoinen pala porsaan niskaa', 'suolaa'] },
+                    { heading: 'Mausteliemi:', items: ['3 rkl tomaattipyreetä', '½ l kolajuomaa (ei light)', '1 dl lihalientä', '2 rkl chilitahnaa', '1 tl kanelia', '1 rkl korianterinsiemeniä', '2 tl suolaa', '4 sipulia', '8 valkosipulinkynttä'] }
+                ],
+                instructions: [
+                    'Ota possu huoneenlämpöön.',
+                    'Hiero sen pintaan suolaa ja anna lämmetä työpöydällä pari tuntia ennen uuniin laittamista.',
+                    'Sekoita mausteliemen aineet ja kaada ne pataan. Lisää pataan myös ronskisti leikatut sipulit ja valkosipulit. Upota possu liemeen.',
+                    'Kuumenna uuni 200 asteeseen.',
+                    'Kuumenna pata levyllä kiehuvaksi. Nosta kuuma pata uuniin.',
+                    'Pidä pataa 200-asteessa noin puoli tuntia ja laske lämpötila 120 asteeseen.',
+                    'Pidä pataa uunissa noin neljä tuntia tai kunnes liha on ylikypsää.',
+                    'Valele lihan pintaa välillä liemellä, jos se ei uppoa nesteeseen. (Vinkki: ei vaadi vahtimista, jos kansi on päällä ja liha on suurimmaksi osaksi nesteen alla).',
+                    'Colaliemi kiehuu kasaan ja karamellisoituu uunissa.',
+                    'Revi ylikypsä liha säikeiksi ja sekoita kastikkeeseen.',
+                    'Tarjoile valmis liha salaatin kanssa tai hampurilaisten tai hodarien välissä.'
+                ]
+            },
+            {
+                id: 'mac-and-cheese',
+                title: 'Mac & Cheese pekonilla',
+                tags: ['#ruoka'],
+                ingredients: [
+                    { heading: '3-4 annosta', items: ['300g pastaa/makaronia', '150-200g pekonia', '200-300g (Koskenlaskija) cheddar-sulatejuustoa'] }
+                ],
+                instructions: [
+                    'Keitä pasta suolalla maustetussa vedessä pakkauksen ohjeen mukaan.',
+                    'Paista pekonit kuivalla pannulla rapeiksi.',
+                    'Nosta pekonit talouspaperin päälle, jotta ylimääräinen rasva imeytyy paperiin.',
+                    'Valuta pasta ja laita takaisin kattilaan.',
+                    'Kaada joukkoon sulatejuusto.',
+                    'Sekoita, tarvittaessa kuumenna miedolla lämmöllä kunnes juusto on sulanut.',
+                    'Murenna pekonit pastan joukkoon.',
+                    'Tarjoile heti.'
+                ]
+            },
+            {
+                id: 'lihapullat',
+                title: 'Kaunottaren ja kulkurin lihapullat',
+                tags: ['#ruoka'],
+                ingredients: [
+                    { heading: 'Lihapullat:', items: ['700g jauhelihaa', '1/2 sipuli hienonnettuna', '2 kananmunaa', '1/3 dl vettä', '1/2 dl korppujauhoja', '1/2 tl jauhettua maustepippuria', '1/3 tl valkopippuria', '1/2 tl juustokuminaa', '1/2 tl savupaprikajauhetta', '1 tl suolaa'] },
+                    { heading: 'Kastike:', items: ['1 rkl oliiviöljyä', '1/2 sipuli hienonnettuna', '2-3 valkosipulin kynttä hienonnettuna', '1 tölkki tomaattimurskaa', '2 kanaliemikuutiota', '1 prk ruokakermaa', '1/3 tl juustokuminaa', '1/3 tl savupaprikaa', '1 tl Pizza-yrttisekoitusta (kuiva)', '1/3 tl mustapippurirouhetta', 'Suolaa (tarvittaessa)', 'Hyppysellinen sokeria (noin 1/3tl)', '8 tippaa omenaviinietikkaa'] }
+                ],
+                instructions: [
+                    'Tarjoile spagetin kanssa. Keitä spagetti pakkauksen ohjeen mukaan.',
+                    'Lihapullat: Sekoita kaikki ainekset keskenään ja pyörittele massasta lihapullia. Paista uunin keski-/yläosassa 225 asteessa noin 20 minuuttia.',
+                    'Kastike: Hienonna sipulit ja kuullota ne oliiviöljyssä kattilassa.',
+                    'Lisää tomaattimurska, mausteet, kanaliemikuutiot ja ruokakerma.',
+                    'Keitä hellästi poreillen 5 minuuttia.',
+                    'Lisää sokeri ja omenaviinietikka. Sokeri ja etikka tasapainottavat ja yhdistävät maut.',
+                    'Yhdistä valmiit lihapullat ja kastike. Tarjoile spagetin kera.'
+                ]
+            },
+            {
+                id: 'snickers-kakku',
+                title: 'Snickers-juustokakku',
+                tags: ['#leivonta', '#kakku'],
+                ingredients: [
+                    { heading: 'Pohja (24cm vuoka)', items: ['300g Bastogne-keksiä', '100g voita'] },
+                    { heading: 'Täyte', items: ['500g maustamatonta tuorejuustoa', '150g juoksevaa maapähkinävoita', '150g tomusokeria', '3dl kuohukermaa'] },
+                    { heading: 'Kuorrute', items: ['4 kpl Snickers-patukkaa', '1 dl kuohukermaa'] },
+                    { heading: 'Koristelu', items: ['1 kpl Snickers-patukka'] }
+                ],
+                instructions: [
+                    'Sulata voi ja murskaa Bastogne-keksit. Sekoita yhteen tasaiseksi. Painele seos 24cm irtopohjavuoan pohjalle.',
+                    'Laita tuorejuustot kulhoon, sekaan maapähkinävoi ja tomusokeri. Vatkaa tasaiseksi.',
+                    'Lisää kuohukerma ja vatkaa tasaiseksi, mutta älä vaahdota kermaa erikseen.',
+                    'Kaada täyte vuokaan pohjan päälle ja tasoita pinta.',
+                    'Kuorrutetta varten laita kulhoon 1 dl kermaa ja 4 paloiteltua Snickers-patukkaa. Sulata vesihauteessa tai varovasti mikrossa.',
+                    'Kaada sula kuorrute täytteen päälle.',
+                    'Anna hyytyä jääkaapissa vähintään yön yli, mieluiten vuorokausi. (Voit kokeilla nopeuttaa prosessia pakkasessa).',
+                    'Ennen tarjoilua, raasta tai paloittele viimeinen Snickers-patukka kakun päälle koristeeksi.'
+                ]
+            },
+            {
+                id: 'kinder-kakku',
+                title: 'Kinderkakku',
+                tags: ['#leivonta', '#kakku'],
+                ingredients: [
+                    { heading: 'Pohja (20-22cm vuoka)', items: ['200g Oreo-keksejä', '70g voita'] },
+                    { heading: 'Täyte', items: ['2dl vispikermaa', '400g maustamatonta tuorejuustoa', '0.5dl tomusokeria', '200g Kinder Maxi -suklaata'] },
+                    { heading: 'Kuorrute ja koristelu', items: ['100g maitosuklaata', '0.5dl kuohukermaa', 'Valkosuklaata raitoihin', 'Kermapursotuksia ja Kinder Maxi -suklaata'] }
+                ],
+                instructions: [
+                    'Pohja: Murskaa keksit hienoksi ja sekoita sulatetun voin kanssa. Painele tiiviisti leivinpaperilla vuoratun irtopohjavuoan (20-22cm) pohjalle ja laita jääkaappiin odottamaan.',
+                    'Täyte: Sulata Kinder-suklaa ja jätä sivuun jäähtymään hetkeksi. Vatkaa vispikerma lähes valmiiksi vaahdoksi. Lisää joukkoon tuorejuusto ja tomusokeri ja vatkaa sekaisin. Lisää joukkoon sulatettu, hieman jäähtynyt suklaa ja vatkaa nopeasti tasaiseksi.',
+                    'Kaada juustokakkutäyte pohjan päälle, levitä tasaiseksi ja laita jääkaappiin hyytymään yön yli.',
+                    'Kuorrute: Rouhi maitosuklaa pieneksi ja laita kulhoon. Kuumenna kuohukerma kattilassa kiehumispisteeseen, kaada se kulhoon suklaarouheen päälle ja anna olla hetki. Sekoita tasaiseksi ganacheksi.',
+                    'Levitä kuorrute hyytyneen juustokakun päälle. Sulata vähän valkosuklaata ja tee sillä raitoja kuorrutteen päälle. Voit kuvioida raitoja tikulla.',
+                    'Viimeistele kakku kermapursotuksilla ja Kinder-suklaapaloilla.'
+                ]
+            },
+            {
+                id: 'kalakukko',
+                title: 'Kalakukko',
+                tags: ['#ruoka', '#perinneruoka'],
+                ingredients: [
+                    { heading: 'Kuori', items: ['5 dl vettä', '1 dl vehnäjauhoja', 'vajaa kilo (950g) ruisjauhoja', '1 dl voisulaa', '1-2 rkl suolaa'] },
+                    { heading: 'Täyte', items: ['1 kg muikkuja (tai muuta pientä kalaa)', '400 g rasvaista siankylkeä (tai pekonia)', 'suolaa (jos et käytä pekonia)'] }
+                ],
+                instructions: [
+                    'Poista muikuista pää ja sisälmykset, kuivaa kalat hyvin talouspaperilla.',
+                    'Taikina: Sekoita kylmään veteen suola, vehnäjauhot, voisula sekä suurin osa ruisjauhoista. Vaivaa käsin loput ruisjauhot joukkoon. Taikinasta tulee melko kiinteä.',
+                    'Jätä pieni pala taikinaa sivuun mahdollista paikkausta varten.',
+                    'Kauli taikina pyöreäksi, reilu sentin paksuiseksi levyksi, joka ohenee reunoja kohti. Tee siitä mieluummin liian iso kuin liian pieni.',
+                    'Ripottele levyn keskelle vähän ruisjauhoja. Lado päälle kerroksittain muikkuja ja siivutettua siankylkeä. Aloita ja lopeta siankyljellä. Ripottele suolaa kalakerrosten väliin (jos käytät suolatonta siankylkeä).',
+                    'Taita taikinan reunat huolellisesti täytteen päälle ja muotoile kukoksi märillä käsillä ja veistä apuna käyttäen. Tiivistä saumat hyvin.',
+                    'Käytä valkoista leivinpaperia, sillä ruskea voi palaa pitkän paiston aikana.',
+                    'Paista kukkoa ensin 250 asteessa noin 45 minuuttia. Voitele sitten kukko voisulalla, laske uunin lämpötila 125 asteeseen ja jatka paistamista noin 5 tuntia. Jos pinta tummuu liikaa, voit peittää sen foliolla.',
+                    'Kun otat kukon uunista, kääri se tiiviisti leivinpaperiin ja paksuihin pyyhkeisiin (tai vaikka villapaitaan). Anna vetäytyä ja hautua vähintään 3 tuntia ennen tarjoilua.',
+                    'Vinkki: "Laita kukko uuniin jalat ristissä niin ei vuoda" :D'
+                ]
+            }
+        ];
+
+        // --- SIVUN TOIMINNALLISUUS ---
+
+        const homePage = document.getElementById('home-page');
+        const recipePage = document.getElementById('recipe-page');
+        const newRecipePage = document.getElementById('new-recipe-page');
+        const recipeGrid = document.getElementById('recipe-grid');
+        const recipeDetailContainer = document.getElementById('recipe-page');
+
+        // Funktio, joka näyttää halutun sivun ja piilottaa muut
+        function showPage(pageId) {
+            window.scrollTo(0, 0); // Vieritä sivun ylälaitaan
+            homePage.classList.add('hidden');
+            recipePage.classList.add('hidden');
+            newRecipePage.classList.add('hidden');
+
+            if (pageId === 'home') {
+                homePage.classList.remove('hidden');
+            } else if (pageId === 'recipe') {
+                recipePage.classList.remove('hidden');
+            } else if (pageId === 'new-recipe') {
+                newRecipePage.classList.remove('hidden');
+            }
+        }
+
+        // Funktio, joka luo reseptikortin kotisivulle
+        function createRecipeCard(recipe) {
+            const tagsHtml = recipe.tags.map(tag =>
+                `<span class="bg-rose-100 text-rose-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">${tag}</span>`
+            ).join('');
+
+            return `
+                <div class="recipe-card bg-white rounded-2xl overflow-hidden shadow-md cursor-pointer" onclick="showRecipeDetail('${recipe.id}')">
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold font-display text-gray-800">${recipe.title}</h3>
+                        <div class="mt-2">
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Funktio, joka näyttää yksittäisen reseptin tiedot
+        function showRecipeDetail(recipeId) {
+            const recipe = recipes.find(r => r.id === recipeId);
+            if (!recipe) return;
+
+            const ingredientsHtml = recipe.ingredients.map(group => `
+                ${group.heading ? `<h4 class="font-semibold text-lg mt-4 mb-2">${group.heading}</h4>` : ''}
+                <ul class="list-disc list-inside space-y-1">
+                    ${group.items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            `).join('');
+
+            const instructionsHtml = `
+                <style>
+                    .strikethrough {
+                        text-decoration: line-through;
+                    }
+                </style>
+                <div class="space-y-2">
+                    ${recipe.instructions.map((step, index) => `
+                        <div class="flex items-center">
+                            <input type="checkbox" id="step-${index}" class="form-checkbox h-4 w-4 text-blue-600"
+                                onclick="this.nextElementSibling.classList.toggle('strikethrough')">
+                            <label for="step-${index}" class="ml-2 text-gray-700">${step}</label>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            const tagsHtml = recipe.tags.map(tag =>
+                `<span class="bg-rose-100 text-rose-800 text-sm font-medium px-3 py-1 rounded-full">${tag}</span>`
+            ).join('');
+
+            recipeDetailContainer.innerHTML = `
+                <button onclick="showPage('home')" class="mb-6 inline-flex items-center text-rose-600 hover:text-rose-800 font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Takaisin
+                </button>
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 font-display">${recipe.title}</h2>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    ${tagsHtml}
+                </div>
+                
+                <div class="prose max-w-none lg:prose-lg prose-h3:font-display prose-h3:text-2xl prose-h3:mb-3 prose-h4:font-display prose-h4:text-xl">
+                    <h3>Ainekset</h3>
+                    ${ingredientsHtml}
+                    
+                    <h3 class="mt-8">Valmistusohjeet</h3>
+                    ${instructionsHtml}
+                </div>
+            `;
+
+            showPage('recipe');
+        }
+
+        // Alustetaan sivu: luodaan reseptikortit ja näytetään kotisivu
+        function initialize() {
+            recipeGrid.innerHTML = recipes.map(createRecipeCard).join('');
+            showPage('home');
+        }
+
+        // Käynnistetään sovellus kun sivu on latautunut
+        document.addEventListener('DOMContentLoaded', initialize);
+    </script>
+</body>
+
+</html>
