@@ -42,6 +42,19 @@
             /* rose-700 */
             color: #fff;
         }
+
+        /* === tag-button hover‑tilat === */
+        .tag-button:not(.active):hover {
+            background-color: #f43f5e;
+            /* rose‑500 − sama kuin ennen */
+            color: #fff;
+        }
+
+        .tag-button.active:hover {
+            background-color: #9f1239;
+            /* rose‑800 − erottuu klikatusta perustilasta */
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -56,9 +69,6 @@
                 <button onclick="filterRecipes('all')"
                     class="text-lg text-rose-600 hover:text-rose-800 font-medium px-4 py-2"
                     id="all-recipes-button">Kaikki reseptit</button>
-                <button onclick="showPage('new-recipe')"
-                    class="text-lg text-rose-600 hover:text-rose-800 font-medium px-4 py-2" style="display: none;">Lisää
-                    uusi resepti</button>
             </nav>
         </header>
 
@@ -71,9 +81,6 @@
             </div>
 
             <div id="recipe-page" class="hidden bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
-            </div>
-
-            <div id="new-recipe-page" class="hidden bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
                 <button onclick="showPage('home')"
                     class="mb-6 inline-flex items-center text-rose-600 hover:text-rose-800 font-medium">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
@@ -88,7 +95,7 @@
         </main>
         <footer class="text-center mt-12 text-gray-400 text-sm">
             <p><a href="https://akselilarikka.github.io">Kokoelma Akselin löytämiä/käyttämiä reseptejä<br>Klikkaa tästä
-                portfolioon!</a></p>
+                    portfolioon!</a></p>
         </footer>
     </div>
 
@@ -97,329 +104,215 @@
         // Kaikki reseptit tallennetaan tähän JavaScript-objektien listaan.
         const recipes = [
             {
-                id: 'nyhtopossu',
-                title: 'Nyhtöpossu',
-                tags: ['Suolainen ruoka'],
-                ingredients: [
-                    { heading: null, items: ['n. 1 kg:n painoinen pala porsaan niskaa', 'suolaa'] },
-                    { heading: 'Mausteliemi:', items: ['3 rkl tomaattipyreetä', '½ l kolajuomaa (ei light)', '1 dl lihalientä', '2 rkl chilitahnaa', '1 tl kanelia', '1 rkl korianterinsiemeniä', '2 tl suolaa', '4 sipulia', '8 valkosipulinkynttä'] }
+                "id": "nyhtopossu",
+                "title": "Nyhtöpossu",
+                "tags": ["Pääruoat", "Liharuoat", "Possu", "Uuniruoka", "Juhlat", "Suolainen"],
+                "ingredients": [
+                    { "heading": null, "items": ["n. 1 kg:n painoinen pala porsaan niskaa", "suolaa"] },
+                    { "heading": "Mausteliemi:", "items": ["3 rkl tomaattipyreetä", "½ l kolajuomaa (ei light)", "1 dl lihalientä", "2 rkl chilitahnaa", "1 tl kanelia", "1 rkl korianterinsiemeniä", "2 tl suolaa", "4 sipulia", "8 valkosipulinkynttä"] }
                 ],
-                instructions: [
-                    'Ota possu huoneenlämpöön.',
-                    'Hiero sen pintaan suolaa ja anna lämmetä työpöydällä pari tuntia ennen uuniin laittamista.',
-                    'Sekoita mausteliemen aineet ja kaada ne pataan. Lisää pataan myös ronskisti leikatut sipulit ja valkosipulit. Upota possu liemeen.',
-                    'Kuumenna uuni 200 asteeseen.',
-                    'Kuumenna pata levyllä kiehuvaksi. Nosta kuuma pata uuniin.',
-                    'Pidä pataa 200-asteessa noin puoli tuntia ja laske lämpötila 120 asteeseen.',
-                    'Pidä pataa uunissa noin neljä tuntia tai kunnes liha on ylikypsää.',
-                    'Valele lihan pintaa välillä liemellä, jos se ei uppoa nesteeseen. (Vinkki: ei vaadi vahtimista, jos kansi on päällä ja liha on suurimmaksi osaksi nesteen alla).',
-                    'Colaliemi kiehuu kasaan ja karamellisoituu uunissa.',
-                    'Revi ylikypsä liha säikeiksi ja sekoita kastikkeeseen.',
-                    'Tarjoile valmis liha salaatin kanssa tai hampurilaisten tai hodarien välissä.'
-                ]
+                "instructions": ["Ota possu huoneenlämpöön.", "Hiero sen pintaan suolaa ja anna lämmetä työpöydällä pari tuntia ennen uuniin laittamista.", "Sekoita mausteliemen aineet ja kaada ne pataan. Lisää pataan myös ronskisti leikatut sipulit ja valkosipulit. Upota possu liemeen.", "Kuumenna uuni 200 asteeseen.", "Kuumenna pata levyllä kiehuvaksi. Nosta kuuma pata uuniin.", "Pidä pataa 200-asteessa noin puoli tuntia ja laske lämpötila 120 asteeseen.", "Pidä pataa uunissa noin neljä tuntia tai kunnes liha on ylikypsää.", "Valele lihan pintaa välillä liemellä, jos se ei uppoa nesteeseen. (Vinkki: ei vaadi vahtimista, jos kansi on päällä ja liha on suurimmaksi osaksi nesteen alla).", "Colaliemi kiehuu kasaan ja karamellisoituu uunissa.", "Revi ylikypsä liha säikeiksi ja sekoita kastikkeeseen.", "Tarjoile valmis liha salaatin kanssa tai hampurilaisten tai hodarien välissä."]
             },
             {
-                id: 'mac-and-cheese',
-                title: 'Mac & Cheese pekonilla',
-                tags: ['Suolainen ruoka'],
-                ingredients: [
-                    { heading: '3-4 annosta', items: ['300g pastaa/makaronia', '150-200g pekonia', '200-300g (Koskenlaskija) cheddar-sulatejuustoa'] }
+                "id": "mac-and-cheese",
+                "title": "Mac & Cheese pekonilla",
+                "tags": ["Pääruoat", "Pastat", "Possu", "Arkiruoka", "Helppo", "Suolainen"],
+                "ingredients": [
+                    { "heading": "3-4 annosta", "items": ["300g pastaa/makaronia", "150-200g pekonia", "200-300g cheddar-sulatejuustoa"] }
                 ],
-                instructions: [
-                    'Keitä pasta suolalla maustetussa vedessä pakkauksen ohjeen mukaan.',
-                    'Paista pekonit kuivalla pannulla rapeiksi.',
-                    'Nosta pekonit talouspaperin päälle, jotta ylimääräinen rasva imeytyy paperiin.',
-                    'Valuta pasta ja laita takaisin kattilaan.',
-                    'Kaada joukkoon sulatejuusto.',
-                    'Sekoita, tarvittaessa kuumenna miedolla lämmöllä kunnes juusto on sulanut.',
-                    'Murenna pekonit pastan joukkoon.',
-                    'Tarjoile heti.'
-                ]
+                "instructions": ["Keitä pasta suolalla maustetussa vedessä pakkauksen ohjeen mukaan.", "Paista pekonit kuivalla pannulla rapeiksi.", "Nosta pekonit talouspaperin päälle, jotta ylimääräinen rasva imeytyy paperiin.", "Valuta pasta ja laita takaisin kattilaan.", "Kaada joukkoon sulatejuusto.", "Sekoita, tarvittaessa kuumenna miedolla lämmöllä kunnes juusto on sulanut.", "Murenna pekonit pastan joukkoon.", "Tarjoile heti."]
             },
             {
-                id: 'lihapullat',
-                title: 'Kaunottaren ja kulkurin lihapullat',
-                tags: ['Suolainen ruoka'],
-                ingredients: [
-                    { heading: 'Lihapullat:', items: ['700g jauhelihaa', '1/2 sipuli hienonnettuna', '2 kananmunaa', '1/3 dl vettä', '1/2 dl korppujauhoja', '1/2 tl jauhettua maustepippuria', '1/3 tl valkopippuria', '1/2 tl juustokuminaa', '1/2 tl savupaprikajauhetta', '1 tl suolaa'] },
-                    { heading: 'Kastike:', items: ['1 rkl oliiviöljyä', '1/2 sipuli hienonnettuna', '2-3 valkosipulin kynttä hienonnettuna', '1 tölkki tomaattimurskaa', '2 kanaliemikuutiota', '1 prk ruokakermaa', '1/3 tl juustokuminaa', '1/3 tl savupaprikaa', '1 tl Pizza-yrttisekoitusta (kuiva)', '1/3 tl mustapippurirouhetta', 'Suolaa (tarvittaessa)', 'Hyppysellinen sokeria (noin 1/3tl)', '8 tippaa omenaviinietikkaa'] }
+                "id": "lihapullat",
+                "title": "Kaunottaren ja kulkurin lihapullat",
+                "tags": ["Pääruoat", "Liharuoat", "Jauheliha", "Pastat", "Arkiruoka", "Suolainen"],
+                "ingredients": [
+                    { "heading": "Lihapullat:", "items": ["700g jauhelihaa", "1/2 sipuli hienonnettuna", "2 kananmunaa", "1/3 dl vettä", "1/2 dl korppujauhoja", "1/2 tl jauhettua maustepippuria", "1/3 tl valkopippuria", "1/2 tl juustokuminaa", "1/2 tl savupaprikajauhetta", "1 tl suolaa"] },
+                    { "heading": "Kastike:", "items": ["1 rkl oliiviöljyä", "1/2 sipuli hienonnettuna", "2-3 valkosipulin kynttä hienonnettuna", "1 tölkki tomaattimurskaa", "2 kanaliemikuutiota", "1 prk ruokakermaa", "1/3 tl juustokuminaa", "1/3 tl savupaprikaa", "1 tl Pizza-yrttisekoitusta (kuiva)", "1/3 tl mustapippurirouhetta", "Suolaa (tarvittaessa)", "Hyppysellinen sokeria (noin 1/3tl)", "8 tippaa omenaviinietikkaa"] }
                 ],
-                instructions: [
-                    'Tarjoile spagetin kanssa. Keitä spagetti pakkauksen ohjeen mukaan.',
-                    'Lihapullat: Sekoita kaikki ainekset keskenään ja pyörittele massasta lihapullia. Paista uunin keski-/yläosassa 225 asteessa noin 20 minuuttia.',
-                    'Kastike: Hienonna sipulit ja kuullota ne oliiviöljyssä kattilassa.',
-                    'Lisää tomaattimurska, mausteet, kanaliemikuutiot ja ruokakerma.',
-                    'Keitä hellästi poreillen 5 minuuttia.',
-                    'Lisää sokeri ja omenaviinietikka. Sokeri ja etikka tasapainottavat ja yhdistävät maut.',
-                    'Yhdistä valmiit lihapullat ja kastike. Tarjoile spagetin kera.'
-                ]
+                "instructions": ["Tarjoile spagetin kanssa. Keitä spagetti pakkauksen ohjeen mukaan.", "Lihapullat: Sekoita kaikki ainekset keskenään ja pyörittele massasta lihapullia. Paista uunin keski-/yläosassa 225 asteessa noin 20 minuuttia.", "Kastike: Hienonna sipulit ja kuullota ne oliiviöljyssä kattilassa.", "Lisää tomaattimurska, mausteet, kanaliemikuutiot ja ruokakerma.", "Keitä hellästi poreillen 5 minuuttia.", "Lisää sokeri ja omenaviinietikka. Sokeri ja etikka tasapainottavat ja yhdistävät maut.", "Yhdistä valmiit lihapullat ja kastike. Tarjoile spagetin kera."]
             },
             {
-                id: 'snickers-kakku',
-                title: 'Snickers-juustokakku',
-                tags: ['leivonta', 'kakku'],
-                ingredients: [
-                    { heading: 'Pohja (24cm vuoka)', items: ['300g Bastogne-keksiä', '100g voita'] },
-                    { heading: 'Täyte', items: ['500g maustamatonta tuorejuustoa', '150g juoksevaa maapähkinävoita', '150g tomusokeria', '3dl kuohukermaa'] },
-                    { heading: 'Kuorrute', items: ['4 kpl Snickers-patukkaa', '1 dl kuohukermaa'] },
-                    { heading: 'Koristelu', items: ['1 kpl Snickers-patukka'] }
+                "id": "snickers-kakku",
+                "title": "Snickers-juustokakku",
+                "tags": ["Jälkiruoat", "Leivonnaiset", "Kakut", "Juhlat", "Makea"],
+                "ingredients": [
+                    { "heading": "Pohja (24cm vuoka)", "items": ["300g Bastogne-keksiä", "100g voita"] },
+                    { "heading": "Täyte", "items": ["500g maustamatonta tuorejuustoa", "150g juoksevaa maapähkinävoita", "150g tomusokeria", "3dl kuohukermaa"] },
+                    { "heading": "Kuorrute", "items": ["4 kpl Snickers-patukkaa", "1 dl kuohukermaa"] },
+                    { "heading": "Koristelu", "items": ["1 kpl Snickers-patukka"] }
                 ],
-                instructions: [
-                    'Sulata voi ja murskaa Bastogne-keksit. Sekoita yhteen tasaiseksi. Painele seos 24cm irtopohjavuoan pohjalle.',
-                    'Laita tuorejuustot kulhoon, sekaan maapähkinävoi ja tomusokeri. Vatkaa tasaiseksi.',
-                    'Lisää kuohukerma ja vatkaa tasaiseksi, mutta älä vaahdota kermaa erikseen.',
-                    'Kaada täyte vuokaan pohjan päälle ja tasoita pinta.',
-                    'Kuorrutetta varten laita kulhoon 1 dl kermaa ja 4 paloiteltua Snickers-patukkaa. Sulata vesihauteessa tai varovasti mikrossa.',
-                    'Kaada sula kuorrute täytteen päälle.',
-                    'Anna hyytyä jääkaapissa vähintään yön yli, mieluiten vuorokausi. (Voit kokeilla nopeuttaa prosessia pakkasessa).',
-                    'Ennen tarjoilua, raasta tai paloittele viimeinen Snickers-patukka kakun päälle koristeeksi.'
-                ]
+                "instructions": ["Sulata voi ja murskaa Bastogne-keksit. Sekoita yhteen tasaiseksi. Painele seos 24cm irtopohjavuoan pohjalle.", "Laita tuorejuustot kulhoon, sekaan maapähkinävoi ja tomusokeri. Vatkaa tasaiseksi.", "Lisää kuohukerma ja vatkaa tasaiseksi, mutta älä vaahdota kermaa erikseen.", "Kaada täyte vuokaan pohjan päälle ja tasoita pinta.", "Kuorrutetta varten laita kulhoon 1 dl kermaa ja 4 paloiteltua Snickers-patukkaa. Sulata vesihauteessa tai varovasti mikrossa.", "Kaada sula kuorrute täytteen päälle.", "Anna hyytyä jääkaapissa vähintään yön yli, mieluiten vuorokausi. (Voit kokeilla nopeuttaa prosessia pakkasessa).", "Ennen tarjoilua, raasta tai paloittele viimeinen Snickers-patukka kakun päälle koristeeksi."]
             },
             {
-                id: 'kinder-kakku',
-                title: 'Kinderkakku',
-                tags: ['leivonta', 'kakku'],
-                ingredients: [
-                    { heading: 'Pohja (20-22cm vuoka)', items: ['200g Oreo-keksejä', '70g voita'] },
-                    { heading: 'Täyte', items: ['2dl vispikermaa', '400g maustamatonta tuorejuustoa', '0.5dl tomusokeria', '200g Kinder Maxi -suklaata'] },
-                    { heading: 'Kuorrute ja koristelu', items: ['100g maitosuklaata', '0.5dl kuohukermaa', 'Valkosuklaata raitoihin', 'Kermapursotuksia ja Kinder Maxi -suklaata'] }
+                "id": "kinder-kakku",
+                "title": "Kinderkakku",
+                "tags": ["Jälkiruoat", "Leivonnaiset", "Kakut", "Juhlat", "Makea"],
+                "ingredients": [
+                    { "heading": "Pohja (20-22cm vuoka)", "items": ["200g Oreo-keksejä", "70g voita"] },
+                    { "heading": "Täyte", "items": ["2dl vispikermaa", "400g maustamatonta tuorejuustoa", "0.5dl tomusokeria", "200g Kinder Maxi -suklaata"] },
+                    { "heading": "Kuorrute ja koristelu", "items": ["100g maitosuklaata", "0.5dl kuohukermaa", "Valkosuklaata raitoihin", "Kermapursotuksia ja Kinder Maxi -suklaata"] }
                 ],
-                instructions: [
-                    'Pohja: Murskaa keksit hienoksi ja sekoita sulatetun voin kanssa. Painele tiiviisti leivinpaperilla vuoratun irtopohjavuoan (20-22cm) pohjalle ja laita jääkaappiin odottamaan.',
-                    'Täyte: Sulata Kinder-suklaa ja jätä sivuun jäähtymään hetkeksi. Vatkaa vispikerma lähes valmiiksi vaahdoksi. Lisää joukkoon tuorejuusto ja tomusokeri ja vatkaa sekaisin. Lisää joukkoon sulatettu, hieman jäähtynyt suklaa ja vatkaa nopeasti tasaiseksi.',
-                    'Kaada juustokakkutäyte pohjan päälle, levitä tasaiseksi ja laita jääkaappiin hyytymään 4-12 tunniksi. Yleensä yön yli on hyvä.',
-                    'Kuorrute: Rouhi maitosuklaa pieneksi ja laita kulhoon. Kuumenna kuohukerma kattilassa kiehumispisteeseen, kaada se kulhoon suklaarouheen päälle ja anna olla hetki. Sekoita tasaiseksi ganacheksi.',
-                    'Levitä kuorrute hyytyneen juustokakun päälle. Sulata vähän valkosuklaata ja tee sillä raitoja kuorrutteen päälle. Voit kuvioida raitoja tikulla.',
-                    'Viimeistele kakku kermapursotuksilla ja Kinder-suklaapaloilla.'
-                ]
+                "instructions": ["Pohja: Murskaa keksit hienoksi ja sekoita sulatetun voin kanssa. Painele tiiviisti leivinpaperilla vuoratun irtopohjavuoan (20-22cm) pohjalle ja laita jääkaappiin odottamaan.", "Täyte: Sulata Kinder-suklaa ja jätä sivuun jäähtymään hetkeksi. Vatkaa vispikerma lähes valmiiksi vaahdoksi. Lisää joukkoon tuorejuusto ja tomusokeri ja vatkaa sekaisin. Lisää joukkoon sulatettu, hieman jäähtynyt suklaa ja vatkaa nopeasti tasaiseksi.", "Kaada juustokakkutäyte pohjan päälle, levitä tasaiseksi ja laita jääkaappiin hyytymään 4-12 tunniksi. Yleensä yön yli on hyvä.", "Kuorrute: Rouhi maitosuklaa pieneksi ja laita kulhoon. Kuumenna kuohukerma kattilassa kiehumispisteeseen, kaada se kulhoon suklaarouheen päälle ja anna olla hetki. Sekoita tasaiseksi ganacheksi.", "Levitä kuorrute hyytyneen juustokakun päälle. Sulata vähän valkosuklaata ja tee sillä raitoja kuorrutteen päälle. Voit kuvioida raitoja tikulla.", "Viimeistele kakku kermapursotuksilla ja Kinder-suklaapaloilla."]
             },
             {
-                id: 'kalakukko',
-                title: 'Kalakukko',
-                tags: ['Suolainen ruoka', 'perinneruoka', 'leivonta'],
-                ingredients: [
-                    { heading: 'Kuori', items: ['5 dl vettä', '1 dl vehnäjauhoja', 'vajaa kilo (950g) ruisjauhoja', '1 dl voisulaa', '1-2 rkl suolaa'] },
-                    { heading: 'Täyte', items: ['1 kg muikkuja (tai muuta pientä kalaa)', '400 g rasvaista siankylkeä (tai pekonia)', 'suolaa (jos et käytä pekonia)'] }
+                "id": "kalakukko",
+                "title": "Kalakukko",
+                "tags": ["Pääruoat", "Leivonnaiset", "Kalaruoat", "Possu", "Perinneruoat", "Uuniruoka", "Suolainen"],
+                "ingredients": [
+                    { "heading": "Kuori", "items": ["5 dl vettä", "1 dl vehnäjauhoja", "vajaa kilo (950g) ruisjauhoja", "1 dl voisulaa", "1-2 rkl suolaa"] },
+                    { "heading": "Täyte", "items": ["1 kg muikkuja (tai muuta pientä kalaa)", "400 g rasvaista siankylkeä (tai pekonia)", "suolaa (jos et käytä pekonia)"] }
                 ],
-                instructions: [
-                    'Poista muikuista pää ja sisälmykset, kuivaa kalat hyvin talouspaperilla.',
-                    'Taikina: Sekoita kylmään veteen suola, vehnäjauhot, voisula sekä suurin osa ruisjauhoista. Vaivaa käsin loput ruisjauhot joukkoon. Taikinasta tulee melko kiinteä.',
-                    'Jätä pieni pala taikinaa sivuun mahdollista paikkausta varten.',
-                    'Kauli taikina pyöreäksi, reilu sentin paksuiseksi levyksi, joka ohenee reunoja kohti. Tee siitä mieluummin liian iso kuin liian pieni.',
-                    'Ripottele levyn keskelle vähän ruisjauhoja. Lado päälle kerroksittain muikkuja ja siivutettua siankylkeä. Aloita ja lopeta siankyljellä. Ripottele suolaa kalakerrosten väliin (jos käytät suolatonta siankylkeä).',
-                    'Taita taikinan reunat huolellisesti täytteen päälle ja muotoile kukoksi märillä käsillä ja veistä apuna käyttäen. Tiivistä saumat hyvin.',
-                    'Käytä valkoista leivinpaperia, sillä ruskea voi palaa pitkän paiston aikana.',
-                    'Paista kukkoa ensin 250 asteessa noin 45 minuuttia. Voitele sitten kukko voisulalla, laske uunin lämpötila 125 asteeseen ja jatka paistamista noin 5 tuntia. Jos pinta tummuu liikaa, voit peittää sen foliolla.',
-                    'Kun otat kukon uunista, kääri se tiiviisti leivinpaperiin ja paksuihin pyyhkeisiin (tai vaikka villapaitaan). Anna vetäytyä ja hautua vähintään 3 tuntia ennen tarjoilua.',
-                    'Vinkki: "Laita kukko uuniin jalat ristissä niin ei vuoda" :D'
-                ]
+                "instructions": ["Poista muikuista pää ja sisälmykset, kuivaa kalat hyvin talouspaperilla.", "Taikina: Sekoita kylmään veteen suola, vehnäjauhot, voisula sekä suurin osa ruisjauhoista. Vaivaa käsin loput ruisjauhot joukkoon. Taikinasta tulee melko kiinteä.", "Jätä pieni pala taikinaa sivuun mahdollista paikkausta varten.", "Kauli taikina pyöreäksi, reilu sentin paksuiseksi levyksi, joka ohenee reunoja kohti. Tee siitä mieluummin liian iso kuin liian pieni.", "Ripottele levyn keskelle vähän ruisjauhoja. Lado päälle kerroksittain muikkuja ja siivutettua siankylkeä. Aloita ja lopeta siankyljellä. Ripottele suolaa kalakerrosten väliin (jos käytät suolatonta siankylkeä).", "Taita taikinan reunat huolellisesti täytteen päälle ja muotoile kukoksi märillä käsillä ja veistä apuna käyttäen. Tiivistä saumat hyvin.", "Käytä valkoista leivinpaperia, sillä ruskea voi palaa pitkän paiston aikana.", "Paista kukkoa ensin 250 asteessa noin 45 minuuttia. Voitele sitten kukko voisulalla, laske uunin lämpötila 125 asteeseen ja jatka paistamista noin 5 tuntia. Jos pinta tummuu liikaa, voit peittää sen foliolla.", "Kun otat kukon uunista, kääri se tiiviisti leivinpaperiin ja paksuihin pyyhkeisiin (tai vaikka villapaitaan). Anna vetäytyä ja hautua vähintään 3 tuntia ennen tarjoilua.", "Vinkki: \"Laita kukko uuniin jalat ristissä niin ei vuoda\" :D"]
             },
             {
                 "id": "karjalanpiirakat",
-                "title": "Karjalanpiirakat, sultsinat ja sulhaspiirakat",
-                "tags": ["Suolainen leivonnainen"],
+                "title": "Karjalanpiirakat",
+                "tags": ["Leivonnaiset", "Perinneruoat", "Juhlat", "Helppo", "Suolainen"],
                 "ingredients": [
                     { "heading": "Kuoritaikina", "items": ["4 dl ruisjauhoja", "2 dl vehnäjauhoja", "1/2 tl suolaa", "2-3 dl kylmää vettä"] },
                     { "heading": "Täyte: Riisipuuro", "items": ["2 dl riisiä", "2 dl vettä", "0,7 l maitoa", "50g voita", "loraus kermaa"] },
                     { "heading": "Täyte: Perunamuusi", "items": ["perunoita", "voita", "maitoa", "suolaa"] }
                 ],
-                "instructions": [
-                    "Täytteen valmistus: Valmista riisipuuro tai perunamuusi. Riisipuuro kannattaa valmistaa edellisenä päivänä. Huuhdo riisit, keitä ja lisää maito pienissä erissä. Älä keitä riisiä täysin kypsäksi, vaan jätä se hieman irtonaiseksi. Lisää käyttövalmiiseen puuroon voisula ja loraus kermaa.",
-                    "Perunamuusista tulee tehdä kovahko, käyttäen voita, maitoa tai kermaa ja suolaa. Muusia ei tule seisottaa kauan.",
-                    "Sekoita kuoritaikinan ainekset ensin kulhossa ja vaivaa sitten leivinlaudalla kimmoisaksi. Taikinan tulee olla kovaa. Lisää jauhoja vaivaamisen aikana. Tee taikinasta noin 2 cm paksu tanko ja katkaise se. Sopiva taikina napsahtaa katketessaan. Anna taikinan seistä hetki sitkistyäkseen.",
-                    "Pidä taikina ja aihiot aina kelmulla peitettynä kuivumisen estämiseksi.",
-                    "Muotoile taikinatangosta noin 2-2,5 cm halkaisijaltaan olevia palloja. Litistä pallot ja lado ne päällekkäin. Kauli aihioista hyvin ohuita (noin 0,3 mm), pyöreitä pohjia, joiden halkaisija on noin 15 cm.",
-                    "Lado valmiit pohjat päällekkäin jauhoja välissä käyttäen ja peitä ne. Pohjat voi myös pakastaa.",
-                    "Levitä täytettä pohjalle 3-4 mm paksusti. Käännä reunat ja rypytä ne keskeltä alkaen. Vältä teräviä kärkiä rypytyksessä.",
-                    "Paista 280-300 asteisen uunin keskiosalla noin 15-20 minuuttia, mieluiten kiertoilmatoiminnolla.",
-                    "Voitele piirakat välittömästi paiston jälkeen voisulalla (ei saa kiehua) ja lado ne uunipellille jäähtymään, ei päällekkäin.",
-                    "Anna jäähtyä täysin. Täyte riittää noin 40 piirakkaan.",
-                    "Jos pakastat piirakat, voitele ne voilla ennen lämmitystä sulatuksen jälkeen."
-                ]
+                "instructions": ["Täytteen valmistus: Valmista riisipuuro tai perunamuusi. Riisipuuro kannattaa valmistaa edellisenä päivänä. Huuhdo riisit, keitä ja lisää maito pienissä erissä. Älä keitä riisiä täysin kypsäksi, vaan jätä se hieman irtonaiseksi. Lisää käyttövalmiiseen puuroon voisula ja loraus kermaa.", "Perunamuusista tulee tehdä kovahko, käyttäen voita, maitoa tai kermaa ja suolaa. Muusia ei tule seisottaa kauan.", "Sekoita kuoritaikinan ainekset ensin kulhossa ja vaivaa sitten leivinlaudalla kimmoisaksi. Taikinan tulee olla kovaa. Lisää jauhoja vaivaamisen aikana. Tee taikinasta noin 2 cm paksu tanko ja katkaise se. Sopiva taikina napsahtaa katketessaan. Anna taikinan seistä hetki sitkistyäkseen.", "Pidä taikina ja aihiot aina kelmulla peitettynä kuivumisen estämiseksi.", "Muotoile taikinatangosta noin 2-2,5 cm halkaisijaltaan olevia palloja. Litistä pallot ja lado ne päällekkäin. Kauli aihioista hyvin ohuita (noin 0,3 mm), pyöreitä pohjia, joiden halkaisija on noin 15 cm.", "Lado valmiit pohjat päällekkäin jauhoja välissä käyttäen ja peitä ne. Pohjat voi myös pakastaa.", "Levitä täytettä pohjalle 3-4 mm paksusti. Käännä reunat ja rypytä ne keskeltä alkaen. Vältä teräviä kärkiä rypytyksessä.", "Paista 280-300 asteisen uunin keskiosalla noin 15-20 minuuttia, mieluiten kiertoilmatoiminnolla.", "Voitele piirakat välittömästi paiston jälkeen voisulalla (ei saa kiehua) ja lado ne uunipellille jäähtymään, ei päällekkäin.", "Anna jäähtyä täysin. Täyte riittää noin 40 piirakkaan.", "Jos pakastat piirakat, voitele ne voilla ennen lämmitystä sulatuksen jälkeen."]
             },
             {
                 "id": "kinkkupiiras",
                 "title": "Kinkkupiiras",
-                "tags": ["Suolainen ruoka", "Piirakka"],
+                "tags": ["Leivonnaiset", "Piirakat", "Liharuoat", "Possu", "Juhlat", "Uuniruoka", "Suolainen"],
                 "ingredients": [
                     { "heading": "Pohja", "items": ["150g pehmeää voita", "3dl vehnäjauhoja", "3/4dl vettä", "1.5dl juustoraastetta"] },
                     { "heading": "Täyte", "items": ["150-200g kinkkua", "1 sipuli", "1 punainen paprika", "2 kananmunaa", "2dl kermaa tai maitoa", "1/2tl mustapippuria", "1tl paprikaa", "1tl valkosipulijauhetta", "1/2tl chilimaustetta", "ripaus aromisuolaa"] }
                 ],
-                "instructions": [
-                    "Sekoita pohjan ainekset yhteen ja painele taikina noin 20-25 cm pyöreän piirakkavuoan pohjalle ja reunoille.",
-                    "Esipaista pohjaa 175-asteisessa uunissa 10 minuuttia.",
-                    "Kuutioi kinkku ja sipuli. Sekoita joukkoon kuutioitu paprika.",
-                    "Sekoita mausteet keskenään.",
-                    "Yhdistä kinkku-paprikaseos ja mausteet. Levitä seos esipaistetun pohjan päälle.",
-                    "Sekoita kananmunat ja kerma/maito keskenään ja kaada seos täytteen päälle.",
-                    "Paista 175-asteisessa uunissa 30-35 minuuttia."
-                ]
+                "instructions": ["Sekoita pohjan ainekset yhteen ja painele taikina noin 20-25 cm pyöreän piirakkavuoan pohjalle ja reunoille.", "Esipaista pohjaa 175-asteisessa uunissa 10 minuuttia.", "Kuutioi kinkku ja sipuli. Sekoita joukkoon kuutioitu paprika.", "Sekoita mausteet keskenään.", "Yhdistä kinkku-paprikaseos ja mausteet. Levitä seos esipaistetun pohjan päälle.", "Sekoita kananmunat ja kerma/maito keskenään ja kaada seos täytteen päälle.", "Paista 175-asteisessa uunissa 30-35 minuuttia."]
             },
             {
                 "id": "focaccia-ja-muunnelmat",
                 "title": "Focaccia ja muunnelmat",
-                "tags": ["Leivät"],
+                "tags": ["Leivonnaiset", "Leivät", "Lisukkeet", "Juhlat", "Suolainen"],
                 "ingredients": [
                     { "heading": "Perustaikina", "items": ["3dl vettä", "1rkl sokeria", "1/2tl suolaa", "1/2tl valkosipulijauhetta", "1ps kuivahiivaa", "6-7dl sämpyläjauhoja", "1/2dl rypsiöljyä TAI 50g margariinia sulatettuna"] },
                     { "heading": "Piccolot: Yrttiöljy", "items": ["1/2dl rypsiöljyä", "3 valkosipulin kynttä murskattuna", "1tl rosmariinia"] },
                     { "heading": "Ihailijapannu: Pinnalle", "items": ["6 aurinkokuivattua tomaattia", "12 mustaa kivetöntä oliivia"] },
                     { "heading": "Ihailijapannu: Yrttiöljy", "items": ["1/2dl aurinkokuivattujen tomaattien öljyä", "1tl kuivattua oreganoa", "2-3 valkosipulin kynttä murskattuna"] }
                 ],
-                "instructions": [
-                    "Perustaikina: Sekoita reilusti kädenlämpöiseen veteen (+42°C) suola, valkosipulijauhe ja sokeri.",
-                    "Sekoita kuivahiiva osaan jauhoista ja lisää nesteeseen. Lisää loput jauhot vähitellen vaivaten.",
-                    "Lisää lopuksi öljy tai sula margariini. Vaivaa taikina tasaiseksi.",
-                    "Anna kohota liinalla peitettynä lämpimässä paikassa noin 20 minuuttia. Laita uuni lämpenemään 225 asteeseen.",
-                    "Ohje: Piccolot (12kpl): Kaada kohonnut taikina jauhotetulle pöydälle, vaivaa ja muotoile 40 cm pitkäksi tangoksi.",
-                    "Jaa tanko 12 osaan. Taputtele paloista pyöreitä leipäsiä (halkaisija 10 cm) pellille leivinpaperin päälle.",
-                    "Anna kohota liinalla peitettynä 20 minuuttia.",
-                    "Paina kohonneisiin leipiin sormella koloja. Sekoita yrttiöljyn ainekset ja voitele leivät.",
-                    "Paista 225-asteisen uunin keskitasolla 8-10 minuuttia.",
-                    "Ohje: Kauniin Julian ihailijapannu (24 palaa): Taputtele tai kauli kohonnut perustaikina uunipellin kokoiseksi levyksi leivinpaperin päälle.",
-                    "Anna kohota liinalla peitettynä 20 minuuttia.",
-                    "Leikkaa aurinkokuivatut tomaatit ja puolita oliivit. Sekoita yrttiöljyn ainekset keskenään.",
-                    "Paina kohonneeseen leipään sormella syviä koloja. Voitele leipä yrttiöljyllä.",
-                    "Paina koloihin vuorotellen oliiveja ja aurinkokuivattuja tomaatteja.",
-                    "Paista 225-asteisen uunin keskitasolla 10-12 minuuttia."
-                ]
+                "instructions": ["Perustaikina: Sekoita reilusti kädenlämpöiseen veteen (+42°C) suola, valkosipulijauhe ja sokeri.", "Sekoita kuivahiiva osaan jauhoista ja lisää nesteeseen. Lisää loput jauhot vähitellen vaivaten.", "Lisää lopuksi öljy tai sula margariini. Vaivaa taikina tasaiseksi.", "Anna kohota liinalla peitettynä lämpimässä paikassa noin 20 minuuttia. Laita uuni lämpenemään 225 asteeseen.", "<strong>Ohje: Piccolot (12kpl):</strong>", "Kaada kohonnut taikina jauhotetulle pöydälle, vaivaa ja muotoile 40 cm pitkäksi tangoksi.", "Jaa tanko 12 osaan. Taputtele paloista pyöreitä leipäsiä (halkaisija 10 cm) pellille leivinpaperin päälle.", "Anna kohota liinalla peitettynä 20 minuuttia.", "Paina kohonneisiin leipiin sormella koloja. Sekoita yrttiöljyn ainekset ja voitele leivät.", "Paista 225-asteisen uunin keskitasolla 8-10 minuuttia.", "<strong>Ohje: Kauniin Julian ihailijapannu (24 palaa):</strong>", "Taputtele tai kauli kohonnut perustaikina uunipellin kokoiseksi levyksi leivinpaperin päälle.", "Anna kohota liinalla peitettynä 20 minuuttia.", "Leikkaa aurinkokuivatut tomaatit ja puolita oliivit. Sekoita yrttiöljyn ainekset keskenään.", "Paina kohonneeseen leipään sormella syviä koloja. Voitele leipä yrttiöljyllä.", "Paina koloihin vuorotellen oliiveja ja aurinkokuivattuja tomaatteja.", "Paista 225-asteisen uunin keskitasolla 10-12 minuuttia."]
             },
             {
                 "id": "mallaslimppu",
                 "title": "Mallaslimppu",
-                "tags": ["Leivät"],
+                "tags": ["Leivonnaiset", "Leivät", "Perinneruoat", "Juhlat", "Makea", "Suolainen"],
                 "ingredients": [
-                    { "heading": "3 leipää", "items": ["1l appelsiinimehua", "3dl ruisjauhoja", "3dl ruisleseitä", "3dl hienonnettuja Tuoppi-maltaita", "2 palaa (50g) hiivaa", "3dl tummaa siirappia", "1rkl suolaa", "10-13dl vehnäjauhoja"] }
+                    { "heading": "3 leipää", "items": ["1l appelsiinimehua", "3dl ruisjauhoja", "3dl ruisleseitä", "3dl hienonnettuja kaljamaltaita", "2 palaa (50g) hiivaa", "3dl tummaa siirappia", "1rkl suolaa", "10-13dl vehnäjauhoja"] }
                 ],
-                "instructions": [
-                    "Murenna hiiva kädenlämpöiseen appelsiinimehuun.",
-                    "Lisää nesteeseen kaikki muut ainekset ja sekoita hyvin. Taikina jää hyvin löysäksi.",
-                    "Anna taikinan kohota liinan alla 90 minuuttia.",
-                    "Voitele kolme pitkänomaista leipävuokaa ja jaa taikina niihin.",
-                    "Paista 175-asteisessa uunissa 90 minuuttia.",
-                    "Kun leivät ovat olleet uunissa tunnin, voitele niiden pinta vedellä ohennetulla siirapilla.",
-                    "Jäähdytä leivät hyvin ennen leikkaamista."
-                ]
+                "instructions": ["Murenna hiiva kädenlämpöiseen appelsiinimehuun.", "Lisää nesteeseen kaikki muut ainekset ja sekoita hyvin. Taikina jää hyvin löysäksi.", "Anna taikinan kohota liinan alla 90 minuuttia.", "Voitele kolme pitkänomaista leipävuokaa ja jaa taikina niihin.", "Paista 175-asteisessa uunissa 90 minuuttia.", "Kun leivät ovat olleet uunissa tunnin, voitele niiden pinta vedellä ohennetulla siirapilla.", "Jäähdytä leivät hyvin ennen leikkaamista."]
             },
             {
                 "id": "kasviskeitto",
                 "title": "Kasviskeitto",
-                "tags": ["Keitot", "Suolainen ruoka"],
+                "tags": ["Pääruoat", "Keitot", "Kasvisruoat", "Arkiruoka", "Helppo", "Suolainen"],
                 "ingredients": [
                     { "heading": "Ainesosat", "items": ["6 porkkanaa", "1 iso sipuli", "2 rkl öljyä", "8 dl vettä", "1 kasvisliemikuutio", "1/2 dl riisiä", "2 dl kermaa"] }
                 ],
-                "instructions": [
-                    "Kuori ja silppua vihannekset.",
-                    "Kiehauta vihannekset öljyssä kattilassa.",
-                    "Kiehauta vesi ja murenna joukkoon kasvisliemikuutio.",
-                    "Lisää kasvisliemi ja riisi vihannesten joukkoon.",
-                    "Anna kiehua noin 30 minuuttia, kunnes riisit ovat pehmeitä.",
-                    "Lisää lopuksi kerma pehmentämään makua.",
-                    "Sekoita ja kuumenna keitto, mutta älä enää keitä."
-                ]
+                "instructions": ["Kuori ja silppua vihannekset.", "Kiehauta vihannekset öljyssä kattilassa.", "Kiehauta vesi ja murenna joukkoon kasvisliemikuutio.", "Lisää kasvisliemi ja riisi vihannesten joukkoon.", "Anna kiehua noin 30 minuuttia, kunnes riisit ovat pehmeitä.", "Lisää lopuksi kerma pehmentämään makua.", "Sekoita ja kuumenna keitto, mutta älä enää keitä."]
             },
             {
                 "id": "vappumunkit",
                 "title": "Vappumunkit",
-                "tags": ["Makea leivonnainen"],
+                "tags": ["Jälkiruoat", "Leivonnaiset", "Juhlat", "Makea"],
                 "ingredients": [
                     { "heading": "16 kpl", "items": ["2.5dl kädenlämpöistä vettä", "25g hiivaa", "1/2 kananmuna", "1dl sokeria", "1/2rkl vaniljasokeria", "1tl suolaa", "1dl ohrakasta", "6dl vehnäjauhoja", "1/2dl rypsiöljyä"] }
                 ],
-                "instructions": [
-                    "Sekoita hiiva kädenlämpöiseen veteen. Lisää kananmuna.",
-                    "Sekoita sokerit ja suola keskenään ja lisää nesteeseen.",
-                    "Yhdistä ohrakas ja vehnäjauhot, lisää taikinaan ja sekoita. Lisää lopuksi öljy.",
-                    "Anna taikinan kohota liinan alla.",
-                    "Leivo kohonneesta taikinasta pyöreitä munkkeja ja kohota niitä hetki liinan alla.",
-                    "Kuumenna rasva (n. 180°C) rautapadassa. Kokeile kuumuutta taikinapalalla; se on sopivaa, kun pala ei painu pohjaan ja ruskistuu minuutissa.",
-                    "Varo kuumaa rasvaa!",
-                    "Paista 3-4 munkkia kerrallaan. Käännä kun ne ovat kullanruskeita, noin parin minuutin jälkeen.",
-                    "Nosta kypsät munkit reikäkauhalla talouspaperin päälle valumaan.",
-                    "Sokeroi lämpimät munkit pyörittelemällä ne sokerissa.",
-                    "Siirrä kuuma pata jäähtymään turvalliseen paikkaan. Siivilöi jäähtynyt rasva talteen."
-                ]
+                "instructions": ["Sekoita hiiva kädenlämpöiseen veteen. Lisää kananmuna.", "Sekoita sokerit ja suola keskenään ja lisää nesteeseen.", "Yhdistä ohrakas ja vehnäjauhot, lisää taikinaan ja sekoita. Lisää lopuksi öljy.", "Anna taikinan kohota liinan alla.", "Leivo kohonneesta taikinasta pyöreitä munkkeja ja kohota niitä hetki liinan alla.", "Kuumenna rasva (n. 180°C) rautapadassa. Kokeile kuumuutta taikinapalalla; se on sopivaa, kun pala ei painu pohjaan ja ruskistuu minuutissa.", "Varo kuumaa rasvaa!", "Paista 3-4 munkkia kerrallaan. Käännä kun ne ovat kullanruskeita, noin parin minuutin jälkeen.", "Nosta kypsät munkit reikäkauhalla talouspaperin päälle valumaan.", "Sokeroi lämpimät munkit pyörittelemällä ne sokerissa.", "Siirrä kuuma pata jäähtymään turvalliseen paikkaan. Siivilöi jäähtynyt rasva talteen."]
             },
             {
                 "id": "kulitsa",
                 "title": "Kulitsa",
-                "tags": ["Makea leivonnainen", "Pulla"],
+                "tags": ["Leivonnaiset", "Pullat", "Juhlat", "Perinneruoat", "Makea"],
                 "ingredients": [
                     { "heading": "Taikina (2 kpl)", "items": ["5 dl maitoa", "50g hiivaa", "2 1/2 dl sokeria", "2 tl suolaa", "3 munaa", "1 rkl kardemummaa", "1 rkl vaniljasokeria", "1 sitruunan raastettu kuori", "3 dl rusinoita", "1 dl mantelirouhetta", "200g voita tai margariinia", "noin 16 dl vehnäjauhoja"] },
                     { "heading": "Voiteluun ja pinnalle", "items": ["1 muna", "mantelilastuja"] }
                 ],
-                "instructions": [
-                    "Valmista ensin taikinajuuri: Liuota hiiva kädenlämpöiseen maitoon. Lisää kevyesti vatkaten 3 dl vehnäjauhoista. Anna juuren kuplia peitettynä lämpimässä paikassa 20-30 minuuttia.",
-                    "Sekoita kuplivaan juureen sokeri, suola, munat, vaniljasokeri, kardemumma, sitruunankuori ja jauhoja vähitellen.",
-                    "Lisää jauhojen loppuvaiheessa rusinat, mantelirouhe ja pehmeä rasva. Alusta loput jauhot taikinaan, kunnes se on pehmeää ja kimmoisaa.",
-                    "Jaa taikina kahteen osaan ja ota molemmista paloista vähän taikinaa sivuun koristeita varten.",
-                    "Voitele kaksi korkeaa, noin 1.8 litran vuokaa ja painele taikinat niihin.",
-                    "Muotoile sivuun otetuista taikinoista 'XB'-kirjaimet pullien päälle.",
-                    "Peitä vuoat. Kohota toista lämpimässä ja toista viileässä, jotta voit paistaa ne erikseen.",
-                    "Voitele kohonnut kulitsa munalla ja ripottele pinnalle mantelilastuja.",
-                    "Paista 175-asteisen uunin alatasolla noin 40 minuuttia. Peitä pinta leivinpaperilla paiston puolivälissä, jos se tummuu liikaa.",
-                    "Leikkaa täysin jäähtyneenä."
-                ]
+                "instructions": ["Valmista ensin taikinajuuri: Liuota hiiva kädenlämpöiseen maitoon. Lisää kevyesti vatkaten 3 dl vehnäjauhoista. Anna juuren kuplia peitettynä lämpimässä paikassa 20-30 minuuttia.", "Sekoita kuplivaan juureen sokeri, suola, munat, vaniljasokeri, kardemumma, sitruunankuori ja jauhoja vähitellen.", "Lisää jauhojen loppuvaiheessa rusinat, mantelirouhe ja pehmeä rasva. Alusta loput jauhot taikinaan, kunnes se on pehmeää ja kimmoisaa.", "Jaa taikina kahteen osaan ja ota molemmista paloista vähän taikinaa sivuun koristeita varten.", "Voitele kaksi korkeaa, noin 1.8 litran vuokaa ja painele taikinat niihin.", "Muotoile sivuun otetuista taikinoista 'XB'-kirjaimet pullien päälle.", "Peitä vuoat. Kohota toista lämpimässä ja toista viileässä, jotta voit paistaa ne erikseen.", "Voitele kohonnut kulitsa munalla ja ripottele pinnalle mantelilastuja.", "Paista 175-asteisen uunin alatasolla noin 40 minuuttia. Peitä pinta leivinpaperilla paiston puolivälissä, jos se tummuu liikaa.", "Leikkaa täysin jäähtyneenä."]
             },
             {
                 "id": "mokkapalat",
                 "title": "Mokkapalat",
-                "tags": ["Makea leivonnainen", "Piirakka"],
+                "tags": ["Jälkiruoat", "Leivonnaiset", "Piirakat", "Juhlat", "Helppo", "Makea"],
                 "ingredients": [
                     { "heading": "Pohja", "items": ["3 munaa", "3dl sokeria", "1dl maitoa", "2-3rkl kaakaojauhetta", "2tl vaniljasokeria", "4 1/2dl vehnäjauhoja", "2tl leivinjauhetta", "150g sulatettua margariinia"] },
                     { "heading": "Kuorrutus", "items": ["3dl tomusokeria", "2rkl kaakaojauhetta", "1tl vaniljasokeria", "5rkl kylmää kahvia tai vettä", "4-6rkl sulaa margariinia", "nonparelleja"] }
                 ],
-                "instructions": [
-                    "Vatkaa munat ja sokeri vaaleaksi, kuohkeaksi vaahdoksi.",
-                    "Yhdistä kuivat aineet (kaakaojauhe, vaniljasokeri, vehnäjauhot, leivinjauhe) keskenään.",
-                    "Sekoita kuivat aineet vuorotellen maidon kanssa muna-sokerivaahtoon. Lisää lopuksi sulatettu margariini.",
-                    "Kaada taikina leivinpaperilla vuoratulle uunipellille.",
-                    "Paista 200-asteisessa uunissa 15-20 minuuttia. Anna pohjan jäähtyä.",
-                    "Valmista kuorrutus: siivilöi tomusokeri, kaakaojauhe ja vaniljasokeri kulhoon. Lisää kahvi/vesi ja sekoita tasaiseksi. Lisää lopuksi sula margariini.",
-                    "Levitä kuorrutus jäähtyneen pohjan päälle. Koristele nonparelleilla ja anna kuorrutuksen jähmettyä."
-                ]
+                "instructions": ["Vatkaa munat ja sokeri vaaleaksi, kuohkeaksi vaahdoksi.", "Yhdistä kuivat aineet (kaakaojauhe, vaniljasokeri, vehnäjauhot, leivinjauhe) keskenään.", "Sekoita kuivat aineet vuorotellen maidon kanssa muna-sokerivaahtoon. Lisää lopuksi sulatettu margariini.", "Kaada taikina leivinpaperilla vuoratulle uunipellille.", "Paista 200-asteisessa uunissa 15-20 minuuttia. Anna pohjan jäähtyä.", "Valmista kuorrutus: siivilöi tomusokeri, kaakaojauhe ja vaniljasokeri kulhoon. Lisää kahvi/vesi ja sekoita tasaiseksi. Lisää lopuksi sula margariini.", "Levitä kuorrutus jäähtyneen pohjan päälle. Koristele nonparelleilla ja anna kuorrutuksen jähmettyä."]
             },
             {
                 "id": "suklainen-mutakakku",
                 "title": "Suklainen mutakakku",
-                "tags": ["Makea leivonnainen", "Kakut"],
+                "tags": ["Jälkiruoat", "Leivonnaiset", "Kakut", "Helppo", "Makea"],
                 "ingredients": [
                     { "heading": "n. 25cm vuoka", "items": ["200g tummaa suklaata", "200g voita", "4 kananmunaa", "2dl sokeria", "2.5dl vehnäjauhoja", "1tl leivinjauhetta"] }
                 ],
-                "instructions": [
-                    "Kuumenna uuni 200 asteeseen. Voitele ja jauhoita kakkuvuoka (halkaisija n. 25cm).",
-                    "Vatkaa munat ja sokeri vaaleaksi vaahdoksi.",
-                    "Sulata voi ja paloiteltu suklaa vesihauteessa tai varovasti mikrossa. Sekoita tasaiseksi.",
-                    "Kaada hieman jäähtynyt suklaa-voiseos muna-sokerivaahtoon varovasti sekoittaen.",
-                    "Yhdistä vehnäjauhot ja leivinjauhe, ja sekoita ne varovasti käännellen taikinaan.",
-                    "Kaada seos vuokaan.",
-                    "Paista uunin keskiosassa noin 12 minuuttia. Kakun kuuluu jäädä keskeltä tahmeaksi.",
-                    "Kakun voi hyvin valmistaa tarjoilua edeltävänä päivänä."
-                ]
+                "instructions": ["Kuumenna uuni 200 asteeseen. Voitele ja jauhoita kakkuvuoka (halkaisija n. 25cm).", "Vatkaa munat ja sokeri vaaleaksi vaahdoksi.", "Sulata voi ja paloiteltu suklaa vesihauteessa tai varovasti mikrossa. Sekoita tasaiseksi.", "Kaada hieman jäähtynyt suklaa-voiseos muna-sokerivaahtoon varovasti sekoittaen.", "Yhdistä vehnäjauhot ja leivinjauhe, ja sekoita ne varovasti käännellen taikinaan.", "Kaada seos vuokaan.", "Paista uunin keskiosassa noin 12 minuuttia. Kakun kuuluu jäädä keskeltä tahmeaksi.", "Kakun voi hyvin valmistaa tarjoilua edeltävänä päivänä."]
             },
             {
                 "id": "suklaahippukeksit",
                 "title": "Suklaahippukeksit",
-                "tags": ["Makea leivonnainen", "Keksit"],
+                "tags": ["Jälkiruoat", "Leivonnaiset", "Keksit", "Helppo", "Makea"],
                 "ingredients": [
                     { "heading": "n. 12 kpl", "items": ["125 g huoneenlämpöistä voita", "1 dl sokeria", "1 dl fariinisokeria", "1 kananmuna", "1 tl vaniljauutetta tai vaniljasokeria", "3 dl vehnäjauhoja", "1/2 tl ruokasoodaa", "1/4 tl suolaa", "150 g tummaa leivontasuklaata tai suklaahippuja"] }
                 ],
+                "instructions": ["Vatkaa huoneenlämpöinen voi, sokeri ja fariinisokeri sähkövatkaimella tasaiseksi seokseksi.", "Vatkaa kananmuna ja vanilja joukkoon.", "Yhdistä toisessa kulhossa vehnäjauhot, ruokasooda ja suola.", "Rouhi suklaa karkeaksi, jos et käytä valmiita hippuja.", "Kääntele kuiva-aineseos ja suklaarouhe voi-sokerivaahtoon, sekoita vain sen verran että ainekset yhdistyvät.", "Nostele lusikalla 12 nokareeksi kahdelle leivinpaperilla vuoratulle uunipellille. Jätä leviämisvaraa.", "Paista 200-asteisessa uunissa 7-10 minuuttia. Ota keksit uunista, kun ne ovat vielä hieman raa'an näköisiä keskeltä, jotta sisus jää sitkeäksi.", "Vedä keksit leivinpapereineen pois kuumalta pelliltä ja anna jäähtyä ennen tarjoamista."]
+            },
+            {
+                "id": "rapeat-kanan-koipireidet-uunijuureksilla",
+                "title": "Rapeat kanan koipireidet uunijuureksilla",
+                "tags": ["Pääruoat", "Kanaruoat", "Uuniruoka", "Arkiruoka", "Helppo", "Suolainen"],
+                "ingredients": [
+                    { "heading": "4 annosta", "items": ["4 kpl kanan koipireisiä", "8 kpl perunaa", "2 kpl porkkanaa", "2 kpl sipulia", "2 rkl öljyä", "1 rkl hunajaa", "1 kpl sitruunan raastettu kuori", "1 tl suolaa", "0.5 tl mustapippuria", "1 oksa tuoretta rosmariinia"] }
+                ],
+                "instructions": ["Ota kanapalat huoneenlämpöön noin 30 minuuttia ennen paistamista.", "Paloittele juurekset ja pyörittele ne öljyssä.", "Mausta hunajalla, sitruunankuorella, suolalla ja pippurilla.", "Revi rosmariinista lehdet ja sekoita ne juuresten joukkoon.", "Laita juurekset uunivuokaan tai -pellille ja nosta kanapalat päälle.", "Paista 180-asteisessa uunissa noin tunti.", "Anna levähtää hetki ennen tarjoilua."]
+            },
+            {
+                "id": "calzone",
+                "title": "Calzone",
+                "tags": ["Pääruoat", "Leivonnaiset", "Pizzat", "Possu", "Uuniruoka", "Suolainen"],
+                "ingredients": [
+                    { "heading": "4 kpl", "items": ["1 pkt (4 kpl/170 g) pizzataikinaa (pakaste)", "3/4 dl pizzakastiketta", "1/2 pkt (à 210 g) ohuen ohutta saunapalvikinkkua", "2/3 tlk (à 140 g/227 g) pieniä ananaspaloja", "1 1/2 dl mozzarellaraastetta", "n. 1/2 ps (à 150 g) sinihomejuustomurua", "1-2 rkl käsittelyjauhoja tai vehnäjauhoja"] }
+                ],
+                "instructions": ["Ota pizzataikinat hyvissä ajoin pakkauksen ohjeen mukaan sulamaan.", "Jaa pizzataikinapallot kahteen osaan ja muotoile käsin venyttämällä pyöreiksi pohjiksi (halkaisija 16 cm) leivinpaperin päälle. Käytä tarvittaessa käsittelyjauhoja apuna.", "Täytä calzonet kahdessa osassa, jotta taikina ei vety.", "Levitä pizzakastike taikinan toiselle puolikkaalle, jätä reunoille pari senttiä tyhjää.", "Lisää kinkkuviipaleet, valutetut ananaspalat, juustoraaste ja sinihomejuustomuru.", "Taita taikina kaksin kerroin taskuksi ja nipistä taikina tiukasti kiinni reunoista.", "Kuumenna pelti 250-asteisessa uunissa. Paista calzonet kahdessa erässä.", "Siirrä calzonet leivinpapereiden kanssa pellille. Paista hiukan keskitasoa alempana noin 10 minuuttia, kunnes pinta on hiukan ruskistunut."]
+            },
+            {
+                "id": "pizzapohja",
+                "title": "Pizzapohja",
+                "tags": ["Leivonnaiset", "Pizzat", "Perusreseptit", "Suolainen"],
+                "ingredients": [
+                    { "heading": "1 pellillinen", "items": ["2 1/2 dl vettä", "25 g hiivaa", "3/4 tl suolaa", "n. 5 dl durumvehnäjauhoja", "2 rkl oliiviöljyä"] }
+                ],
+                "instructions": ["Liuota hiiva kädenlämpöiseen veteen.", "Lisää suola, jauhot ja öljy. Sekoita tasaiseksi.", "Alusta pizzataikinaa muutama minuutti. Anna kohota liinan alla lämpimässä ja vedottomassa paikassa, kunnes taikina on kaksinkertainen (noin 30 minuuttia).", "Kauli kohonnut taikina ohueksi levyksi. Nosta pizzapohja leivinpaperin päälle pellille.", "Täytä pizza haluamillasi täytteillä ja paista 250-asteisessa uunissa 10–15 minuuttia."]
+            },
+            {
+                "id": "kikhernecurry",
+                "title": "Kikhernecurry",
+                "tags": ["Pääruoat", "Kasvisruoat", "Keitot", "Arkiruoka", "Helppo", "Suolainen"],
+                "ingredients": [
+                    { "heading": null, "items": ["1 sipuli", "2 valkosipulinkynttä", "1 rkl rypsiöljyä", "2 tl curryjauhetta", "3 dl vettä", "1 kasvisliemikuutio", "1/2 dl tomaattipyreetä", "1 kanelitanko", "1/2 tl kardemummaa", "2 pkt (à 380/230 g) säilöttyjä kikherneitä", "3 dl maustamatonta jogurttia (esim. turkkilaista)", "1/2 dl tuoretta persiljaa hienonnettuna"] }
+                ],
                 "instructions": [
-                    "Vatkaa huoneenlämpöinen voi, sokeri ja fariinisokeri sähkövatkaimella tasaiseksi seokseksi.",
-                    "Vatkaa kananmuna ja vanilja joukkoon.",
-                    "Yhdistä toisessa kulhossa vehnäjauhot, ruokasooda ja suola.",
-                    "Rouhi suklaa karkeaksi, jos et käytä valmiita hippuja.",
-                    "Kääntele kuiva-aineseos ja suklaarouhe voi-sokerivaahtoon, sekoita vain sen verran että ainekset yhdistyvät.",
-                    "Nostele lusikalla 12 nokareeksi kahdelle leivinpaperilla vuoratulle uunipellille. Jätä leviämisvaraa.",
-                    "Paista 200-asteisessa uunissa 7-10 minuuttia. Ota keksit uunista, kun ne ovat vielä hieman raa'an näköisiä keskeltä, jotta sisus jää sitkeäksi.",
-                    "Vedä keksit leivinpapereineen pois kuumalta pelliltä ja anna jäähtyä ennen tarjoamista."
+                    "Kuori ja hienonna sipuli sekä valkosipuli.",
+                    "Kuumenna öljy kasarissa. Lisää sipulit ja curryjauhe. Kuullota sekoitellen, kunnes sipulit ovat pehmenneet.",
+                    "Lisää vesi, liemikuutio, tomaattipyree, kanelitanko ja kardemumma. Anna hautua kannen alla noin 10 minuuttia.",
+                    "Huuhtele ja valuta kikherneet. Lisää ne kasariin ja hauduta vielä 10 minuuttia.",
+                    "Sekoita jogurtti curryyn ja kuumenna, mutta älä enää keitä.",
+                    "Tarkista maku ja lisää tarvittaessa suolaa.",
+                    "Viimeistele hienonnetulla persiljalla ja tarjoa esimerkiksi riisin kanssa."
                 ]
             }
-        ]
+        ];
 
         // --- SIVUN TOIMINNALLISUUS ---
 
         const homePage = document.getElementById('home-page');
         const recipePage = document.getElementById('recipe-page');
-        const newRecipePage = document.getElementById('new-recipe-page');
         const recipeGrid = document.getElementById('recipe-grid');
         const recipeDetailContainer = document.getElementById('recipe-page');
         const tagFilterContainer = document.getElementById('tag-filter-container'); // Uusi
@@ -432,14 +325,11 @@
             window.scrollTo(0, 0); // Vieritä sivun ylälaitaan
             homePage.classList.add('hidden');
             recipePage.classList.add('hidden');
-            newRecipePage.classList.add('hidden');
 
             if (pageId === 'home') {
                 homePage.classList.remove('hidden');
             } else if (pageId === 'recipe') {
                 recipePage.classList.remove('hidden');
-            } else if (pageId === 'new-recipe') {
-                newRecipePage.classList.remove('hidden');
             }
         }
 
@@ -453,7 +343,7 @@
                 <div class="recipe-card bg-white rounded-2xl overflow-hidden shadow-md cursor-pointer" onclick="showRecipeDetail('${recipe.id}')">
                     <div class="p-5">
                         <h3 class="text-xl font-bold font-display text-gray-800">${recipe.title}</h3>
-                        <div class="mt-2">
+                        <div class="mt-2 flex flex-wrap gap-1"">
                             ${tagsHtml}
                         </div>
                     </div>
@@ -501,7 +391,7 @@
                     Takaisin
                 </button>
                 <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 font-display">${recipe.title}</h2>
-                <div class="flex flex-wrap gap-2 mb-6">
+                <br><div class="flex flex-wrap gap-2 mb-6">
                     ${tagsHtml}
                 </div>
                 
@@ -517,10 +407,23 @@
             showPage('recipe');
         }
 
-        // UUSI: Funktio, joka suodattaa reseptit tagin perusteella
+        // UUSI: Funktio, joka päättää, suodatetaanko vai poistetaanko suodatus
+        function toggleTagFilter(tag) {
+            // Jos klikattu tägi on jo aktiivinen, näytä kaikki. Muuten suodata.
+            if (activeTag === tag) {
+                filterRecipes('all');
+            } else {
+                filterRecipes(tag);
+            }
+        }
+
+        // PÄIVITETTY: Funktio, joka suodattaa reseptit ja päivittää näkymän
         function filterRecipes(tag) {
             activeTag = tag;
-            const filteredRecipes = tag === 'all' ? recipes : recipes.filter(recipe => recipe.tags.includes(tag));
+            const filteredRecipes = tag === 'all'
+                ? recipes
+                : recipes.filter(recipe => recipe.tags.includes(tag));
+
             recipeGrid.innerHTML = filteredRecipes.map(createRecipeCard).join('');
             showPage('home');
             updateTagButtonStyles(); // Päivitä tag-painikkeiden tyylit
@@ -534,7 +437,7 @@
             });
 
             tagFilterContainer.innerHTML = Array.from(allTags).map(tag => `
-                <button onclick="filterRecipes('${tag}')"
+                <button onclick="toggleTagFilter('${tag}')"
                     class="tag-button bg-gray-200 text-gray-700 hover:bg-rose-500 hover:text-white text-sm font-medium px-3 py-1 rounded-full transition-colors duration-200">
                     ${tag}
                 </button>
@@ -548,6 +451,8 @@
             document.querySelectorAll('.tag-button').forEach(button => {
                 if (button.textContent.trim() === activeTag) {
                     button.classList.add('active');
+                    button.classList.remove('hover:bg-rose-500');   // estää päällekkäisen hoverin
+
                 } else {
                     button.classList.remove('active');
                 }
