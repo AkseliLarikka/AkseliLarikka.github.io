@@ -4,56 +4,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reseptikirja</title>
+
+    <title>Akselin reseptikirja</title>
+
+    <meta name="description"
+        content="Löydä Akselin parhaiksi toteamat reseptit jokaiseen tilaisuuteen. Helpot ja nopeat arkiruoat, juhlavat kakut ja perinneruoat selkeillä ohjeilla ja ravintoarvoilla.">
+
+    <meta name="keywords"
+        content="reseptit, ruokaohjeet, leivonta, arki, juhla, kakut, suomalainen ruoka, helppo, nopea, pääruoat, jälkiruoat, kotiruoka, uuniruoka">
+
+    <link rel="canonical" href="https://akselilarikka.github.io/reseptit.html">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <meta property="og:title" content="Herkulliset Reseptit Arkeen ja Juhlaan | Suomalainen Reseptikirja">
+    <meta property="og:description"
+        content="Löydä parhaat suomalaiset reseptit jokaiseen tilaisuuteen, selkeillä ohjeilla ja ravintoarvoilla.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://akselilarikka.github.io/reseptit.html">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="fi_FI">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Herkulliset Reseptit Arkeen ja Juhlaan | Suomalainen Reseptikirja">
+    <meta name="twitter:description"
+        content="Löydä parhaat suomalaiset reseptit jokaiseen tilaisuuteen, selkeillä ohjeilla ja ravintoarvoilla.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Reseptikokoelma",
+        "description": "Kokoelma suomalaisia reseptejä arkeen ja juhlaan.",
+        "numberOfItems": 20,
+        "itemListElement": [
+            // Tämä lista tulisi generoida dynaamisesti `recipes`-datasta.
+            // Alla on esimerkki yhdestä reseptistä. Oikeassa toteutuksessa kaikki 20 reseptiä listattaisiin tähän.
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Recipe",
+                    "name": "Nyhtöpossu",
+                    "url": "https://www.esimerkkisivusi.fi/#nyhtopossu",
+                    "description": "Murea ja herkullinen nyhtöpossu colakastikkeessa. Täydellinen hampurilaisen väliin tai sellaisenaan.",
+                    "keywords": "Pääruoat, Liharuoat, Possu, Uuniruoka, Juhlat, Suolainen",
+                    "recipeIngredient": [
+                        "n. 1 kg:n painoinen pala porsaan niskaa",
+                        "suolaa",
+                        "3 rkl tomaattipyreetä",
+                        "½ l kolajuomaa (ei light)",
+                        "1 dl lihalientä",
+                        "2 rkl chilitahnaa",
+                        "1 tl kanelia",
+                        "1 rkl korianterinsiemeniä",
+                        "2 tl suolaa",
+                        "4 sipulia",
+                        "8 valkosipulinkynttä"
+                    ],
+                    "recipeInstructions": [
+                        { "@type": "HowToStep", "text": "Ota possu huoneenlämpöön. Hiero sen pintaan suolaa." },
+                        { "@type": "HowToStep", "text": "Sekoita mausteliemen aineet ja kaada pataan sipuleiden kanssa. Upota possu liemeen." },
+                        { "@type": "HowToStep", "text": "Kuumenna pata 200 asteessa 30 min, laske sitten lämpötila 120 asteeseen ja hauduta noin 4 tuntia." },
+                        { "@type": "HowToStep", "text": "Revi ylikypsä liha säikeiksi ja sekoita kastikkeeseen." }
+                    ],
+                    "nutrition": {
+                        "@type": "NutritionInformation",
+                        "calories": "195 kcal",
+                        "proteinContent": "14 g",
+                        "carbohydrateContent": "8 g",
+                        "fatContent": "11 g",
+                        "servingSize": "100g"
+                    },
+                    "author": {
+                        "@type": "Person",
+                        "name": "Reseptikirja"
+                    },
+                    "prepTime": "PT20M",
+                    "cookTime": "PT4H30M",
+                    "totalTime": "PT4H50M",
+                    "recipeYield": "8 annosta"
+                }
+            }
+            // ... Tähän tulisi loput 19 reseptiä vastaavassa muodossa
+        ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
         }
 
-        h1,
-        h2,
-        h3,
         .font-display {
             font-family: 'Playfair Display', serif;
         }
 
-        .recipe-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-
-        .recipe-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        }
-
-        .strikethrough {
-            text-decoration: line-through;
-        }
-
+        /* Aktiivisen tag-painikkeen tyyli */
         .tag-button.active {
-            background-color: #be123c;
-            /* rose-700 */
-            color: #fff;
+            background-color: #be185d;
+            /* text-rose-700 */
+            color: white;
         }
 
-        /* === tag-button hover‑tilat === */
-        .tag-button:not(.active):hover {
-            background-color: #f43f5e;
-            /* rose‑500 − sama kuin ennen */
-            color: #fff;
+        #all-recipes-button.active {
+            background-color: #be185d;
+            color: white;
         }
 
-        .tag-button.active:hover {
-            background-color: #9f1239;
-            /* rose‑800 − erottuu klikatusta perustilasta */
-            color: #fff;
+        /* Yliviivatun ohjevaiheen tyyli */
+        input[type="checkbox"]:checked+label {
+            text-decoration: line-through;
+            color: #9ca3af;
+            /* text-gray-400 */
         }
     </style>
 </head>
@@ -64,7 +136,7 @@
 
         <header class="mb-8 text-center">
             <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-2">Akselin reseptikirja</h1>
-            <p class="text-gray-500">Kokoelma ruoanlaitto- ja leivontareseptejä.</p>
+            <p class="text-gray-500">Kokoelma ruoanlaitto- ja leivontareseptejä.<br>Resepteissä myös makrot.</p>
             <nav class="mt-6">
                 <button onclick="filterRecipes('all')"
                     class="text-lg text-rose-600 hover:text-rose-800 font-medium px-4 py-2"
