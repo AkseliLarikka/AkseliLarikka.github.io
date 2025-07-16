@@ -373,6 +373,7 @@ img {
 .project__title {
     font-size: var(--h3-font-size);
     margin-bottom: var(--mb-1);
+    padding-left: 0.5rem;
 }
 
 .project__skills {
