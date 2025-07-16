@@ -95,7 +95,7 @@ const translations = {
 
         // Projektit
         projects_section_title: "Projects",
-        project1_title: "Battlefield Web Game",
+        project1_title: "Taistelukenttä d20 Strategic TTRPG",
         project1_description: "A strategy project simulating modern warfare, which evolved from a static rule page to a dynamic game platform. I implemented interactive tools, automated content with a Python script, and adopted a CI/CD workflow with GitHub Actions.",
         project1_skills: "JavaScript, Python, CI/CD, HTML, CSS, SEO",
         project1_link: "Explore the game",
@@ -183,8 +183,8 @@ const translations = {
         skills_area_languages: "Kielet",
         skills_tech_languages: "Suomi (Äidinkieli), Englanti (C1.1), Ruotsi (B2.1), Venäjä (A2.1)",
         projects_section_title: "Projektit",
-        project1_title: "Taistelukenttä-verkkopeli",
-        project1_description: "Modernia sodankäyntiä simuloiva strategiaprojekti, joka kehittyi staattisesta sääntösivusta dynaamiseksi pelialustaksi. Toteutin interaktiivisia työkaluja, automatisoin sisältöä Python-skriptillä ja otin käyttöön CI/CD-työnkulun GitHub Actionsilla.",
+        project1_title: "Taistelukenttä d20 strateginen sotapeli",
+        project1_description: "Modernia sodankäyntiä simuloiva strategiaprojekti, joka kehittyi staattisesta sääntösivusta dynaamisia työkaluja sisältäväksi pelialustaksi. Toteutin interaktiivisia työkaluja, automatisoin sisältöä Python-skriptillä ja otin käyttöön CI/CD-työnkulun GitHub Actionsilla.",
         project1_skills: "JavaScript, Python, CI/CD, HTML, CSS, SEO",
         project1_link: "Tutustu peliin",
         project2_title: "Full Stack -verkkokauppasovellus",
