@@ -127,9 +127,9 @@ const translations = {
         exp1_desc: "Major in Cybersecurity.",
         exp2_title: "Industrial Automation Intern",
         exp2_company: "Larikka Automation Oy",
-        exp2_date: "05/2024 - 08/2025",
+        exp2_date: "05/2024 - 07/2024 & 05/2025 - 08/2025",
         exp2_desc: "I actively participated in a production line modernization project, where my responsibilities included system testing, troubleshooting, and problem-solving. I designed and implemented user interfaces in the Siemens TIA environment and managed virtualized test environments.",
-        exp3_title: "Security Steward",
+        exp3_title: "Security Officer / Bouncer",
         exp3_company: "Turvallisuusplaneetta Oy & KST Oy",
         exp3_date: "04/2022 - 07/2025",
         exp3_desc: "I worked as a security steward, performing my statutory duties. The work developed my decision-making and resilience under pressure.",
@@ -211,9 +211,9 @@ const translations = {
         exp1_company: "Jyväskylän ammattikorkeakoulu",
         exp1_date: "2023 - 2027 (arvio)",
         exp1_desc: "Pääsuuntautumisena kyberturvallisuus.",
-        exp2_title: "Teollisuusautomaatioharjoittelija",
+        exp2_title: "Teollisuus&shy;automaatio&shy;harjoittelija",
         exp2_company: "Larikka Automation Oy",
-        exp2_date: "05/2024 - 08/2025",
+        exp2_date: "05/2024 - 07/2024 & 05/2025 - 08/2025",
         exp2_desc: "Osallistuin aktiivisesti tuotantolinjan modernisointiprojektiin, jossa vastuisiini kuului järjestelmätestaus, vianetsintä ja ongelmanratkaisu. Suunnittelin ja toteutin käyttöliittymiä Siemens TIA -ympäristössä ja hallinnoin virtualisoituja testiympäristöjä.",
         exp3_title: "Järjestyksenvalvoja",
         exp3_company: "Turvallisuusplaneetta Oy & KST Oy",
@@ -253,7 +253,7 @@ const setLanguage = (lang) => {
     document.querySelectorAll('[data-translate]').forEach(element => {
         const key = element.getAttribute('data-translate');
         if (translations[lang] && translations[lang][key]) {
-            element.innerText = translations[lang][key];
+            element.innerHTML = translations[lang][key];
         }
     });
 
