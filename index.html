@@ -2,115 +2,348 @@
 <html lang="fi">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="Akseli Larikka homepage" content="Home page and portfolio of Akseli Larikka">
-  <meta name="robots" content="index, noimageindex, noarchive">
-  <meta name="keywords" lang="fi"
-    content="Akseli Larikka, etusivu, kotisivu, portfolio, ansioluettelo, CV, profiili, projektit, insinööriopiskelija, Jyväskylän ammattikorkeakoulu, JAMK, tieto- ja viestintätekniikka, ICT, kyberturvallisuus, järjestelmäasiantuntija, IT-opiskelija, Python, Linux, kyber, tietoverkot, järjestelmät, verkkoinsinööri, NOC, SOC, VirtualBox">
-  <meta name="keywords" lang="en"
-    content="Akseli Larikka, homepage, portfolio, resume, CV, profile, projects, engineering student, JAMK University of Applied Sciences, information and communication technology, ICT, cybersecurity, Systems engineer, IT student, Python, Linux, cyber, network, systems, network engineer, NOC, SOC, VirtualBox">
-  <meta name="author" content="Akseli Larikka">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akseli Larikka - Etusivu</title>
+  <meta name="description"
+    content="Akseli Larikan henkilökohtainen portfolio, joka esittelee projektit, osaamisen ja työkokemuksen.">
+  <meta name="keywords"
+    content="Akseli Larikka, portfolio, ansioluettelo, CV, profiili, projektit, insinööriopiskelija, Jyväskylän ammattikorkeakoulu, JAMK, tieto- ja viestintätekniikka, ICT, kyberturvallisuus, järjestelmäasiantuntija, IT-opiskelija, Python, Linux, kyber, tietoverkot, järjestelmät, verkkoinsinööri, NOC, SOC">
+  <meta name="author" content="Akseli Larikka">
+  <title>Akseli Larikka - Portfolio</title>
   <link rel="icon" type="image/x-icon" href="images/alogo.jpg">
-  <link rel="stylesheet" type="text/css" href="./Styles/index.css">
-  <script src="https://kit.fontawesome.com/b31bc70bf6.js" crossorigin="anonymous"></script>
-  <link href="lightbox2-2.11.4/dist/css/lightbox.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+  <link rel="stylesheet" href="Styles/style.css">
 </head>
 
-<body id="otsikot">
-  <!--Articlen sisällä on sivun sisältö ja lähdekoodi-->
-  <article class="page">
-    <!-- navigointi alkaa -->
-    <nav id="nav">
-      <div class="nimi">Akseli Larikka - Etusivu</div>
-      <ul class="nav">
-        <li class="nav"><a class="active" href="index.html"><i class="fa-solid fa-house"></i> Etusivu</a></li>
-        <li class="nav"><a href=projektit.html><i class="fa-solid fa-diagram-project"></i>Projektit</a></li>
-        <li class="nav"><a href="cv.html"><i class="fa-solid fa-briefcase"></i>Portfolio</a></li>
-        <li class="nav"><a href=profiili.html><i class="fa-solid fa-user"></i>Profiili</a></li>
-      </ul>
-      <div class="language"><a class="language" href="wip.html"><img class="language" src="images/Flag_of_Finland.jpg"
-            alt="Suomen lippu (language switch)"> / <img class="language" src="images/Flag_of_the_United_Kingdom.jpg"
-            alt="Iso-britannian lippu (language switch)"></a></div>
-    </nav>
-    <!--Header sart-->
-    <header>
-      <h1>Akseli Larikka</h1>
-      <h1>Cyber security engineer</h1>
-      <h5>(in progress)</h5>
-    </header>
-    <!--Otsikko/banneri-->
-    <!-- navigointi päättyy ja sisältö alkaa. Kuvagalleriat toteutettu Lokesh Dhakarin lähdekoodin avulla https://lokeshdhakar.com/projects/lightbox2/#getting-started-->
-    <section>
-      <div class="section-index-header">
-        <h2 class="mediah2">Opiskelija, liikkuja, reserviläinen</h2>
+<body>
+
+  <header class="header">
+    <nav class="nav container">
+      <a href="#koti" class="nav__logo">Akseli Larikka - Portfolio</a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li><a href="#profiili" class="nav__link" data-translate="nav_profile">Profiili</a></li>
+          <li><a href="#projektit" class="nav__link" data-translate="nav_projects">Projektit</a></li>
+          <li><a href="#kokemus" class="nav__link" data-translate="nav_experience">Kokemus</a></li>
+          <li><a href="#harrastukset" class="nav__link" data-translate="nav_hobbies">Harrastukset</a></li>
+          <li><a href="#yhteystiedot" class="nav__link" data-translate="nav_contact">Ota yhteyttä</a></li>
+          <li><a href="#" id="language-switcher" class="nav__link"></a></li>
+        </ul>
+        <div class="nav__close" id="nav-close"><i class="fas fa-times"></i></div>
       </div>
-      <section class="contentLeft"> <!--vasen section-->
-        <h3>Profiili</h3>
-        <a class="kasvot" href="images/PukukuvaPyöreä.png" data-lightbox="etusivu"
-          data-title="Hyvät kuvat lisäävät itsevarmuutta.">
-          <img class="kasvot" src="images/PukukuvaPyöreä.png" alt="Kuva minusta vuosijuhlissa">
-        </a>
-        <p>
-          Olen toisen vuoden insinööriopiskelija Jyväskylän
-          ammattikorkeakoulun IT-instituutissa,
-          Tieto- ja viestintätekniikan alalla.
-        </p>
-        <a href="profiili.html">
-          <h4 style="color: #000; width: 10em; margin-left: 0;">Lue lisää <i
-              class="fa-solid fa-up-right-from-square"></i>
-          </h4>
-        </a>
-      </section> <!--vasen section päättyy-->
-      <section class="contentMiddle"> <!--oikea section alkaa-->
-        <h3>Projektit</h3>
-        <a class="harjesittely" href="images/datanetworks.png" data-lightbox="etusivu"
-          data-title="Tietoverkot VirtualBox ohjelmistossa.">
-          <img class="harjesittely" src="images/datanetworks.png" alt="Tietoverkkojen virtualbox">
-        </a>
-        <p>
-          Opiskelujeni edetessä osana kurssien suorittamista tulee usein
-          tehdä jonkinlainen harjoitustyö.
-          Koostaan niistä omalle sivulleen lyhyet esitelmät ja tärkeimmät
-          opit.
-        </p>
-        <a href="projektit.html">
-          <h4 style="color: #000; width: 10em; margin-left: 0;">Lue lisää <i
-              class="fa-solid fa-up-right-from-square"></i>
-          </h4>
-        </a>
-      </section> <!--oikea section loppuu-->
-      <section class="contentRight">
-        <h3>Portfolio</h3>
-        <a class="cv" href="images/työntouhussa.jpeg" data-lightbox="etusivu"
-          data-title="Tekeekö mies työn vai työ miehen?">
-          <img class="cv" src="images/työntouhussa.jpeg" alt="Tekeekö mies työn vai työ miehen?">
-        </a>
-        <p>Kokoan tälle sivulle kollaasin saamastani työkokemuksesta ja koulutuksesta.</p>
-        <a href="cv.html">
-          <h4 style="color: #000; width: 10em; margin-left: 0;">Lue lisää <i
-              class="fa-solid fa-up-right-from-square"></i>
-          </h4>
-        </a>
-      </section>
+      <div class="nav__actions">
+        <div class="nav__lang" id="mobile-lang-switcher">
+          <i class="fas fa-globe"></i>
+        </div>
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="home" id="koti">
+      <div class="home__container container grid">
+        <div class="home__data">
+          <h1 class="home__title">Akseli Larikka</h1>
+          <h2 class="home__subtitle" data-translate="home_subtitle">IT/OT Kyberturvainsinööri (opiskelija)</h2>
+          <p class="home__description" data-translate="home_description">
+            Kolmannen vuoden tieto- ja viestintätekniikan insinööriopiskelija, jolla on käytännön kokemusta
+            teollisuusautomaation (OT) ja IT-infrastruktuurin yhdistämisestä. Vahvuuksiani ovat nopea
+            oppimiskyky ja ongelmanratkaisu tuotantokriittisissä ympäristöissä.
+          </p>
+          <a href="pdf/CV_Akseli_Larikka.pdf" id="cv-link" class="button" target="_blank"
+            data-translate="download_cv">Lataa CV (PDF)</a>
+        </div>
+        <div class="home__img">
+          <a href="images/PukukuvaPyöreä.png" data-lightbox="profiilikuvat" data-title="Akseli Larikka">
+            <img src="images/PukukuvaPyöreä.png" alt="Kuva Akseli Larikasta">
+          </a>
+        </div>
+      </div>
     </section>
-    <!-- Sisältö päättyy ja footer alkaa -->
-    <div id="footer">
-      <ul class="nav">
-        <li class="footer">Yhteystiedot:</li>
-        <li class="footer"><a href="mailto:akseli.larikka@gmail.com"><i class="fa-regular fa-envelope fa-lg"></i></a>
-        </li>
-        <li class="footer"><a href="https://linkedin.com/in/akseli-larikka" target="_blank"><i
-              class="fa-brands fa-linkedin fa-lg"></i></a></li>
-        <li class="footer"><a href="https://github.com/AkseliLarikka/" target="_blank"><i style="font-size: 125%;"
-              class="fa-brands fa-github"></i></a></li>
-      </ul>
+
+    <section class="section container" id="profiili">
+      <h2 class="section__title" data-translate="profile_section_title">Profiili ja Osaaminen</h2>
+      <div class="profile__container grid">
+        <div class="profile__data">
+          <h3 data-translate="profile_who_am_i">Kuka olen?</h3>
+          <p data-translate="profile_paragraph">
+            Olen rauhallinen ja harkitseva ongelmanratkaisija, jolla on korkea resilienssi ja itseohjautuva työote.
+            Kyselen paljon, koska haluan ymmärtää asiat perusteellisesti. Pidän itseni haastamisesta niin fyysisesti
+            kuin henkisestikin, mikä heijastuu uravalintoihini ja harrastuksiini. Etsin aktiivisesti haasteita, joissa
+            voin hyödyntää ja syventää osaamistani erityisesti OT-ympäristöjen kyberturvallisuuden parissa.
+          </p>
+        </div>
+        <div class="skills__data">
+          <h3 data-translate="skills_title">Taidot</h3>
+          <div class="table-container">
+            <table class="skills__table">
+              <thead>
+                <tr>
+                  <th data-translate="skills_header_area">Osa-alue</th>
+                  <th data-translate="skills_header_tech">Teknologiat ja taidot</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-translate="skills_area_cyber">Kyberturvallisuus</td>
+                  <td data-translate="skills_tech_cyber">NIS2, SIEM, OSI/TCP/IP-mallit, Kyberturvallisuuden perusteet
+                  </td>
+                </tr>
+                <tr>
+                  <td data-translate="skills_area_infra">IT-Infrastruktuuri</td>
+                  <td data-translate="skills_tech_infra">Linux, Windows 10/11, Oracle VBox, Hyper-V, AWS, Azure</td>
+                </tr>
+                <tr>
+                  <td data-translate="skills_area_ot">Teollisuusautomaatio (OT)</td>
+                  <td data-translate="skills_tech_ot">Siemens TIA v18, STEP7, PLC-logiikat, HMI-suunnittelu</td>
+                </tr>
+                <tr>
+                  <td data-translate="skills_area_programming">Ohjelmointi & Muut</td>
+                  <td data-translate="skills_tech_programming">Python, JavaScript, NodeJS, HTML/CSS, REST, GIT, Agile
+                  </td>
+                </tr>
+                <tr>
+                  <td data-translate="skills_area_languages">Kielet</td>
+                  <td data-translate="skills_tech_languages">Suomi (Äidinkieli), Englanti (C1.1), Ruotsi (B2.1), Venäjä
+                    (A2.1)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="projektit">
+      <h2 class="section__title" data-translate="projects_section_title">Projektit</h2>
+      <div class="projects__container grid">
+        <div class="project__card">
+          <h3 class="project__title" data-translate="project1_title">Taistelukenttä-verkkopeli</h3>
+          <a href="images/TKD20LOGO.png" data-lightbox="projektit" data-title="Taistelukenttä-pelin logo">
+            <img src="images/TKD20LOGO.png" alt="Taistelukenttä-pelin logo" class="project__img">
+          </a>
+          <div class="project__data">
+            <p data-translate="project1_description">Modernia sodankäyntiä simuloiva strategiaprojekti, joka kehittyi
+              staattisesta sääntösivusta dynaamiseksi
+              pelialustaksi. Toteutin interaktiivisia työkaluja, automatisoin sisältöä Python-skriptillä ja otin
+              käyttöön CI/CD-työnkulun GitHub Actionsilla.</p>
+            <span class="project__skills" data-translate="project1_skills">JavaScript, Python, CI/CD, HTML, CSS,
+              SEO</span>
+            <a href="https://akselilarikka.github.io/taistelukentta" class="button--link" target="_blank">
+              <span data-translate="project1_link">Tutustu peliin</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project__card">
+          <h3 class="project__title" data-translate="project2_title">Full Stack -verkkokauppasovellus</h3>
+          <a href="images/fullstack_harkka.png" data-lightbox="projektit" data-title="Full Stack -harjoitustyö">
+            <img src="images/fullstack_harkka.png" alt="Kuva Full Stack -harjoitustyöstä" class="project__img">
+          </a>
+          <div class="project__data">
+            <p data-translate="project2_description">Parityönä toteutettu harjoitussovellus, joka imitoi autojen
+              verkkokauppaa. Projekti syvensi osaamistani
+              modernien verkkoteknologioiden parissa.</p>
+            <span class="project__skills" data-translate="project2_skills">JavaScript, NodeJS, MongoDB, Agile</span>
+            <a href="https://github.com/AkseliLarikka/SchoolProjects/tree/main/Full%20stack%20harjoitusty%C3%B6/exercise"
+              class="button--link" target="_blank">
+              <span data-translate="project2_link">Katso GitHubissa</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project__card">
+          <h3 class="project__title" data-translate="project3_title">Python-salasanaohjelma</h3>
+          <a href="images/pythonharj.png" data-lightbox="projektit" data-title="Python-salasanageneraattori">
+            <img src="images/pythonharj.png" alt="Kuva python-projektista" class="project__img">
+          </a>
+          <div class="project__data">
+            <p data-translate="project3_description">Ohjelmoinnin perusteiden harjoitustyönä toteutettu Python-skripti,
+              joka generoi satunnaisen salasanan ja
+              tarkistaa sen vahvuuden Selenium WebDriverin avulla.</p>
+            <span class="project__skills" data-translate="project3_skills">Python, Selenium, Visual Studio Code</span>
+            <a href="https://github.com/AkseliLarikka/SchoolProjects/tree/main/Python%20harjoitusty%C3%B6/exercise"
+              class="button--link" target="_blank">
+              <span data-translate="project3_link">Katso GitHubissa</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project__card">
+          <h3 class="project__title" data-translate="project4_title">Henkilökohtaiset sivustot</h3>
+          <a href="images/cyrillic.png" data-lightbox="projektit" data-title="Venäjän kielen aakkoset">
+            <img src="images/cyrillic.png" alt="Kuva venäjän kielen harjoitussivusta" class="project__img">
+          </a>
+          <div class="project__data">
+            <p data-translate="project4_description">Olen luonut ja ylläpidän harrastuneisuuteeni perustuen erilaisia
+              verkkosivustoja. Näihin kuuluvat venäjän
+              kieliopin harjoitussivu sekä henkilökohtainen reseptikirjani. Nämä projektit ovat antaneet minulle
+              käytännön kokemusta verkkokehityksestä ja sisällönhallinnasta.</p>
+            <span class="project__skills" data-translate="project4_skills">HTML, CSS, JavaScript, SEO</span>
+            <a href="rus.html" class="button--link" target="_blank">
+              <span data-translate="project4_link1">Kielioppisivu</span> <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="reseptit.html" class="button--link" target="_blank">
+              <span data-translate="project4_link2">Reseptisivu</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project__card">
+          <h3 class="project__title" data-translate="project5_title">Toimiva tietoverkko yritykselle</h3>
+          <a href="images/looginentopo.png" data-lightbox="projektit" data-title="Tietoverkkojen looginen topologia">
+            <img src="images/looginentopo.png" alt="Kuva tietoverkkojen topologiasta" class="project__img">
+          </a>
+          <div class="project__data">
+            <p data-translate="project5_description">Virtuaaliympäristössä toteutettu kuvitteellisen yrityksen
+              tietoverkko, jossa yhdistettiin päätelaitteita,
+              kytkimiä ja reitittimiä. Harjoitus sisälsi mm. aliverkotusta ja verkkoliikenteen analysointia
+              Wiresharkilla.</p>
+            <span class="project__skills" data-translate="project5_skills">OSI & TCP/IP, Aliverkotus, Wireshark</span>
+          </div>
+        </div>
+        <div class="project__card">
+          <h3 class="project__title" data-translate="project6_title">MySQL-tietokanta</h3>
+          <a href="images/tietokantaharj.png" data-lightbox="projektit" data-title="MySQL-tietokanta">
+            <img src="images/tietokantaharj.png" alt="Kuva MySQL-tietokannasta" class="project__img">
+          </a>
+          <div class="project__data">
+            <p data-translate="project6_description">Parityönä suunniteltu ja toteutettu relaatiotietokanta
+              kuvitteelliselle käytettyjen autojen
+              verkkokaupalle. Projekti kattoi tietokannan suunnittelun, toteutuksen SQL:llä ja hallinnoinnin MySQL
+              Workbench -työkalulla.</p>
+            <span class="project__skills" data-translate="project6_skills">SQL, MySQL Workbench,
+              Tietokantasuunnittelu</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="kokemus">
+      <h2 class="section__title" data-translate="experience_section_title">Työkokemus ja Koulutus</h2>
+      <div class="timeline">
+        <div class="timeline__item">
+          <div class="timeline__content">
+            <h4 class="timeline__title" data-translate="exp1_title">Insinööri (AMK), Tieto- ja viestintätekniikka</h4>
+            <p class="timeline__company" data-translate="exp1_company">Jyväskylän ammattikorkeakoulu</p>
+            <span class="timeline__date" data-translate="exp1_date">2023 - 2027 (arvio)</span>
+            <p class="timeline__description" data-translate="exp1_desc">
+              Pääsuuntautumisena kyberturvallisuus.
+            </p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__content">
+            <h4 class="timeline__title" data-translate="exp2_title">Teollisuusautomaatio&shy;harjoittelija</h4>
+            <p class="timeline__company" data-translate="exp2_company">Larikka Automation Oy</p>
+            <span class="timeline__date" data-translate="exp2_date">05/2024 - 08/2025</span>
+            <p class="timeline__description" data-translate="exp2_desc">
+              Osallistuin aktiivisesti tuotantolinjan modernisointiprojektiin, jossa vastuisiini kuului
+              järjestelmätestaus, vianetsintä ja ongelmanratkaisu. Suunnittelin ja toteutin käyttöliittymiä Siemens TIA
+              -ympäristössä ja hallinnoin virtualisoituja testiympäristöjä.
+            </p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__content">
+            <h4 class="timeline__title" data-translate="exp3_title">Järjestyksenvalvoja</h4>
+            <p class="timeline__company" data-translate="exp3_company">Turvallisuusplaneetta Oy & KST Oy</p>
+            <span class="timeline__date" data-translate="exp3_date">04/2022 - 07/2025</span>
+            <p class="timeline__description" data-translate="exp3_desc">
+              Toimin järjestyksenvalvojana ja suoritin lakisääteiset tehtäväni. Työ kehitti päätöksenteko- ja
+              paineensietokykyäni.
+            </p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__content">
+            <h4 class="timeline__title" data-translate="exp4_title">Sijainen</h4>
+            <p class="timeline__company" data-translate="exp4_company">Nokian Emäkosken yläaste</p>
+            <span class="timeline__date" data-translate="exp4_date">04/2022 - 05/2023</span>
+            <p class="timeline__description" data-translate="exp4_desc">
+              Toimin tuntisijaisena yläasteella, mikä kehitti koulutuskykyjäni ja pääsin soveltamaan aliupseerikoulussa
+              oppimiani kouluttajan taitoja.
+            </p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__content">
+            <h4 class="timeline__title" data-translate="exp5_title">Varusmiespalvelus, Alikersantti</h4>
+            <p class="timeline__company" data-translate="exp5_company">Panssariprikaati</p>
+            <span class="timeline__date" data-translate="exp5_date">2022 - 2023</span>
+            <p class="timeline__description" data-translate="exp5_desc">
+              Sotilaspoliisialikersantin johtajakoulutus, joka opetti ryhmän johtamista ja toimintakyvyn säilyttämistä
+              paineessa.
+            </p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__content">
+            <h4 class="timeline__title" data-translate="exp6_title">Ylioppilas</h4>
+            <p class="timeline__company" data-translate="exp6_company">Lempäälän lukio</p>
+            <span class="timeline__date" data-translate="exp6_date">2019 - 2022</span>
+            <p class="timeline__description" data-translate="exp6_desc">
+              Toimin koulun opiskelijakunnan valo-, ääni- ja esitystekniikkavastaavana. Minut palkittiin myös
+              yrittäjähenkisimpänä ylioppilaana.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="harrastukset">
+      <h2 class="section__title" data-translate="hobbies_section_title">Harrastukset</h2>
+      <div class="hobbies__container grid">
+        <div class="hobby__card">
+          <a href="images/karhunkierrospuolivali.jpg" data-lightbox="harrastukset" data-title="Karhunkierros">
+            <img src="images/karhunkierrospuolivali.jpg" alt="Maisema karhunkierrokselta">
+          </a>
+          <h3 class="hobby__title" data-translate="hobby1_title">Vaellus ja Luonto</h3>
+        </div>
+        <div class="hobby__card">
+          <a href="images/kirjat.jpg" data-lightbox="harrastukset" data-title="Lukeminen">
+            <img src="images/kirjat.jpg" alt="Kirjapino">
+          </a>
+          <h3 class="hobby__title" data-translate="hobby2_title">Lukeminen</h3>
+        </div>
+        <div class="hobby__card">
+          <a href="images/shoot.jpeg" data-lightbox="harrastukset" data-title="Ammunta">
+            <img src="images/shoot.jpeg" alt="Ammuntarata">
+          </a>
+          <h3 class="hobby__title" data-translate="hobby3_title">Urheiluammunta</h3>
+        </div>
+        <div class="hobby__card">
+          <a href="images/mpktuliblur.png" data-lightbox="harrastukset" data-title="MPK-kurssilla">
+            <img src="images/mpktuliblur.png" alt="Nuotion sytytystä">
+          </a>
+          <h3 class="hobby__title" data-translate="hobby4_title">Reserviläistoiminta</h3>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="yhteystiedot">
+    <div class="footer__container container">
+      <h3 class="footer__title" data-translate="footer_title">Ota yhteyttä</h3>
+      <div class="footer__social">
+        <a href="mailto:akseli.larikka@gmail.com" class="footer__social-link" target="_blank">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/akseli-larikka" class="footer__social-link" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/AkseliLarikka" class="footer__social-link" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <p class="footer__copy">&copy; 2025 Akseli Larikka. <span data-translate="footer_rights">Kaikki oikeudet
+          pidätetään.</span></p>
     </div>
-    <!-- Footer päättyy -->
-  </article>
-  <a class="hidden" href="images/Tekijänoikeudet.png">LISENSSI/LICENSE:</a>
-  <script src="lightbox2-2.11.4/dist/js/lightbox-plus-jquery.js"> </script>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <script src="Scripts/script.js"></script>
 </body>
 
 </html>

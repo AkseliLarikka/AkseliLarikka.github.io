@@ -6,22 +6,58 @@
 
 /* Määritellään perusasetukset body-elementille */
 body {
-  background-color: #f7f7f8; 
-  font-size: 125%; 
-  font-family: 'Merriweather', serif; /* Käytetään Merriweather-kirjasinta */
-  text-align: center; 
-  max-width: 95%; 
-  border: 1px solid #101122; 
-  margin: 0px auto; 
+  background-color: #f7f7f8;
+  font-size: 125%;
+  font-family: 'Merriweather', serif;
+  /* Käytetään Merriweather-kirjasinta */
+  text-align: center;
+  max-width: 95%;
+  border: 1px solid #101122;
+  margin: 0px auto;
   min-height: 100%;
   font-family: Merriweather Sans;
 }
 
+.header-buttons {
+  margin-top: 20px;
+}
+
+.button-primary,
+.button-secondary {
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.button-primary {
+  background-color: #b3d9ff;
+  color: #101122;
+  border: 1px solid #101122;
+}
+
+.button-primary:hover {
+  background-color: #101122;
+  color: #eeeef7;
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: #eeeef7;
+  border: 1px solid #eeeef7;
+}
+
+.button-secondary:hover {
+  background-color: #eeeef7;
+  color: #101122;
+}
+
 /* Tyyli bannerille */
 header {
-  margin: 0; 
-  padding: 40px; 
-  color: #eeeef7; 
+  margin: 0;
+  padding: 40px;
+  color: #eeeef7;
   letter-spacing: 3px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url(../images/universe.jpeg);
   min-width: 90%;
@@ -34,7 +70,7 @@ article.page {
   text-align: center;
   margin: 0px auto;
   overflow: hidden;
-  box-shadow: 0 0 4px 4px rgba(0,0,0,0.7);
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* Tyyli yhteystiedoille */
@@ -45,7 +81,8 @@ article.page {
 }
 
 /* Tyyli navigaatiolle ja footerille */
-#nav, #footer {
+#nav,
+#footer {
   height: 2%;
   text-align: center;
   margin: 0;
@@ -87,7 +124,7 @@ ul.nav {
   padding: 0;
   overflow: hidden;
   align-items: center;
-  display:contents;
+  display: contents;
 }
 
 li.nav {
@@ -99,20 +136,23 @@ li.nav {
 /* Tyyli navigaation linkeille */
 li a {
   display: flex;
-  flex-direction: column; /* Asetetaan ikoni ja teksti pystysuoraan */
-  align-items: center; /* Keskittää sisällön vaakasuunnassa */
+  flex-direction: column;
+  /* Asetetaan ikoni ja teksti pystysuoraan */
+  align-items: center;
+  /* Keskittää sisällön vaakasuunnassa */
   color: #eeeef7;
   padding: 14px 16px;
   text-decoration: none;
 }
 
 li a i {
-  margin-bottom: 5px; /* Lisää välistystä ikonin ja tekstin väliin */
+  margin-bottom: 5px;
+  /* Lisää välistystä ikonin ja tekstin väliin */
 }
 
 li a:hover {
-  transform: scale(1.1); 
-  transition: all 0.3s ease-in-out; 
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
 }
 
 /* Tyyli aktiiviselle linkille */
@@ -153,13 +193,13 @@ a.hidden {
 }
 
 /* Tyyli erityislinkille */
-.tekstilinkki{
+.tekstilinkki {
   color: #101122;
 }
 
 .tekstilinkki:hover {
-  transform: scale(1.1); 
-  transition: all 0.3s ease-in-out; 
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
 }
 
 div.language {
@@ -167,12 +207,13 @@ div.language {
   text-align: center;
   color: #eeeef7;
   margin: 0.5em 0.5em;
-  top: 0; left: 90%;
+  top: 0;
+  left: 90%;
   z-index: 2;
 }
 
 div.language:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   transition: all 0.3s ease-in-out;
 }
 
@@ -182,26 +223,29 @@ a.language {
 }
 
 a.language:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   transition: all 0.3s ease-in-out;
 }
 
 img.language {
   width: 1.5em;
   height: 0.75em;
-  left: 8px; top: 8px;
+  left: 8px;
+  top: 8px;
 }
 
 /* Tyyli otsikoille */
-#otsikot h3, #otsikot h4 {
-  margin: 5px auto; /* Adjust margin as needed */
+#otsikot h3,
+#otsikot h4 {
+  margin: 5px auto;
+  /* Adjust margin as needed */
   padding: 5px 1.5rem;
   text-align: center;
 }
 
 /* Tyyli kappaleille */
 p {
-  width: 80%; 
+  width: 80%;
   text-align: left;
 }
 
@@ -218,13 +262,15 @@ div.harrastukset {
 }
 
 /* Tyyli footerille ja navigaation linkeille, kun hoverataan brändi-ikonia */
-#footer, #nav a:hover i.fa-brands {
-  transform: scale(1.4); 
-  transition: transform 0.3s; 
+#footer,
+#nav a:hover i.fa-brands {
+  transform: scale(1.4);
+  transition: transform 0.3s;
 }
 
 /* Tyyli footerille ja navigaation linkeille, kun hoverataan tavallista ikonia */
-#footer, #nav a:hover i.fa-regular {
+#footer,
+#nav a:hover i.fa-regular {
   transform: scale(1.4);
   transition: transform 0.3s;
 }
@@ -245,19 +291,19 @@ div.harrastukset {
 
 /* Tyyli harjoitusesittelykuvalle */
 .harjesittely {
-  width: 100%; 
+  width: 100%;
   height: auto;
   border-radius: 20%;
 }
 
 /* Tyyli section-elementille */
 section {
-  display:flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   text-align: center;
   box-sizing: content-box;
-  box-shadow: 0 0 4px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
   align-items: baseline;
   align-content: flex-start;
   justify-content: space-between;
@@ -274,6 +320,7 @@ section {
   left: 4%;
   position: relative;
 }
+
 .sub-section-header {
   text-align: center;
   margin: 5px 2em;
@@ -282,7 +329,9 @@ section {
 }
 
 /* Tyyli otsakkeelle */
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   background-color: #b3d9ff;
   padding: 5px;
   border-radius: 2rem;
@@ -291,7 +340,9 @@ h2, h3, h4 {
 }
 
 /* Tyyli contentLeft- ja contentRight-section-elementeille */
-section.contentLeft, section.contentRight, section.contentMiddle {
+section.contentLeft,
+section.contentRight,
+section.contentMiddle {
   padding: 15px;
   border: 1px solid #101122;
   margin: 1.25em;
@@ -301,7 +352,8 @@ section.contentLeft, section.contentRight, section.contentMiddle {
   display: grid;
 }
 
-section.contentLeft, section.contentRight {
+section.contentLeft,
+section.contentRight {
   flex: 1;
 }
 
@@ -310,7 +362,9 @@ section.contentMiddle {
 }
 
 /* Ensure the "Lue lisää" link is at the bottom */
-section.contentLeft a, section.contentRight a, section.contentMiddle a {
+section.contentLeft a,
+section.contentRight a,
+section.contentMiddle a {
   align-self: flex-end;
   margin-top: 1em;
 }
@@ -328,13 +382,13 @@ section.content {
 
 /* Tyyli profiilitekstille */
 p.profiili {
-  font-size: x-small; 
+  font-size: x-small;
   text-align: center;
 }
 
 /* Tyyli harrastuslinkeille */
 a.harrastus {
-  height: auto; 
+  height: auto;
   width: 25%;
 }
 
@@ -346,10 +400,10 @@ a.harrastus {
 
   /* Responsiivinen tyyli kasvot-kuvalla */
   img.kasvot {
-    position: sticky; 
-    display: block; 
+    position: sticky;
+    display: block;
     margin: 0 auto;
-    width: 40%; 
+    width: 40%;
     height: auto;
   }
 
@@ -361,6 +415,7 @@ a.harrastus {
     justify-content: center;
     flex: 1 0 85%;
   }
+
   .section-index-header {
     position: sticky;
     top: 0;
@@ -370,11 +425,11 @@ a.harrastus {
   }
 
   .mediah2 {
-  min-width: 100%;
+    min-width: 100%;
   }
 
   .sub-section-header {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 95%;
@@ -386,14 +441,15 @@ a.harrastus {
 
   /* Responsiivinen tyyli otsikoille */
   h2 h3 h4 {
-  padding: 5px;
-  border-radius: 40px;
-  text-align: center;
-  width: 90%;
+    padding: 5px;
+    border-radius: 40px;
+    text-align: center;
+    width: 90%;
   }
 
   /* Responsiivinen tyyli contentLeft- ja contentRight-section-elementeille */
-  section.contentLeft, section.contentRight section.contentMiddle {
+  section.contentLeft,
+  section.contentRight section.contentMiddle {
     padding: 10px;
     border: 1px solid #101122;
     margin: 1.25em;
@@ -413,9 +469,9 @@ a.harrastus {
 
   /* Responsiivinen tyyli kirjakuville */
   .kirjat {
-    width: 50%; 
+    width: 50%;
     height: auto;
-    position: sticky; 
+    position: sticky;
     display: block;
     margin: 0 auto;
   }

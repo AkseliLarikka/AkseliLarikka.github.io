@@ -1,0 +1,26 @@
+body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Aktiivisen tag-painikkeen tyyli */
+        .tag-button.active {
+            background-color: #be185d;
+            /* text-rose-700 */
+            color: white;
+        }
+
+        #all-recipes-button.active {
+            background-color: #be185d;
+            color: white;
+        }
+
+        /* Yliviivatun ohjevaiheen tyyli */
+        input[type="checkbox"]:checked+label {
+            text-decoration: line-through;
+            color: #9ca3af;
+            /* text-gray-400 */
+        }

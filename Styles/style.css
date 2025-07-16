@@ -1,0 +1,692 @@
+/* ===== GOOGLE FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap');
+
+/* ===== MUUTTUJAT ===== */
+:root {
+    --header-height: 3.5rem;
+    --first-color: hsl(207, 85%, 53%);
+    --first-color-alt: hsl(207, 70%, 65%);
+    --title-color: hsl(207, 40%, 8%);
+    --text-color: hsl(207, 12%, 45%);
+    --body-color: hsl(207, 100%, 99%);
+    --container-color: #fff;
+    --border-color: hsl(207, 20%, 90%);
+    --body-font: 'Poppins', sans-serif;
+    --title-font: 'Lora', serif;
+    --biggest-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --shadow: 0 4px 12px hsla(207, 24%, 35%, .1);
+    --mb-0-5: .5rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+}
+
+@media screen and (min-width: 968px) {
+    :root {
+        --biggest-font-size: 3rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+/* ===== PERUS-TYYLIT ===== */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: .3s;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--title-color);
+    font-weight: var(--font-semibold);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== YLEISET LUOKAT ===== */
+.container {
+    max-width: 1024px;
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.section {
+    padding: 4.5rem 0 1rem;
+}
+
+.section__title {
+    font-size: var(--h1-font-size);
+    font-family: var(--title-font);
+    text-align: center;
+    margin-bottom: var(--mb-2);
+}
+
+/* ===== HEADER & NAV ===== */
+.header {
+    width: 100%;
+    background-color: var(--body-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+.nav {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    color: var(--title-color);
+    font-weight: var(--font-semibold);
+    font-family: var(--title-font);
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2.5rem;
+}
+
+.nav__link {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    transition: .3s;
+}
+
+.nav__link:hover {
+    color: var(--first-color);
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.nav__toggle {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .nav__menu {
+        position: fixed;
+        background-color: hsla(207, 100%, 99%, .95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        width: 80%;
+        height: 100%;
+        top: 0;
+        right: -100%;
+        padding: 4rem 2rem 3rem;
+        transition: .3s;
+    }
+}
+
+.show-menu {
+    right: 0;
+}
+
+.active-link {
+    position: relative;
+    color: var(--first-color);
+}
+
+.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--first-color);
+}
+
+.nav__actions {
+    display: flex;
+    align-items: center;
+    column-gap: 1.25rem;
+    /* Väli kuvakkeiden välillä */
+}
+
+.nav__lang {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--title-color);
+}
+
+.nav__lang:hover {
+    color: var(--first-color);
+}
+
+
+/* Piilota mobiilin kielikuvake, kun koko navigaatiopalkki tulee näkyviin */
+@media screen and (min-width: 768px) {
+    .nav__actions {
+        display: none;
+        /* Piilottaa koko säiliön (kieli + hampurilainen) */
+    }
+}
+
+/* ===== HOME ===== */
+.home {
+    padding-top: var(--header-height);
+}
+
+.home__container {
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.home__img {
+    justify-self: center;
+    width: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.home__img img {
+    border-radius: 50%;
+}
+
+.home__data {
+    text-align: center;
+}
+
+.home__title {
+    font-size: var(--biggest-font-size);
+    font-family: var(--title-font);
+}
+
+.home__subtitle {
+    font-size: var(--h2-font-size);
+    color: var(--first-color);
+    margin-bottom: var(--mb-1);
+}
+
+.home__description {
+    margin-bottom: var(--mb-2);
+}
+
+/* ===== PAINIKKEET ===== */
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #fff;
+    padding: 1rem 1.75rem;
+    border-radius: .5rem;
+    font-weight: var(--font-medium);
+    transition: .3s;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--first-color-alt);
+}
+
+.button--link {
+    color: var(--first-color);
+    font-weight: var(--font-medium);
+    display: inline-flex;
+    align-items: center;
+    column-gap: .25rem;
+    margin-top: var(--mb-1);
+}
+
+.button--link:hover .fa-arrow-right {
+    transform: translateX(.25rem);
+}
+
+.button--link .fa-arrow-right {
+    transition: .3s;
+}
+
+/* ===== PROFIILI & TAIDOT ===== */
+.profile__container {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+}
+
+.profile__data,
+.skills__data {
+    background-color: var(--container-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    overflow-x: hidden;
+}
+
+.profile__data h3,
+.skills__data h3 {
+    font-size: var(--h2-font-size);
+    font-family: var(--title-font);
+    margin-bottom: var(--mb-1);
+}
+
+.profile__data p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.skills__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 550px;
+}
+
+.skills__table th,
+.skills__table td {
+    border: 1px solid var(--border-color);
+    padding: .5rem 1rem;
+    text-align: left;
+}
+
+.skills__table th {
+    background-color: hsl(207, 30%, 95%);
+    font-weight: var(--font-semibold);
+}
+
+/* ===== PROJEKTIT ===== */
+.projects__container {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+.project__card {
+    background-color: var(--container-color);
+    box-shadow: var(--shadow);
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.project__img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project__data {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project__title {
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-1);
+}
+
+.project__skills {
+    display: block;
+    color: var(--first-color);
+    font-size: var(--small-font-size);
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+/* ===== KOKEMUS (AIKAJANA) ===== */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: var(--first-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+}
+
+.timeline__item {
+    padding: 1rem 2.5rem;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline__item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -14px;
+    background-color: white;
+    border: 4px solid var(--first-color);
+    top: 1.5rem;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline__item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline__item:nth-child(even)::after {
+    left: -14px;
+}
+
+.timeline__item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline__content {
+    padding: 1.5rem;
+    background-color: var(--container-color);
+    position: relative;
+    border-radius: .5rem;
+    box-shadow: var(--shadow);
+}
+
+.timeline__title {
+    font-size: var(--h3-font-size);
+}
+
+.timeline__company {
+    font-weight: var(--font-medium);
+    color: var(--first-color);
+    margin-bottom: var(--mb-0-5);
+}
+
+.timeline__date {
+    display: block;
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-0-5);
+}
+
+/* ===== HARRASTUKSET ===== */
+.hobbies__container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.hobby__card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.hobby__card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s;
+}
+
+.hobby__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(180deg, transparent, hsla(0, 0%, 0%, .8));
+    color: #fff;
+    font-size: var(--h3-font-size);
+    text-align: center;
+    transition: .3s;
+    opacity: 0;
+}
+
+.hobby__card:hover .hobby__title {
+    opacity: 1;
+}
+
+.hobby__card:hover img {
+    transform: scale(1.1);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background-color: var(--title-color);
+    color: #fff;
+    padding: 3rem 0;
+}
+
+.footer__container {
+    text-align: center;
+}
+
+.footer__title {
+    font-size: var(--h1-font-size);
+    font-family: var(--title-font);
+    color: #fff;
+    margin-bottom: var(--mb-1-5);
+}
+
+.footer__social {
+    display: flex;
+    justify-content: center;
+    column-gap: 1.5rem;
+    margin-bottom: var(--mb-2);
+}
+
+.footer__social-link {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: .3s;
+}
+
+.footer__social-link:hover {
+    transform: translateY(-.25rem);
+    color: var(--first-color-alt);
+}
+
+.footer__copy {
+    font-size: var(--smaller-font-size);
+    color: hsl(207, 12%, 75%);
+}
+
+/* ===== BREAKPOINTS ===== */
+@media screen and (max-width: 340px) {
+    .container {
+        margin-left: var(--mb-1);
+        margin-right: var(--mb-1);
+    }
+
+    .home__data {
+        padding-top: 1rem;
+    }
+
+    /* MUUTOS: Kuvan leveys on nyt prosentuaalinen, jotta se ei aiheuta ylivuotoa. */
+    .home__img {
+        width: 80%;
+    }
+
+    .hobbies__container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .home__container {
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+        padding-top: 1rem;
+    }
+
+    .home__img {
+        order: -1;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .timeline::after {
+        left: 1rem;
+    }
+
+    .timeline__item {
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 1rem;
+    }
+
+    .timeline__item:nth-child(even) {
+        left: 0;
+    }
+
+    .timeline__item::after {
+        left: 0px;
+    }
+
+    .timeline__item:nth-child(even)::after {
+        left: 0px;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        margin: 0;
+    }
+
+    .nav {
+        height: calc(var(--header-height) + 1.5rem);
+    }
+
+    .nav__menu {
+        display: flex;
+    }
+
+    .nav__list {
+        flex-direction: row;
+        column-gap: 2.5rem;
+    }
+
+    .nav__toggle,
+    .nav__close {
+        display: none;
+    }
+
+    .home__container {
+        padding-top: 4rem;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+
+    .home__img {
+        width: 350px;
+    }
+
+    .home__data {
+        text-align: left;
+    }
+
+    .hobbies__container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section {
+        padding: 6.5rem 0 1rem;
+    }
+
+    .section__title {
+        margin-bottom: 3rem;
+    }
+
+    .home__container {
+        padding-top: 6rem;
+    }
+}
+
+/* ===== KIELENVAIHTAJA ===== */
+#language-switcher {
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#language-switcher:hover {
+    background-color: hsl(207, 30%, 95%);
+    color: var(--first-color);
+}
+
+/* Työnnä nappi oikeaan reunaan desktop-näkymässä */
+@media screen and (min-width: 768px) {
+    #language-switcher {
+        margin-left: 1rem;
+        /* Lisää hieman väliä muihin linkkeihin */
+    }
+
+    /* Etsitään kielenvaihtajan vanhempi-elementti ja työnnetään se oikealle */
+    .nav__list li:has(#language-switcher) {
+        margin-left: auto;
+    }
+}
