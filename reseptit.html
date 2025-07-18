@@ -5,90 +5,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Akselin reseptikirja</title>
-
+    <title>Akselin Reseptikirja | Herkulliset Reseptit Arkeen ja Juhlaan</title>
     <meta name="description"
         content="Löydä Akselin parhaiksi toteamat reseptit jokaiseen tilaisuuteen. Helpot ja nopeat arkiruoat, juhlavat kakut ja perinneruoat selkeillä ohjeilla ja ravintoarvoilla.">
-
     <meta name="keywords"
         content="reseptit, ruokaohjeet, leivonta, arki, juhla, kakut, suomalainen ruoka, helppo, nopea, pääruoat, jälkiruoat, kotiruoka, uuniruoka">
-
     <link rel="canonical" href="https://akselilarikka.github.io/reseptit.html">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="/images/alogo.jpg">
+    <link rel="apple-touch-icon" href="/images/alogo.jpg">
 
-
-    <meta property="og:title" content="Herkulliset Reseptit Arkeen ja Juhlaan | Suomalainen Reseptikirja">
+    <meta property="og:title" content="Akselin Reseptikirja | Herkulliset Reseptit Arkeen ja Juhlaan">
     <meta property="og:description"
         content="Löydä parhaat suomalaiset reseptit jokaiseen tilaisuuteen, selkeillä ohjeilla ja ravintoarvoilla.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://akselilarikka.github.io/reseptit.html">
+    <meta property="og:image" content="https://akselilarikka.github.io/images/reseptit.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="fi_FI">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Herkulliset Reseptit Arkeen ja Juhlaan | Suomalainen Reseptikirja">
+    <meta name="twitter:title" content="Akselin Reseptikirja | Herkulliset Reseptit Arkeen ja Juhlaan">
     <meta name="twitter:description"
         content="Löydä parhaat suomalaiset reseptit jokaiseen tilaisuuteen, selkeillä ohjeilla ja ravintoarvoilla.">
+    <meta name="twitter:image" content="https://akselilarikka.github.io/images/social-share-reseptit.jpg">
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Reseptikokoelma",
-        "description": "Kokoelma suomalaisia reseptejä arkeen ja juhlaan.",
-        "numberOfItems": 20,
-        "itemListElement": [
-            // Tämä lista tulisi generoida dynaamisesti `recipes`-datasta.
-            // Alla on esimerkki yhdestä reseptistä. Oikeassa toteutuksessa kaikki 20 reseptiä listattaisiin tähän.
+        "@type": "WebSite",
+        "url": "https://akselilarikka.github.io/reseptit.html",
+        "name": "Akselin Reseptikirja",
+        "description": "Löydä Akselin parhaiksi toteamat reseptit jokaiseen tilaisuuteen. Helpot ja nopeat arkiruoat, juhlavat kakut ja perinneruoat selkeillä ohjeilla ja ravintoarvoilla.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://akselilarikka.github.io/reseptit.html#search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        },
+        "hasPart": [
+            // Esimerkki yhdestä reseptistä. Oikeassa toteutuksessa kaikki reseptit listattaisiin tähän.
             {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                    "@type": "Recipe",
-                    "name": "Nyhtöpossu",
-                    "url": "https://www.esimerkkisivusi.fi/#nyhtopossu",
-                    "description": "Murea ja herkullinen nyhtöpossu colakastikkeessa. Täydellinen hampurilaisen väliin tai sellaisenaan.",
-                    "keywords": "Pääruoat, Liharuoat, Possu, Uuniruoka, Juhlat, Suolainen",
-                    "recipeIngredient": [
-                        "n. 1 kg:n painoinen pala porsaan niskaa",
-                        "suolaa",
-                        "3 rkl tomaattipyreetä",
-                        "½ l kolajuomaa (ei light)",
-                        "1 dl lihalientä",
-                        "2 rkl chilitahnaa",
-                        "1 tl kanelia",
-                        "1 rkl korianterinsiemeniä",
-                        "2 tl suolaa",
-                        "4 sipulia",
-                        "8 valkosipulinkynttä"
-                    ],
-                    "recipeInstructions": [
-                        { "@type": "HowToStep", "text": "Ota possu huoneenlämpöön. Hiero sen pintaan suolaa." },
-                        { "@type": "HowToStep", "text": "Sekoita mausteliemen aineet ja kaada pataan sipuleiden kanssa. Upota possu liemeen." },
-                        { "@type": "HowToStep", "text": "Kuumenna pata 200 asteessa 30 min, laske sitten lämpötila 120 asteeseen ja hauduta noin 4 tuntia." },
-                        { "@type": "HowToStep", "text": "Revi ylikypsä liha säikeiksi ja sekoita kastikkeeseen." }
-                    ],
-                    "nutrition": {
-                        "@type": "NutritionInformation",
-                        "calories": "195 kcal",
-                        "proteinContent": "14 g",
-                        "carbohydrateContent": "8 g",
-                        "fatContent": "11 g",
-                        "servingSize": "100g"
-                    },
-                    "author": {
-                        "@type": "Person",
-                        "name": "Reseptikirja"
-                    },
-                    "prepTime": "PT20M",
-                    "cookTime": "PT4H30M",
-                    "totalTime": "PT4H50M",
-                    "recipeYield": "8 annosta"
-                }
+                "@type": "Recipe",
+                "name": "Nyhtöpossu",
+                "url": "https://akselilarikka.github.io/reseptit.html#nyhtopossu",
+                "description": "Murea ja herkullinen nyhtöpossu colakastikkeessa. Täydellinen hampurilaisen väliin tai sellaisenaan.",
+                "keywords": "Pääruoat, Liharuoat, Possu, Uuniruoka, Juhlat, Suolainen",
+                "author": { "@type": "Person", "name": "Akseli Larikka" },
+                "datePublished": "2024-05-10",
+                "prepTime": "PT20M",
+                "cookTime": "PT4H30M",
+                "totalTime": "PT4H50M",
+                "recipeCategory": "Pääruoka",
+                "recipeCuisine": "Suomalainen",
+                "recipeYield": "8 annosta",
+                "nutrition": {
+                    "@type": "NutritionInformation",
+                    "calories": "195 kcal",
+                    "proteinContent": "14 g",
+                    "carbohydrateContent": "8 g",
+                    "fatContent": "11 g",
+                    "servingSize": "100g"
+                },
+                "recipeIngredient": [
+                    "n. 1 kg:n painoinen pala porsaan niskaa",
+                    "suolaa",
+                    "3 rkl tomaattipyreetä",
+                    "½ l kolajuomaa (ei light)",
+                    "1 dl lihalientä",
+                    "2 rkl chilitahnaa",
+                    "1 tl kanelia",
+                    "1 rkl korianterinsiemeniä",
+                    "2 tl suolaa",
+                    "4 sipulia",
+                    "8 valkosipulinkynttä"
+                ],
+                "recipeInstructions": [
+                    { "@type": "HowToStep", "text": "Ota possu huoneenlämpöön. Hiero sen pintaan suolaa." },
+                    { "@type": "HowToStep", "text": "Sekoita mausteliemen aineet ja kaada pataan sipuleiden kanssa. Upota possu liemeen." },
+                    { "@type": "HowToStep", "text": "Kuumenna pata 200 asteessa 30 min, laske sitten lämpötila 120 asteeseen ja hauduta noin 4 tuntia." },
+                    { "@type": "HowToStep", "text": "Revi ylikypsä liha säikeiksi ja sekoita kastikkeeseen." }
+                ]
             }
-            // ... Tähän tulisi loput 19 reseptiä vastaavassa muodossa
+            // ... Tähän tulisi loput reseptit
         ]
     }
     </script>
@@ -99,7 +101,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="Styles/reseptit.css">
 </head>
 
