@@ -111,17 +111,41 @@
         <header class="mb-8 text-center">
             <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-2">Akselin reseptikirja</h1>
             <p class="text-gray-500">Kokoelma ruoanlaitto- ja leivontareseptejä.<br>Resepteissä myös makrot.</p>
-            <nav class="mt-6">
-                <button onclick="filterRecipes('all')"
-                    class="text-lg text-rose-600 hover:text-rose-800 font-medium px-4 py-2"
-                    id="all-recipes-button">Kaikki reseptit</button>
-            </nav>
         </header>
-
+        
         <main>
             <div id="home-page">
-                <div id="tag-filter-container" class="flex flex-wrap justify-center gap-2 mb-8">
+                <div class="mb-6 flex justify-center">
+                    <button id="toggle-filter-menu-btn" class="bg-white px-6 py-2 rounded-lg shadow font-semibold text-gray-700 hover:bg-gray-100 transition-colors">
+                        Suodattimet ja järjestys
+                    </button>
                 </div>
+                
+                <div id="filter-menu" class="hidden bg-white p-6 rounded-2xl shadow-lg mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="sort-by-select" class="block text-sm font-medium text-gray-700 mb-1">Järjestä</label>
+                            <select id="sort-by-select" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-rose-500 focus:border-rose-500">
+                                <option value="title-asc">Nimi (A-Ö)</option>
+                                <option value="title-desc">Nimi (Ö-A)</option>
+                                <option value="calories-100-asc">Kalorit / 100g (vähiten ensin)</option>
+                                <option value="calories-100-desc">Kalorit / 100g (eniten ensin)</option>
+                                <option value="calories-serving-asc">Kalorit / annos (vähiten ensin)</option>
+                                <option value="calories-serving-desc">Kalorit / annos (eniten ensin)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button id="reset-filters-btn" class="w-full h-full bg-gray-200 text-gray-800 font-semibold rounded-md hover:bg-gray-300">Nollaa suodattimet</button>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Suodata avainsanoilla</h4>
+                        <div id="tag-filter-container" class="flex flex-wrap gap-2">
+                            </div>
+                    </div>
+                </div>
+                
                 <div id="recipe-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 </div>
             </div>
@@ -137,7 +161,7 @@
                     </svg>
                     Takaisin
                 </button>
-            </div>
+                </div>
         </main>
         <footer class="text-center mt-12 text-gray-400 text-sm">
             <p><a href="https://akselilarikka.github.io">Kokoelma Akselin löytämiä/käyttämiä reseptejä<br>Klikkaa tästä
