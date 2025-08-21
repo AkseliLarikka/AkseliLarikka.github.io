@@ -2,6 +2,352 @@
 // Kaikki reseptit tallennetaan tähän JavaScript-objektien listaan.
 const recipes = [
     {
+        "id": "riisin-keittaminen",
+        "title": "Riisin keittäminen",
+        "tags": ["Perusreseptit", "Yleisohje", "Lisukkeet"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "1 osa riisiä (esim. 2 dl)",
+                    "2 osaa vettä (esim. 4 dl)",
+                    "0,5 tl suolaa"
+                ]
+            }
+        ],
+        "instructions": [
+            "Mittaa riisi ja vesi kattilaan.",
+            "Kuumenna kiehuvaksi ja sekoita kerran.",
+            "Pienennä lämpö minimiin ja peitä kattila kannella.",
+            "Anna riisin hautua hiljalleen noin 15-20 minuuttia riisityypistä riippuen, kunnes kaikki vesi on imeytynyt. Älä nosta kantta tai sekoita kypsennyksen aikana.",
+            "Ota kattila liedeltä ja anna riisin vetäytyä kannen alla vielä 5-10 minuuttia ennen tarjoilua."
+        ],
+        "macros": null
+    },
+    {
+        "id": "perunamuusin-valmistus",
+        "title": "Perunamuusin valmistus",
+        "tags": ["Perusreseptit", "Yleisohje", "Lisukkeet", "Peruna"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "1 kg jauhoisia perunoita",
+                    "n. 2 dl maitoa tai kermaa (lämmitettynä)",
+                    "n. 50 g voita",
+                    "1 tl suolaa",
+                    "Valkopippuria maun mukaan"
+                ]
+            }
+        ],
+        "instructions": [
+            "Kuori ja paloittele perunat tasakokoisiksi paloiksi. Keitä ne suolalla maustetussa vedessä täysin kypsiksi, noin 20 minuuttia.",
+            "Kaada keitinvesi huolellisesti pois.",
+            "Soseuta perunat perunasurvimella. Vältä sähkövatkainta tai sauvasekoitinta, jotta muusista ei tule liisterimäistä.",
+            "Lisää joukkoon voi ja lämmin neste vähitellen samalla sekoittaen, kunnes muusi on sopivan kuohkeaa ja rakenteeltaan miellyttävää.",
+            "Mausta suolalla ja valkopippurilla."
+        ],
+        "macros": null
+    },
+    {
+        "id": "pastan-keittaminen",
+        "title": "Pastan keittäminen",
+        "tags": ["Perusreseptit", "Yleisohje", "Pasta"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "100 g pastaa per syöjä",
+                    "1 litra vettä per 100 g pastaa",
+                    "10 g karkeaa merisuolaa per 1 litra vettä"
+                ]
+            }
+        ],
+        "instructions": [
+            "Kiehauta vesi suuressa kattilassa.",
+            "Kun vesi kiehuu kunnolla, lisää suola ja sekoita.",
+            "Lisää pasta ja keitä pakkauksen ohjeen mukaan, sekoittaen välillä.",
+            "Tavoittele 'al dente' -kypsyyttä, jossa pastassa on vielä hieman purutuntumaa.",
+            "Valuta pasta, mutta säästä tilkka keitinvettä. Voit sekoittaa sen kastikkeen joukkoon tuomaan täyteläisyyttä."
+        ],
+        "macros": null
+    },
+    {
+        "id": "kananmunan-keittaminen",
+        "title": "Kananmunan keittäminen",
+        "tags": ["Perusreseptit", "Yleisohje", "Aamiainen"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "Kananmunia",
+                    "Vettä"
+                ]
+            }
+        ],
+        "instructions": [
+            "Laita kananmunat kattilaan ja laske päälle kylmää vettä niin, että ne peittyvät.",
+            "Kuumenna vesi kiehuvaksi. Kun vesi kiehuu, aloita ajastus.",
+            "Löysä keltuainen: keitä 4-5 minuuttia.",
+            "Puolipehmeä keltuainen: keitä 6-7 minuuttia.",
+            "Kova keltuainen: keitä 9-10 minuuttia.",
+            "Jäähdytä munat kylmän veden alla kypsennyksen pysäyttämiseksi ja kuorimisen helpottamiseksi."
+        ],
+        "macros": null
+    },
+    {
+        "id": "paistetun-kananmunan-valmistus",
+        "title": "Paistetun kananmunan valmistus",
+        "tags": ["Perusreseptit", "Yleisohje", "Aamiainen"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "1 kananmuna",
+                    "1 tl voita tai öljyä",
+                    "Suolaa ja mustapippuria"
+                ]
+            }
+        ],
+        "instructions": [
+            "Kuumenna rasva paistinpannulla keskilämmöllä.",
+            "Riko kananmuna varovasti pannulle. Varo rikkomasta keltuaista.",
+            "Paista 2-3 minuuttia, kunnes valkuainen on hyytynyt, mutta keltuainen on vielä juokseva (häränsilmä).",
+            "Jos haluat kypsän keltuaisen, voit kääntää munan ja paistaa vielä hetken toiselta puolelta.",
+            "Mausta suolalla ja pippurilla."
+        ],
+        "macros": null
+    },
+    {
+        "id": "jauhelihan-ruskistaminen",
+        "title": "Jauhelihan ruskistaminen",
+        "tags": ["Perusreseptit", "Yleisohje", "Liha"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "400 g jauhelihaa",
+                    "1 rkl öljyä tai voita (tarvittaessa)",
+                    "Suolaa ja pippuria"
+                ]
+            }
+        ],
+        "instructions": [
+            "Kuumenna paistinpannu kuumaksi. Lisää rasva, jos käytät vähärasvaista jauhelihaa.",
+            "Lisää jauheliha pannulle ja riko sen rakenne paistinlastalla.",
+            "Anna lihan paistua rauhassa, kunnes se saa kunnolla väriä. Älä sekoita jatkuvasti, jotta liha paistuu eikä kiehu.",
+            "Kääntele lihaa ja jatka paistamista, kunnes se on kauttaaltaan ruskistunut ja kypsä.",
+            "Mausta suolalla ja pippurilla. Kaada tarvittaessa ylimääräinen rasva pois."
+        ],
+        "macros": null
+    },
+    {
+        "id": "sipulin-pilkkominen",
+        "title": "Sipulin pilkkominen",
+        "tags": ["Tekniikka", "Yleisohje"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "1 sipuli",
+                    "Terävä veitsi"
+                ]
+            }
+        ],
+        "instructions": [
+            "Halkaise sipuli pituussuunnassa kannasta latvaan.",
+            "Aseta puolikas leikkuupinta lautaa vasten. Leikkaa kantaosa pois.",
+            "Tee sipulin suuntaisia viiltoja lähes kantaan asti. Mitä tiheämmät viillot, sitä hienompaa silpusta tulee.",
+            "Tee 1-2 vaakasuuntaista viiltoa sipulin paksuudesta riippuen.",
+            "Lopuksi leikkaa sipuli poikkisuunnassa kuutioiksi."
+        ],
+        "macros": null
+    },
+    {
+        "id": "perus-salaatinkastike",
+        "title": "Perus salaatinkastike (Vinaigrette)",
+        "tags": ["Perusreseptit", "Yleisohje", "Salaatti", "Kastikkeet"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "3 osaa oliiviöljyä",
+                    "1 osa viinietikkaa (valko- tai punaviini)",
+                    "1 tl dijon-sinappia",
+                    "Ripaus suolaa ja mustapippuria",
+                    "Halutessasi ripaus sokeria tai hunajaa"
+                ]
+            }
+        ],
+        "instructions": [
+            "Mittaa kaikki ainekset pieneen kannelliseen purkkiin.",
+            "Sulje kansi ja ravista voimakkaasti, kunnes ainekset ovat sekoittuneet tasaiseksi emulsioksi.",
+            "Tarkista maku ja lisää tarvittaessa mausteita.",
+            "Käytä heti tai säilytä jääkaapissa."
+        ],
+        "macros": null
+    },
+    {
+        "id": "valkokastikkeen-valmistus",
+        "title": "Valkokastikkeen (Béchamel) valmistus",
+        "tags": ["Perusreseptit", "Yleisohje", "Kastikkeet"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "2 rkl voita",
+                    "2 rkl vehnäjauhoja",
+                    "5 dl maitoa",
+                    "Suolaa, valkopippuria, muskottipähkinää"
+                ]
+            }
+        ],
+        "instructions": [
+            "Sulata voi kattilassa miedolla lämmöllä. Älä ruskista.",
+            "Lisää jauhot ja sekoita vispilällä tasaiseksi. Kypsennä seosta noin minuutin ajan.",
+            "Lisää maito vähitellen joukkoon koko ajan voimakkaasti vispaten, jotta kastikkeesta tulee sileä.",
+            "Kuumenna kastiketta sekoittaen, kunnes se sakenee. Anna kiehua hiljalleen pari minuuttia.",
+            "Mausta suolalla, valkopippurilla ja raastetulla muskottipähkinällä."
+        ],
+        "macros": null
+    },
+    {
+        "id": "uunijuuresten-paahtaminen",
+        "title": "Uunijuuresten paahtaminen",
+        "tags": ["Perusreseptit", "Yleisohje", "Lisukkeet", "Kasvikset"],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "Noin 1 kg juureksia (porkkana, palsternakka, lanttu, peruna...)",
+                    "2-3 rkl öljyä",
+                    "1 tl suolaa",
+                    "0,5 tl mustapippuria",
+                    "Halutessasi yrttejä (rosmariini, timjami)"
+                ]
+            }
+        ],
+        "instructions": [
+            "Lämmitä uuni 225°C asteeseen.",
+            "Pese, kuori ja paloittele juurekset tasakokoisiksi paloiksi.",
+            "Levitä juurekset leivinpaperin päälle uunipellille yhteen kerrokseen.",
+            "Sekoita joukkoon öljy ja mausteet. Pyörittele niin, että juurekset maustuvat tasaisesti.",
+            "Paahda uunin keskitasolla noin 30-45 minuuttia, tai kunnes juurekset ovat kypsiä ja saaneet kauniin värin. Kääntele niitä kerran paahtamisen puolivälissä."
+        ],
+        "macros": null
+    },
+    {
+        "id": "tunturi-lapin-mettakakko",
+        "title": "Tunturi-Lapin Mettäkakko",
+        "tags": [
+            "Jälkiruoka",
+            "Leivonta",
+            "Makea",
+            "Suomalainen",
+            "Perinne",
+            "Kahvipöytään"
+        ],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "125 g voita",
+                    "2.5 dl sokeria (250 g)",
+                    "2.5 dl piimää",
+                    "0.5 dl kuohukermaa",
+                    "noin 8 dl vehnäjauhoja (500 g)",
+                    "1 tl ruokasoodaa"
+                ]
+            }
+        ],
+        "instructions": [
+            "Sekoita ainekset kulhossa. Anna taikinan seistä yön yli jääkaapissa.",
+            "Kauli taikina jauhoisella leivinpöydällä paksuhkoksi levyksi ja ota muotilla kakkusia. Lado kakut pellille ja kauli taikina uudelleen levyksi.",
+            "Paista noin 10 minuuttia 200-asteisessa uunissa. Seulo pinnalle tomusokeria ja tarjoa esimerkiksi jälkiruokakiisselin tai kahvin kera."
+        ],
+        "macros": {
+            "servingSizeInfo": "Resepti tuottaa 24 annosta (kakkua).",
+            "per100g": {
+                "calories": "355 kcal",
+                "protein": "5 g",
+                "carbs": "58 g",
+                "fat": "11 g"
+            },
+            "perServing": {
+                "calories": "170 kcal",
+                "protein": "2.4 g",
+                "carbs": "28 g",
+                "fat": "5.3 g"
+            }
+        }
+    },
+    {
+        "id": "burgundinpata",
+        "title": "Burgundinpata",
+        "tags": [
+            "Munaton",
+            "Maidoton",
+            "Laktoositon",
+            "Pääruoat",
+            "Pataruoat",
+            "Uuniruoat",
+            "Naudanliha",
+            "Ranskalainen",
+            "Talvi",
+            "Viikonloppu",
+            "Syksy",
+            "Paistaminen",
+            "Klassikko",
+            "Illallinen",
+            "Liha"
+        ],
+        "ingredients": [
+            {
+                "heading": null,
+                "items": [
+                    "1 kg naudan sisä- tai ulkopaistia",
+                    "3 rkl rypsiöljyä",
+                    "2 rkl Vehnäjauhoja",
+                    "1 tl Suolaa",
+                    "1/2 tl rouhittua mustapippuria",
+                    "4 dl Vettä",
+                    "3 dl Punaviiniä",
+                    "1 kpl lihaliemikuutio",
+                    "3 rkl Tomaattisosetta",
+                    "1 kpl Laakerinlehti",
+                    "200 g (1 rs) herkkusieniä",
+                    "3 kpl Porkkanaa",
+                    "6 - 8 kpl pientä sipulia (tai 3 isoa)",
+                    "2 kpl Valkosipulin kynttä",
+                    "140 g (1 pkt) Pekonia",
+                    "1 tl Timjamia"
+                ]
+            }
+        ],
+        "instructions": [
+            "Ota liha huoneenlämpöön tuntia ennen ruoanlaittoa. Leikkaa liha noin 3 x 3 cm:n kokoisiksi kuutioiksi. Ruskista lihapalat kolmessa erässä kuumalla pannulla. Palojen tulee saada kunnolla väriä. Laita lihat pataan.",
+            "Sekoita vehnäjauhot, suola ja pippuri lihapaloihin. Kaada vesi ja punaviini pataan. Lisää liemikuutio, tomaattisose ja laakerinlehti. Hauduta 180-asteisessa uunissa kannen alla noin 1 tunti.",
+            "Puhdista ja viipaloi herkkusienet. Kuori ja viipaloi porkkanat. Kuori sipulit. Leikkaa isot sipulit muutamaan osaan.",
+            "Kuutioi pekoni ja ruskista kuutiot pannulla. Lisää sienet ruskistamisen loppupuolella ja anna niiden saada vähän väriä.",
+            "Lisää pekoni, herkkusienet, porkkanat ja pikkusipulit pataan. Puserra sekaan valkosipuli ja lisää timjami. Anna padan hautua 180-asteisessa uunissa noin 30 minuuttia. Tarjoa pata keitettyjen perunoiden tai riisin kanssa."
+        ],
+        "macros": {
+            "servingSizeInfo": "Resepti on kuudelle. Yksi annos on noin 450 g ilman lisukkeita.",
+            "per100g": {
+                "calories": "115 kcal",
+                "protein": "11 g",
+                "carbs": "3 g",
+                "fat": "6 g"
+            },
+            "perServing": {
+                "calories": "518 kcal",
+                "protein": "50 g",
+                "carbs": "14 g",
+                "fat": "27 g"
+            }
+        }
+    },
+    {
         id: "nyhtopossu",
         title: "Nyhtöpossu",
         tags: [
@@ -1201,6 +1547,7 @@ const sortSelect = document.getElementById("sort-by-select");
 const filterMenu = document.getElementById("filter-menu");
 const toggleFilterMenuBtn = document.getElementById("toggle-filter-menu-btn");
 const resetFiltersBtn = document.getElementById("reset-filters-btn");
+const generalInstructionsGrid = document.getElementById("general-instructions-grid");
 
 // Oletusarvot suodattimille ja järjestelylle
 const defaultCriteria = {
@@ -1238,7 +1585,13 @@ function createRecipeCard(recipe) {
 
 // PÄÄFUNKTIO: Renderöi reseptit suodattimien ja järjestyksen mukaan
 function renderRecipes() {
-    let processedRecipes = [...recipes];
+    // Erotellaan yleisohjeet ja tavalliset reseptit
+    const generalInstructions = recipes.filter(recipe => recipe.tags.includes("Yleisohje"));
+    let processedRecipes = recipes.filter(recipe => !recipe.tags.includes("Yleisohje"));
+
+    // Renderöidään yleisohjeet omaan ruudukkoonsa
+    generalInstructionsGrid.innerHTML = generalInstructions.map(createRecipeCard).join("");
+
 
     // 1. Suodatus: Monivalintainen tag-suodatus
     if (activeCriteria.tags.length > 0) {
