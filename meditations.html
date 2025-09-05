@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Järkevä Onni - Meditaatiot</title>
+    <style>
+        :root {
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-color: #212529;
+            --header-color: #343a40;
+            --accent-color: #007bff;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--card-background);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--header-color);
+            margin: 0 0 20px 0;
+            font-weight: 600;
+            font-size: 2.2em;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .search-wrapper, .sort-wrapper {
+            flex: 1 1 300px;
+            max-width: 400px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+            text-align: left;
+        }
+
+        #searchInput, #sortSelect {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        #searchInput:focus, #sortSelect:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+        }
+
+        main#meditation-container {
+            display: grid;
+            gap: 25px;
+        }
+
+        .meditation-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: box-shadow 0.2s;
+        }
+
+        .meditation-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .meditation-card h2 {
+            margin-top: 0;
+            margin-bottom: 0;
+            color: var(--header-color);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .meditation-card h2::after {
+            content: '+';
+            font-size: 1.5em;
+            font-weight: 300;
+            color: var(--accent-color);
+            transition: transform 0.3s ease, content 0.3s ease;
+            line-height: 1;
+        }
+
+        .meditation-card.active h2::after {
+            content: '×'; /* Use multiplication sign for a better 'x' */
+            transform: rotate(180deg);
+        }
+
+        .meditation-card .content {
+            max-height: 60px; /* Limit height to show a preview */
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .meditation-card:not(.active) .content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(to bottom, transparent, var(--card-background));
+            pointer-events: none;
+        }
+
+        .meditation-card.active .content {
+            max-height: 2000px; /* Large enough for any content */
+        }
+        
+        .meditation-card .content > * {
+            margin-bottom: 1em;
+            padding-top: 15px; /* Add some space between title and content */
+        }
+
+        .meditation-card .content > *:last-child {
+            margin-bottom: 0;
+        }
+        
+        blockquote {
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Järkevä Onni - Meditaatiot</h1>
+            <div class="controls">
+                <div class="search-wrapper">
+                    <label for="searchInput">Hae meditaatioita</label>
+                    <input type="search" id="searchInput" placeholder="Etsi esim. 'viha', 'pelko', 'itsetuntemus'...">
+                </div>
+                <div class="sort-wrapper">
+                    <label for="sortSelect">Järjestä</label>
+                    <select id="sortSelect">
+                        <option value="default">Oletus</option>
+                        <option value="alphabetical">Nimen mukaan (A-Ö)</option>
+                        <option value="category">Käyttötarkoituksen mukaan</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <main id="meditation-container">
+            
+            <article class="meditation-card" data-keywords="itsetuntemus, rajoitteet, kasvu, potentiaali, minäkuva" data-category="Itsetuntemus" data-order="1">
+                <h2>1. Aasieläytyminen</h2>
+                <div class="content">
+                    <p>Miten näet itsesi juuri nyt? Näetkö itsesi jotenkin rajoittavasti? Oletko alkanut uskoa johonkin ”pienentävään” tarinaan itsestäsi? Missä asioissa olet ”aasi”, joka seuraa ulkopuolelta ohjelmoituja fantasioita? Missä asiassa sinun olisi aika kasvaa kohti täyttä mittaasi?</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="ajanhallinta, prioriteetit, kontrolli, elämänhallinta, fokus" data-category="Elämänhallinta" data-order="2">
+                <h2>2. Ajanhallinnan tarkistus</h2>
+                <div class="content">
+                    <p>Kuinka monta prosenttia sinun ajankäyttösi maa-alasta on omassa hallinnassasi? Kuinka suurta osaa ajastasi hallitaan ulkoapäin? Kenen liput liehuvat sinun elämäsi mantereella?</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="materialismi, arvot, yksinkertaisuus, todellisuus, markkinointi" data-category="Arvot ja periaatteet" data-order="3">
+                <h2>3. Antibrändäys</h2>
+                <div class="content">
+                    <blockquote>”Kulinaarisista herkuista muodosta tällaiset vaikutelmat: ruoasta ajattele, että lautasellasi on kuollut kala, linnunraato tai pala tapettua porsasta. Viinistä ajattele, että se on rypälemehua. Purppurareunaisesta toogasta ajattele, että se on kotilonverellä värjättyä lampaankarvaa. Yhdynnästä ajattele, että se on sukuelinten hankaamista toisiaan vasten, kunnes erite kouristuksenomaisesti purkautuu. Tällaiset määritelmät iskevät asioiden ytimeen, sellaisina kuin ne ovat, niin että näet mistä niissä tosi asiassa on kysymys. Näin pitäisi tehdä kaikessa elämässä. Kun jokin asia näyttäytyy erityisen arvokkaana, se pitää riisua alasti, jotta näkisimme sen halpuuden. Meidän pitää poistaa asian ympäriltä tarinointi, jolla se saadaan näyttämään kovin ihmeelliseltä.”</blockquote>
+                    <p>- Marcus Aurelius</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="köyhyys, mukavuusalue, resilienssi, pelkojen kohtaaminen, kiitollisuus" data-category="Resilienssi" data-order="4">
+                <h2>4. Antijoulu</h2>
+                <div class="content">
+                    <p>Varaa muutama päivä, jolloin tyydyt vaatimattomaan ja halpaan ruokaan sekä karkeisiin ja karuihin vaatteisiin. Kysy itseltäsi: "Onko tämä se, mitä olen pelännyt?"</p>
+                    <blockquote>Äläkä luule, että tarkoitan sellaista näennäistä köyhäilyä, jolla rikkaat huvittelevat kyllästyessään ylellisyyteensä. Tarkoitan, että nukut aidosti epämukavalla alustalla, pukeudut rääsyyn ja jyrsit likaista ja kuivaa leipäpalaa. Tee tätä kolmen tai neljän päivän ajan, joskus pidempäänkin, jotta se ei olisi vain hauska harrastus, vaan todellinen testi. Voin vakuuttaa sinulle, Lucilius, että ylistät tätä olotilaa, kun huomaat, että muutamalla kolikolla saat kaiken, mitä tarvitset, eikä mielenrauhan tarvitsekaan riippua kohtalosta. Kohtalo antaa riittävästi, jopa pahalla päällä ollessaan. Eikä sinulla ole mitään syytä ajatella tekeväsi jotain ihmeellistä. Teet vain sen, mitä tuhannet orjat ja köyhät tekevät joka ikinen päivä.</blockquote>
+                    <p>- Seneca</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="vastuu, velvollisuus, kurinalaisuus, vaikeudet, tehtävät" data-category="Vastuu ja velvollisuus" data-order="5">
+                <h2>5. Armeija-analogia</h2>
+                <div class="content">
+                    <p>Etkö ole oppinut filosofeilta, että sodankäynnistä tässä on kysymys. Jonkun pitää olla vartiossa, jonkun tiedustella, jonkun taistella. Se ei voi mennä niin, että kaikki tekisivät samaa, ainakaan se ei olisi parempi niin. Kun sinä nyt päätät olla tottelematta sodanjohtajan käskyjä ja protestoit aina kun sinulle määrätään jotakin raskasta – etkö ymmärrä, millaisen teet koko armeijasta, sikäli kun se sinusta riippuu? Jos kaikki seuraisivat esimerkkiäsi, kukaan ei kohta kaivaisi ojaa, rakentaisi suojavallia, olisi vartiossa tai antautuisi vaaraan. Kaikista tulisi hyödyttömiä sotilaita.</p>
+                    <p>Entä mitä tapahtuu laivassa, jos pysyt yhdessä paikassa etkä liikahda siitä mihinkään. Sinun käsketään kiivetä mastoon, mutta sanot ettei kiinnosta. Sinut komennetaan juoksemaan keulaan, mutta kieltäydyt ja jäät paikallesi. Kuka on se kapteeni, joka katselee tällaista? Hän heittää sinut hyödyttömänä yli laidan. Et ole mitään muuta kuin taakka ja huono esikuva muulle miehistölle.</p>
+                    <p>Niin on jokaisen ihmisen elämäkin kuin sotapalvelus. Se kestää kauan ja siinä tulee vastaan kaikenlaista. Sinun täytyy tehdä se, mikä sotilaalle kuuluu, ja totella kenraalia päännyökkäyksestä.<br>- Epiktetos</p>
+                    <p>Kaiken mikä tapahtuu elämässä, otan vastaan kuin sotilaalle annetut. Olipa se kuinka raskasta tai vaikeaa tahansa, teen sen ahkerasti kuin minulle annetun tehtävän.<br>- Seneca</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="kuolema, elämän kiertokulku, katoavaisuus, muutos, hyväksyntä" data-category="Katoavaisuus" data-order="6">
+                <h2>6. Ateriameditaatio</h2>
+                <div class="content">
+                    <p>Mieti viimeksi syömääsi ateriaa ja käy se läpi ainesosa ainesosalta. Ateriasi ei olisi ollut mahdollinen, elleivät ainekset olisi muuttuneet ruokaan sopiviksi ja ellei kasveja tai eläimiä olisi kuollut. Miksi sinä ja sinun elämäsi ei saisi muuttua? Miksi sinä et saisi kuolla?</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="elämän tarkoitus, vastoinkäymiset, perspektiivi, kauneus, arvostus" data-category="Elämän tarkoitus" data-order="7">
+                <h2>7. Elämä kisamatkana</h2>
+                <div class="content">
+                    <p>Epiktetos näkee elämän vierailuna Olympian kisoihin. Kisamatkalle lähtevä on kohottuneessa mielentilassa. Hän lähtee tapahtumapaikalle saadakseen nähdä suuria asioita. Paitsi että hänen tähtäimessään ovat itse kisat, hän haluaa käyttää osan ajasta ainutlaatuisten nähtävyyksien ihailemiseen. Olympiassa ovat myös Feidiaan henkeäsalpaavat patsaat.</p>
+                    <p>On mahdollista, että sää ei suosi Olympian kisoihin lähtevää. On myös mahdollista, että hän kohtaa matkallaan monia vastuksia, jopa odottamatonta epäonnea. Kaikki sellainen on kuitenkin vain sivu seikka: tärkeintä on matkan todellinen tarkoitus.</p>
+                    <p>Matkustatte Olympiaan, jotta näkisitte Feidiaan patsaat, ja jokainen teistä pidät suurena vahinkona, jos ihminen kuolee tulematta tuntemaan niitä. Ettekö pyri ollenkaan näkemään ja ymmärtämään niitä taideteoksia, joita ei tarvitse matkustaa katsomaan kauas vaan, jotka ovat kaiken aikaa ympärillä? Eikö teitä kiinnosta tietää, keitä olette, mitä tarkoitusta varten olette syntyneet ja mitä varten teillä on näkemisen kyky?</p>
+                    <p>Mutta elämässä on kaikenlaista epämiellyttävä ja raskasta, sanotte. Olympian matkallako ei ole? Ettekö joudu, sillä matkalla auringon paahtamaksi, väkijoukkojen tönimäksi? Kylpemään huonoissa kylpylöissä? Kastumaan sateessa? Sulattamaan melua ja hälinää ja kaikenlaisia hankaluuksia? Uskon kuitenkin, että kestätte ja siedätte tällaiset asiat, kun suhteutatte ne siihen, miten ihmeellisiä asioita matkalla näette.</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="inho, lika, keho, todellisuus, kauneuden vastakohta" data-category="Perspektiivi" data-order="8">
+                <h2>8. Etovan massan meditaatio</h2>
+                <div class="content">
+                    <blockquote>Nyt joka aamu - juuri siihen aikaan<br>kun päivän koitto maita hopeoittaa -<br>saan sadoin tonnein vahvaa kyllästettä:<br>käy valloittajakansa tarpeillensa<br>ja huojentuen viemäreitten nieluun<br>paineensa pois purkavat peräsuolet<br>ja uutteen pitoisuutta täydentävät<br>viereiset torvet suolavettä suistain.<br>Ja ensi aallon helpotuksen jälkeen<br>pöntöilleen käyvät tuhannet taas toiset<br>ja jälleen tuhat seuraavaa niin kauan<br>kuin laukeavat valtiaitten vaivat<br>pois sadealueeni taajamissa<br>ja lillinki ja tuoksu-uute raskas<br>päin syvänteitä seisovia vaipuu.<br>Ja kaiken aikaa, kautta päivänkaaren<br>rikastetulvan poistopaine jatkuu<br>kun hotellien ruokalistain ihmeet,<br>keitot ja kohokkaat ja kuorrutukset<br>ja höystömunakkaat ja paahtopihvit<br>ja kiisselit ja hyytelöt ja hillot<br>ja viinit, punssit, konjakit ja viskit<br>ja oluet ja kaikki saatevedet<br>purkeina peräpään tai oksennuksen<br>virtaini vilpoisuuteen huuhtoutuvat<br>tuoksuineen niitä raviten ja juottain.<br>Ja kaikkialle, kallioiden seiniin<br>ja pohjahiekkaan, rantavuorten kylkiin<br>niljainen, raskaanvihreā ja runsas<br>on versomassa leväkasvullisuus.<br>Se limalautoin kurkottelee pintaan<br>ja mainingeissa keinutellen velloo.</blockquote>
+                    <p>- Helmer Selin, Suuren järven laulu, 1972</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="mieli, pelot, vapaus, ajatukset, kontrolli, harhaluulot" data-category="Mielenrauha" data-order="9">
+                <h2>9. Fantasiatutkailu</h2>
+                <div class="content">
+                    <p>Millaisia vaikutelmia sinun mielesi on taipuvainen muodostamaan? Onko sinulla rajoittavia fantasioita? Vaihtamalla vaikutelmat harhaisista tosiksi voit kirkastaa mielesi huoneen ja vapautua elämää rajoittavista peloista. Ihminen, joka hallitsee omia vaikutelmiaan, on täydellisen vapaa. Häntä ei voi pakottaa mihinkään.</p>
+                    <blockquote>”Jos asetat eteeni kuolemanpelon, etkö silloin pakota minua? Ei, sillä ei sinua pakota eteesi asetettu asia, vaan se oma mielipiteesi, että jokin muu tapa toimia olisi parempi kuin kuoleminen.”</blockquote>
+                    <p>- Epiktetos</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="itsekehitys, luonne, ahkeruus, kauneus, täydellisyys" data-category="Itsetuntemus" data-order="10">
+                <h2>10. Feidias-meditaatio</h2>
+                <div class="content">
+                    <p>Miltä sinun patsaasi tänään näyttää? Onko siitä syntymässä yhtä kaunis kuin Feidiaan luomukset? Mikä luonteessasi kaipaa erityisesti kehittämistä? Onko marmorin pinnassa häiritseviä kohoumia? Mitä tänään teet, mihin aikasi käytät? Kehitätkö kuvanveistäjän huolellisuudella ja ahkeruudella menetelmiä, joilla saat pinnan sileämmäksi? tartutko talttaan ja naputtelet hiukan nenän kaarta, hiot kulmakarvoja…</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="kateus, vertailu, myötätunto, inhimillisyys, onni" data-category="Ihmissuhteet" data-order="11">
+                <h2>11. Harjoitus kateudesta vapautumiseen</h2>
+                <div class="content">
+                    <p>Eläydy kadehtimasi ihmisen arkeen ja mieti, millaisten huolten ja murheiden kanssa hän todennäköisesti kamppailee. Myös kadehtimasi ihminen todennäköisesti uskoo onnestaan puuttuvan monta asiaa.</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="yhteys, universumi, kokonaisuus, ego, herääminen, vastuullisuus" data-category="Perspektiivi" data-order="12">
+                <h2>12. Herätyspohdinta</h2>
+                <div class="content">
+                    <p>On suurta typeryyttä olla tajuamatta oman elämän yhteyttä koko maailmankaikkeuteen. Ihminen on lehti, maailmankaikkeus puu. Kuinka väärässä onkaan lehti, joka kuvittelee voivansa elää irrallaan puusta? Tai superrikas ihminen, joka kuvittelee voivansa elää ylellisessä luksusbunkkerissaan, jos maailmaa kohtaa Harmageddon. Missä menevät sinun kuplasi rajat? Olisiko aika havahtua hereille ja nähdä oma paikka maailman kokonaisuudessa?</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="ihmissuhteet, yhteisö, vastuu, globaalius, perhe, ystävät" data-category="Ihmissuhteet" data-order="13">
+                <h2>13. Hierokleen kehien meditaatio</h2>
+                <div class="content">
+                    <p>Meitä ympäröi monta sisäkkäistä kehää, toiset pienempiä, toiset suurempia. Ensimmäinen ja lähin kehä piirtyy ihmisen ympärille niin, että sen keskipisteenä on oma mieli. Tämä kehä käsittää oman kehon ja kaikki siihen liittyvät asiat. Se on kehistä pienin ja melkein koskettaa keskipistettä.</p>
+                    <p>Toinen kehä kulkee hieman kauempana keskipisteestä. Sen sisälle jää ensimmäinen kehä ja sen lisäksi vanhemmat, sisarukset, puoliso ja lapset. Seuraavan, kolmannen kehän sisällä ovat myös sedät ja tädit, isovanhemmat, sisarusten lapset ja serkut.</p>
+                    <p>Neljäs kehä käsittää kaikki muut sukulaiset. Sitten on kehä, jossa ovat oman demoksen eli lähiyhteisön jäsenet, seuraava sisältää koko oman fylen eli kaupunginosan, seuraava oman kaupungin, ja sen jälkeen tulee kehä, joka sisältää kaupungin rajoilla asuvat, ja lopulta kehä, joka kattaa koko kansan. Mutta kaikkein suurin kehä on se, joka sisältää kaikki edelliset ja koko ihmiskunnan.<br>- Hierokles</p>
+                    <p>Ajattele omaa elämääsi näiden kehien valossa. Voit aloittaa sisimmästä, ja miettiä suhdetta omaan mieleesi ja kehoosi. Kuinka pidät niistä huolta? Kannatko elintavoillasi vastuun omasta itsestäsi ja terveydestäsi? Voit edetä kehä kehältä perheeseesi, lähipiiriisi, ystäviisi, kaupunkiisi, valtioosi – kunnes kohtaat kehistä haastavimman: globaalin vastuusi. Onko aikasi tullut murtautua ulos kotelosta ja kasvaa kohti täyttä aikuisuutta?</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="päätöksenteko, vastuu, kohtalo, viisaus, suunnittelu" data-category="Elämänhallinta" data-order="14">
+                <h2>14. Järkevyysmeditaatio</h2>
+                <div class="content">
+                    <p>Mitä päätöksiä olet parhaillaan tekemässä elämässäsi? Luotatko niissä liikaa hyvään onneen ja ulkoiseen apuun? Oletko ajatellut läpikotaisin ne asiat, jotka ovat omalla vastuullasi ja tehnyt niistä huolellisen suunnitelman? Entä onko mielesi kiinnittynyt liiaksi johonkin tiettyyn toivottuun lopputulokseen? Voisitko vapauttaa ajattelusi muistamalla stoalaisen perusopin: tärkeää on toimia oikein ja hyveen mukaisesti. Usein kohtalo kuljettaa meidät toisaalle kuin toivomme, ja sen hyväksyminen on viisautta. Kaiken kanssa on elettävä.</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="luopuminen, menetys, kiintymys, materia, kuolema, vapaus" data-category="Katoavaisuus" data-order="15">
+                <h2>15. Kahvikuppimietintä</h2>
+                <div class="content">
+                    <p>Käy läpi asioita, joista luopuminen on sinulle vaikeaa. Pystytkö vaivatta luopumaan lempimukistasi, lempikuulokkeistasi tai lempikengistäsi? Entä autostasi tai golfmailoistasi? Tee lista kaikista asioista ja esineistä, joita ”ilman et voi elää”.</p>
+                    <p>Onko elämässäsi joku ihminen, jota et halua missään tapauksessa menettää kuolemalle? Onko mielessäsi, että hän voi kuolla huomenna, tai jo tänään, eikä se ole vallassasi? Entä olisitko valmis jättämään kotisi jo huomenna ja siirtymään paikkaan, jonka kohtalo sinulle osoittaa – ja jota et ole vuosikausia rakentanut omilla valinnoillasi niin että olet saanut sen ”tuntumaan omalta”?</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="pelko, ahdistus, todellisuus, kohtaaminen, rohkeus" data-category="Resilienssi" data-order="16">
+                <h2>16. Kauhunaamariharjoitus</h2>
+                <div class="content">
+                    <p>Mikä asia sinua pelottaa kaikkein eniten tällä hetkellä? Piirrä ja askarele se maskiksi, ja sen jälkeen katso, mitä sen toisella puolella on.</p>
+                    <p>Vain hankkimalla oikean käsityksen todellisuudesta ihminen voi kasvaa aikuiseksi. Mutta todelliseen aikuisuuteen kasvaminen on vaikea laji – moni etsii mieluummin rauhaa korvikkeista, jotka poistavat hämmennyksen hetkeksi.</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="ihmissuhteet, ennakointi, negatiivisuus, mielenrauha, valmistautuminen" data-category="Mielenrauha" data-order="17">
+                <h2>17. Keisarin aamumeditaatio</h2>
+                <div class="content">
+                    <p>Sano aamulla itsellesi: Joudun tapaamaan tänään jonkun, joka puuttuu toisten asioihin, jonkun joka huijaa, hautoo pahoja ajatuksia, on kiittämätön, röyhkeä, itsekäs…<br>- Marcus Aurelius</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="kuolemanpelko, perspektiivi, universumi, merkityksettömyys, hyväksyntä" data-category="Katoavaisuus" data-order="18">
+                <h2>18. Kosminen järkeily kuolemanpelkoa vastaan</h2>
+                <div class="content">
+                    <p>Miltä elämäsi näyttää, kun tarkastelet sitä universumin galaktisissa mittasuhteissa? Sinunko pitäisi saada elää ikuisesti maailmankaikkeudessa, jota hallitsee jatkuva muutos ja jossa kaikki tuhoutuu ja ajallaan katoaa?</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="moraali, etiikka, päätöksenteko, itsekkyys, kunnia, arvot" data-category="Arvot ja periaatteet" data-order="19">
+                <h2>19. Kunniallisuuspohdinta</h2>
+                <div class="content">
+                    <p>Hyveellinen ihminen asettaa joka tilanteessa korkeamman periaatteen, yleisen hyvän, oman itsekkään etunsa edelle. Miltä kysymys näyttää, jos sen asettaa kunniallisen/alhaisen asteikolle. Mikä olisi kaikkein kunniallisin toimintatapa? Entä mikä olisi kaikkein alhaisin toimintatapa, eli sellainen missä pyrit vain pelastamaan oman nahkasi? Entä mihin päätöksesi on asettumassa? Oletko tekemässä päätöstä, jonka takana voit seistä ja jota voit puolustaa kenen tahansa ihmisen edessä?</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="hyväksyntä, kohtalo, vastuu, rooli, elämänkulku" data-category="Hyväksyntä" data-order="20">
+                <h2>20. Kuorovertaus</h2>
+                <div class="content">
+                    <p>Kuoron jäsenen on laulettava sitä mitä stemmassa lukee – vaikka hänestä jotain tiettyä kohtaa ei olisi kiva laulaa tai hän haluaisi laulaa sen toisin. Ehkä parhaiten laulaa se, joka oppii jopa rakastamaan jokaista melodian kohtaa, myös niitä septimihyppyjä ylöspäin…</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="ennakointi, valmistautuminen, mielenrauha, vastoinkäymiset, harmit" data-category="Mielenrauha" data-order="21">
+                <h2>21. Kylpylämeditaatio</h2>
+                <div class="content">
+                    <p>Kun olet alkamassa tehdä jotakin, luo itsellesi ensin mielikuva siitä, millaista tuo toiminta on. Jos olet menossa kylpemään, kuvittele mielessäsi, millaisia asioita kylpylässä tapahtuu: joku räiskii vettä, joku tönii, joku haastaa riitaa, joku näpistää toisten omaisuutta. Voit ryhtyä toimeen vakaammin mielin, kun sanot itsellesi: "Aion mennä kylpylään ja huolehtia, että oma mieleni pysyy sopusoinnussa luonnon kanssa." Mikä tahansa harmi kylpiessä sattuukin, sinulla on valmiina ajatus: "Tarkoitukseni ei ollut vain kylpeä, vaan myös pitää mieleni sopusoinnussa luonnon kanssa.”<br>- Cato</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="viha, suuttumus, konfliktinratkaisu, myötätunto, anteeksianto" data-category="Tunteiden hallinta" data-order="22">
+                <h2>22. Kymmenen kohdan vihapohdinta</h2>
+                <div class="content">
+                    <ol style="padding-left: 20px;">
+                        <li>Olemme täällä maailmassa toisiamme varten, tarvitsemme toinen toistamme.</li>
+                        <li>Kuvittele, miten tuo ihminen toimii muissa elämän tilanteissa, näe hänen elämän kokonaisuus.</li>
+                        <li>Jos toinen ihminen tekee sinua kohtaan väärin, se johtuu siitä, että hän on tietämätön.</li>
+                        <li>Et itsekään ole täydellinen vaan olet tehnyt paljon virheitä elämässäsi.</li>
+                        <li>Et voi olla varma, onko toinen väärässä.</li>
+                        <li>Muista, että elämä on hyvin lyhyt, ja kohta makaatte vierekkäin hautausmaalla.</li>
+                        <li>Sinua ei häiritse toisen käytös, vaan oma käsityksesi siitä, mitä se sinulle merkitsee. Kun lakkaat ajattelemasta, että kyseessä on hirvittävä vahinko, viha haihtuu.</li>
+                        <li>Viha tunteena aiheuttaa itsessään paljon vahinkoa.</li>
+                        <li>Voita paha hyvällä. Vilpitön hyvyys on aseistariisuvaa.</li>
+                        <li>Älä oleta, että toiset ihmiset toimisivat hyvin sinua kohtaan.</li>
+                    </ol>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="ongelmanratkaisu, kriisit, toiminta, rauhallisuus, vastoinkäymiset" data-category="Resilienssi" data-order="23">
+                <h2>23. Laivajärkeily</h2>
+                <div class="content">
+                    <p>Suuttuuko kapteeni laivalle, joka alkaa vuotaa? Eikö hän pikemminkin ala nopeasti ja määrätietoisesti tehdä voitavaansa, jotta tilanteesta selvittäisiin?</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="kärsimys, vaikeudet, lääke, kasvu, hyväksyntä, kohtalo" data-category="Hyväksyntä" data-order="24">
+                <h2>24. Lääkejärkeily</h2>
+                <div class="content">
+                    <p>Tapahtuuko sinulle juuri nyt jotakin epämiellyttävää? Onko jokin asia, joka tuottaa päänvaivaa ja jonka haluaisit kaikin keinoin pois elämästäsi? Voisitko nähdä sen kohtalon määräämänä hoitona tai lääkkeenä?<br>- Marcus Aurelius</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="myötätunto, tuomitseminen, ymmärrys, ihmissuhteet, viisaus" data-category="Ihmissuhteet" data-order="25">
+                <h2>25. Lääkärijärkeily</h2>
+                <div class="content">
+                    <p>Kuka lääkäri suuttuu mielisairaalle? Kuka ottaa itseensä, kun kuumesairas raivoaa sitä, ettei saa kylmää juotavaa? Viisaan asenne toisiin ihmisiin on sama kuin lääkärin asenne potilaisiinsa. Lääkäri ei kaihda koskemasta potilaiden genitaalialueisiin, jos ne tarvitsevat hoitoa. Hän ei pidä arvolleen sopimattomana tutkia heidän virtsaansa tai ulostettaan tai kuunnella heidän hulluuskohtauksiaan ja raivonpurkauksiaan.</p>
+                    <p>Viisas tietää, että kaikki, jotka kävelevät ylväinä purppuraisissa toogissaan ja ovat muka terveitä ja hyvinvoivia, ovat todellisuudessa mieleltään sairaita. Viisas näkee heissä kohtuuttomuuden tautiin sairastuneita potilaita. Siksi hän ei ärsyynny, jos nämä sairautensa vuoksi suhtautuvat hoitajaansa röyhkeästi tai pahantahtoisesti. Hän ei välitä heidän ulkoisesta statuksestaan, ja siksi hän ei myöskään välitä heiltä tulevan kunnioituksen puutteesta.</p>
+                    <p>Ihmisen itsetuntoa ei nosta kerjäläiseltä saatu kunnianosoitus, eikä sitä loukkaa, jos joku rahvaan pohjasakkaan kuuluva jättää vastaamatta tervehdykseen. Viisasta ihmistä ei hetkauta myöskään rikkailta tuleva ihailu, sillä hän tietää, että rikkaalla ja kerjäläisellä ei ole mitään eroa - ellei sitten se, että rikas on noista kahdesta onnettomampi, koska kerjäläiseltä puuttuu vain vähän, rikkaalta paljon.<br>- Seneca</p>
+                    <p>Suuttuuko lääkäri infektiolle tai kasvaimelle? Eikö hän ala vain hoitaa potilasta rauhallisesti ja hyväntahtoisesti?</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="katoavaisuus, kuolema, elämän lyhyys, perspektiivi, kiitollisuus" data-category="Katoavaisuus" data-order="26">
+                <h2>26. Meditaatio kaiken katoavaisuudesta</h2>
+                <div class="content">
+                    <p>Pidä mielessäsi, miten monet lääkärit kurtisteltuaan kulmiaan lukemattomien sairasvuoteiden äärellä ovat itse kuolleet; miten monet tähdistäennustajat, jotka ovat mahtipontisesti ennustaneet muiden ihmisten kuolemia; miten monet filosofit pidettyään loputtomia luentoja kuolemattomuuden probleemasta; miten monet sotasankarit tuotettuaan ensin itse kuoleman tuhansille; miten monet tyrannit käytettyään valtaa härskisti väärin, ikään kuin itse olisivat olleet kuolemattomia.</p>
+                    <p>Entä kuinka monet kokonaiset kaupungit ovat tuhoutuneet: Helike, Pompeiji, Herculaneum ja lukemattomat muut.</p>
+                    <p>Ihmisen elämä on lyhyt ja mitätön - eilen hän oli limainen möykky, huomenna muumio, pelkkää tuhkaa. Elä tämä pieni ajan rahtunen luonnonmukaisesti, ja kun se on ohi, luovu siitä tyytyväisenä, kuten oliivi kypsyttyään putoaa, kiitollisena kantajalleen, puulle, joka sen kasvatti.</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="historia, kuolevaisuus, maine, arvot, merkityksellisyys" data-category="Perspektiivi" data-order="27">
+                <h2>27. Menneiden aikakausien meditointi</h2>
+                <div class="content">
+                    <p>Valitse jokin historian aikakausi ja katsele sitä:</p>
+                    <p>Ajattele esimerkiksi Vespasianuksen aikaa. Näet, että silloin tehtiin aivan samoja asioita: mentiin naimisiin, kasvatettiin lapsia, sairastuttiin, kuoltiin, sodittiin, juhlittiin, käytiin kauppaa, viljeltiin, hännysteltiin, oltiin itsepäisiä, epäiltiin, juoniteltiin, toivottiin toisten kuolemaa, valitettiin kohtaloa, etsittiin rakkautta, koottiin omaisuutta, tavoiteltiin korkeita virkoja ja valtakuntia. Tästä kaikesta ei ole mitään jäljellä.</p>
+                    <p>Ihmiset, jotka olivat kuuluisia ja joista omana aikanaan laulettiin ylistyslauluja, ovat meille enää vain eriskummallisia nimiä. Kaikki häviää silmänräpäyksessä ja muuttuu tarinoiksi, kunnes unohdus hautaa nekin. Ja näin käy siis niille, jotka olivat oman aikansa mahtavia ja levittivät loistoa ympärilleen. Tavalliset tallaajat unohtuvat sillä hetkellä, kun puhaltavat viimeisen henkäyksensä - on kuin heitä ei olisi koskaan ollutkaan.</p>
+                    <p>Mitä siis on "kuolematon maine"? Onttoa ja tyhjää.</p>
+                    <p>Mikä elämässä sitten on tavoittelemisen arvoista? Oikeudenmukainen mieli, epäitsekkäät teot, vilpitön puhe sekä elämänasenne, joka ottaa iloiten vastaan kaiken, mitä tapahtuu, ja pitää sitä välttämättömänä ja kotoisana - onhan kaikella sama alkuperä ja kaikki virtaa samasta lähteestä.<br>- Marcus Aurelius</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="elämänkaari, kuolema, kauneus, kokonaisuus, hyväksyntä" data-category="Elämän tarkoitus" data-order="28">
+                <h2>28. Mozart-ajattelu</h2>
+                <div class="content">
+                    <p>Mikä olisi sopiva pituus elämällesi? Mitä vaaditaan, jotta siitä muodostuisi kaunis kokonaisuus? Millainen voisi olla tyylikäs elämän finaali?</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="turhautuminen, odotukset, todellisuus, hyväksyntä, pettymys" data-category="Hyväksyntä" data-order="29">
+                <h2>29. Mustikkajärkeily</h2>
+                <div class="content">
+                    <p>Suuttuuko marjastaja mustikkamättäälle, jos siinä ei ole marjoja? Eikö hän mieluummin vaihda mätästä?</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="kohtalo, sattuma, kontrolli, mielenrauha, hyväksyntä" data-category="Mielenrauha" data-order="30">
+                <h2>30. Noppatuumailu</h2>
+                <div class="content">
+                    <p>Kuinka ihminen voi säilyttää mielen tasapainon ja tyyneyden? Jäljittelemällä niitä, jotka pelaavat noppaa. Nopan numerot eivät ole vallassamme: mistä voisi tietää mitä milloinkin tulee? Mutta tehtäväni on käyttää huolella ja taitavasti ne numerot, jotka nopista tulevat. Se on ensisijainen tehtäväni: erotella asiat ja sanoa: "Ulkopuolelta tulevat asiat eivät ole vallassani, oma tahtoni sen sijaan on. Mistä siis etsin hyvää ja pahaa? Sisältä, siitä mikä on vallassani."</p>
+                    <p>Siitä, mikä on ulkopuolellani, en kutsu mitään hyväksi enkä pahaksi, hyödylliseksi enkä vahingolliseksi tai muuksi sellaiseksi.<br>- Epiktetos</p>
+                    <p>Valitse jokin asia, joka sinua erityisesti vaivaa elämässäsi tällä hetkellä. Tarkista, murehditko asioita, jotka eivät ole vallassasi, ja jätät tekemättä sen, mikä kuuluu sinulle. Noppavertaus rajaa esiin valtakunnan, joka kuuluu kokonaan ihmiselle itselleen ja jonne kohtalon valta ei ulotu: se on hänen tahtonsa. Meille on annettu kyky ja mahdollisuus päättää, mitä kohtalolla teemme. Joka päivä teemme kymmeniä, ellei satoja pienempiä ja suurempia päätöksiä.</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="yksinkertaisuus, niukkuus, kestävyys, viisaus, mukavuusalue" data-category="Resilienssi" data-order="31">
+                <h2>31. Omaehtoinen köyhyysharjoittelu</h2>
+                <div class="content">
+                    <p>Kun riennämme kohti viisautta, meidän on oltava valmiita kestämään nälkää.<br>- Seneca</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="onnellisuus, tavoitteet, arvot, elämänpolku, itsetutkiskelu" data-category="Itsetuntemus" data-order="32">
+                <h2>32. Onnen ketju -pohdinta</h2>
+                <div class="content">
+                    <p>Aseta elämäsi tavoitteet hierarkkiseen järjestykseen:</p>
+                    <p>Haluan paremman työpaikan – Kun saan sen, minulle kertyy rahaa – Kun minulla on enemmän rahaa, voin asua mukavammin – Kun voin asua mukavammin, olen onnellisempi.</p>
+                    <p>Haluan päästä tekemään töitä luonnon pelastamiseksi – Kun teen tällaista työtä, tunnen elämäni mielekkääksi – Samalla tapaan muita samanhenkisiä ihmisiä, mikä vähentää yksityisyyttäni – Kun teen tärkeitä asioita yhdessä muiden kanssa, olen onnellisempi.</p>
+                    <p>Millainen on sinun onnellisuuden ketjusi?</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="konflikti, ihmissuhteet, viha, ystävällisyys, asenne" data-category="Ihmissuhteet" data-order="33">
+                <h2>33. Painijärkeily</h2>
+                <div class="content">
+                    <p>Jos urheillessa joku raapii meitä kynsillään tai iskee päällään niin että syntyy mustelma, emme ota sitä itseemme, loukkaannu ja ala hautoa mielessä, että mikähän seuraava metku tällä on mielessään. Olemme kyllä varuillamme, mutta se ei johdu vihollisuudesta tai epäluulosta, vaan kyseessä on ihan normaali suojausasento, joka otetaan rauhallisin mielin.</p>
+                    <p>Näin olisi hyvä käyttäytyä kaikilla muillakin elämän alueilla. Meidän on suhtauduttava painivastuksiimme ystävällisesti. Kuten sanoin, voimme aina suojautua, mutta ilman epäluuloja ja vihollisuuksia.<br>- Marcus Aurelius</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="viha, itsetuntemus, tunteiden hallinta, ulkonäkö, itsetarkkailu" data-category="Tunteiden hallinta" data-order="34">
+                <h2>34. Peiliharjoitus</h2>
+                <div class="content">
+                    <p>Itse aloin - onko tämä oikea tapa, sitä en tiedä - hoitaa vihaani tarkkailemalla sitä ensin toisissa ihmisissä, aivan kuten spartalaiset oppivat helooteilta, millainen tila on päihtymys. Kuten Hippokrates sanoo, sairauksista vaarallisin on se, joka muuttaa eniten ihmisen ulkomuotoa, ja ensimmäisiä havaintojani olikin, että kun viha sai ihmiset tolaltaan, se muutti suuresti heidän ulkonäköään, väriään, kävelyään ja ääntään.</p>
+                    <p>Kun minulle oli näin muodostunut tunteesta kuva, tuntui sietämättömältä ajatella, että olisin itse joskus noin kammottava ja kaistapäinen ystävieni, puolisoni tai tyttärieni edessä - ei vain hurjan ja oudon näköinen, vaan myös äänenkäytöltäni tyly ja karkea. Sellaisina olin kohdannut eräät ystäväni: he eivät vihansa vuoksi kyenneet säilyttämään luonnettaan ja olemustaan, viehättävää puhetapaansa ja miellyttävää keskustelutaitoaan.<br>- Plutarkhos</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="kuolevaisuus, prioriteetit, elämän tarkoitus, valinnat, nykyhetki" data-category="Elämän tarkoitus" data-order="35">
+                <h2>35. Peilipysähdys</h2>
+                <div class="content">
+                    <p>Luin 17-vuotiaana sitaatin, joka meni suunnilleen näin: "Jos elät jokaisen päivän kuin se olisi viimeinen, on varmaa, että jonain päivän olet oikeassa." Se teki minuun vaikutuksen, ja siitä lähtien olen 33 vuoden ajan joka aamu katsonut peiliin ja kysynyt itseltäni: "Jos tämä olisi elämäni viimeinen päivä, haluaisinko tehdä sitä, mitä olen tänään suunnitellut?" Jos vastaus on ollut 'ei' liian monta päivää peräkkäin, tiedän, että minun pitää muuttaa jotain.</p>
+                    <p>Oman kuolevaisuuden muistaminen on ollut minulle paras työkalu elämän merkittävien valintojen tekemiseen. Lähes kaikki – ulkoiset odotukset, ylpeys, häpeän tai epäonnistumisen pelko – menettää merkityksensä kuoleman edessä. Jäljelle jää vain se, mikä on todella tärkeää. Kun muistaa kuolevansa, välttää ansan, että luulee että on jotain menetettävää. Olet jo alasti. Ei ole mitään syytä olla seuraamatta omaa sydäntä.<br>- Steve Jobs</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="pelko, rohkeus, toiminta, elämänhallinta, potentiaali" data-category="Resilienssi" data-order="36">
+                <h2>36. Rohkeuspohdinta</h2>
+                <div class="content">
+                    <p>Mitkä oikeat ratkaisut olet jättänyt tekemättä tai jätät tekemättä siksi, että pelkäät? Missä asioissa olet antanut pelkojen kutistaa itsesi niin, että elät vajaata elämää?</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="kiitollisuus, runsaus, perspektiivi, luonto, yhteisomistus" data-category="Kiitollisuus" data-order="37">
+                <h2>37. Runsausjärkeily</h2>
+                <div class="content">
+                    <p>Viisas ihminen laskee omistuksiinsa myös ne asiat, joista kaikki ihmiset nauttivat. Esimerkiksi yhteinen maapallo, puhdas ilma, aurinko, joka lämmittää, vuodenajat ja luonnon kauneus.</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="itsekritiikki, kasvu, nöyryys, itsetuntemus, kehitys" data-category="Itsetuntemus" data-order="38">
+                <h2>38. Rusticus-harjoitus</h2>
+                <div class="content">
+                    <p>Listaa luonteestasi ne piirteet, jotka mielestäsi tarvitsevat parannusta. Sen jälkeen muista olla avoin: ehkä on paljon muutakin, sellaista mistä et ole vielä tullut edes tietoiseksi.</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="katoavaisuus, materia, kiintymys, menetys, luopuminen" data-category="Katoavaisuus" data-order="39">
+                <h2>39. Savijärkeily</h2>
+                <div class="content">
+                    <p>Jos rakastat jotain keraamista astiaa, sano itsellesi: ”Rakastan savea.” Voit soveltaa harjoitusta ja rakentaa itsellesi samantapaisen järkeilyn mistä tahansa. Jos rakastat polkupyörääsi, sano itsellesi satulassa istuessasi: ”Allani on kasa rautaa, terästä, alumiinia ja muovia – se voi koska tahansa palata alkuaineisiinsa.” Kun hyvästelet ihmisen, muista että jokainen tapaaminen voi olla viimeinen.</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="nykyhetki, tulevaisuus, onnellisuus, odotus, kärsimättömyys" data-category="Mielenrauha" data-order="40">
+                <h2>40. "sitten kun" -itsetutkiskelu</h2>
+                <div class="content">
+                    <blockquote>Typerän ihmisen elämä on epämiellyttävää ja rauhatonta: se on kokonaan kiinni tulevassa</blockquote>
+                    <p>- Seneca</p>
+                    <p>Mitkä uskomukset estävät sinua olemasta onnellinen tässä ja nyt? Päästämällä näistä uskomuksista irti saat haltuusi arvokkaimman aarteen: nykyhetken.</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="minimalismi, tarpeet, onnellisuus, materia, yksinkertaisuus" data-category="Arvot ja periaatteet" data-order="41">
+                <h2>41. Tarpeellisten asioiden meditaatio</h2>
+                <div class="content">
+                    <p>Ota kynä ja paperia ja listaa minimimäärä aineellisia asioita, jotka ihminen tarvitsee elääkseen onnellisesti.</p>
+                    <p>Hammasharja, patja, peitto, tyyny, muutama vaatekappale, älypuhelin, laturi ja muutama astia – oliko siinä kaikki? Vai onko oltava jotain muutakin?</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="viha, rauhallisuus, kärsivällisyys, vuorovaikutus, tunteiden hallinta" data-category="Tunteiden hallinta" data-order="42">
+                <h2>42. Tavaamisrinnastus</h2>
+                <div class="content">
+                    <p>Jos joku kysyy sinulta, miten nimesi kirjoitetaan, et kai tiuski kirjaimia ulos hampaita kiristellen? Vaikka tuo toinen olisi ollut kysyessään aggressiivinen, ei kai sinulla ole syytä vastata vihaisesti? Etköhän vain tavaa nimesi rauhallisesti kirjain kirjaimelta. Muista, että jokaisen sinulle kuuluvan työn voi jakaa osiin, kuten nimen kirjaimiin. Sinun on keskityttävä kuhunkin osista ja edettävä rauhallisesti ja systemaattisesti, kunnes työ on tehty. Jos jotkut ovat sinua kohtaan rasittavia, sinun ei tarvitse olla samanlainen heitä kohtaan.<br>- Marcus Aurelius</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="rehellisyys, salaisuudet, itsetuntemus, aitous, häpeä" data-category="Itsetuntemus" data-order="43">
+                <h2>43. Tekopyhyysmeditaatio</h2>
+                <div class="content">
+                    <p>Mikä elämässäsi on sellaista, mitä et halua muun maailman näkevän? Miksi? Voitko kirjoittaa nämä asiat listaksi ja pohtia niiden takana olevia vaikuttimia?</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="aika, nykyhetki, kuolema, elämän arvo, kiitollisuus" data-category="Katoavaisuus" data-order="44">
+                <h2>44. Tiimalasipohdinta</h2>
+                <div class="content">
+                    <p>Ajattele yhtä päivää kokonaisena elämänä. Tämä päivä on lahja. Päivä kerrallaan hyvästelet elämääsi kuolemalle. Viimeinen päivä ei ole sen erikoisempi kuin mikään aiemmista. Kuolemme joka päivä – eläkäämme siis jokainen päivä ja vuosi kuin se olisi koko elämä, kiitollisina ja tuhlaamatta kallista lahjaa.</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="resilienssi, vastoinkäymiset, asenne, kasvu, vahvuus" data-category="Resilienssi" data-order="45">
+                <h2>45. Tuliasenne</h2>
+                <div class="content">
+                    <p>Kun ihmisen hallitseva osa, se mikä johtaa häntä sisältä käsin, toimii sopusoinnussa luonnon kanssa, se mukautuu helposti kaikkeen, mitä tapahtuu ja mikä, milloinkin on mahdollista ja mikä annettua. Se ei rakasta jotain tietynlaista materiaalia, vaan kulkee joka tapauksessa harkitusti kohti ennalta asetettua päämäärää. Myös vastoinkäymisistä se tekee polttoainetta itselleen, niin kuin tuli ottaa haltuunsa kaiken, mitä siihen putoaa. Kun tuli on tarpeeksi vahva, se hetkessä sulauttaa itseensä ja kuluttaa kaiken, mitä siihen heitetään, senkin, millä olisi vielä voinut sammuttaa pienen liekin, ja sen voima vain kasvaa.<br>- Marcus Aurelius</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="kiitollisuus, tyytyväisyys, menetys, arvostus, mielenrauha" data-category="Kiitollisuus" data-order="46">
+                <h2>46. Tyytymisjärkeily</h2>
+                <div class="content">
+                    <p>Älä ajattele niinkään sitä, mitä sinulta puuttuu, vaan sitä mitä sinulla on. Ajattele sinulla olevista asioista kaikkein rakkaimpia ja mieti, miten paljon niitä himoitsisit, jos sinulla ei niitä olisi. Samalla ole varuillasi: älä tee niistä niin arvokkaita itsellesi, että jos joudut menettämään ne, mielenrauhasi häiriintyy.<br>-Marcus Aurelius</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="epäonnistuminen, ennakointi, suunnittelu, resilienssi, valmistautuminen" data-category="Elämänhallinta" data-order="47">
+                <h2>47. Vaikeiden asioiden ennakoiva mietintä</h2>
+                <div class="content">
+                    <p>Oletko parhaillaan ryhtymässä johonkin projektiin? Käy mielessäsi läpi mahdollisuudet epäonnistua. Mieti ennalta, mikä kaikki voi mennä pieleen. jos jokin ikävistä skenaarioista toteutuu, et ylläty vaan voit sanoa: ”Niin, tätäkin kyllä mietittiin! Eikä kyseessä ole lopulta mikään paha asia, vain tilanne, jossa voi osoittaa hyvettä niin kuin missä tahansa muussakin vaihtoehdossa!”</p>
+                </div>
+            </article>
+
+            <article class="meditation-card" data-keywords="ihmisyys, kunnioitus, tasa-arvo, ystävällisyys, palvelu" data-category="Ihmissuhteet" data-order="48">
+                <h2>48. Vierasjärkeily</h2>
+                <div class="content">
+                    <p>Eumaios noudattaa sisäistä periaatettaan: "Zeun tuomia kaikkipa vieraat" - jokainen ansaitsee hyvän kohtelun riippumatta ulkoisesta olemuksestaan. Epiktetos johtaa tästä yleisemmän opetuksen:</p>
+                    <p>Pidä tämä ajatus käden ulottuvilla. Voit soveltaa sitä isääsi jasanoa: "Ei minun ole oikein kohdella kunniattomasti isääni, eivaikka hän olisi vieläkin pahempi. Silla tulemme kaikki Zeuksenluota, joka on yhteinen isämme."</p>
+                    <p>Samoin ajattele veljestäsi: "Tulemme kaikki Zeuksen luota jaolemme samaa perhettä." Näin löydämme Zeuksen valvojaksikaikkiin elämäntilanteisiin.</p>
+                    <p>Epiktetoksen vierasjärkeilyä voi soveltaa nykyaikaan, vaikkapa tilanteeseen, jossa joutuu kohtaamaan töykeän tarjoilijan ravintolassa. Seuraavan kerran kun sinua kohdellaan epäystävällisesti, totea illallisseurueellesi: "Zeun tuomia kaikkipa tarjoilijat – minun tapoihini ei kuulu olla koppava ihmistä kohtaan, joka palvelee minua, ei vaikka hän olisi tätäkin töykeämpi. Hän kuuluu samaan ihmiskuntaan ja on siten minun veljeni tai siskoni."</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="luopuminen, menetys, kausiluonteisuus, hyväksyntä, kaipaaminen" data-category="Hyväksyntä" data-order="49">
+                <h2>49. Viikunajärkeily</h2>
+                <div class="content">
+                    <p>Sinulle on annettu jotakin nyt, mutta se ei tarkoita, että voisit pitää sen ikuisesti tai että sitä ei otettaisi sinulta pois. Viikunoita ja viinirypäleitä on saatavilla vain tiettyyn aikaan vuodesta. Jos haikailet niitä talvella, olet hölmö. Samalla tavalla, jos kaipaat lastasi tai ystävääsi silloin, kun he eivät enää ole luonasi, se on kuin himoitsisit viikunoita talvella. Se mitä talvi on viikunalle, sitä on maailman tapahtumien kokonaisuus sille, jonka aika on tullut poistua.<br>- Epiktetos</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="kuolevaisuus, epävarmuus, nykyhetki, elämän arvo, katoavaisuus" data-category="Katoavaisuus" data-order="50">
+                <h2>50. Viimeisen kerran meditaatio</h2>
+                <div class="content">
+                    <p>Kun menet nukkumaan, sano itsellesi: Ehkä et enää herää. Ja kun heräät, sano itsellesi: Ehkä et enää mene nukkumaan. Kun lähdet kotoasi, sano itsellesi: Et ehkä palaa enää takaisin. Ja kun palaat kotiisi, sano itsellesi: Ehkä et enää poistu kotoasi.<br>- Seneca</p>
+                </div>
+            </article>
+            
+            <article class="meditation-card" data-keywords="halut, tavoitteet, tyytymättömyys, onnellisuus, loputtomuus" data-category="Mielenrauha" data-order="51">
+                <h2>51. Vuorenrinnejärkeily</h2>
+                <div class="content">
+                    <p>Mihin tällä hetkellä toiveesi ja halusi elämässä kohdistuvat? Jos huomaat ajattelevasi: ”Jos saisin asian X, olisin onnellinen”, tee toiveidesi kohteelle Senecan testi: onko kyseessä halu, joka pysähtyy, kun saat X:n? Vai etsitkö jotain, mikä synnyttää aina uusia tarpeita?</p>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const sortSelect = document.getElementById('sortSelect');
+            const meditationContainer = document.getElementById('meditation-container');
+            const meditationCards = Array.from(meditationContainer.getElementsByClassName('meditation-card'));
+
+            // Event listener for expanding/collapsing cards
+            meditationContainer.addEventListener('click', (event) => {
+                const header = event.target.closest('h2');
+                if (header) {
+                    const card = header.closest('.meditation-card');
+                    if (card) {
+                        card.classList.toggle('active');
+                    }
+                }
+            });
+
+            // Function to handle search/filter
+            const handleSearch = () => {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+
+                meditationCards.forEach(card => {
+                    const title = card.querySelector('h2').textContent.toLowerCase();
+                    const content = card.textContent.toLowerCase();
+                    const keywords = card.dataset.keywords.toLowerCase();
+
+                    const isVisible = title.includes(searchTerm) || content.includes(searchTerm) || keywords.includes(searchTerm);
+                    card.classList.toggle('hidden', !isVisible);
+                });
+            };
+
+            // Function to handle sorting
+            const handleSort = () => {
+                const sortValue = sortSelect.value;
+                let sortedCards = [...meditationCards];
+
+                if (sortValue === 'alphabetical') {
+                    sortedCards.sort((a, b) => {
+                        const titleA = a.querySelector('h2').textContent.trim();
+                        const titleB = b.querySelector('h2').textContent.trim();
+                        return titleA.localeCompare(titleB, 'fi');
+                    });
+                } else if (sortValue === 'category') {
+                    sortedCards.sort((a, b) => {
+                        const categoryA = a.dataset.category || 'zzz';
+                        const categoryB = b.dataset.category || 'zzz';
+                        const titleA = a.querySelector('h2').textContent.trim();
+                        const titleB = b.querySelector('h2').textContent.trim();
+                        if (categoryA === categoryB) {
+                            return titleA.localeCompare(titleB, 'fi');
+                        }
+                        return categoryA.localeCompare(categoryB, 'fi');
+                    });
+                } else { // 'default'
+                    sortedCards.sort((a, b) => {
+                         return parseInt(a.dataset.order) - parseInt(b.dataset.order);
+                    });
+                }
+                
+                // Re-append cards in the new order
+                sortedCards.forEach(card => meditationContainer.appendChild(card));
+            };
+            
+            // Event listeners for controls
+            searchInput.addEventListener('input', handleSearch);
+            sortSelect.addEventListener('change', handleSort);
+        });
+    </script>
+</body>
+</html>
+
