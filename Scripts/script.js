@@ -150,7 +150,7 @@ const translations = {
         hobbies_section_title: "Hobbies",
         hobby1_title: "Hiking and Nature",
         hobby2_title: "Reading",
-        hobby3_title: "Sport Shooting",
+        hobby3_title: "Running",
         hobby4_title: "Reservist Activities",
 
         // Footer
@@ -234,7 +234,7 @@ const translations = {
         hobbies_section_title: "Harrastukset",
         hobby1_title: "Vaellus ja Luonto",
         hobby2_title: "Lukeminen",
-        hobby3_title: "Urheiluammunta",
+        hobby3_title: "Juoksu",
         hobby4_title: "Reserviläistoiminta",
         footer_title: "Ota yhteyttä",
         footer_rights: "Kaikki oikeudet pidätetään."
