@@ -78,7 +78,7 @@ const translations = {
         // Profiili & Taidot
         profile_section_title: "Profile and Skills",
         profile_who_am_i: "Who am I?",
-        profile_paragraph: "I am a calm and deliberate problem-solver with high resilience and a self-directed work approach. I ask a lot of questions because I want to understand things thoroughly. I enjoy challenging myself both physically and mentally, which is reflected in my career choices and hobbies. I actively seek challenges where I can utilize and deepen my expertise, especially in the cybersecurity of OT environments.",
+        profile_paragraph: "I am a third-year ICT engineering student with a burning passion for the technical core of cybersecurity. Alongside my studies, I have deepened my expertise through specialized MPK courses (OSINT, SOC/NOC, Forensics) and by building my own home laboratory. I am looking for a role where I can combine my technical problem-solving skills, precise documentation abilities, and resilience under pressure in the field of cybersecurity.",
         skills_title: "Skills",
         skills_header_area: "Area",
         skills_header_tech: "Technologies and Skills",
@@ -118,6 +118,10 @@ const translations = {
         project6_title: "MySQL Database",
         project6_description: "A relational database for a fictional used car e-commerce site, designed and implemented in pairs. The project covered database design, SQL implementation, and management with MySQL Workbench.",
         project6_skills: "SQL, MySQL Workbench, Database Design",
+        project7_title: "Cybersecurity Home Lab",
+        project7_description: "A personal hobby project where I built and hardened a Linux-based server environment. I implemented secure remote access using WireGuard, network protection with UFW, and service isolation using Docker Rootless mode.",
+        project7_skills: "Linux, Docker, WireGuard, UFW, SSH Hardening",
+        project7_link: "Read full report (PDF)",
 
         // Kokemus
         experience_section_title: "Work Experience and Education",
@@ -158,17 +162,22 @@ const translations = {
         footer_rights: "All rights reserved."
     },
     fi: {
+        // Navigaatio
         nav_profile: "Profiili",
         nav_projects: "Projektit",
         nav_experience: "Kokemus",
         nav_hobbies: "Harrastukset",
         nav_contact: "Ota yhteyttä",
+
+        // Koti
         home_subtitle: "IT/OT Kyberturvainsinööri (opiskelija)",
         home_description: "Kolmannen vuoden tieto- ja viestintätekniikan insinööriopiskelija, jolla on käytännön kokemusta teollisuusautomaation (OT) ja IT-infrastruktuurin yhdistämisestä. Vahvuuksiani ovat nopea oppimiskyky ja ongelmanratkaisu tuotantokriittisissä ympäristöissä.",
         download_cv: "Lataa CV (PDF)",
+
+        // Profiili & Taidot
         profile_section_title: "Profiili ja Osaaminen",
         profile_who_am_i: "Kuka olen?",
-        profile_paragraph: "Olen rauhallinen ja harkitseva ongelmanratkaisija, jolla on korkea resilienssi ja itseohjautuva työote. Kyselen paljon, koska haluan ymmärtää asiat perusteellisesti. Pidän itseni haastamisesta niin fyysisesti kuin henkisestikin, mikä heijastuu uravalintoihini ja harrastuksiini. Etsin aktiivisesti haasteita, joissa voin hyödyntää ja syventää osaamistani erityisesti OT-ympäristöjen kyberturvallisuuden parissa.",
+        profile_paragraph: "Olen kolmannen vuoden tieto- ja viestintätekniikan insinööriopiskelija, jolla on palava kiinnostus kyberturvallisuuden tekniseen ytimeen. Opintojeni ohella olen syventänyt osaamistani MPK:n erikoiskursseilla (OSINT, SOC/NOC, Forensiikka) sekä rakentamalla oman kotilaboratorion. Etsin roolia, jossa voin yhdistää teknisen ongelmanratkaisukykyni, tarkan dokumentointitaitoni ja paineensietokykyni yhteiskunnallisesti merkittävän tietoturvan parissa.",
         skills_title: "Taidot",
         skills_header_area: "Osa-alue",
         skills_header_tech: "Teknologiat ja taidot",
@@ -182,6 +191,8 @@ const translations = {
         skills_tech_programming: "Python, JavaScript, NodeJS, HTML/CSS, REST, GIT, Agile",
         skills_area_languages: "Kielet",
         skills_tech_languages: "Suomi (Äidinkieli), Englanti (C1.1), Ruotsi (B2.1), Venäjä (A2.1)",
+
+        // Projektit
         projects_section_title: "Projektit",
         project1_title: "Taistelukenttä d20 strateginen sotapeli",
         project1_description: "Modernia sodankäyntiä simuloiva strategiaprojekti, joka kehittyi staattisesta sääntösivusta dynaamisia työkaluja sisältäväksi pelialustaksi. Toteutin interaktiivisia työkaluja, automatisoin sisältöä Python-skriptillä ja otin käyttöön CI/CD-työnkulun GitHub Actionsilla.",
@@ -206,6 +217,12 @@ const translations = {
         project6_title: "MySQL-tietokanta",
         project6_description: "Parityönä suunniteltu ja toteutettu relaatiotietokanta kuvitteelliselle käytettyjen autojen verkkokaupalle. Projekti kattoi tietokannan suunnittelun, toteutuksen SQL:llä ja hallinnoinnin MySQL Workbench -työkalulla.",
         project6_skills: "SQL, MySQL Workbench, Tietokantasuunnittelu",
+        project7_title: "Tietoturvapainotteinen Kotilaboratorio",
+        project7_description: "Henkilökohtainen harrastusprojekti, jossa rakensin ja kovensin Linux-pohjaisen palvelinympäristön. Toteutin turvalliset etäyhteydet WireGuardilla, verkon suojauksen UFW:llä ja palveluiden eristämisen Dockerin Rootless-tilalla.",
+        project7_skills: "Linux, Docker, WireGuard, UFW, SSH-koventaminen",
+        project7_link: "Lue koko raportti (PDF)",
+
+        // Kokemus
         experience_section_title: "Työkokemus ja Koulutus",
         exp1_title: "Insinööri (AMK), Tieto- ja viestintätekniikka",
         exp1_company: "Jyväskylän ammattikorkeakoulu",
@@ -231,11 +248,15 @@ const translations = {
         exp6_company: "Lempäälän lukio",
         exp6_date: "2019 - 2022",
         exp6_desc: "Toimin koulun opiskelijakunnan valo-, ääni- ja esitystekniikkavastaavana. Minut palkittiin myös yrittäjähenkisimpänä ylioppilaana.",
+
+        // Harrastukset
         hobbies_section_title: "Harrastukset",
         hobby1_title: "Vaellus ja Luonto",
         hobby2_title: "Lukeminen",
         hobby3_title: "Juoksu",
         hobby4_title: "Reserviläistoiminta",
+
+        // Footer
         footer_title: "Ota yhteyttä",
         footer_rights: "Kaikki oikeudet pidätetään."
     }
