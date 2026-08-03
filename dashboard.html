@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TACTICAL::OS - Dashboard v8.9</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
+
+        :root {
+            --bg-color: #030303;
+            --card-bg: #0a0a0c;
+            --text-primary: #e0e0e0;
+            --text-secondary: #6c757d;
+            --cyber-cyan: #00f2ff;
+            --army-green: #556b2f;
+            --tactical-orange: #ff9f43;
+            --border-style: 1px solid #1a1a24;
+            --font-main: 'Roboto Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-network {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .net-line { stroke: var(--cyber-cyan); stroke-width: 1; fill: none; opacity: 0.6; }
+        .net-node { fill: var(--cyber-cyan); animation: pulseNode 3s infinite ease-in-out; transform-origin: center; transform-box: fill-box; }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.8s; }
+        .delay-3 { animation-delay: 1.5s; }
+        .delay-4 { animation-delay: 2.1s; }
+        
+        @keyframes pulseNode {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.6); opacity: 1; filter: drop-shadow(0 0 5px var(--cyber-cyan)); }
+            100% { transform: scale(0.8); opacity: 0.5; }
+        }
+
+        .container { display: grid; grid-template-columns: 1fr 450px; gap: 25px; max-width: 1600px; margin: 0 auto; }
+
+        @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100vh); } }
+        .scanline-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 10px;
+            background: rgba(0, 242, 255, 0.1); opacity: 0.5;
+            pointer-events: none; animation: scanline 8s linear infinite; z-index: 9999;
+        }
+
+        .top-bar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; border-bottom: 1px solid rgba(0, 242, 255, 0.2); padding-bottom: 15px; }
+        .sys-info { font-size: 0.9rem; color: var(--text-secondary); letter-spacing: 1px; }
+        
+        .clock-module { display: flex; align-items: flex-end; justify-content: flex-end; gap: 15px; }
+        .clock-large { font-size: 2.8rem; font-weight: 700; color: var(--cyber-cyan); text-shadow: 0 0 15px rgba(0, 242, 255, 0.3); line-height: 1; }
+        .sync-small { font-size: 0.85rem; color: var(--tactical-orange); letter-spacing: 1px; font-weight: 500; padding-bottom: 6px; }
+
+        .hero-section {
+            grid-column: 1 / -1; background-color: var(--card-bg); border: 1px solid rgba(0, 242, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.05); height: 300px; position: relative; border-radius: 4px;
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+        .hero-track-container { flex-grow: 1; overflow: hidden; position: relative; }
+        .hero-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .hero-slide { min-width: 100%; height: 100%; display: flex; }
+        .hero-image-container { width: 50%; background-color: #000; position: relative; overflow: hidden; display: block; cursor: pointer; }
+        .hero-image-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: transform 0.5s ease; }
+        .hero-slide:hover .hero-image-container img { transform: scale(1.05); }
+        
+        .hero-content { padding: 40px; width: 50%; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(90deg, rgba(10,10,12,0.9) 0%, var(--card-bg) 100%); }
+        .hero-title { font-size: 1.8rem; color: #fff; text-decoration: none; margin: 10px 0; line-height: 1.2; text-shadow: 0 0 10px rgba(0, 242, 255, 0.4); transition: color 0.3s ease; }
+        .hero-title:hover { color: var(--cyber-cyan); }
+        .hero-description { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        .hero-badge { position: absolute; top: 15px; left: 15px; background-color: var(--tactical-orange); color: #000; padding: 4px 10px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; box-shadow: 0 0 10px var(--tactical-orange); z-index: 10; }
+        .hero-controls { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); display: flex; justify-content: space-between; padding: 0 20px; pointer-events: none; z-index: 20; }
+        .hero-btn { pointer-events: auto; background: rgba(0, 0, 0, 0.6); border: 1px solid var(--cyber-cyan); color: var(--cyber-cyan); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; cursor: pointer; border-radius: 50%; transition: all 0.2s ease; }
+        .hero-btn:hover { background: var(--cyber-cyan); color: #000; box-shadow: 0 0 10px var(--cyber-cyan); }
+        
+        .hero-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 20; }
+        .hero-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); cursor: pointer; transition: all 0.3s ease; border: 1px solid transparent; }
+        .hero-dot:hover { background: rgba(255, 255, 255, 0.5); }
+        .hero-dot.active { background: var(--cyber-cyan); box-shadow: 0 0 10px var(--cyber-cyan); border-color: #fff; transform: scale(1.2); }
+
+        .hero-circular-progress { position: absolute; top: 15px; right: 20px; width: 35px; height: 35px; z-index: 20; }
+        .hero-circular-progress svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .circle-bg { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 3.5; }
+        .circle-fill { fill: none; stroke: var(--cyber-cyan); stroke-width: 3.5; stroke-dasharray: 100, 100; stroke-dashoffset: 100; filter: drop-shadow(0 0 3px var(--cyber-cyan)); stroke-linecap: round; }
+
+        .card { background-color: var(--card-bg); border: var(--border-style); position: relative; display: flex; flex-direction: column; border-radius: 4px; }
+        .card-header { padding: 15px 20px; border-bottom: var(--border-style); background-color: rgba(0, 242, 255, 0.02); display: flex; align-items: center; }
+        .card-body { padding: 20px; flex-grow: 1; }
+        h2 { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; color: var(--cyber-cyan); letter-spacing: 1px; width: 100%; display: flex; align-items: center; }
+        .status-rect { width: 8px; height: 16px; background-color: var(--tactical-orange); display: inline-block; margin-right: 12px; }
+
+        #news-container { height: 100%; overflow-y: scroll; padding-right: 10px; scrollbar-width: none; -ms-overflow-style: none; position: relative; }
+        #news-container::-webkit-scrollbar { display: none; }
+        
+        .news-item { text-decoration: none; color: inherit; display: flex; gap: 15px; margin-bottom: 20px; padding: 15px; border-left: 3px solid transparent; background-color: rgba(255,255,255,0.01); transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); cursor: pointer; }
+        .news-item:hover { background-color: rgba(0, 242, 255, 0.04); border-left: 3px solid var(--cyber-cyan); transform: translateX(5px); }
+        .news-thumb { width: 160px; height: 105px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; border-radius: 2px; transition: border-color 0.3s ease; }
+        .news-item:hover .news-thumb { border-color: rgba(0, 242, 255, 0.5); }
+        .news-text-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+        .news-meta { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 6px; display: flex; gap: 12px; }
+        .news-source { color: var(--army-green); font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .news-title { font-size: 1.05rem; font-weight: bold; line-height: 1.3; margin-bottom: 6px; transition: color 0.3s ease; }
+        .news-description { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; font-weight: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .news-item:hover .news-title { color: #fff; text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+
+        .loop-separator { text-align: center; margin: 30px 0; padding: 10px; border-top: 1px dashed var(--cyber-cyan); border-bottom: 1px dashed var(--cyber-cyan); color: var(--cyber-cyan); font-size: 0.8rem; font-weight: bold; letter-spacing: 3px; opacity: 0.7; }
+
+        .weather-display { text-align: center; padding: 10px 0; }
+        .weather-location { font-size: 1.2rem; color: #fff; letter-spacing: 2px; margin-bottom: 5px; }
+        .weather-value { font-size: 3rem; font-weight: 700; color: var(--tactical-orange); margin-bottom: 5px; text-shadow: 0 0 15px rgba(255, 159, 67, 0.2); line-height: 1; display: flex; justify-content: center; align-items: center; }
+        
+        .weather-details-container { display: flex; flex-direction: column; align-items: center; gap: 5px; margin-bottom: 15px; }
+        .weather-details-row { display: flex; justify-content: center; gap: 15px; font-size: 0.8rem; color: var(--cyber-cyan); background: rgba(0, 242, 255, 0.05); padding: 4px 10px; border-radius: 2px; width: fit-content; align-items: center; }
+        
+        .forecast-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; border-top: 1px solid rgba(0, 242, 255, 0.15); padding-top: 15px; }
+        .forecast-item { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.05); padding: 10px 5px; text-align: center; border-radius: 2px; }
+        .fc-time { font-size: 0.75rem; color: var(--army-green); font-weight: bold; margin-bottom: 5px; letter-spacing: 1px; }
+        .fc-temp { font-size: 1.1rem; color: var(--text-primary); font-weight: 700; margin-bottom: 2px; }
+        .fc-wind { font-size: 0.65rem; color: var(--text-secondary); display: block; }
+        .fc-rain { font-size: 0.65rem; color: var(--cyber-cyan); display: block; margin-top: 2px; }
+
+        .training-data { padding: 5px; }
+        .training-title { font-size: 1.4rem; color: var(--cyber-cyan); font-weight: bold; margin-bottom: 5px; line-height: 1.2; text-shadow: 0 0 5px rgba(0,242,255,0.2); }
+        .sub-table-title { font-size: 0.9rem; color: var(--army-green); font-weight: bold; margin: 15px 0 5px 0; letter-spacing: 1px; }
+        .tactical-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 0.85rem; }
+        .tactical-table th { background: rgba(0, 242, 255, 0.05); color: var(--text-secondary); padding: 4px 8px; text-align: left; border-bottom: 1px solid var(--army-green); }
+        .tactical-table td { padding: 4px 8px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-primary); }
+        .tactical-list { list-style: none; padding-left: 10px; border-left: 2px solid var(--army-green); margin-bottom: 15px; font-size: 0.9rem; }
+        .tactical-list li { margin-bottom: 8px; color: var(--text-primary); }
+
+        .loading { color: var(--cyber-cyan); font-style: italic; animation: blink 1.5s ease-in-out infinite; }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <svg class="bg-network" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+        <path class="net-line" d="M200,150 L350,250 L500,120 L650,300 L800,180" />
+        <path class="net-line" d="M100,400 L250,450 L350,250 L450,500 L650,300 L750,450" />
+        <path class="net-line" d="M350,250 L250,450" />
+        <path class="net-line" d="M650,300 L500,120" />
+        <path class="net-line" d="M500,120 L450,500" />
+        
+        <circle cx="200" cy="150" r="4" class="net-node delay-1" />
+        <circle cx="350" cy="250" r="6" class="net-node delay-2" />
+        <circle cx="500" cy="120" r="5" class="net-node delay-3" />
+        <circle cx="650" cy="300" r="7" class="net-node delay-1" />
+        <circle cx="800" cy="180" r="4" class="net-node delay-4" />
+        <circle cx="100" cy="400" r="3" class="net-node delay-2" />
+        <circle cx="250" cy="450" r="5" class="net-node delay-4" />
+        <circle cx="450" cy="500" r="6" class="net-node delay-3" />
+        <circle cx="750" cy="450" r="4" class="net-node delay-2" />
+    </svg>
+
+    <div class="scanline-overlay"></div>
+
+    <div class="top-bar">
+        <div class="sys-info">
+            <div style="font-size: 1.2rem; font-weight: bold; color: var(--text-primary);">SYS::DASHBOARD [v8.9_XML_ICONS]</div>
+            <div style="margin-top: 8px;">STATUS:: <span style="color: var(--army-green);">ALL_SYSTEMS_NOMINAL</span></div>
+        </div>
+        <div class="clock-module">
+            <div id="clock-main" class="clock-large">00:00:00</div>
+            <div id="sync-info" class="sync-small">DATE:: --.--.---- | NEXT_SYNC:: T-00:00</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="hero-section" id="hero-wrapper">
+            <div class="hero-circular-progress">
+                <svg viewBox="0 0 36 36">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle-fill" id="progress-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+            </div>
+
+            <div class="hero-track-container">
+                <div class="hero-track" id="hero-track">
+                    <div class="hero-slide" style="align-items:center; justify-content:center; width: 100%;">
+                        <div class="loading">ESTABLISHING SECURE UPLINK...</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-controls">
+                <button class="hero-btn" id="btn-prev">&#10094;</button>
+                <button class="hero-btn" id="btn-next">&#10095;</button>
+            </div>
+            <div class="hero-dots" id="hero-dots-container"></div>
+        </div>
+
+        <div class="card" style="height: calc(100vh - 485px); min-height: 300px; display: flex; flex-direction: column;">
+            <div class="card-header">
+                <h2>
+                    <span class="status-rect"></span>DATA_STREAM::LAST_24H
+                    <span id="article-counter" style="margin-left: auto; font-size: 0.8rem; color: var(--text-secondary); letter-spacing: 1px;"></span>
+                </h2>
+            </div>
+            <div class="card-body" style="padding-right: 0; display: flex; flex-direction: column; min-height: 0;">
+                <div id="news-container" class="loading">DECRYPTING PACKETS...</div>
+            </div>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 25px;">
+            <div class="card" style="height: fit-content;">
+                <div class="card-header">
+                    <h2><span class="status-rect" style="background-color: var(--cyber-cyan);"></span>SENSOR::ATMOSPHERE</h2>
+                </div>
+                <div class="card-body">
+                    <div id="weather-container">
+                        <div class="loading">CALIBRATING...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" style="height: fit-content;">
+                <div class="card-header">
+                    <h2><span class="status-rect" style="background-color: var(--army-green);"></span>USER::TRAINING_PLAN</h2>
+                </div>
+                <div class="card-body">
+                    <div id="training-container">
+                        <div class="loading">FETCHING SPREADSHEET DATA...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BANNER_ROTATE_MS = 30000; 
+        const AIKAIKKUNA_MS = 24 * 60 * 60 * 1000; 
+        const VIERITYS_NOPEUS = 0.25; 
+        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQt9fwZiHBrXY--Zgn7XxNOFa_1UtJ4LGguVPNP4FoT1UCyJ74uwCP4KG2eViAM6q1pCNVsJ2B-iLmH/pub?gid=1248025276&single=true&output=csv";
+
+        function laskeSeuraavaSynkronointi() {
+            const nyt = new Date();
+            const seuraava = new Date(nyt);
+            const minuuttia = nyt.getMinutes();
+            const yli = minuuttia % 5;
+            const minuuttiaSeuraavaan = 5 - yli;
+            seuraava.setMinutes(minuuttia + minuuttiaSeuraavaan, 0, 0);
+            return seuraava;
+        }
+
+        let seuraavaSynkronointi = laskeSeuraavaSynkronointi();
+
+        function paivitaKello() {
+            const nyt = new Date();
+            document.getElementById('clock-main').textContent = nyt.toLocaleTimeString('fi-FI');
+            
+            const pvmStr = nyt.toLocaleDateString('fi-FI');
+            const erotusMs = seuraavaSynkronointi - nyt;
+            
+            if (erotusMs <= 0) {
+                suoritaSynkronointi();
+                seuraavaSynkronointi = laskeSeuraavaSynkronointi();
+            } else {
+                const min = Math.floor(erotusMs / 60000);
+                const sek = Math.floor((erotusMs % 60000) / 1000);
+                const aikanaytto = `${min.toString().padStart(2, '0')}:${sek.toString().padStart(2, '0')}`;
+                
+                document.getElementById('sync-info').textContent = `DATE:: ${pvmStr} | NEXT_SYNC:: T-${aikanaytto}`;
+            }
+        }
+        setInterval(paivitaKello, 1000);
+
+        function suoritaSynkronointi() {
+            haeSaa();
+            haeUutiset();
+            haeTreeni();
+        }
+
+        function parseDateString(dateStr, year) {
+            const parts = dateStr.trim().split('.');
+            if (parts.length >= 2) {
+                return new Date(year, parseInt(parts[1]) - 1, parseInt(parts[0]));
+            }
+            return null;
+        }
+
+        async function haeTreeni() {
+            const container = document.getElementById("training-container");
+            const cacheBuster = `&nocache=${Date.now()}`;
+            try {
+                const response = await fetch(SHEET_CSV_URL + cacheBuster, { cache: 'no-store' });
+                if (!response.ok) throw new Error("Verkkovirhe");
+                const csvData = await response.text();
+                
+                const rivit = csvData.split('\n').map(rivi => {
+                    return rivi.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(s => s.replace(/^"|"$/g, '').trim());
+                });
+                
+                const tanaan = new Date();
+                const v = tanaan.getFullYear();
+                
+                const jsViikonpaiva = tanaan.getDay(); 
+                const sarakeIndeksi = jsViikonpaiva === 0 ? 8 : jsViikonpaiva + 1;
+                
+                let paivanTreeniStr = "Lepo";
+                
+                for (let i = 1; i < rivit.length; i++) {
+                    const pvmAlue = rivit[i][1];
+                    if (!pvmAlue) continue;
+                    
+                    const osat = pvmAlue.split(/[-–—]/);
+                    if (osat.length >= 2) {
+                        const alku = parseDateString(osat[0], v);
+                        const loppu = parseDateString(osat[1], v);
+                        if (alku && loppu) {
+                            loppu.setHours(23, 59, 59);
+                            if (tanaan >= alku && tanaan <= loppu) {
+                                paivanTreeniStr = rivit[i][sarakeIndeksi] || "Lepo";
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                let lisatiedotHTML = "";
+                
+                if (paivanTreeniStr !== "Lepo" && paivanTreeniStr !== "") {
+                    const saliMatch = paivanTreeniStr.match(/Sali\s*([AB][1-4])/i);
+                    if (saliMatch) {
+                        const saliTunniste = "SALI " + saliMatch[1].toUpperCase();
+                        lisatiedotHTML += luoSaliTaulukko(saliTunniste, rivit);
+                    }
+
+                    const vetoMatch = paivanTreeniStr.match(/V[1-3]/i);
+                    if (vetoMatch) {
+                        const vetoTunniste = vetoMatch[0].toUpperCase();
+                        lisatiedotHTML += luoVetoLista(vetoTunniste, rivit);
+                    } else if (paivanTreeniStr.toLowerCase().includes("vetoja")) {
+                        lisatiedotHTML += `<div class="sub-table-title">>> VEDOT</div><ul class="tactical-list"><li>Katso tarkemmat ohjeet ohjelman oikeasta reunasta.</li></ul>`;
+                    }
+                }
+
+                container.innerHTML = `
+                    <div class="training-data">
+                        <div class="training-title" ${paivanTreeniStr === 'Lepo' ? 'style="color: var(--text-secondary);"' : ''}>
+                            ${paivanTreeniStr.toUpperCase()}
+                        </div>
+                        ${lisatiedotHTML}
+                    </div>
+                `;
+
+            } catch (error) {
+                console.error("Training module error:", error);
+                container.innerHTML = `<div class="loading">SYNC ERROR: CANNOT REACH SPREADSHEET</div>`;
+            }
+        }
+
+        function luoSaliTaulukko(tunniste, rivit) {
+            const kartta = {
+                'SALI A1': { s: 2, e: 6, c: 14 },
+                'SALI A2': { s: 8, e: 12, c: 14 },
+                'SALI A3': { s: 14, e: 18, c: 14 },
+                'SALI A4': { s: 20, e: 24, c: 14 },
+                'SALI B1': { s: 2, e: 6, c: 18 },
+                'SALI B2': { s: 8, e: 12, c: 18 },
+                'SALI B3': { s: 14, e: 18, c: 18 },
+                'SALI B4': { s: 20, e: 24, c: 18 }
+            };
+            const conf = kartta[tunniste];
+            if (!conf) return "";
+
+            let html = `<div class="sub-table-title">>> ${tunniste}</div><table class="tactical-table"><tr><th>LIIKE</th><th>SARJAT</th><th>TOISTOT</th></tr>`;
+            for (let r = conf.s; r <= conf.e; r++) {
+                if (rivit[r] && rivit[r][conf.c] && rivit[r][conf.c].trim() !== "") {
+                    const liike = rivit[r][conf.c] || "-";
+                    const sarjat = rivit[r][conf.c+1] || "-";
+                    const toistot = rivit[r][conf.c+2] || "-";
+                    html += `<tr><td>${liike}</td><td>${sarjat}</td><td>${toistot}</td></tr>`;
+                }
+            }
+            html += `</table>`;
+            return html;
+        }
+
+        function luoVetoLista(tunniste, rivit) {
+            const kartta = { 'V1': 22, 'V2': 23, 'V3': 24 };
+            const col = kartta[tunniste];
+            if (!col) return "";
+
+            let html = `<div class="sub-table-title">>> VEDOT (${tunniste})</div><ul class="tactical-list">`;
+            for (let r = 1; r <= 8; r++) {
+                if (rivit[r] && rivit[r][col] && rivit[r][col].trim() !== "") {
+                    html += `<li>${rivit[r][col]}</li>`;
+                }
+            }
+            html += `</ul>`;
+            return html;
+        }
+
+        async function haeSaa() {
+            const cacheBuster = `&nocache=${Date.now()}`;
+            const obsUrl = "https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::simple&place=Jyväskylä&parameters=t2m,ws_10min,rh,r_1h,wd_10min" + cacheBuster;
+            // Lisätty WeatherSymbol3-parametri sääkuvakkeita varten
+            const fctUrl = "https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::forecast::harmonie::surface::point::simple&place=Jyväskylä&parameters=temperature,WindSpeedMS,PrecipitationAmount,WeatherSymbol3" + cacheBuster;
+            const uvUrl = "https://api.open-meteo.com/v1/forecast?latitude=62.2415&longitude=25.7209&daily=uv_index_max&timezone=auto";
+            
+            const container = document.getElementById("weather-container");
+            
+            try {
+                const [obsRes, fctRes, uvRes] = await Promise.all([
+                    fetch(obsUrl, { cache: 'no-store' }), 
+                    fetch(fctUrl, { cache: 'no-store' }),
+                    fetch(uvUrl, { cache: 'no-store' })
+                ]);
+                
+                if (!obsRes.ok || !fctRes.ok) throw new Error("Rajapintavirhe");
+                
+                const parser = new DOMParser();
+                const obsXml = parser.parseFromString(await obsRes.text(), "text/xml");
+                const fctXml = parser.parseFromString(await fctRes.text(), "text/xml");
+
+                let currTemp = "-", currWind = "-", currRh = "-", currRain = "0.0", currUv = "-", currWindDir = 0;
+                
+                try {
+                    const uvData = await uvRes.json();
+                    if (uvData.daily && uvData.daily.uv_index_max) {
+                        currUv = uvData.daily.uv_index_max[0];
+                    }
+                } catch(e) { console.error("UV-haku epäonnistui", e); }
+
+                Array.from(obsXml.getElementsByTagName("BsWfs:BsWfsElement")).forEach(el => {
+                    const paramName = el.getElementsByTagName("BsWfs:ParameterName")[0]?.textContent;
+                    const paramVal = el.getElementsByTagName("BsWfs:ParameterValue")[0]?.textContent;
+                    if (paramName === "t2m" && !isNaN(paramVal)) currTemp = parseFloat(paramVal).toFixed(1);
+                    if (paramName === "ws_10min" && !isNaN(paramVal)) currWind = parseFloat(paramVal).toFixed(1);
+                    if (paramName === "rh" && !isNaN(paramVal)) currRh = parseFloat(paramVal).toFixed(0);
+                    if (paramName === "r_1h" && !isNaN(paramVal)) currRain = parseFloat(paramVal).toFixed(1);
+                    if (paramName === "wd_10min" && !isNaN(paramVal)) currWindDir = parseFloat(paramVal);
+                });
+
+                const forecastData = {};
+                Array.from(fctXml.getElementsByTagName("BsWfs:BsWfsElement")).forEach(el => {
+                    const timeStr = el.getElementsByTagName("BsWfs:Time")[0]?.textContent;
+                    const paramName = el.getElementsByTagName("BsWfs:ParameterName")[0]?.textContent;
+                    const paramVal = el.getElementsByTagName("BsWfs:ParameterValue")[0]?.textContent;
+                    
+                    if (!forecastData[timeStr]) forecastData[timeStr] = { time: new Date(timeStr), rain: "0.0" };
+                    if (paramName === "temperature" && !isNaN(paramVal)) forecastData[timeStr].temp = parseFloat(paramVal).toFixed(1);
+                    if (paramName === "WindSpeedMS" && !isNaN(paramVal)) forecastData[timeStr].wind = parseFloat(paramVal).toFixed(1);
+                    if (paramName === "PrecipitationAmount" && !isNaN(paramVal)) forecastData[timeStr].rain = parseFloat(paramVal).toFixed(1);
+                    if (paramName === "WeatherSymbol3" && !isNaN(paramVal)) forecastData[timeStr].symbol = parseInt(paramVal);
+                });
+
+                const now = new Date();
+                const next5Hours = Object.values(forecastData).filter(d => d.time > now && d.temp !== undefined).sort((a, b) => a.time - b.time).slice(0, 5);
+
+                // Haetaan nykyhetkeä parhaiten kuvaava sääsymboli ennusteen ensimmäisestä elementistä, oletuksena 1 (selkeä)
+                const currSymbol = next5Hours.length > 0 && next5Hours[0].symbol ? next5Hours[0].symbol : 1;
+                const mainIconHtml = `<img src="https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/${currSymbol}.svg" alt="Sää" style="height: 3rem; margin-right: 15px; filter: drop-shadow(0 0 5px rgba(0,242,255,0.3));">`;
+
+                let forecastHtml = '';
+                next5Hours.forEach(data => {
+                    const gridIcon = data.symbol ? `<img src="https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/${data.symbol}.svg" alt="Sää" style="height: 25px; margin: 4px 0; display: block; margin-left: auto; margin-right: auto;">` : '';
+                    forecastHtml += `
+                        <div class="forecast-item">
+                            <div class="fc-time">${data.time.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' })}</div>
+                            ${gridIcon}
+                            <div class="fc-temp">${data.temp}°</div>
+                            <div class="fc-wind">${data.wind} m/s</div>
+                            <div class="fc-rain">${data.rain} mm</div>
+                        </div>`;
+                });
+
+                const windDirectionIcon = `<span style="display:inline-block; transform: rotate(${currWindDir}deg); margin-left: 4px; color: var(--tactical-orange); font-weight: bold;">&darr;</span>`;
+
+                container.innerHTML = `
+                    <div class="weather-display">
+                        <div class="weather-location">JYVÄSKYLÄ</div>
+                        <div class="weather-value">${mainIconHtml}${currTemp}°C</div>
+                        <div class="weather-details-container">
+                            <div class="weather-details-row">
+                                <span>WIND: ${currWind} m/s ${windDirectionIcon}</span>
+                                <span>HUMIDITY: ${currRh}%</span>
+                            </div>
+                            <div class="weather-details-row">
+                                <span>RAIN: ${currRain} mm</span>
+                                <span>UV INDEX: ${currUv}</span>
+                            </div>
+                        </div>
+                        <div class="forecast-grid">${forecastHtml}</div>
+                    </div>`;
+            } catch (error) { console.error("Sensor error:", error); }
+        }
+
+        // Yle ja BBC on nyt yhdenmukaistettu käyttämään XML-muotoa ja luotettavampaa välityspalvelinta
+        const uutislahteet = [
+            { nimi: "HS", url: "https://www.hs.fi/rss/tuoreimmat.xml" },
+            { nimi: "SK", url: "https://suomenkuvalehti.fi/feed/" },
+            { nimi: "Yle", url: "https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET" },
+            { nimi: "BBC", url: "https://feeds.bbci.co.uk/news/world/rss.xml" } 
+        ];
+
+        async function haeUutiset() {
+            let noudetutUutiset = [];
+            
+            const haut = uutislahteet.map(async (lahde) => {
+                const cacheBuster = `nocache=${Date.now()}`;
+                const separator = lahde.url.includes('?') ? '&' : '?';
+                const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(lahde.url + separator + cacheBuster)}`;
+                
+                try {
+                    const response = await fetch(proxyUrl, { cache: 'no-store' });
+                    if (!response.ok) return;
+                    const xmlText = await response.text();
+                    
+                    const xmlDoc = new DOMParser().parseFromString(xmlText, "text/xml");
+                    const items = Array.from(xmlDoc.querySelectorAll("item"));
+                    
+                    items.forEach(item => {
+                        const title = item.querySelector("title")?.textContent;
+                        const link = item.querySelector("link")?.textContent;
+                        const pubDateStr = item.querySelector("pubDate")?.textContent;
+                        
+                        let description = item.querySelector("description")?.textContent || "";
+                        let puhdasKuvaus = description.replace(/<\/?[^>]+(>|$)/g, "").trim();
+                        
+                        let imageUrl = "";
+                        const enclosure = item.querySelector("enclosure");
+                        if (enclosure) imageUrl = enclosure.getAttribute("url");
+                        if (!imageUrl) {
+                            const media = item.getElementsByTagName("media:content")[0];
+                            if (media) imageUrl = media.getAttribute("url");
+                        }
+                        if (!imageUrl) {
+                            const thumbnail = item.getElementsByTagName("media:thumbnail")[0];
+                            if (thumbnail) imageUrl = thumbnail.getAttribute("url");
+                        }
+                        if (!imageUrl) {
+                            const contentEncoded = item.getElementsByTagName("content:encoded")[0];
+                            if (contentEncoded) {
+                                const imgMatch = contentEncoded.textContent.match(/src="([^"]+)"/);
+                                if (imgMatch) imageUrl = imgMatch[1];
+                            }
+                        }
+
+                        if (title && link && pubDateStr) {
+                            const pubDate = new Date(pubDateStr);
+                            if (!isNaN(pubDate)) noudetutUutiset.push({ title, link, pubDate, source: lahde.nimi, image: imageUrl, description: puhdasKuvaus });
+                        }
+                    });
+                } catch (error) { console.error(`Uplink failed: ${lahde.nimi}`); }
+            });
+
+            await Promise.all(haut);
+
+            let yhdistettyLista = noudetutUutiset;
+            
+            const nyt = new Date();
+            yhdistettyLista = yhdistettyLista.filter(u => (nyt - u.pubDate) <= AIKAIKKUNA_MS);
+            yhdistettyLista.sort((a, b) => b.pubDate - a.pubDate);
+
+            if (yhdistettyLista.length > 0) {
+                localStorage.setItem('uutisData', JSON.stringify(yhdistettyLista));
+                kasitteleKaruselli(yhdistettyLista);
+                renderUutislista(yhdistettyLista);
+            }
+        }
+
+        let karuselliAjastin = null;
+        let karuselliNykyinen = 0;
+        let banneriUutiset = [];
+
+        function kasitteleKaruselli(uutiset) {
+            banneriUutiset = uutiset.slice(0, 10);
+            const track = document.getElementById("hero-track");
+            const dotsContainer = document.getElementById("hero-dots-container");
+            
+            track.innerHTML = "";
+            dotsContainer.innerHTML = "";
+            karuselliNykyinen = 0;
+
+            banneriUutiset.forEach((u, index) => {
+                const aika = u.pubDate.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' });
+                const kuvaHtml = u.image ? `<img src="${u.image}" alt="Kansikuva">` : `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#555;">NO_VISUAL_DATA</div>`;
+                
+                track.innerHTML += `
+                    <div class="hero-slide">
+                        <div class="hero-badge">INTEL::PRIORITY</div>
+                        <a href="${u.link}" target="_blank" rel="noopener noreferrer" class="hero-image-container">${kuvaHtml}</a>
+                        <div class="hero-content">
+                            <div class="news-meta"><span class="news-source">${u.source}</span><span>T-${aika}</span></div>
+                            <a href="${u.link}" class="hero-title" target="_blank">${u.title}</a>
+                            <div class="hero-description">${u.description}</div>
+                        </div>
+                    </div>`;
+
+                dotsContainer.innerHTML += `<div class="hero-dot" onclick="vaihdaSlaidia(${index})"></div>`;
+            });
+            vaihdaSlaidia(0);
+        }
+
+        function vaihdaSlaidia(indeksi) {
+            if (banneriUutiset.length === 0) return;
+            karuselliNykyinen = (indeksi + banneriUutiset.length) % banneriUutiset.length;
+            document.getElementById("hero-track").style.transform = `translateX(-${karuselliNykyinen * 100}%)`;
+            
+            const progress = document.getElementById("progress-fill");
+            progress.style.transition = 'none';
+            progress.style.strokeDashoffset = '100';
+            setTimeout(() => {
+                progress.style.transition = `stroke-dashoffset ${BANNER_ROTATE_MS}ms linear`;
+                progress.style.strokeDashoffset = '0';
+            }, 50);
+
+            const dots = document.querySelectorAll('.hero-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === karuselliNykyinen) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            clearInterval(karuselliAjastin);
+            karuselliAjastin = setInterval(() => { vaihdaSlaidia(karuselliNykyinen + 1); }, BANNER_ROTATE_MS);
+        }
+
+        let sallitaankoVieritys = true;
+        let vieritysAnimaatio = null;
+        let sijoitusY = 0;
+
+        function renderUutislista(uutiset) {
+            const container = document.getElementById("news-container");
+            container.innerHTML = "";
+            container.classList.remove('loading');
+            
+            document.getElementById("article-counter").textContent = `ARTICLES:: ${uutiset.length}`;
+
+            let listaHtml = "";
+            uutiset.forEach((uutinen) => {
+                const aika = uutinen.pubDate.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' });
+                const kuvaHtml = uutinen.image ? `<img src="${uutinen.image}" class="news-thumb" alt="Kuva">` : `<div class="news-thumb" style="background:#111; display:flex; align-items:center; justify-content:center; font-size:0.6rem; color:#555;">NO_IMG</div>`;
+                
+                listaHtml += `
+                    <a href="${uutinen.link}" class="news-item" target="_blank" rel="noopener noreferrer">
+                        ${kuvaHtml}
+                        <div class="news-text-content">
+                            <div class="news-meta"><span class="news-source">${uutinen.source}</span><span>T-${aika}</span></div>
+                            <div class="news-title">${uutinen.title}</div>
+                            <div class="news-description">${uutinen.description}</div>
+                        </div>
+                    </a>`;
+            });
+            
+            const separator = `<div class="loop-separator"><span>>>> DATA_STREAM_LOOP <<<</span></div>`;
+            container.innerHTML = `<div id="scroll-list-1">${listaHtml}</div>${separator}<div id="scroll-list-2">${listaHtml}</div>`;
+            
+            sijoitusY = 0;
+            container.scrollTop = 0;
+            kaynnistaVieritys();
+        }
+
+        function kaynnistaVieritys() {
+            const container = document.getElementById("news-container");
+            const lista1 = document.getElementById("scroll-list-1");
+            if (vieritysAnimaatio) cancelAnimationFrame(vieritysAnimaatio);
+
+            container.addEventListener('mouseenter', () => sallitaankoVieritys = false);
+            container.addEventListener('mouseleave', () => sallitaankoVieritys = true);
+            container.addEventListener('scroll', () => { if (!sallitaankoVieritys) { sijoitusY = container.scrollTop; } });
+
+            function rullaa() {
+                if (sallitaankoVieritys && lista1) {
+                    sijoitusY += VIERITYS_NOPEUS;
+                    if (sijoitusY >= lista1.offsetHeight + 80) { 
+                        sijoitusY = 0; 
+                    }
+                    container.scrollTop = sijoitusY;
+                }
+                vieritysAnimaatio = requestAnimationFrame(rullaa);
+            }
+            rullaa();
+        }
+
+        document.getElementById("btn-prev").addEventListener("click", () => vaihdaSlaidia(karuselliNykyinen - 1));
+        document.getElementById("btn-next").addEventListener("click", () => vaihdaSlaidia(karuselliNykyinen + 1));
+
+        function alustaKojelauta() {
+            suoritaSynkronointi();
+        }
+
+        alustaKojelauta();
+
+    </script>
+</body>
+</html>
