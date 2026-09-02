@@ -516,51 +516,55 @@
             let noudetutUutiset = [];
             
             const haut = uutislahteet.map(async (lahde) => {
-                const cacheBuster = `nocache=${Date.now()}`;
-                const separator = lahde.url.includes('?') ? '&' : '?';
-                const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(lahde.url + separator + cacheBuster)}`;
+                const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(lahde.url)}`;
                 
                 try {
                     const response = await fetch(proxyUrl, { cache: 'no-store' });
                     if (!response.ok) return;
-                    const xmlText = await response.text();
                     
-                    const xmlDoc = new DOMParser().parseFromString(xmlText, "text/xml");
-                    const items = Array.from(xmlDoc.querySelectorAll("item"));
+                    const data = await response.json();
+                    if (data.status !== 'ok' || !data.items) return;
                     
-                    items.forEach(item => {
-                        const title = item.querySelector("title")?.textContent;
-                        const link = item.querySelector("link")?.textContent;
-                        const pubDateStr = item.querySelector("pubDate")?.textContent;
+                    data.items.forEach(item => {
+                        const title = item.title;
+                        const link = item.link;
+                        const pubDateStr = item.pubDate;
                         
-                        let description = item.querySelector("description")?.textContent || "";
-                        let puhdasKuvaus = description.replace(/<\/?[^>]+(>|$)/g, "").trim();
+                        let puhdasKuvaus = (item.description || "").replace(/<\/?[^>]+(>|$)/g, "").trim();
                         
                         let imageUrl = "";
-                        const enclosure = item.querySelector("enclosure");
-                        if (enclosure) imageUrl = enclosure.getAttribute("url");
-                        if (!imageUrl) {
-                            const media = item.getElementsByTagName("media:content")[0];
-                            if (media) imageUrl = media.getAttribute("url");
-                        }
-                        if (!imageUrl) {
-                            const thumbnail = item.getElementsByTagName("media:thumbnail")[0];
-                            if (thumbnail) imageUrl = thumbnail.getAttribute("url");
-                        }
-                        if (!imageUrl) {
-                            const contentEncoded = item.getElementsByTagName("content:encoded")[0];
-                            if (contentEncoded) {
-                                const imgMatch = contentEncoded.textContent.match(/src="([^"]+)"/);
-                                if (imgMatch) imageUrl = imgMatch[1];
-                            }
+                        if (item.thumbnail) {
+                            imageUrl = item.thumbnail;
+                        } else if (item.enclosure && item.enclosure.link) {
+                            imageUrl = item.enclosure.link;
+                        } else if (item.content) {
+                            const imgMatch = item.content.match(/src="([^"]+)"/);
+                            if (imgMatch) imageUrl = imgMatch[1];
                         }
 
                         if (title && link && pubDateStr) {
-                            const pubDate = new Date(pubDateStr);
-                            if (!isNaN(pubDate)) noudetutUutiset.push({ title, link, pubDate, source: lahde.nimi, image: imageUrl, description: puhdasKuvaus });
+                            const parsittavaPvm = pubDateStr.replace(' ', 'T') + 'Z';
+                            let pubDate = new Date(parsittavaPvm);
+                            
+                            if (isNaN(pubDate.getTime())) {
+                                pubDate = new Date(pubDateStr.replace(/-/g, '/'));
+                            }
+
+                            if (!isNaN(pubDate.getTime())) {
+                                noudetutUutiset.push({ 
+                                    title, 
+                                    link, 
+                                    pubDate, 
+                                    source: lahde.nimi, 
+                                    image: imageUrl, 
+                                    description: puhdasKuvaus 
+                                });
+                            }
                         }
                     });
-                } catch (error) { console.error(`Uplink failed: ${lahde.nimi}`); }
+                } catch (error) { 
+                    console.error(`Uplink failed: ${lahde.nimi}`, error); 
+                }
             });
 
             await Promise.all(haut);
@@ -571,10 +575,20 @@
             yhdistettyLista = yhdistettyLista.filter(u => (nyt - u.pubDate) <= AIKAIKKUNA_MS);
             yhdistettyLista.sort((a, b) => b.pubDate - a.pubDate);
 
+            const track = document.getElementById("hero-track");
+            const container = document.getElementById("news-container");
+
             if (yhdistettyLista.length > 0) {
                 localStorage.setItem('uutisData', JSON.stringify(yhdistettyLista));
                 kasitteleKaruselli(yhdistettyLista);
                 renderUutislista(yhdistettyLista);
+            } else {
+                track.innerHTML = `
+                    <div class="hero-slide" style="align-items:center; justify-content:center; width: 100%;">
+                        <div class="loading" style="color: var(--tactical-orange);">ERROR: UPLINK FAILED. NO RECENT DATA.</div>
+                    </div>`;
+                container.innerHTML = `<div style="color: var(--tactical-orange); padding: 20px;">DATAVIRTA KATKENNUT TAI UUTISIA EI LÖYTYNYT.</div>`;
+                container.classList.remove('loading');
             }
         }
 
